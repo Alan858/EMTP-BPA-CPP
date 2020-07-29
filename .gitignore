@@ -1,0 +1,25 @@
+Debug
+ipch
+Release
+Temp
+/_Release
+/_working_folder
+/Branches
+/Tags
+/Trunk/TextEditor/Bin
+/*/*.bak
+/*/*/*.bak
+/*/*/*/*.bak
+*.sdf
+*.user
+*.suo
+*.aps
+*.tmp
+*- Copy.*
+*.zip
+.vsol password.txt
+.hg_archival.txt
+.hgeol
+.hgignore
+.hgtags
+/_Include/fable

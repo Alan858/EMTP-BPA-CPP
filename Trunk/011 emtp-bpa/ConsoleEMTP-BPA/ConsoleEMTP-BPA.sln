@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleEMTP-BPA", "ConsoleEMTP-BPA.vcxproj", "{CAA95930-D28E-48A8-96F2-85E8EC115365}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Debug|x64.ActiveCfg = Debug|x64
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Debug|x64.Build.0 = Debug|x64
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Debug|x86.ActiveCfg = Debug|Win32
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Debug|x86.Build.0 = Debug|Win32
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Release|x64.ActiveCfg = Release|x64
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Release|x64.Build.0 = Release|x64
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Release|x86.ActiveCfg = Release|Win32
+		{CAA95930-D28E-48A8-96F2-85E8EC115365}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB514C5B-CF9D-4855-9B42-CD8C0686C817}
+	EndGlobalSection
+EndGlobal

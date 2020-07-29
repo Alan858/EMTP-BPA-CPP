@@ -1,0 +1,18 @@
+BEGIN NEW DATA CASE
+C   dT >< Tmax >< Xopt >< Copt ><Epsiln>
+  10.E-6  10.E-3
+   20000       1       1       1       1       0       0       0 
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+  SOURCECAP               1.5811    5.                                         1 
+  CAP                                     5. 
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES 
+C <name>I2<Amplit. ><freq.   ><time-0   ><A1       ><time-1  ><tstart  ><tstop   >
+11SOURCE          1. 
+BLANK CARD ENDING SOURCES
+  CAP    
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

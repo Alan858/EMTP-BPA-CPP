@@ -1,0 +1,118 @@
+ Input Reading is done. NUMCRD =   18  CARDS.
+ ELECTROMAGNETIC TRANSIENTS PROGRAM (EMTP)
+ 2020-07-28 18:55:28
+ ASSOCIATED USER DOCUMENTATION IS THE 864-PAGE EMTP RULE BOOK DATED  JUNE, 1984.
+ INDEPENDENT LIST LIMITS FOLLOW. TOTAL LENGTH OF /LABEL/ EQUALS  1842869 INTEGER WORDS.     3002  3000 10000   100 20000  1200
+   4000120000   300   900   210   900     5   460    90    84     4   254 90000100000  3000 50000 30000    24 30000  3000   600 1080
+ --------------------------------------------------+--------------------------------------------------------------------------------
+ DESCRIPTIVE INTERPRETATION OF NEW-CASE INPUT DATA 1 INPUT DATA CARD IMAGES PRINTED BELOW, ALL 80 COLUMNS, CHARACTER BY CHARACTER.
+                                                   0         1         2         3         4         5         6         7         8
+                                                   0         0         0         0         0         0         0         0         0
+ --------------------------------------------------+--------------------------------------------------------------------------------
+                                                   1BEGIN NEW DATA CASE                                                             
++MARKER CARD PRECEDING NEW DATA CASE.
+ COMMENT CARD.                                     1C   dT >< Tmax >< Xopt >< Copt ><Epsiln>                                        
+                                                   1  10.E-6  10.E-3                                                                
++MISC. DATA.    0.100E-04   0.100E-01   0.000E+00
+                                                   1   20000       1       1       1       1       0       0       0                
++MISC. DATA. 20000    1  1  1  1  0  0  0  0  0
+ COMMENT CARD.                                     1C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+ COMMENT CARD.                                     1C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >                                    
+                                                   1  SOURCECAP               1.5811    5.                                         1
++SERIES R-L-C.    0.158E+01  0.500E+01  0.000E+00
+                                                   1  CAP                                     5.                                    
++SERIES R-L-C.    0.000E+00  0.000E+00  0.500E+01
+                                                   1BLANK CARD ENDING BRANCHES                                                      
++BLANK CARD TERMINATING BRANCH CARDS.
+                                                   1BLANK CARD ENDING SWITCHES                                                      
++BLANK CARD TERMINATING SWITCH CARDS.
+ COMMENT CARD.                                     1C <name>I2<Amplit. ><freq.   ><time-0   ><A1       ><time-1  ><tstart  ><tstop  
+                                                   111SOURCE          1.                                                            
++SOURCE.    0.10E+01  0.00E+00  0.00E+00  0.00E+00
+                                                   1BLANK CARD ENDING SOURCES                                                       
++BLANK CARD TERMINATING SOURCE CARDS.
+
+
+ LIST OF INPUT ELEMENTS CONNECTED TO EACH BUS.
+          1) ONLY THE PHYSICAL CONNECTIONS OF MULTIPHASE LINES ARE SHOWN (CAPACITIVE AND INDUCTIVE COUPLING IGNORED)
+          2) REPEATED ENTRIES IMPLY PARALLEL CONNECTIONS
+          3) SOURCES ARE OMITTED, ALTHOUGH SWITCHES ARE INCLUDED;
+          4) U.M. USAGE PRODUCES EXTRA, INTERNALLY-DEFINED NODES "UM????" (1ST 2 LETTERS "UM").
+ FROM BUS NAME 1 NAMES OF ALL ADJACENT BUSSES
+ --------------+----------------------------------------------------------------------------------------------------------
+         SOURCE1CAP   *
+         CAP   1TERRA *SOURCE*
+         TERRA 1CAP   *
+ --------------+----------------------------------------------------------------------------------------------------------
+
+                                                   1  CAP                                                                           
++CARD OF BUS NAMES FOR NODE-VOLTAGE OUTPUT.
+                                                   1BLANK CARD ENDING NODE VOLTAGE OUTPUT                                           
++BLANK CARD ENDING NODE NAMES FOR VOLTAGE OUTPUT.
+                                                                                                                                    
+ COLUMN HEADINGS FOR THE   2  EMTP OUTPUT VARIABLES FOLLOW.   THESE ARE ORDERED ACCORDING TO THE FIVE                               
+ POSSIBLE EMTP OUTPUT-VARIABLE CLASSES, AS FOLLOWS ....                                                                             
+   FIRST   1  OUTPUT VARIABLES ARE ELECTRIC-NETWORK NODE VOLTAGES (WITH RESPECT TO LOCAL GROUND)|                                   
+    NEXT   0  OUTPUT VARIABLES ARE BRANCH VOLTAGES (VOLTAGE OF UPPER NODE MINUS VOLTAGE OF LOWER NODE)|                             
+    NEXT   1  OUTPUT VARIABLES ARE BRANCH CURRENTS (FLOWING FROM THE UPPER EMTP NODE TO THE LOWER)|                                 
+    NEXT   0  OUTPUT VARIABLES PERTAIN TO DYNAMIC SYNCHRONOUS MACHINES, WITH NAMES GENERATED INTERNALLY|                            
+   FINAL   0  OUTPUT VARIABLES BELONG TO  'TACS'  (NOTE INTERNALLY-ADDED UPPER NAME OF PAIR).                                       
+ BRANCH POWER  CONSUMPTION (POWER  FLOW, IF A SWITCH) IS TREATED LIKE A BRANCH VOLTAGE FOR THIS GROUPING|                           
+ BRANCH ENERGY CONSUMPTION (ENERGY FLOW, IF A SWITCH) IS TREATED LIKE A BRANCH CURRENT FOR THIS GROUPING.                           
+                                                                                                                                    
+  STEP     TIME       CAP          SOURCE                                                                                           
+                                   CAP                                                                                              
+     0 0.000000 0.000000E+00 0.000000E+00
+  1000 0.010000 0.804031E+00 0.218249E-02
+
+ MAXIMA AND MINIMA WHICH OCCURRED DURING THE SIMULATION FOLLOW.   THE ORDER AND COLUMN POSITIONING ARE THE
+ SAME AS FOR THE REGULAR PRINTED OUTPUT VS. TIME.
+ VARIABLE MAXIMA :
+                0.192395E+01 0.304092E-01
+ TIMES OF MAXIMA :
+                0.500000E-03 0.250000E-03
+ VARIABLE MINIMA :
+                0.000000E+00-0.281068E-01
+ TIMES OF MINIMA :
+                0.000000E+00 0.750000E-03
+
+
+ CORE STORAGE FIGURES FOR PRECEDING DATA CASE NOW COMPLETED.  ---------------------------------------  PRESENT   PROGRAM
+ A VALUE OF  -9999 INDICATES DEFAULT, WITH NO FIGURE AVAILABLE.                                         FIGURE     LIMIT (NAME)
+     SIZE LIST 1.   NUMBER OF NETWORK NODES.                                                                 3      3002 (LBUS)
+     SIZE LIST 2.   NUMBER OF NETWORK BRANCHES.                                                          -9999      3000 (LBRNCH)
+     SIZE LIST 3.   NUMBER OF DATA VALUES IN R, L, C TABLES.                                                 2     10000 (LDATA)
+     SIZE LIST 4.   NUMBER OF ENTRIES IN SOURCE TABLE.                                                       1       100 (LEXCT)
+     SIZE LIST 5.   STORAGE FOR (Y) AND TRIANGULARIZED (Y).      NO. TIMES =    1   FACTORS =    2           4     20000 (LYMAT)
+     SIZE LIST 6.   NUMBER OF ENTRIES IN SWITCH TABLE.               NO. FLOPS =     0                       0      1200 (LSWTCH)
+     SIZE LIST 7.   NUMBER OF TOTAL DISTINCT ALPHANUMERIC (A6) PROGRAM NAMES                                 2      4000 (LSIZE7)
+     SIZE LIST 8.   NUMBER OF PAST HISTORY POINTS FOR DISTRIBUTED LINES.                                     0    120000 (LPAST)
+     SIZE LIST 9.   NUMBER OF NONLINEAR ELEMENTS.                                                            0       300 (LNONL)
+     SIZE LIST 10.  NUMBER OF POINTS DEFINING NONLINEAR CHARACTERISTICS.                                     0       900 (LCHAR)
+     SIZE LIST 11.  NUMBER OF BRANCH OR SELECTIVE-NODE-VOLTAGE OUTPUTS.                                      1       210 (LSMOUT)
+     SIZE LIST 12.  NUMBER OF OUTPUT QUANTITIES (LIMITED ONLY WHEN PRINTING MAX ABSOLUTE VALUES).            2       900 (LSIZ12)
+     SIZE LIST 13.  NUMBER OF 'WEIGHTING' FREQUENCY-DEPENDENT LINE MODES.                                    0         5 (LFDEP)
+     SIZE LIST 14.  NUMBER OF CELLS USED TO STORE FREQ.-DEPENDENCE WEIGHTING FUNCTIONS.                      0       460 (LWT)
+     SIZE LIST 15.  NUMBER OF CELLS USED FOR EXPONENTIAL-TAIL LINE-HISTORY STORAGE.                          0        90 (LTAILS)
+     SIZE LIST 16.  TOTAL NUMBER OF TYPE-59 S.M. MASSES.                                                     0        84 (LIMASS)
+     SIZE LIST 17.  NUMBER OF DYNAMIC SYNCHRONOUS MACHINES.                                                  0         4 (LSYN)
+     SIZE LIST 18.  NUMBER OF BRANCH POWER-AND-ENERGY OUTPUTS.                                               0         0 (MAXPE)
+     SIZE LIST 19.  FLOATING-POINT WORKING SPACE FOR ALL TACS ARRAYS.                                      137     90000 (LTACST)
+     SIZE LIST 20.  RECURSIVE CONVOLUTION PARAMETER STORAGE FOR NON-COPIED BRANCH COMPONENTS.                0    100000 (LFSEM)
+     SIZE LIST 21.  TOTAL STORAGE CELLS FOR MODAL-PHASE TRANSFORMATION MATRICES.                             0      3000 (LFD)
+     SIZE LIST 22.  NUMBER OF CELLS FOR CONVOLUTION HISTORY.                                                 0     50000 (LHIST)
+     SIZE LIST 23.  GIANT ARRAYS FOR RENUMBERING AND STEADY-STATE SOLUTION CALCULATIONS.                     0     30000 (LSIZ23)
+     SIZE LIST 24.  NUMBER OF PHASES OF COMPENSATION, BASED ON MAXIMUM NODES.                                0        24 (NCOMP)
+     SIZE LIST 25.  FLOATING-POINT WORKING SPACE FOR  U.M.  ARRAYS.                                      -9999     30000 (LSPCUM)
+     SIZE LIST 26.  SQUARE OF MAXIMUM NUMBER OF COUPLED PHASES.                                          -9999      3000 (LSIZ26)
+ TIMING FIGURES (DECIMAL) CHARACTERIZING CASE SOLUTION SPEED.  -------------------------------------    CP SEC   I/O SEC   SUM SEC
+     DATA INPUT, SORTING, AND RENUMBERING (PRE STEADY STATE STUFF) .....                                 0.000     0.000     0.000
+     STEADY-STATE (S.S.) SOLUTION CALCULATIONS .....                                                     0.000     0.000     0.000
+     POST-S.S. TO PRE-INTEGRATION-SETUP CALCULATIONS .....                                               0.000     0.000     0.000
+     INTEGRATION CALCULATION (TIME IN TIME-STEP LOOP) .....                                              0.000     0.000     0.000
+     COMPUTER TIME IN PLOTTING OR STATISTICS TERMINATION OVERLAY .....                                   0.000     0.000     0.000
+     'DELTAT'-CHANGE RESTART TIME  .......                                                               0.000     0.000     0.000
+                                                                                                     -----------------------------
+                                                                                             TOTALS      0.000     0.000     0.000
+
+
