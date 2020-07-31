@@ -9,26 +9,23 @@ namespace fem {
   template <int StrLen>
   struct str
   {
-    char elems[StrLen+1]; //w add one space for '\0'
+    char elems[StrLen];
 
     str()
     {
       std::memset(elems, '\0', StrLen);
-      elems[StrLen] = '\0';
     }
 
     str(
       char c)
     {
       std::memset(elems, c, StrLen);
-      elems[StrLen] = '\0';
     }
 
     str(
       char const* s)
     {
       utils::copy_with_blank_padding(s, elems, StrLen);
-      elems[StrLen] = '\0';
     }
 
     str(
@@ -36,7 +33,6 @@ namespace fem {
     {
       utils::copy_with_blank_padding(
         other.elems(), other.len(), elems, StrLen);
-      elems[StrLen] = '\0';
     }
 
     template <int OtherStrLen>
@@ -45,7 +41,6 @@ namespace fem {
     {
       utils::copy_with_blank_padding(
         other.elems, OtherStrLen, elems, StrLen);
-      elems[StrLen] = '\0';
     }
 
     str(
@@ -54,26 +49,10 @@ namespace fem {
       str_ref(*this) = addends;
     }
 
-    //////////////w
     int len() const   
     {
       return StrLen;
     }
-    std::string std_str() const
-    {
-      return std::string(elems, StrLen);
-    }
-    str_cref cref() const
-    {
-      return str_cref(elems, StrLen);
-    }
-    str_ref ref() const
-    {
-      return str_ref(elems, StrLen);
-    }
-	
-    //////////////
-
     operator
     str_cref() const
     {
@@ -84,12 +63,6 @@ namespace fem {
     str_ref()
     {
       return str_ref(elems, StrLen);
-    }
-
-    operator
-      std::string() const
-    {
-      return std::string(elems, StrLen);
     }
 
     void
@@ -126,6 +99,12 @@ namespace fem {
       str_addends const& addends)
     {
       str_ref(*this) = addends;
+    }
+
+    operator
+    std::string() const
+    {
+      return std::string(elems, StrLen);
     }
 
     bool
@@ -212,7 +191,6 @@ namespace fem {
     {
       return str_ref(*this)(first, StrLen);
     }
-
   };
 
   template <int StrLen>

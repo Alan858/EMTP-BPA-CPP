@@ -51,11 +51,12 @@ namespace fem {
     return sign(value, sign_source);
   }
 
-  ////template <typename T>
-  ////inline
-  ////float
-  ////real(
-  ////  T const& value) { return static_cast<float>(value); }
+
+  template <typename T>
+  inline
+  float
+  real(
+    T const& value) { return static_cast<float>(value); }
 
   template <typename T>
   inline

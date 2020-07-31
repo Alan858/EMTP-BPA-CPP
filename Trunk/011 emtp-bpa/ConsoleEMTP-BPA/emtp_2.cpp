@@ -2187,7 +2187,7 @@ namespace emtp {
     arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
     str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
     //arr_ref<int> ivarb(cmn.ivarb, dimension(90000));
-    auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
+    auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size_1d() * 2);
     //
     //int kaliu = fem::int0;
     //int kiuty = fem::int0;
@@ -8821,7 +8821,7 @@ void over2(common& cmn) // INPUT BRANCH DATA.
   auto& ityold = indtv(3);
   auto& ichtr2 = indtv(4);
   auto& nmauto = iprsov(39);
-  if (lastov != 44) {
+  if (lastov != 44) { // over2
     goto statement_2000;
   }
   //C READY FOR NEXT BRANCH, LMFS CASE
@@ -11465,7 +11465,7 @@ void over3(common& cmn)
   static const char* format_76721 =
     "(/,' SHUNT BRANCH ADMITTANCE CALCULATION AT 76721.',4i10,/(1x,3e30.8))";
 
-  auto mapcas = ArraySpan(reinterpret_cast<int*>(&cmn.ykm(1)), cmn.ykm.size() * 2);
+  auto mapcas = ArraySpan(reinterpret_cast<int*>(&cmn.ykm(1)), cmn.ykm.size_1d() * 2);
   auto mapinv = ArraySpan(reinterpret_cast<int*>(&cmn.volt(1)), cmn.volt.size() * 2);
   auto node1  = ArraySpan(reinterpret_cast<int*>(&cmn.volti(1)), cmn.volti.size() * 2);
   auto node2  = ArraySpan(reinterpret_cast<int*>(&cmn.voltk(1)), cmn.voltk.size() * 2);
@@ -52262,7 +52262,7 @@ statement_3103:
 
       cmn.bus_out_stream << "Time,";
       for (int i = 1; i <= nc; ++i) { // node voltage
-        cmn.bus_out_stream << bus(ibsout(i)).std_str();
+        cmn.bus_out_stream << std::string(bus(ibsout(i)));
       }
       cmn.bus_out_stream << '\n';
     }
@@ -52280,7 +52280,7 @@ statement_3104:
 
       cmn.bra_out_stream << "Time,";
       for (int i = 1; i <= nc; ++i) { // branch current
-        cmn.bra_out_stream << bus(ibrnch(i))(1,6).std_str() << "->" << bus(jbrnch(i))(1,6).std_str();
+        cmn.bra_out_stream << std::string(bus(ibrnch(i))(1,6)) << "->" << std::string(bus(jbrnch(i))(1,6));
       }
       cmn.bra_out_stream << '\n';
     }

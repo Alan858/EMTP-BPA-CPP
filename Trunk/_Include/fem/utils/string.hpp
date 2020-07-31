@@ -136,24 +136,33 @@ namespace fem { namespace utils {
 
   inline
   bool
-  string_eq(
-    char const* lhs,
-    size_t lhs_size,
-    char const* rhs)
+    string_eq(
+      char const* lhs,
+      size_t lhs_size,
+      char const* rhs,
+      size_t rhs_size)
   {
     static const char blank = ' ';
-    for(size_t i=0;i<lhs_size;i++) {
-      if (lhs[i] == '\0') break;  // 2019 09
-      if (*rhs == '\0') {
-        for(;i<lhs_size;i++) {
-          if (lhs[i] != blank) return false;
-        }
-        return true;
+    for (size_t i = 0; i < lhs_size; ++i) { // remove '\0'
+      if (lhs[i] == '\0') {
+        lhs_size = i;
+        break;
       }
-      if (*rhs++ != lhs[i]) return false;
     }
-    while(*rhs != '\0') {
-      if (*rhs++ != blank) return false;
+    for (size_t i = 0; i < rhs_size; ++i) { // remove '\0'
+      if (rhs[i] == '\0') {
+        rhs_size = i;
+        break;
+      }
+    }
+    if (lhs_size < rhs_size) {
+      std::swap(lhs, rhs);
+      std::swap(lhs_size, rhs_size);
+    }
+    if (std::memcmp(lhs, rhs, rhs_size) != 0)
+      return false;
+    for(size_t i=rhs_size;i<lhs_size;i++) {
+      if (lhs[i] != blank) return false;
     }
     return true;
   }
@@ -163,22 +172,25 @@ namespace fem { namespace utils {
     string_eq(
       char const* lhs,
       size_t lhs_size,
-      char const* rhs,
-      size_t rhs_size)
+      char const* rhs)
   {
     //static const char blank = ' ';
-    //if (lhs_size < rhs_size) {
-    //  return string_eq(rhs, rhs_size, lhs, lhs_size);
+    //for(size_t i=0;i<lhs_size;i++) {
+    //  if (lhs[i] == '\0') break;  // 2019 09
+    //  if (*rhs == '\0') {
+    //    for(;i<lhs_size;i++) {
+    //      if (lhs[i] != blank) return false;
+    //    }
+    //    return true;
+    //  }
+    //  if (*rhs++ != lhs[i]) return false;
     //}
-    //if (std::memcmp(lhs, rhs, rhs_size) != 0) return false;
-    //for(size_t i=rhs_size;i<lhs_size;i++) {
-    //  if (lhs[i] != blank) return false;
+    //while(*rhs != '\0') {
+    //  if (*rhs++ != blank) return false;
     //}
     //return true;
-    if (lhs_size < rhs_size) {    // 2019 09
-      return string_eq(rhs, rhs_size, lhs);
-    }
-    return string_eq(lhs, lhs_size, rhs);
+    std::string_view rhsv{ rhs };
+    return string_eq(lhs, lhs_size, rhsv.data(), rhsv.size());
   }
 
   inline

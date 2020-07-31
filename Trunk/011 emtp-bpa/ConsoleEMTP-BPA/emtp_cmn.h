@@ -4670,7 +4670,7 @@ struct common :
     arr_ref<T>& intb,
     int const i0,
     int const n) {
-    for (int i = i0, cnt = std::min(n, int(intb.size() - i0 + 1)); i <= cnt; ++i)
+    for (int i = i0, cnt = std::min(n, int(intb.size_1d() - i0 + 1)); i <= cnt; ++i)
       intb(i) = 0; // 1 based
   }
   template<typename T>

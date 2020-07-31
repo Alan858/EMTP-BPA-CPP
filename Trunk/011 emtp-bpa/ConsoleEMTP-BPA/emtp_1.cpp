@@ -938,7 +938,7 @@ packa1(
   //C     ARGUMENT  'FROM'  CONTAINS  A1  INFORMATION WHICH IS TO BE STORED M20. 374
   //C     IN CHARACTER POSITION  KK  OF ARGUMENT  'TO' .                    M20. 375
   //C     FOR ALL EMTP USAGE,  1ST 2 ARGUMENTS MUST BE VECTORS.             M29. 945
-  to(kk) = from(1);
+  to(kk,kk) = from(1);
 }
 
 // forward declaration (dependency cycle)
@@ -980,7 +980,7 @@ frefld(
   auto& lunit6 = cmn.lunit6;
   int jj = fem::int0;
   int n3 = fem::int0;
-  fem::str<8> text1 = fem::char0;
+  fem::str<8> text1 = blank;
   arr_1d<30, fem::str<8> > texbuf(fem::fill0);
   int ll = fem::int0;
   arr_1d<1, fem::str<8> > texvec(fem::fill0);
@@ -1110,8 +1110,7 @@ frefld(
     goto statement_5921;
     statement_5922:
     ll++;
-    //packa1(text1, texta6(jj), ll);
-    texta6(jj)(ll) = text1(1);
+    packa1(text1, texta6(jj), ll);
     statement_5923:
     if (kolbeg <= 80) {
       goto statement_5920;
@@ -1154,8 +1153,7 @@ frefld(
     goto statement_6042;
   }
   ll++;
-  //packa1(text1, texta6(jj), ll);
-  texta6(jj)(ll) = text1(1);
+  packa1(text1, texta6(jj), ll);
   kolbeg++;
   goto statement_6048;
   statement_6054:
@@ -1397,8 +1395,8 @@ cimage(
   }
   auto& lunit6 = cmn.lunit6;
   //arr_1d<10, double> buff10(fem::fill0);
-  fem::str<8> text1 = fem::char0;
-  fem::str<8> text2 = fem::char0;
+  fem::str<8> text1 = blank;
+  fem::str<8> text2 = blank;
   int j = fem::int0;
   int i = fem::int0;
   int k = fem::int0;

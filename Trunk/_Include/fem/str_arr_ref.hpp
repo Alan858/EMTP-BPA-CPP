@@ -146,16 +146,14 @@ namespace fem {
     operator[](
       size_t i) const
     {
-      //return str_cref(&elems_[len_ * i], len_);
-      return str_cref(&elems_[(len_+1) * i], len_); //w due to '\0' added to str<>
+      return str_cref(&elems_[len_ * i], len_);
     }
 
     str_cref
     operator()(
       ssize_t i1) const
     {
-      //return str_cref(&elems_[len_ * dims_.index_1d(i1)], len_); 
-      return str_cref(&elems_[(len_ + 1)* dims_.index_1d(i1)], len_);  //w due to '\0' added to str<>
+      return str_cref(&elems_[len_ * dims_.index_1d(i1)], len_);
     }
 
     str_cref
@@ -163,8 +161,7 @@ namespace fem {
       ssize_t i1,
       ssize_t i2) const
     {
-      //return str_cref(&elems_[len_ * dims_.index_1d(i1, i2)], len_);
-      return str_cref(&elems_[(len_ + 1) * dims_.index_1d(i1, i2)], len_); //w due to '\0' added to str<>
+      return str_cref(&elems_[len_ * dims_.index_1d(i1, i2)], len_);
     }
 
     str_cref
@@ -353,21 +350,17 @@ namespace fem {
     operator[](
       size_t i) const
     {
-      //return str_ref(
-      //  &this->begin()[this->len() * i], this->len());
       return str_ref(
-        &this->begin()[(this->len() + 1) * i], this->len()); //w due to '\0' added to str<>    
+        &this->begin()[this->len() * i],
+        this->len());
     }
 
     str_ref
     operator()(
       ssize_t i1) const
     {
-      //return str_ref(
-      //  &this->begin()[this->len() * this->dims_.index_1d(i1)],
-      //  this->len());
       return str_ref(
-        &this->begin()[(this->len() + 1) * this->dims_.index_1d(i1)], //w due to '\0' added to str<>
+        &this->begin()[this->len() * this->dims_.index_1d(i1)],
         this->len());
     }
 
@@ -376,11 +369,8 @@ namespace fem {
       ssize_t i1,
       ssize_t i2) const
     {
-      //return str_ref(
-      //  &this->begin()[this->len() * this->dims_.index_1d(i1, i2)],
-      //  this->len());
       return str_ref(
-        &this->begin()[(this->len() + 1)* this->dims_.index_1d(i1, i2)], //w due to '\0' added to str<>
+        &this->begin()[this->len() * this->dims_.index_1d(i1, i2)],
         this->len());
     }
 
