@@ -4641,9 +4641,8 @@ struct common :
   fem::cmn_sve subr55_sve;
   fem::cmn_sve program_main_sve;
 
-  std::ifstream input_stream;
-  std::ofstream bus_out_stream;
-  std::ofstream bra_out_stream;
+  std::ifstream inp_stream;
+  std::ofstream out_stream;
   //std::ofstream log_stream;
 
   common(
@@ -4657,8 +4656,7 @@ struct common :
   void program_main(
     const std::string& inpFile,
     const std::string& logFile,
-    const std::string& busOutFile,
-    const std::string& braOutFile
+    const std::string& outFile
     ); // int argc, char const* argv[]);
   void main10(common& cmn); // in emtp_2.cpp called from emtp_2.cpp
 

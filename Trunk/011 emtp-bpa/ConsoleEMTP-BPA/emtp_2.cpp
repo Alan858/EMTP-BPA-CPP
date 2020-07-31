@@ -34999,16 +34999,11 @@ void pltfil(
 
   if (volti(1) < 0) return; // the last item is -9999
 
-  cmn.bus_out_stream << SState("g9.4") << std::left << volti(1); // time
-  cmn.bra_out_stream << SState("g9.4") << std::left << volti(1);
-  for (int i = 2; i < 2 + numnvo; ++i) {
-    cmn.bus_out_stream << ',' << SState("g11.4") << volti(i);
+  cmn.out_stream << SState("g9.4") << std::left << volti[0]; // time
+  for (int i = 1; i < k; ++i) {
+    cmn.out_stream << ',' << SState("g11.4") << volti[i];
   }
-  cmn.bus_out_stream << '\n';
-  for (int i = 2 + numnvo; i <= k; ++i) {
-    cmn.bra_out_stream << ',' << SState("g11.4") << volti(i);
-  }
-  cmn.bra_out_stream << '\n';
+  cmn.out_stream << '\n';
 
 
 #if 0
@@ -52260,11 +52255,12 @@ statement_3103:
         wloop, ibsout(i);
       }
 
-      cmn.bus_out_stream << "Time,";
+      cmn.out_stream << "Time";
       for (int i = 1; i <= nc; ++i) { // node voltage
-        cmn.bus_out_stream << std::string(bus(ibsout(i)));
+        cmn.out_stream << ',' << bus(ibsout(i))(1, 6).std_str();
       }
-      cmn.bus_out_stream << '\n';
+      if (nc == 0)
+        cmn.out_stream << '\n';
     }
   }
 statement_3104:
@@ -52278,11 +52274,10 @@ statement_3104:
         wloop, jbrnch(i);
       }
 
-      cmn.bra_out_stream << "Time,";
       for (int i = 1; i <= nc; ++i) { // branch current
-        cmn.bra_out_stream << std::string(bus(ibrnch(i))(1,6)) << "->" << std::string(bus(jbrnch(i))(1,6));
+        cmn.out_stream << ',' << bus(ibrnch(i))(1, 6).std_str() << "->" << bus(jbrnch(i))(1, 6).std_str();
       }
-      cmn.bra_out_stream << '\n';
+      cmn.out_stream << '\n';
     }
   }
 statement_3106:

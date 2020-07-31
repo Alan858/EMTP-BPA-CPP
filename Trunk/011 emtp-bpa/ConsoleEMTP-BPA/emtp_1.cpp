@@ -21743,7 +21743,7 @@ bool data_input(common& cmn) {
   arr<fem::str<80> > tank(dimension(1000), fem::fill0);
 
   std::string sLine;
-  for (int j = 1; std::getline(cmn.input_stream, sLine); ++j) {
+  for (int j = 1; std::getline(cmn.inp_stream, sLine); ++j) {
     file6(krdoff + j) = sLine;
     if (kcut == 1) {
       goto statement_5486;
@@ -72824,8 +72824,7 @@ struct program_main_save
 void program_main(
   const std::string& inpFile, 
   const std::string& logFile, 
-  const std::string& busOutFile, 
-  const std::string& braOutFile)
+  const std::string& outFile)
 {
   common cmn(0, 0);
 
@@ -72858,8 +72857,8 @@ void program_main(
 #endif // _DEBUG // test
 
 
-  cmn.input_stream.open(inpFile);
-  if (!cmn.input_stream.good()) {
+  cmn.inp_stream.open(inpFile);
+  if (!cmn.inp_stream.good()) {
     std::cout << "Cannot open '" << inpFile << "' !\n";
     return;
   }
@@ -72947,9 +72946,8 @@ void program_main(
 
 
   //cmn.log_stream.open(logFile);       // use lunit6
-  cmn.bus_out_stream.open(busOutFile);  // open output streams
-  cmn.bra_out_stream.open(braOutFile);
-  if (!cmn.bus_out_stream.is_open())
+  cmn.out_stream.open(outFile);  // open output streams
+  if (!cmn.out_stream.is_open())
     return;
 
   // open log file
