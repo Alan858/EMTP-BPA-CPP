@@ -52256,7 +52256,7 @@ statement_3103:
       }
 
       cmn.out_stream << "Time";
-      for (int i = 1; i <= nc; ++i) { // node voltage
+      for (int i = 1; i <= numnvo; ++i) { // node voltage
         cmn.out_stream << ',' << bus(ibsout(i))(1, 6).std_str();
       }
       if (nc == 0)
