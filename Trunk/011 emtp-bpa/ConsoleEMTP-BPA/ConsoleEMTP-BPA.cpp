@@ -8,15 +8,14 @@
 
 int main(int argc, char const* argv[])
 {
-#ifdef _DEBUG
+  namespace fs = std::filesystem;
   std::string input{ R"(..\..\..\_Tests\EMTP-BPA\case0001\test.dat)" };
-#else
   if (argc < 2) {
     std::cout << "Enter input File name: ";
     std::cin >> input;
   }
   else input = argv[1];
-#endif
+
 
   emtp::program_main(input, input + ".log", input + ".csv");
     

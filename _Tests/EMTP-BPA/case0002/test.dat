@@ -1,0 +1,22 @@
+BEGIN NEW DATA CASE
+  10.E-6  10.E-3
+   20000       1       1       1       1       0       0       0 
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+  SWITCH                  632.46 
+  SWITCH                            5. 
+  CAP                                     5. 
+BLANK CARD ENDING BRANCHES
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  CAP   SWITCH     .0005        1. 
+BLANK CARD ENDING SWITCHES 
+BLANK CARD ENDING SOURCES
+C <BusK><BusM><V E15.8      ><V E15.8      >
+ 2CAP               1.
+ 3CAP                     0.             1. 
+C END OF INITIAL CONDITIONS
+  CAP 
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE 
+BLANK CARD ENDING THE CASE
