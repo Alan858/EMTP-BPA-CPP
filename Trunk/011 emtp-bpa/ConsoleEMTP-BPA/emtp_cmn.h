@@ -10,6 +10,7 @@
 #include <array>
 #include <charconv>
 #include <random>
+#include <unordered_map>
 
 
 #include <fem.hpp> // Fortran EMulation library of fable module
@@ -44,14 +45,6 @@ namespace emtp {
     auto& operator()(int ind)
     {
 #ifdef _DEBUG
-      if (ind < 1 || ind > this->size())
-      {
-        //AfxMessageBox(CString("Out of vector range"));
-        if (ind < 1)
-          ind = 1;
-        else
-          ind = this->size();
-      }
       return std::vector<T>::at(ind - 1);
 #else
       return std::vector<T>::operator[](ind - 1); //(*this)[ind - 1];
@@ -466,21 +459,21 @@ struct common_cmn
   double dltinv;
   double speedl;
   arr<int> moncar;
-  int lunit1;
-  int lunit2;
-  int lunit3;
-  int lunit4;
-  int lunit5;
-  int lunit6;
-  int lunit7;
-  int lunit8;
-  int lunit9;
-  int lunt10;
-  int lunt11;
-  int lunt12;
-  int lunt13;
-  int lunt14;
-  int lunt15;
+  const int lunit1;
+  const int lunit2;
+  const int lunit3;
+  const int lunit4;
+  const int lunit5;
+  const int lunit6;
+  const int lunit7;
+  const int lunit8;
+  const int lunit9;
+  const int lunt10;
+  const int lunt11;
+  const int lunt12;
+  const int lunt13;
+  const int lunt14;
+  const int lunt15;
   int nright;
   int nfrfld;
   int kolbeg;
@@ -697,21 +690,21 @@ struct common_cmn
     dltinv(fem::double0),
     speedl(fem::double0),
     moncar(dimension(10), fem::fill0),
-    lunit1(fem::int0),
-    lunit2(fem::int0),
-    lunit3(fem::int0),
-    lunit4(fem::int0),
-    lunit5(fem::int0),
-    lunit6(fem::int0),
-    lunit7(fem::int0),
-    lunit8(fem::int0),
-    lunit9(fem::int0),
-    lunt10(fem::int0),
-    lunt11(fem::int0),
-    lunt12(fem::int0),
-    lunt13(fem::int0),
-    lunt14(fem::int0),
-    lunt15(fem::int0),
+    lunit1(1),
+    lunit2(2),
+    lunit3(3),
+    lunit4(4),
+    lunit5(55), // 0, 5, 6 are console screen
+    lunit6(56),
+    lunit7(7),
+    lunit8(8),
+    lunit9(9),
+    lunt10(10),
+    lunt11(11),
+    lunt12(12),
+    lunt13(13),
+    lunt14(14),
+    lunt15(15),
     nright(fem::int0),
     nfrfld(fem::int0),
     kolbeg(fem::int0),
@@ -2905,12 +2898,13 @@ struct common_spac08
   {}
 };
 
+const int sizeBND = 30000;  // was 300
 struct common_spac09
 {
   arr<double> bnd;
 
   common_spac09() :
-    bnd(dimension(300), fem::fill0)
+    bnd(dimension(sizeBND), fem::fill0)
   {}
 };
 
@@ -2946,7 +2940,7 @@ struct common_ztmp2
     ich2((3002), fem::fill0),
     loc((3002), fem::fill0),
     kownt((3002), fem::fill0),
-    korder((300), fem::fill0),
+    korder((sizeBND), fem::fill0),
     kolum((30000), fem::fill0),
     frandn((30000), fem::fill0),
     irandn((30000), fem::fill0)

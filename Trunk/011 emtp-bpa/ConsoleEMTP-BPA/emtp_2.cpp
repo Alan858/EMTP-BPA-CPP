@@ -264,10 +264,10 @@ namespace emtp {
   {
     common_write write(cmn);
     arr_cref<int> moncar(cmn.moncar, dimension(10));
-    int& lunit2 = cmn.lunit2;
-    int& lunit3 = cmn.lunit3;
-    int& lunit9 = cmn.lunit9;
-    int& lunt12 = cmn.lunt12;
+    const int& lunit2 = cmn.lunit2;
+    const int& lunit3 = cmn.lunit3;
+    const int& lunit9 = cmn.lunit9;
+    const int& lunt12 = cmn.lunt12;
     arr_cref<int> lstat(cmn.lstat, dimension(80));
     int& m4plot = cmn.m4plot;
     int& iplot = cmn.iplot;
@@ -445,7 +445,7 @@ namespace emtp {
     arr_ref<double> flstat(cmn.flstat, dimension(20));
     double& pu = cmn.pu;
     arr_ref<int> moncar(cmn.moncar, dimension(10));
-    int& lunit2 = cmn.lunit2;
+    const int& lunit2 = cmn.lunit2;
     int& nright = cmn.nright;
     int& nfrfld = cmn.nfrfld;
     int& kolbeg = cmn.kolbeg;
@@ -947,7 +947,6 @@ namespace emtp {
     //C     $$$$$$$  SPECIAL REQUEST-WORD NO. 59.   'AMETANI SETUP'  $$$      M42.1173
     //C     $$$$$$$  SPECIAL REQUEST-WORD NO. 60.   'HAUER SETUP'  $$$$$      M42.1179
     //C     $$$$$$$  SPECIAL REQUEST-WORD NO. 61.   'LINE MODEL FREQ. SCAN  $$
-    kunit6 = lunit6;
     lstat(18) = 0;
     if (iprsup >= 1) {
       write(lunit6, "('  \"BEGIN MODULE REQUES.\"')");
@@ -2347,16 +2346,16 @@ namespace emtp {
     auto& date1= cmn.date1;
     auto& tclock= cmn.tclock;
     auto& abuff = cmn.abuff;
-    int& lunit1 = cmn.lunit1;
-    int& lunit2 = cmn.lunit2;
-    int& lunit3 = cmn.lunit3;
-    int& lunit4 = cmn.lunit4;
-    int& lunt10 = cmn.lunt10;
-    int& lunt11 = cmn.lunt11;
-    int& lunt12 = cmn.lunt12;
-    int& lunt13 = cmn.lunt13;
-    int& lunt14 = cmn.lunt14;
-    int& lunt15 = cmn.lunt15;
+    const int& lunit1 = cmn.lunit1;
+    auto lunit2 = cmn.lunit2;
+    const int& lunit3 = cmn.lunit3;
+    auto lunit4 = cmn.lunit4;
+    const int& lunt10 = cmn.lunt10;
+    const int& lunt11 = cmn.lunt11;
+    const int& lunt12 = cmn.lunt12;
+    const int& lunt13 = cmn.lunt13;
+    const int& lunt14 = cmn.lunt14;
+    const int& lunt15 = cmn.lunt15;
     arr_ref<int> nbyte(cmn.nbyte, dimension(6));
     arr_ref<int> iprsov(cmn.iprsov, dimension(39));
     int& m4plot = cmn.m4plot;
@@ -2418,8 +2417,8 @@ namespace emtp {
     cmn.luntsp = 14;
     cmn.mflush = 0;
 
-    namespace fs = std::filesystem;
-    auto tmpPath = fs::temp_directory_path().string();
+    //namespace fs = std::filesystem;
+    //auto tmpPath = fs::temp_directory_path().string();
 
     if (m4plot == 1) {
       goto statement_1355;
@@ -2459,35 +2458,35 @@ namespace emtp {
     cmn.io.close(lunt15);
   statement_1342:
   {
-    cmn.io.open(lunit1, tmpPath + "awz" + random_string())
+    cmn.io.open(lunit1, fem::file_not_specified)
       .form("FORMATTED")
-      .status("UNKNOWN"); 
-    cmn.io.open(lunit2, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunit2, fem::file_not_specified)
       .form("FORMATTED")
-      .status("UNKNOWN");
-    cmn.io.open(lunit3, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunit3, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
+      .status("SCRATCH");
     //C               UNIT 8 IS CALCOMP PLOT FILE (UNUSED WITH OUR VAX-VERSATEM24. 367
     //C               CONNECTION )                                            M24. 368
-    cmn.io.open(lunt10, tmpPath + "awz" + random_string())
+    cmn.io.open(lunt10, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
-    cmn.io.open(lunt11, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunt11, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
-    cmn.io.open(lunt12, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunt12, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
-    cmn.io.open(lunt13, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunt13, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
-    cmn.io.open(lunt14, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunt14, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
-    cmn.io.open(lunt15, tmpPath + "awz" + random_string())
+      .status("SCRATCH");
+    cmn.io.open(lunt15, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
+      .status("SCRATCH");
   }
   statement_1355:
     if (llbuff != -3333) {
@@ -2565,9 +2564,9 @@ namespace emtp {
     //  .form("UNFORMATTED")
     //  .status("NEW");
 
-    cmn.io.open(lunit4, tmpPath + "awz" + random_string() + ".pl4")
+    cmn.io.open(lunit4, fem::file_not_specified)
       .form("UNFORMATTED")
-      .status("UNKNOWN");
+      .status("SCRATCH");
 
     blank = busnm1;
     cmn.trash = busnm2;
@@ -2608,7 +2607,7 @@ namespace emtp {
       m4plot = 2;
     }
     //C INTERACTIVE OR NOT USES "NEXTCARD", NOT 5
-    cmn.lunit5 = -5;
+    // cmn.lunit5 = -5;
     return;
     // UNHANDLED: ENTRY nextcard
   statement_nextcard:
@@ -2709,7 +2708,6 @@ namespace emtp {
     int k = fem::int0;
     int m = fem::int0;
     //C     CALLED ONLY BY OVER1 FOR START AGAIN USAGE                        M37.1133
-    kunit6 = lunit6;
     if (iprsup >= 1) {
       write(lunit6, "(' BEGIN MODULE \"SWMODF\".')");
     }
@@ -2872,11 +2870,11 @@ void over1(common& cmn)
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit1 = cmn.lunit1;
-  int& lunit2 = cmn.lunit2;
-  int& lunit3 = cmn.lunit3;
-  int& lunit4 = cmn.lunit4;
-  int& lunit5 = cmn.lunit5;
+  const int& lunit1 = cmn.lunit1;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit3 = cmn.lunit3;
+  const int& lunit4 = cmn.lunit4;
+  const int& lunit5 = cmn.lunit5;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -3112,21 +3110,7 @@ void over1(common& cmn)
   isplot = 0;
   indstp = 1;
   noutpr = 0;
-  lunit1 = 1;
-  lunit2 = 2;
-  lunit3 = 3;
-  lunit4 = 4;
-  lunit5 = 5;
 
-  cmn.lunit7 = 7;
-  cmn.lunit8 = 8;
-  cmn.lunit9 = 9;
-  cmn.lunt10 = 10;
-  cmn.lunt11 = 11;
-  cmn.lunt12 = 12;
-  cmn.lunt13 = 13;
-  cmn.lunt14 = 14;
-  cmn.lunt15 = 15;
   cmn.speedl = 2.997925e8;
   peaknd(1) = 0.0f;
   cmn.kburro = 0;
@@ -4184,7 +4168,7 @@ inlmfs(
   FEM_CMN_SVE(inlmfs);
   common_read read(cmn);
   common_write write(cmn);
-  int& lunt13 = cmn.lunt13;
+  const int& lunt13 = cmn.lunt13;
   int& numcrd = cmn.numcrd;
   int& iprspy = cmn.iprspy;
   int& limcrd = cmn.limcrd;
@@ -4748,7 +4732,6 @@ fddata(
   int isk = fem::int0;
   //C     OVERLAY 2 MODULE USED ONLY FOR FREQUENCY-DEPENDENT                M32.1142
   //C     REPRESENTATION OF GENERATOR EQUIVALENTS.                          M32.1143
-  kunit6 = lunit6;
   //C     THIS ROUTINE READS-IN THE BRANCH DATA FOR THE MODES  * * * * * * *M32.1147
   //C     I N I T I A L I Z E   C O U N T E R S    *   *   *   *   *   *   *M32.1148
   idk = 2 * ikf;
@@ -4984,7 +4967,6 @@ nonln2(
   static const char* format_2272 = "('+  CONSTS. ',i2,'-',i2,'.',3e11.3)";
   static const char* format_54118 = "('+SPECIAL TERMINATION-OF-POINTS CARD.')";
   static const char* format_59 = "('+ BREAKPOINT',4x,3e11.4)";
-  kunit6 = lunit6;
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE NONLN2.\"')");
   }
@@ -6233,7 +6215,6 @@ distr2(
   itranm = indtv(2);
   ichtr2 = indtv(4);
   xlong1 = omega;
-  kunit6 = lunit6;
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE DISTR2.\"')");
   }
@@ -13082,7 +13063,6 @@ umoffs(
   double d5 = fem::double0;
   int n5 = fem::int0;
   //C     OVERLAY-5  U.M.  MODULE CALLED BY "OVER5A".                       M32.1492
-  kunit6 = lunit6;
   if (nclfix > 0) {
     goto statement_1758;
   }
@@ -15766,7 +15746,6 @@ umdata(
   //C   IF MECH NETWORK OPTION IS USED, ROTMOM IS USED TO STORE             M37.2469
   //C      FREQUENCY OF NETWORK CONNECTED TO POWER COIL. INITIALI -         M37.2470
   //C      ZATION IS IN UMRENU, EXCEPT IF SM TYPE-59 IS USED.               M37.2471
-  kunit6 = lunit6;
   kxtcs = sptacs(17);
   klntab = sptacs(18);
   if (iprsup >= 1) {
@@ -17703,7 +17682,6 @@ smdat(
   nn4 = ismdat(26);
   nn14 = ismdat(27);
   //C
-  kunit6 = lunit6;
   kaliu = sptacs(11);
   kiuty = sptacs(13);
   kud1 = sptacs(14);
@@ -21471,7 +21449,7 @@ void over6(
   fem::str<8>& bus5 = cmn.bus5;
   fem::str<8>& trash = cmn.trash;
   fem::str<8>& terra = cmn.terra;
-  int& lunit2 = cmn.lunit2;
+  const int& lunit2 = cmn.lunit2;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_cref<int> nbyte(cmn.nbyte, dimension(6));
   int& inonl = cmn.inonl;
@@ -22080,12 +22058,13 @@ statement_5379:
     isubs1 = iofkol + i;
     kolum(isubs1) = 0;
     isubs1 = iofkor + i;
-    if (isubs1 < korder.size()) // this is how fortran behave
+    if (isubs1 <= korder.size())
       korder(isubs1) = i + 1;
     else kolum(isubs1 - 300) = i + 1;
   }
   isubs1 = iofkor + last;
-  korder(isubs1) = 0;
+  if (isubs1 <= korder.size())   
+    korder(isubs1) = 0;
   icas = 0;
   if (iprsup >= 2) {
     write(lunit6,
@@ -27802,8 +27781,8 @@ void over8(
   double& onehaf = cmn.onehaf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit2 = cmn.lunit2;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit9 = cmn.lunit9;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& inonl = cmn.inonl;
   int& it2 = cmn.it2;
@@ -30921,7 +30900,6 @@ fxsour(
   //C     IF THE DATA CASE INVOLVES PHASOR POWER (P+JQ, ETC.)               M36.1078
   //C     CONSTRAINTS.  THIS IS EMTP LOAD FLOW OF "FIX SOURCE" REQUEST.     M36.1079
   //C
-  kunit6 = lunit6;
   if (iprsup >= 2) {
     write(lunit6, "(/,' TOP OF FXSOUR = LOAD FLOW MODULE')");
   }
@@ -35181,7 +35159,7 @@ void over11(
   double& onehaf = cmn.onehaf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit4 = cmn.lunit4;
+  const int& lunit4 = cmn.lunit4;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& icheck = cmn.icheck;
   int& iout = cmn.iout;
@@ -41398,11 +41376,11 @@ void over12(
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   double& angle = cmn.angle;
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit3 = cmn.lunit3;
-  int& lunit5 = cmn.lunit5;
-  int& lunit9 = cmn.lunit9;
-  int& lunt10 = cmn.lunt10;
-  int& lunt12 = cmn.lunt12;
+  const int& lunit3 = cmn.lunit3;
+  int lunit5 = cmn.lunit5;
+  const int& lunit9 = cmn.lunit9;
+  const int& lunt10 = cmn.lunt10;
+  const int& lunt12 = cmn.lunt12;
   arr_cref<int> kprchg(cmn.kprchg, dimension(6));
   arr_cref<int> multpr(cmn.multpr, dimension(5));
   arr_cref<int> ipntv(cmn.ipntv, dimension(11));
@@ -51244,8 +51222,8 @@ void over15(
   double& fltinf = cmn.fltinf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit4 = cmn.lunit4;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit4 = cmn.lunit4;
+  const int& lunit9 = cmn.lunit9;
   arr_cref<int> kprchg(cmn.kprchg, dimension(6));
   arr_cref<int> multpr(cmn.multpr, dimension(5));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -51363,7 +51341,7 @@ void over15(
     text11 = "M     ";
     text12 = "CHAN01";
   }
-  auto& lunit6 = cmn.lunit6;
+  int lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
   int kjout = fem::int0;
   int klntab = fem::int0;
@@ -63877,7 +63855,7 @@ katalg(
 {
   common_read read(cmn);
   common_write write(cmn);
-  int& lunit2 = cmn.lunit2;
+  const int& lunit2 = cmn.lunit2;
   int& memsav = cmn.memsav;
   int& ltlabl = cmn.ltlabl;
   int& indbuf = cmn.indbuf;
@@ -64018,7 +63996,7 @@ void over20(
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   double& angle = cmn.angle;
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   int& max99m = cmn.max99m;
   arr_cref<int> ipntv(cmn.ipntv, dimension(11));
   arr_cref<int> lstat(cmn.lstat, dimension(80));
@@ -64539,7 +64517,7 @@ statement_627:
   goto statement_99999;
 statement_610:
   write(lunit6, "(/,/,1x)");
-  cmn.lunit5 = mtape;
+  //? cmn.lunit5 = mtape;
   //C     RESET NUMDCD COUNTER IF IT IS NOT A OMIT BASE CASE                M36.1668
   if (lstat(15) != cmn.intinf) {
     numdcd = numdcd - ipntv(11);

@@ -482,7 +482,7 @@ tables(
   common_read read(cmn);
   common_write write(cmn);
   arr_cref<double> voltbc(cmn.voltbc, dimension(50));
-  int& lunit2 = cmn.lunit2;
+  const int& lunit2 = cmn.lunit2;
   arr_cref<int> lunsav(cmn.lunsav, dimension(15));
   arr_ref<int> iprsov(cmn.iprsov, dimension(39));
   int& numsm = cmn.numsm;
@@ -1278,9 +1278,9 @@ cimage(
   double& xunits = cmn.xunits;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
-  int& lunit4 = cmn.lunit4;
-  int& lunit5 = cmn.lunit5;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit4 = cmn.lunit4;
+  const int& lunit5 = cmn.lunit5;
+  const int& lunit7 = cmn.lunit7;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -1456,19 +1456,20 @@ cimage(
   if (cmn.m4plot == 1) {
     emtspy(cmn);
   }
-  if (lunit5 > 0) {
-    try {
-      read(lunit5, format_3000), abuff(1), abuff(9), abuff(17), abuff(25), abuff(33)
-        , abuff(41), abuff(49), abuff(57), abuff(65), abuff(73); //buff10;
-    }
-    catch (fem::read_end const&) {
-      goto statement_4000;
-    }
-  }
-  if (lunit5 <= 0) {
-    nextcard(cmn);
-  }
+  //if (lunit5 > 0) {
+  //  try {
+  //    read(lunit5, format_3000), abuff(1), abuff(9), abuff(17), abuff(25), abuff(33)
+  //      , abuff(41), abuff(49), abuff(57), abuff(65), abuff(73); //buff10;
+  //  }
+  //  catch (fem::read_end const&) {
+  //    goto statement_4000;
+  //  }
+  //}
+  //if (lunit5 <= 0) {
+  //  nextcard(cmn);
+  //}
   //C "NEXTCARD" EOF JUMP
+  nextcard(cmn);
   if (cmn.kill > 0) {
     goto statement_4000;
   }
@@ -4353,7 +4354,7 @@ tacs1b(
   const auto& date1= cmn.date1;
   const auto& tclock= cmn.tclock;
   double& fltinf = cmn.fltinf;
-  int& lunit4 = cmn.lunit4;
+  const int& lunit4 = cmn.lunit4;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_ref<int> iprsov(cmn.iprsov, dimension(39));
   int& maxbus = cmn.maxbus;
@@ -10016,8 +10017,8 @@ spyink(
   auto& tclock= cmn.tclock;
   const auto& abuff = cmn.abuff;
   double& fltinf = cmn.fltinf;
-  int& lunit4 = cmn.lunit4;
-  int& lunit5 = cmn.lunit5;
+  const int& lunit4 = cmn.lunit4;
+  const int& lunit5 = cmn.lunit5;
   arr_ref<int> kprchg(cmn.kprchg, dimension(6));
   arr_ref<int> multpr(cmn.multpr, dimension(5));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -10191,7 +10192,7 @@ spyink(
   int& kud3 = sve.kud3;
   //int& kxtcs = sve.kxtcs;
   int& L = sve.L;
-  int& lunit6 = cmn.lunit6;
+  const int& lunit6 = cmn.lunit6;
   int& m = sve.m;
   int& mmfind = sve.mmfind;
   arr_ref<int> mmhold(sve.mmhold, dimension(20));
@@ -12433,7 +12434,6 @@ spyink(
   koncur = 2;
   statement_4734:
   n23 = lunit5;
-  lunit5 = munit5;
   //C     READ INPUT DATA CARD USING CIMAGE.                                M37.6703
   statement_4738:
   cimage(cmn);
@@ -12441,13 +12441,12 @@ spyink(
   if (ansi8(1, 4) != "END ") {
     goto statement_4741;
   }
-  lunit5 = n23;
   goto statement_4716;
   statement_4741:
   if (ansi8(1, 4) != "SPY ") {
     goto statement_4745;
   }
-  lunit5 = n23;
+  //lunit5 = n23;
   goto statement_1240;
   statement_4745:
   if (koncur == 1) {
@@ -17383,8 +17382,8 @@ spying(
   double& tmax = cmn.tmax;
   double& flzero = cmn.flzero;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  int& lunit4 = cmn.lunit4;
-  int& lunt14 = cmn.lunt14;
+  const int& lunit4 = cmn.lunit4;
+  const int& lunt14 = cmn.lunt14;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& kwtspy = cmn.kwtspy;
   int& kanal = cmn.kanal;
@@ -21786,7 +21785,7 @@ void datain(
   common_write write(cmn);
   auto& date1= cmn.date1;
   auto& tclock= cmn.tclock;
-  int& lunt13 = cmn.lunt13;
+  const int& lunt13 = cmn.lunt13;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_ref<int> iprsov(cmn.iprsov, dimension(39));
   int& istep = cmn.istep;
@@ -27268,7 +27267,7 @@ plotng(
   common_read read(cmn);
   common_write write(cmn);
   double& tolmat = cmn.tolmat;
-  int& lunt12 = cmn.lunt12;
+  const int& lunt12 = cmn.lunt12;
   int& iprsup = cmn.iprsup;
   //
   //arr_ref<int> kdig(sve.kdig, dimension(10));
@@ -27536,8 +27535,8 @@ innr29(
   double& fltinf = cmn.fltinf;
   double& pu = cmn.pu;
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit3 = cmn.lunit3;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit3 = cmn.lunit3;
+  const int& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -27612,8 +27611,8 @@ innr29(
     normal(24) = 0;
     normal(25) = 0;
   }
-  auto& lunit6 = cmn.lunit6;
-  auto& kunit6 = cmn.lunit6;
+  const auto& lunit6 = cmn.lunit6;
+  const auto& kunit6 = cmn.lunit6;
   int ioutcs = fem::int0;
   int knt = fem::int0;
   int kbase = fem::int0;
@@ -27814,9 +27813,7 @@ innr29(
   //C!EQUIVALENCE                         (MONCAR(4),    ISW)
   //C!EQUIVALENCE  (MONCAR(5),  IDIST),   (MONCAR(6),  ITEST)
   //C!EQUIVALENCE  (MONCAR(9), KLOAEP)
-  kunit6 = lunit6;
   ioutcs = lstat(59);
-  kunit6 = lunit6;
   ioutcs = lstat(59);
   knt = moncar(1);
   kbase = moncar(2);
@@ -29429,8 +29426,8 @@ fltdat(
   const auto& abuff = cmn.abuff;
   double& epsiln = cmn.epsiln;
   double& fltinf = cmn.fltinf;
-  int& lunit1 = cmn.lunit1;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit1 = cmn.lunit1;
+  const int& lunit7 = cmn.lunit7;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_cref<int> iprsov(cmn.iprsov, dimension(39));
   int& ipunch = cmn.ipunch;
@@ -30157,7 +30154,7 @@ statrs(
 {
   FEM_CMN_SVE(statrs);
   common_write write(cmn);
-  int& lunit1 = cmn.lunit1;
+  const int& lunit1 = cmn.lunit1;
   arr_cref<int> lstat(cmn.lstat, dimension(80));
   int& iprsup = cmn.iprsup;
   //
@@ -30266,9 +30263,9 @@ guts29(
   double& xmaxmx = cmn.xmaxmx;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit1 = cmn.lunit1;
-  int& lunit3 = cmn.lunit3;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit1 = cmn.lunit1;
+  const int& lunit3 = cmn.lunit3;
+  const int& lunit9 = cmn.lunit9;
   arr_ref<int> ipntv(cmn.ipntv, dimension(11));
   arr_ref<int> indtv(cmn.indtv, dimension(10));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -30371,7 +30368,6 @@ guts29(
   //C!EQUIVALENCE  (MONCAR(1),    KNT),   (MONCAR(2),  KBASE)
   //C!EQUIVALENCE  (MONCAR(5),  IDIST),   (MONCAR(6),  ITEST)
   //C!EQUIVALENCE  (MONCAR(9), KLOAEP)
-  kunit6 = lunit6;
   ioutcs = lstat(59);
   knt = moncar(1);
   kbase = moncar(2);
@@ -36658,7 +36654,6 @@ misc39(
   //C     OVERLAY 39 WHEN NEW MISCELLANEOUS DATA CARDS ARE REQUIRED         M32.9667
   //C     (POSSIBLY ONCE FOR EACH MODE,  IN THE MOST EXTREME CASE).         M32.9668
   //C!EQUIVALENCE ( KDEFLT, INDTV(1) )
-  kunit6 = lunit6;
   kdeflt = indtv(1);
   if (iprsup >= 6) {
     write(lunit6, "(' TOP OF \"MISC39\".   MODIFY =',i4)"), modify;
@@ -36861,10 +36856,10 @@ subr39(
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  int& lunit1 = cmn.lunit1;
-  int& lunit2 = cmn.lunit2;
-  int& lunit7 = cmn.lunit7;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit1 = cmn.lunit1;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit7 = cmn.lunit7;
+  const int& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& kolbeg = cmn.kolbeg;
   arr_ref<int> indtv(cmn.indtv, dimension(10));
@@ -39601,7 +39596,7 @@ punpie(
 {
   common_write write(cmn);
   // COMMON cmn
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   int& iprsup = cmn.iprsup;
   // COMMON com44
   str_arr_cref<1> brname(cmn.brname, dimension(40));
@@ -42017,9 +42012,9 @@ modal(
   const auto& abuff = cmn.abuff;
   double& twopi = cmn.twopi;
   double& onehaf = cmn.onehaf;
-  int& lunit2 = cmn.lunit2;
-  int& lunit7 = cmn.lunit7;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit7 = cmn.lunit7;
+  const int& lunit9 = cmn.lunit9;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
@@ -43967,13 +43962,13 @@ guts44(
   double& fltinf = cmn.fltinf;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  int& lunit1 = cmn.lunit1;
-  int& lunit2 = cmn.lunit2;
-  int& lunit3 = cmn.lunit3;
-  int& lunit5 = cmn.lunit5;
-  int& lunit7 = cmn.lunit7;
-  int& lunit9 = cmn.lunit9;
-  int& lunt13 = cmn.lunt13;
+  const int& lunit1 = cmn.lunit1;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit3 = cmn.lunit3;
+  int lunit5 = cmn.lunit5;
+  const int& lunit7 = cmn.lunit7;
+  const int& lunit9 = cmn.lunit9;
+  const int& lunt13 = cmn.lunt13;
   int& nright = cmn.nright;
   int& kolbeg = cmn.kolbeg;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -44079,8 +44074,8 @@ guts44(
     nrp = 0;
     mrr = 0;
   }
-  auto& lunit6 = cmn.lunit6;
-  auto& kunit6 = cmn.lunit6;
+  const auto& lunit6 = cmn.lunit6;
+  const auto& kunit6 = cmn.lunit6;
   int mfrqpr = fem::int0;
   int nfqpl1 = fem::int0;
   int l5save = fem::int0;
@@ -44306,7 +44301,6 @@ guts44(
   //C!EQUIVALENCE   ( JPRMAT(11), J11 ),    ( JPRMAT(12), J12 )
   //C!EQUIVALENCE   ( JPRMAT(13), J13 ),    ( JPRMAT(14), J14)
   //C!EQUIVALENCE   ( JPRMAT(15), J15 ),    ( JPRMAT(16), J16)
-  kunit6 = lunit6;
   mfrqpr = 0;
   if (kexact != 88333) {
     goto statement_423;
@@ -47441,7 +47435,6 @@ subr44(
   int n5 = fem::int0;
   arr_1d<1, double> stg(fem::fill0);
   //C!w EQUIVALENCE (STG(1), KARRAY(1) )
-  kunit6 = lunit6;
   //C     LIST-ZERO "KARRAY" IS ALWAYS 1ST, AND MAYBE "OVER29":             M31.6302
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE SUBR44.\"')");
@@ -47861,7 +47854,7 @@ frqdom(
   common_read read(cmn);
   common_write write(cmn);
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  int& lunit3 = cmn.lunit3;
+  const int& lunit3 = cmn.lunit3;
   arr_cref<int> ipntv(cmn.ipntv, dimension(11));
   arr_cref<int> indtv(cmn.indtv, dimension(10));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -50288,9 +50281,9 @@ guts45(
   double& fltinf = cmn.fltinf;
   arr_cref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  int& lunit2 = cmn.lunit2;
-  int& lunit3 = cmn.lunit3;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit3 = cmn.lunit3;
+  const int& lunit7 = cmn.lunit7;
   arr_ref<int> ipntv(cmn.ipntv, dimension(11));
   arr_ref<int> indtv(cmn.indtv, dimension(10));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -50491,7 +50484,7 @@ guts45(
   //C!EQUIVALENCE (INDTV(3),KFIT),(INDTV(4),KPS),(INDTV(5),KYC)
   //C!EQUIVALENCE (INDTV(6),IDOC),(INDTV(7),IOTX),(INDTV(8),IOSS)
   //C!EQUIVALENCE (INDTV(9),IOFL),(INDTV(10),NPAN)
-  kunit6 = lunit6;
+  
   eps = vim(1);
   eps1 = vim(2);
   fit2z = vim(3);
@@ -53495,7 +53488,7 @@ prcon(
   f(dimension(ldn, ldn2));
   common_write write(cmn);
   double& twopi = cmn.twopi;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit9 = cmn.lunit9;
   int& lastov = cmn.lastov;
   int& iprsup = cmn.iprsup;
   std::complex<double>& creal1 = cmn.creal1;
@@ -56248,7 +56241,7 @@ zymx(
   f(dimension(ldn, ldn2));
   common_write write(cmn);
   double& twopi = cmn.twopi;
-  int& lunit3 = cmn.lunit3;
+  const int& lunit3 = cmn.lunit3;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
   std::complex<double>& czero = cmn.czero;
@@ -57208,10 +57201,10 @@ guts47(
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   double& speedl = cmn.speedl;
-  int& lunit2 = cmn.lunit2;
-  int& lunit4 = cmn.lunit4;
-  int& lunit5 = cmn.lunit5;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit2 = cmn.lunit2;
+  const int& lunit4 = cmn.lunit4;
+  int lunit5 = cmn.lunit5;
+  const int& lunit9 = cmn.lunit9;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& ipunch = cmn.ipunch;
   int& lastov = cmn.lastov;
@@ -57382,7 +57375,6 @@ guts47(
   static const char* format_917 =
     "(10x,'BEGINNING FREQUENCY ',5x,e15.6,5x,'NUMBER OF DECADES ',i5,5x,"
     "'NUMBER OF POINTS IN EACH DECADE ',i5)";
-  kunit6 = lunit6;
   nrp = 0;
   mrr = 0;
   junit4 = 77;
@@ -61569,7 +61561,7 @@ crdchg(
   const auto& abuff = cmn.abuff;
   double& twopi = cmn.twopi;
   double& xopt = cmn.xopt;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit9 = cmn.lunit9;
   fem::str<32>& ansi32 = cmn.ansi32;
   //
   fem::str<80> blanks = fem::char0;
@@ -61942,7 +61934,7 @@ bctran(
   double& epsiln = cmn.epsiln;
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_ref<double> rwin(cmn.rwin, dimension(10));
   double& zhl = cmn.zhl;
@@ -63076,7 +63068,7 @@ over41(
   double& omega = cmn.omega;
   double& xopt = cmn.xopt;
   double& statfr = cmn.statfr;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -63207,7 +63199,7 @@ over41(
     "80('-'))";
   static const char* format_4271 = "(1x,80('-'),/,/,1x)";
   static const char* format_4568 = "('  \"EXIT  MODULE OVER41.\"')";
-  kunit6 = lunit6;
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER41.\"')");
   }
@@ -63866,7 +63858,7 @@ hysdat(
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
   int& ipunch = cmn.ipunch;
@@ -63907,7 +63899,6 @@ hysdat(
   static const char* format_175 = "(20x,2e16.7)";
   static const char* format_178 = "(2e16.8)";
   //C     SET THE TOP AND BOTTOM POINTERS.                                  M29.4123
-  kunit6 = lunit6;
   //C     SET THE B POINTS (KILOGAUSS)                                      M25.1236
   b(1) = -15.6f;
   b(2) = 14.6f;
@@ -64146,7 +64137,7 @@ arrdat(
   const auto& abuff = cmn.abuff;
   double& ci1 = cmn.ci1;
   double& ck1 = cmn.ck1;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   //
   fem::str<8>& text1 = sve.text1;
@@ -64267,7 +64258,6 @@ arrdat(
     "' THE OLD AND NEW VALUES FOLLOW....',2x,2e15.6)";
   //C     PROGRAM TO PERFORM LEAST-SQUARES FIT OF STRAIGHT-LINE SEGMENTS TO M27.3451
   //C     A SET OF DATA POINTS. THE NUMBER OF SEGMENTS IS LIMITED TO MAXEXP M27.3452
-  kunit6 = lunit6;
   //C     DEFINE CONSTANTS************************************************* M37.8047
   maxexp = 100;
   nbran = 60;
@@ -64866,7 +64856,7 @@ zinold(
   common_read read(cmn);
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   int& noutpr = cmn.noutpr;
   //
   auto& lunit6 = cmn.lunit6;
@@ -65187,7 +65177,7 @@ over42(
   double& twopi = cmn.twopi;
   double& fltinf = cmn.fltinf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  int& lunit7 = cmn.lunit7;
+  const int& lunit7 = cmn.lunit7;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -65254,7 +65244,6 @@ over42(
   static const char* format_82 =
     "(/,' ********************************************************************"
     "****************************************************',/,1x)";
-  kunit6 = lunit6;
   //C     THE FOLLOWING LIMIT CHECKS OVERFLOW OF  CURR, FLUX                   15668
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER42.\"')");
@@ -69935,8 +69924,8 @@ subr55(
   double& epsiln = cmn.epsiln;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
   arr_cref<int> moncar(cmn.moncar, dimension(10));
-  int& lunit3 = cmn.lunit3;
-  int& lunit9 = cmn.lunit9;
+  const int& lunit3 = cmn.lunit3;
+  const int& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -70034,7 +70023,6 @@ subr55(
   auto& isw = moncar(4);
   auto& mtape = moncar(10);
   //C
-  kunit6 = lunit6;
   if (iprsup >= 1) {
     write(lunit6, "(' TOP OF \"SUBR55\".  KILL =',i6)"), kill;
   }
@@ -71797,7 +71785,7 @@ vecrxx(
   array(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  int& lunt13 = cmn.lunt13;
+  const int& lunt13 = cmn.lunt13;
   int& iprsup = cmn.iprsup;
   //
   auto& lunit6 = cmn.lunit6;
@@ -71886,7 +71874,7 @@ vecixx(
   karr(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  int& lunt13 = cmn.lunt13;
+  const int& lunt13 = cmn.lunt13;
   int& iprsup = cmn.iprsup;
   //
   auto& lunit6 = cmn.lunit6;
@@ -72818,7 +72806,50 @@ struct program_main_save
   {}
 };
 
+void fildel(
+  common& cmn,
+  int const lun)
+{
+  bool lopen = fem::bool0;
+  cmn.io.inquire_unit(lun)
+    .opened(lopen);
+  if (lopen) {
+    cmn.io.close(lun)
+      .status("DELETE");
+  }
+}
 
+void filcls(
+  common& cmn,
+  int const lun)
+{
+  bool lopen = fem::bool0;
+  cmn.io.inquire_unit(lun)
+    .opened(lopen);
+  if (lopen) {
+    cmn.io.close(lun);
+  }
+}
+
+class IO_FileManager {
+  std::unordered_map<int, bool> map_{}; // io unit number and if kepp
+  common& cmn_;
+public:
+  IO_FileManager(common& cmn) : cmn_(cmn)
+  {};
+  ~IO_FileManager() {
+    for (auto [unit, isSave] : map_) {
+      if (isSave) filcls(cmn_, unit);
+      else fildel(cmn_, unit);
+    }
+  };
+  void add(int ioUnit, bool is_save = true) {
+    map_[ioUnit] = is_save;
+  }
+  void close(int unit) {
+    filcls(cmn_, unit);
+  }
+};
 
 
 void program_main(
@@ -72829,6 +72860,7 @@ void program_main(
   common cmn(0, 0);
 
 #ifdef _DEBUG // test
+  {
   arr_1d<13, fem::str<8> > sext(fem::fill0);
   sext(2) = "11111111";
   auto spa1 = ArraySpan(sext.begin(), sext.size());
@@ -72839,6 +72871,10 @@ void program_main(
   auto a9 = spa1(9);
   auto a10 = spa1(10);
 
+  arr<int> aa1(dimension(5), fem::fill0);
+  auto n10 = aa1(1);
+  arr<fem::str<8>> aa2(dimension(5), fem::fill0);;
+  auto s10 = aa2(1);
   //str_ref str = sext(2);
   //auto a1 = str(1);
   //auto a2 = str(3);
@@ -72854,6 +72890,8 @@ void program_main(
   //to(dimension(1));
   //str_ref to_row = to(2);
   //auto str10 = to(10);
+  }
+
 #endif // _DEBUG // test
 
 
@@ -72926,24 +72964,41 @@ void program_main(
   //C                                                                      *M36.  58
   //C)**********************************************************************M15. 240
   //C     UNIT ASSIGNMENTS OF "OVER1" NEEDED EARLIER BY SPY:                M38.  90
-  cmn.lunit1 = 1;
-  cmn.lunit2 = 2;
-  cmn.lunit3 = 3;
-  cmn.lunit4 = 4;
-  cmn.lunit5 = 5;
-  lunit6 = 60; // lunit6 = 6; 0,5,6 are the cansole screen
-  cmn.lunit7 = 7;
-  cmn.lunit8 = 8;
-  cmn.lunit9 = 9;
-  cmn.lunt10 = 10;
-  cmn.lunt11 = 11;
-  cmn.lunt12 = 12;
-  cmn.lunt13 = 13;
-  cmn.lunt14 = 14;
-  cmn.lunt15 = 15;
+  //cmn.lunit1 = 1;
+  //cmn.lunit2 = 2;
+  //cmn.lunit3 = 3;
+  //cmn.lunit4 = 4;
+  //cmn.lunit5 = 5;
+  //cmn.lunit6 = 60; // lunit6 = 6; 0,5,6 are the cansole screen
+  //cmn.lunit7 = 7;
+  //cmn.lunit8 = 8;
+  //cmn.lunit9 = 9;
+  //cmn.lunt10 = 10;
+  //cmn.lunt11 = 11;
+  //cmn.lunt12 = 12;
+  //cmn.lunt13 = 13;
+  //cmn.lunt14 = 14;
+  //cmn.lunt15 = 15;
+
   cmn.llbuff = -3333;
   cmn.kol132 = 132;
 
+  IO_FileManager ioFileManager(cmn);
+  ioFileManager.add(cmn.lunit1, false); // delete
+  ioFileManager.add(cmn.lunit2, false); // delete
+  ioFileManager.add(cmn.lunit3, false); // delete
+  ioFileManager.add(cmn.lunit4, false); // delete
+  ioFileManager.add(cmn.lunit5, false); // delete
+  ioFileManager.add(cmn.lunit6, true);  // log file: save
+  ioFileManager.add(cmn.lunit7, false); // delete
+  ioFileManager.add(cmn.lunit8, false); // delete
+  ioFileManager.add(cmn.lunit9, false); // delete
+  ioFileManager.add(cmn.lunt10, false); // delete
+  ioFileManager.add(cmn.lunt11, false); // delete
+  ioFileManager.add(cmn.lunt12, false); // delete
+  ioFileManager.add(cmn.lunt13, false); // delete
+  ioFileManager.add(cmn.lunt14, false); // delete
+  ioFileManager.add(cmn.lunt15, false); // delete
 
   //cmn.log_stream.open(logFile);       // use lunit6
   cmn.out_stream.open(outFile);  // open output streams
@@ -73106,22 +73161,23 @@ void program_main(
   // cleanup posible open files and eng the program
   //cmn.io.close(lunit6) // log file
   //  .status("keep");
-  filcls(cmn, lunit6);
 
-  fildel(cmn, cmn.lunit1);
-  fildel(cmn, cmn.lunit2);
-  fildel(cmn, cmn.lunit3);
-  fildel(cmn, cmn.lunit4);
-  fildel(cmn, cmn.lunit5);
-  fildel(cmn, cmn.lunit7);
-  fildel(cmn, cmn.lunit8);
-  fildel(cmn, cmn.lunit9);
-  fildel(cmn, cmn.lunt10);
-  fildel(cmn, cmn.lunt11);
-  fildel(cmn, cmn.lunt12);
-  fildel(cmn, cmn.lunt13);
-  fildel(cmn, cmn.lunt14);
-  fildel(cmn, cmn.lunt15);
+  //filcls(cmn, lunit6);
+
+  //fildel(cmn, cmn.lunit1);
+  //fildel(cmn, cmn.lunit2);
+  //fildel(cmn, cmn.lunit3);
+  //fildel(cmn, cmn.lunit4);
+  //fildel(cmn, cmn.lunit5);
+  //fildel(cmn, cmn.lunit7);
+  //fildel(cmn, cmn.lunit8);
+  //fildel(cmn, cmn.lunit9);
+  //fildel(cmn, cmn.lunt10);
+  //fildel(cmn, cmn.lunt11);
+  //fildel(cmn, cmn.lunt12);
+  //fildel(cmn, cmn.lunt13);
+  //fildel(cmn, cmn.lunt14);
+  //fildel(cmn, cmn.lunt15);
 
   return;
   statement_2300:
@@ -73205,29 +73261,6 @@ void program_main(
   //C          CASE TERMINATION).                                           
 }
 
-void fildel(
-  common& cmn,
-  int const lun)
-{
-  bool lopen = fem::bool0;
-  cmn.io.inquire_unit(lun)
-    .opened(lopen);
-  if (lopen) {
-    cmn.io.close(lun)
-      .status("DELETE");
-  }
-}
 
-void filcls(
-  common& cmn,
-  int const lun)
-{
-  bool lopen = fem::bool0;
-  cmn.io.inquire_unit(lun)
-    .opened(lopen);
-  if (lopen) {
-    cmn.io.close(lun);
-  }
-}
 
 } // namespace emtp

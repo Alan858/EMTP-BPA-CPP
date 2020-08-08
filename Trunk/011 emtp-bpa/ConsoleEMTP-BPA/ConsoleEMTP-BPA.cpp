@@ -10,15 +10,16 @@ int main(int argc, char const* argv[])
 {
   namespace fs = std::filesystem;
   std::string input{ R"(..\..\..\_Tests\EMTP-BPA\case0001\test.dat)" };
+#ifndef _DEBUG
   if (argc < 2) {
     std::cout << "Enter input File name: ";
     std::cin >> input;
   }
   else input = argv[1];
-
+#endif // !_DEBUG
 
   emtp::program_main(input, input + ".log", input + ".csv");
-    
+
   //std::cout << "Hello World!\n";
   return 0;
 }

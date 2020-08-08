@@ -134,7 +134,8 @@ namespace fem {
         else {
           size_t run_away_counter = 0;
           while (true) {
-            file_name = "io_unit_scratch_" + utils::random_name_simple(8);
+            file_name = std::filesystem::temp_directory_path().string()
+              + "io_unit_scratch_" + utils::random_name_simple(8);
             if (!utils::path::exists(file_name.c_str())) {
               break;
             }
