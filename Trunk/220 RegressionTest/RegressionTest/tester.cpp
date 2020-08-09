@@ -22,12 +22,11 @@ namespace test
   }
 
   std::string_view left_trim(const std::string_view strv) {
-    return strv.substr(strv.find_first_not_of(' '));
+    return strv.substr(std::min(strv.find_first_not_of(' '), strv.size()));
   }
 
-  bool runProgram(const std::string& cmd) {
-    auto res = ShellExecuteA(nullptr, "open", cmd.c_str(), nullptr, nullptr, SW_HIDE);
-    return 32 < int(res);
+  bool runProgram(const std::string& cmd, bool wait = true) {
+    return -1 != system(('\"' + cmd + '\"').c_str());
   }
 
 
@@ -114,13 +113,13 @@ namespace test
       test_folder_ = std::filesystem::path(jsFile).parent_path().string();
     }
     if (test_folder_.back() != '/' || test_folder_.back() != '\\')
-      test_folder_ += '/';
+      test_folder_ += '\\';
 
     for (const auto& proj : j["proj_folder"]) {
       projects_.push_back({
         proj["name"],
         Line_Num_Parser(proj["lines"]),
-        getTestCases(test_folder_ + std::string(proj["name"]) + '/' + batName_),
+        getTestCases(test_folder_ + std::string(proj["name"]) + '\\' + batName_),
         proj["max_sec"],
         });
     }
@@ -129,20 +128,20 @@ namespace test
   //bool 
   auto getResult(std::string_view resultFile, const std::vector<int>& lines)
   {
-    using namespace std;
-    ifstream ifile(resultFile);  // result text file 
-    if (!check_test(ifile.good())) {
-      throw std::runtime_error("  Result file was not created: " + string(resultFile));
+    namespace fs = std::filesystem;
+    std::ifstream ifile(resultFile);  // result text file 
+    if (!check_test(ifile.is_open())) {
+      throw std::runtime_error("  Failed to open: " + std::string(resultFile));
     }
     std::vector<std::pair<int, std::string>> vectResFileLines;
     int linesInd = 0;
     int askedLineNum = lines[linesInd];
     int cnt = 0;
-    string sLine;
-    while (getline(ifile, sLine) && vectResFileLines.size() < 10000)
+    std::string sLine;
+    while (std::getline(ifile, sLine) && vectResFileLines.size() < 10000)
     {
       if (++cnt == askedLineNum) {
-        if (!left_trim(sLine).empty())
+        if (sLine = left_trim(sLine); !sLine.empty())
           vectResFileLines.push_back({ askedLineNum,sLine });
         if (++linesInd == lines.size())
           break;
@@ -155,17 +154,24 @@ namespace test
   void compare(std::string_view resultFile, std::string_view baseFile, const std::vector<int>& lines)
   {
     using namespace std;
+    namespace fs = std::filesystem;
+    if (!check_test(fs::exists(resultFile))) {
+      throw std::range_error(string("  Result file was not found: ") + string(resultFile));
+    }
+    if (!check_test(fs::exists(baseFile))) {
+      std::filesystem::copy_file(resultFile, baseFile);
+      throw std::range_error("  Baseline file was not found! We set it with the current result file!");
+    }
+
     auto vectResFileLines = getResult(resultFile, lines);
     if (!check_test(!vectResFileLines.empty())) {
-      throw std::range_error("  No result found !");
+      throw std::range_error("  No result found!");
     }
 
     // read saved result text file and compare to vectResFileLines
     ifstream ifile(baseFile);  // result text file 
-    if (!check_test(ifile.good())) {
-      // the file doesn't exit, just copy the new one
-      std::filesystem::copy_file(resultFile, baseFile);
-      throw std::range_error(" No baseline found and we set it now"); // no need to compare this time
+    if (!check_test(ifile.is_open())) {
+      throw std::range_error(" Failed to open: " + string(baseFile));
     }
 
     int cnt = 0;
@@ -175,7 +181,7 @@ namespace test
     while (getline(ifile, sLine))
     {
       if (++cnt != askedLineNum) continue;
-      if (!left_trim(sLine).empty())
+      if (sLine = left_trim(sLine); !sLine.empty())
       {
         // compare
         if (!check_test(sLine == vectResFileLines[linesInd].second)) {
@@ -184,15 +190,15 @@ namespace test
           if (check_test(vectStrCurr.size() == vectStrSaved.size())) {
             for (size_t i = 0, e = vectStrCurr.size(); i != e; ++i) {
               if (!check_test(vectStrCurr[i] == vectStrSaved[i])) {
-                string fileLineNum = " line:" + std::to_string(askedLineNum)
-                  + "\n\"" + sLine.substr(0, std::min(40, int(sLine.size()))) + "...\"";
-                throw std::range_error(fileLineNum + ": \"" + string(vectStrCurr[i]) + "\" vs \"" + string(vectStrSaved[i]) + "\".");
+                string fileLineNum = " line " + std::to_string(askedLineNum)
+                  + ": \"" + sLine.substr(0, std::min(80, int(sLine.size()))) + "...\"\n";
+                throw std::range_error(fileLineNum + "  \"" + string(vectStrCurr[i]) + "\" vs \"" + string(vectStrSaved[i]) + "\".");
               }
             }
           }
           else {
-            string fileLineNum = " line:" + std::to_string(askedLineNum)
-              + "\n\"" + sLine.substr(0, std::min(40, int(sLine.size()))) + "...\"";
+            string fileLineNum = " line " + std::to_string(askedLineNum)
+              + ": \"" + sLine.substr(0, std::min(80, int(sLine.size()))) + "...\"";
             throw std::range_error(fileLineNum);
           }
         }
@@ -218,7 +224,7 @@ namespace test
 
     // run projects and compare results
     std::cout << "Program: " << proj.name << ". Number of testing cases: " << proj.cases.size() << '\n';
-    auto program_folder = test_folder_ + proj.name + '/';
+    auto program_folder = test_folder_ + proj.name + '\\';
     if (proj.lines.empty()) throw std::range_error("  json configuration error !");
 
     // for each case, remove possible existing result file
@@ -252,7 +258,7 @@ namespace test
         compare(resultFile, saved_resultFile, proj.lines);
       }
       catch (const std::exception& e) {
-        cout << e.what() << '\n';
+        cout << std::string("  ") + e.what() << '\n';
         continue;
       }
     }

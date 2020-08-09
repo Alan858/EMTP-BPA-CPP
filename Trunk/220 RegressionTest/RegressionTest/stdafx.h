@@ -9,9 +9,6 @@
 #include "targetver.h"
 #include <stdio.h>
 #include <tchar.h>
-#include <shlobj.h>   // ShellExecuteA
-#include <shellapi.h> 
-//#include <objbase.h>
 
 ////////////
 #include <iostream>

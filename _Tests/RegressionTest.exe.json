@@ -1,0 +1,11 @@
+﻿{
+  "comment1" : "for each project under 'test_folder/proj_folder', the program will execute '_run all.dat' and compare results with Baseline",
+  "comment2" : "'Lines' defines the lines to compare, allowing skip lines. 'max sec' is the maximum time allocated for the analysis program",
+  "test_folder" : "",
+  "proj_folder" : [{"name" : "EMTP-BPA",
+                    "lines" : "1-100,101-200,201-300,301-5000",
+                    "max_sec" : 5}				
+                  ]
+}
+
+                  
