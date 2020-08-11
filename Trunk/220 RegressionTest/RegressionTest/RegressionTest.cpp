@@ -16,20 +16,20 @@ int main(int argc, const char* argv[])
   auto jsFileName = std::string(argv[0]) + ".json";
   ProgramRegessionTest programTest;
   programTest.readJson(jsFileName);
-  auto projects = programTest.getProjects();
+  const auto& projects = programTest.getProjects();
   if (projects.empty()) return 1;
   
-  auto selProj = projects[0];
+  int selected{};
   if (1 < projects.size()) {
     cout << "Please select\n";
     for (int i = 0; i < projects.size(); ++i) {
       cout << i + 1 << " - " + projects[i].name << '\n';
     }
-    int selected{};
     cin >> selected;
-    if (0 < selected && selected <= projects.size())
-      selProj = projects[selected-1];
+    selected = std::clamp(selected, 0, int(projects.size() - 1));
   }
+
+  const auto& selProj = projects[selected];
 
   try
   {

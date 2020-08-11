@@ -128,27 +128,23 @@ namespace test
   //bool 
   auto getResult(std::string_view resultFile, const std::vector<int>& lines)
   {
-    namespace fs = std::filesystem;
     std::ifstream ifile(resultFile);  // result text file 
     if (!check_test(ifile.is_open())) {
       throw std::runtime_error("  Failed to open: " + std::string(resultFile));
     }
-    std::vector<std::pair<int, std::string>> vectResFileLines;
-    int linesInd = 0;
-    int askedLineNum = lines[linesInd];
-    int cnt = 0;
+    std::vector<std::pair<int, std::string>> strLines;
     std::string sLine;
-    while (std::getline(ifile, sLine) && vectResFileLines.size() < 10000)
+    int lineIdx = 0;
+    int cnt = 0;
+    while (std::getline(ifile, sLine) && lineIdx < lines.size() && strLines.size() < 50000)
     {
-      if (++cnt == askedLineNum) {
+      if (auto num = lines[lineIdx]; ++cnt == num) {
         if (sLine = left_trim(sLine); !sLine.empty())
-          vectResFileLines.push_back({ askedLineNum,sLine });
-        if (++linesInd == lines.size())
-          break;
-        askedLineNum = lines[linesInd];
+          strLines.push_back({ num, sLine });
+        ++lineIdx;
       }
     }
-    return vectResFileLines;
+    return strLines;
   }
 
   void compare(std::string_view resultFile, std::string_view baseFile, const std::vector<int>& lines)
@@ -163,54 +159,36 @@ namespace test
       throw std::range_error("  Baseline file was not found! We set it with the current result file!");
     }
 
-    auto vectResFileLines = getResult(resultFile, lines);
-    if (!check_test(!vectResFileLines.empty())) {
-      throw std::range_error("  No result found!");
-    }
+    // read result and baseline files
+    auto curLines = getResult(resultFile, lines);
+    auto basLines = getResult(baseFile, lines);
 
-    // read saved result text file and compare to vectResFileLines
-    ifstream ifile(baseFile);  // result text file 
-    if (!check_test(ifile.is_open())) {
-      throw std::range_error(" Failed to open: " + string(baseFile));
+    // compare
+    if (!check_test(curLines.size() == basLines.size())) {
+      throw std::range_error("  Result file size does not match!");
     }
-
-    int cnt = 0;
-    int linesInd = 0;
-    int askedLineNum = vectResFileLines[linesInd].first;
-    string sLine;
-    while (getline(ifile, sLine))
-    {
-      if (++cnt != askedLineNum) continue;
-      if (sLine = left_trim(sLine); !sLine.empty())
-      {
-        // compare
-        if (!check_test(sLine == vectResFileLines[linesInd].second)) {
-          auto vectStrSaved = split(sLine, " ");
-          auto vectStrCurr = split(vectResFileLines[linesInd].second, " ");
-          if (check_test(vectStrCurr.size() == vectStrSaved.size())) {
-            for (size_t i = 0, e = vectStrCurr.size(); i != e; ++i) {
-              if (!check_test(vectStrCurr[i] == vectStrSaved[i])) {
-                string fileLineNum = " line " + std::to_string(askedLineNum)
-                  + ": \"" + sLine.substr(0, std::min(80, int(sLine.size()))) + "...\"\n";
-                throw std::range_error(fileLineNum + "  \"" + string(vectStrCurr[i]) + "\" vs \"" + string(vectStrSaved[i]) + "\".");
-              }
+    for (size_t i = 0; i < curLines.size(); ++i) {
+      const auto& curLine = curLines[i];
+      const auto& basLine = basLines[i];
+      if (!check_test(curLine == basLine)) {
+        auto curStrs = split(curLine.second, " ");
+        auto basStrs = split(basLine.second, " ");
+        if (check_test(curLine.first == basLine.first && curStrs.size() == basStrs.size())) {
+          for (size_t i = 0, e = curStrs.size(); i != e; ++i) {
+            if (auto curStr = curStrs[i], basStr = basStrs[i];  !check_test(curStr == basStr)) {
+              string msg = " line " + std::to_string(curLine.first) + ": \""
+                + curLine.second.substr(0, std::min(80, int(curLine.second.size()))) + "...\"";
+              throw std::range_error(msg + "\n  \"" + string(curStr) + "\" vs \"" + string(basStr) + "\".");
             }
           }
-          else {
-            string fileLineNum = " line " + std::to_string(askedLineNum)
-              + ": \"" + sLine.substr(0, std::min(80, int(sLine.size()))) + "...\"";
-            throw std::range_error(fileLineNum);
-          }
+        }
+        else {
+          string msg = " line " + std::to_string(curLine.first) + ": \""
+            + curLine.second.substr(0, std::min(80, int(curLine.second.size()))) + "...\"";
+          throw std::range_error(msg);
         }
       }
-      if (vectResFileLines.size() <= ++linesInd)
-        break;
-      askedLineNum = vectResFileLines[linesInd].first;
     }
-    if (!check_test(linesInd == vectResFileLines.size())) {
-      throw std::range_error("  Result has less lines of " + std::to_string(vectResFileLines.size()));
-    }
-
   }
 
   void ProgramRegessionTest::doTest(const ProgramFolder& proj)
@@ -227,16 +205,21 @@ namespace test
     auto program_folder = test_folder_ + proj.name + '\\';
     if (proj.lines.empty()) throw std::range_error("  json configuration error !");
 
+    ChangeCurrentPath curPath(program_folder);
     // for each case, remove possible existing result file
     for (auto& caseName : proj.cases) {
-      string resultFile = program_folder + caseName + '\\' + caseName + "_result.txt";
-      fs::remove(resultFile);
+      fs::path folder = program_folder + caseName + '\\';
+      for (fs::directory_iterator it(folder), end; it != end; ++it) {
+        auto file = it->path().filename();
+        if (file.extension().string() == ".out" || file.string().find("_result.txt") != std::string::npos) {
+          fs::remove(it->path());
+        }
+      }
     }
 
     // run all testing cases
     const auto startTime = std::chrono::high_resolution_clock::now();
     string cmdLine = program_folder + batName_;
-    ChangeCurrentPath curPath(program_folder);
     if (!check_test(runProgram(cmdLine))) {
       throw std::runtime_error("fialed to run :" + cmdLine);
     }
