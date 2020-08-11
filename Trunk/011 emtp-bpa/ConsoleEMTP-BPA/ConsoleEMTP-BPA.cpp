@@ -18,7 +18,7 @@ int main(int argc, char const* argv[])
   else input = argv[1];
 #endif // !_DEBUG
 
-  emtp::program_main(input, input + ".log", input + ".csv");
+  emtp::program_main(input, input + ".log", input + ".out");
 
   //std::cout << "Hello World!\n";
   return 0;

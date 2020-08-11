@@ -22,39 +22,49 @@ int main(int argc, const char* argv[])
   int selected{};
   if (1 < projects.size()) {
     cout << "Please select\n";
+    cout << 0 << " - All" << '\n';
     for (int i = 0; i < projects.size(); ++i) {
       cout << i + 1 << " - " + projects[i].name << '\n';
     }
-    cin >> selected;
-    selected = std::clamp(selected, 0, int(projects.size() - 1));
+    selected = -1;
+    while (selected < 0 || projects.size() < selected) {
+      cin >> selected;
+    }
   }
 
-  const auto& selProj = projects[selected];
+  for (size_t i = 0; i < projects.size(); ++i) {
+    if (selected != 0 && selected != i + 1) // if 0 run all programs
+      continue;
 
-  try
-  {
-    programTest.doTest(selProj);
-  }
-  catch (std::exception& e)
-  {
-    cout << "\n\n" 
-          << "//////////////////// TEST FAILED: " << selProj.name
-          << "////////////////////\n";
-    cout << "Failure message: " << e.what() << endl;
+    const auto& selProj = projects[i];
+    try
+    {
+      cout << "================================\n";
+      programTest.doTest(selProj);
+    }
+    catch (std::exception& e)
+    {
+      cout << "\n"
+        << "//////////////////// TEST FAILED: " << selProj.name
+        << "////////////////////\n";
+      cout << "Failure message: " << e.what() << endl;
 
-  }
+    }
 
-  if (number_of_failed_tests == 0)
-  {
-    cout << "\n\nTesting Finished\n";
-    cout << "Total number of tests: "<< number_of_total_tests << endl;
-    cout << "All tests completed successfully\n\n";
-  }
-  else
-  {
-    cout << "\n\nTesting Finished\n";
-    cout << "Total number of tests: "<< number_of_total_tests << endl;
-    cout << "Number of failed tests: " << number_of_failed_tests << "\n";
+    if (number_of_failed_tests == 0)
+    {
+      cout << "\n"
+        << "Testing Finished : " << selProj.name << '\n'
+        << "Total number of tests: " << number_of_total_tests << '\n'
+        << "All tests completed successfully\n\n";
+    }
+    else
+    {
+      cout << "\n"
+        << "Testing Finished : " << selProj.name << '\n'
+        << "Total number of tests: " << number_of_total_tests << '\n'
+        << "Number of failed tests: " << number_of_failed_tests << "\n\n";
+    }
   }
 
   system("pause");

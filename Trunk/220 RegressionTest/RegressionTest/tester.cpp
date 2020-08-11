@@ -24,6 +24,12 @@ namespace test
   std::string_view left_trim(const std::string_view strv) {
     return strv.substr(std::min(strv.find_first_not_of(' '), strv.size()));
   }
+  std::string_view right_trim(const std::string_view strv) {
+    return strv.substr(0, strv.find_last_not_of(' ') + 1);
+  }
+  std::string_view trim(const std::string_view strv) {
+    return left_trim(right_trim(strv));
+  }
 
   bool runProgram(const std::string& cmd, bool wait = true) {
     return -1 != system(('\"' + cmd + '\"').c_str());
@@ -91,10 +97,20 @@ namespace test
     std::ifstream in(batFile);
     if (!in.is_open()) return testCases;
     std::string sLine;
+    const std::string key = "num_cases=";
+    int numCases = 0;
     while (std::getline(in, sLine)) {
-      if (sLine.size() < 10 || sLine.substr(0, 4) != "call") continue;
-      if (auto pos = sLine.find("\"case") + 1; pos != std::string::npos)
-        testCases.push_back(sLine.substr(pos, 8));
+      if (auto pos = sLine.find(key); pos != std::string::npos) {
+        numCases = std::stoi(sLine.substr(pos + key.size()));
+        break;
+      }
+    }
+
+    std::stringstream ss;
+    for (int i = 0; i < numCases; ++i) {
+      ss.str("");
+      ss << "case" << std::setw(4) << std::setfill('0') << i + 1;
+      testCases.push_back(ss.str());
     }
     return testCases;
   }
@@ -139,7 +155,7 @@ namespace test
     while (std::getline(ifile, sLine) && lineIdx < lines.size() && strLines.size() < 50000)
     {
       if (auto num = lines[lineIdx]; ++cnt == num) {
-        if (sLine = left_trim(sLine); !sLine.empty())
+        if (sLine = trim(sLine); !sLine.empty())
           strLines.push_back({ num, sLine });
         ++lineIdx;
       }
@@ -210,8 +226,8 @@ namespace test
     for (auto& caseName : proj.cases) {
       fs::path folder = program_folder + caseName + '\\';
       for (fs::directory_iterator it(folder), end; it != end; ++it) {
-        auto file = it->path().filename();
-        if (file.extension().string() == ".out" || file.string().find("_result.txt") != std::string::npos) {
+        if (auto f = it->path().filename(); f.extension().string() == ".out"
+          || f.string().find("_result.txt") != std::string::npos) {
           fs::remove(it->path());
         }
       }
