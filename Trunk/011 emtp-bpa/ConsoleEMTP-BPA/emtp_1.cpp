@@ -72875,21 +72875,7 @@ void program_main(
   auto n10 = aa1(1);
   arr<fem::str<8>> aa2(dimension(5), fem::fill0);;
   auto s10 = aa2(1);
-  //str_ref str = sext(2);
-  //auto a1 = str(1);
-  //auto a2 = str(3);
-  //auto a3 = str(8);
-  //auto s1 = sext.size();
-  //auto s2 = sext.size_1d();
-  //auto s3 = sext.end() - sext.begin();
-  //auto s4 = sext(1).len();
-  //auto s5 = s1 * s4;
 
-  //arr<fem::str<8> > sext(dimension(13), fem::fill0);
-  //str_arr_ref to(sext);
-  //to(dimension(1));
-  //str_ref to_row = to(2);
-  //auto str10 = to(10);
   }
 
 #endif // _DEBUG // test

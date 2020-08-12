@@ -21,14 +21,14 @@ namespace test
     return result;
   }
 
-  std::string_view left_trim(const std::string_view strv) {
+  std::string_view trim_left(const std::string_view strv) {
     return strv.substr(std::min(strv.find_first_not_of(' '), strv.size()));
   }
-  std::string_view right_trim(const std::string_view strv) {
+  std::string_view trim_right(const std::string_view strv) {
     return strv.substr(0, strv.find_last_not_of(' ') + 1);
   }
   std::string_view trim(const std::string_view strv) {
-    return left_trim(right_trim(strv));
+    return trim_left(trim_right(strv));
   }
 
   bool runProgram(const std::string& cmd, bool wait = true) {

@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
 
-  <Type Name="emtp::ArraySpan&lt;*,*&gt;">
-    <DisplayString>{{ size={sise()} }}</DisplayString>
-    <Expand>
-      <Item Name="[size]" ExcludeView="simple">sise()</Item>
-      <Item Name="[capacity]" ExcludeView="simple">sise()</Item>
-      <ArrayItems>
-        <Size>sise()</Size>
-        <ValuePointer>d_</ValuePointer>
-      </ArrayItems>
-    </Expand>
-  </Type>  
-  
-  <Type Name="fem::str_arr_cref&lt;*&gt;">
-    <DisplayString>{{ size={dims_.all[0]} }}</DisplayString>
-    <Expand>
-      <Item Name="[capacity]" ExcludeView="simple">dims_.all[0]</Item>
-      <ArrayItems>
-        <Size>dims_.all[0]</Size>
-        <ValuePointer>elems_</ValuePointer>
-      </ArrayItems>
-    </Expand>
-  </Type>
-  
+
   <Type Name="fem::arr&lt;*&gt;">
     <DisplayString>{{ size={dims_.all[0]} }}</DisplayString>
     <Expand>
@@ -35,20 +13,48 @@
     </Expand>
   </Type>
   
-   
-  <Type Name="fem::arr_1d&lt;$T1,$T2&gt;">
-    <DisplayString>{{ size={$T1} }}</DisplayString>
+  <Type Name="fem::str&lt;*&gt;">
+    <DisplayString>{{ size={dims_.all[0]} }}</DisplayString>
     <Expand>
-      <Item Name="[capacity]" ExcludeView="simple">$T1</Item>
+      <Item Name="[capacity]" ExcludeView="simple">dims_.all[0]</Item>
       <ArrayItems>
-        <Size>$T1</Size>
-        <ValuePointer>elems_memory</ValuePointer>
+        <Size>dims_.all[0]</Size>
+        <ValuePointer>elems_</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+  
+  <Type Name="fem::arr_cref&lt;*&gt;">
+    <DisplayString>{{ size={dims_.all[0]} }}</DisplayString>
+    <Expand>
+      <Item Name="[capacity]" ExcludeView="simple">dims_.all[0]</Item>
+      <ArrayItems>
+        <Size>dims_.all[0]</Size>
+        <ValuePointer>elems_</ValuePointer>
       </ArrayItems>
     </Expand>
   </Type> 
   
+
   
-  <!--   
+  
+ <!-- 
+
+ 
+ 
+   <Type Name="fem::str_arr_cref&lt;*&gt;">
+    <DisplayString>{{ size={dims_.all[0]} }}</DisplayString>
+    <Expand>
+      <Item Name="[capacity]" ExcludeView="simple">dims_.all[0]</Item>
+      <ArrayItems>
+        <Size>dims_.all[0]</Size>
+        <ValuePointer>elems_[len_]</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>  
+  
+ 
+ 
 the following two are derivative of arr_cref
 
   <Type Name="fem::arr_ref&lt;*&gt;">
@@ -98,36 +104,6 @@ the following two are derivative of arr_cref
         </ArrayItems>
     </Expand>
 </Type>  
-
-
-
-
-  <Type Name="std::array&lt;*,*&gt;">
-      <DisplayString>{{ size={$T2} }}</DisplayString>
-      <Expand>
-          <ArrayItems>
-              <Size>$T2</Size>
-              <ValuePointer>_Elems</ValuePointer>
-          </ArrayItems>
-      </Expand>
-  </Type>
-
-
-<Type Name="std::vector&lt;bool,*&gt;">
-  <Intrinsic Name="size" Expression="_Mysize" />
-  <Intrinsic Name="capacity" Expression="_Myvec.capacity() * _EEN_VBITS" />
-  <DisplayString>{{ size={size()} }}</DisplayString>
-  <Expand>
-    <Item Name="[capacity]" ExcludeView="simple">capacity()</Item>
-    <Item Name="[allocator]" ExcludeView="simple">_Myvec._Mypair</Item>
-    <IndexListItems>
-      <Size>_Mysize</Size>
-      <ValueNode>(bool)((_Myvec._Mypair._Myval2._Myfirst[$i / _EEN_VBITS] &gt;&gt; ($i % _EEN_VBITS)) &amp; 1)</ValueNode>
-    </IndexListItems>
-  </Expand>
-</Type>
-  
-  
 -->
 
 </AutoVisualizer>
