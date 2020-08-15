@@ -110,7 +110,7 @@ date44(
   //int n1 = 0;
   //int n2 = 0;
   //int n3 = 0;
-  ////w idate(n1, n2, n3);
+  // idate(n1, n2, n3);
   //int n4 = n1 / 10;
   //int n5 = n1 - 10 * n4;
   //int n6 = n2 / 10;
@@ -450,19 +450,6 @@ tapsav(
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT \"TAPSAV\".   N9, KPEN(2) =',2i8)"), n9, kpen(2);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 struct tables_save
@@ -482,7 +469,7 @@ tables(
   common_read read(cmn);
   common_write write(cmn);
   arr_cref<double> voltbc(cmn.voltbc, dimension(50));
-  const int& lunit2 = cmn.lunit2;
+  auto& lunit2 = cmn.lunit2;
   arr_cref<int> lunsav(cmn.lunsav, dimension(15));
   arr_ref<int> iprsov(cmn.iprsov, dimension(39));
   int& numsm = cmn.numsm;
@@ -687,31 +674,7 @@ tables(
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT \"TABLES\".')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
+
 }
 
 void
@@ -742,27 +705,7 @@ prompt(
   statement_1426:
   write(lunit6, "(a,$)"), prom80(1, n2);
   //C ",$" IS DEC MAGIC TO HOLD CURSOR
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -840,27 +783,7 @@ pfatch(
     write(lunit6, "(/,' SUCCESSFUL FILE OPENING IN  \"PFATCH\" .')");
   }
   cmn.icat = 2;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 struct frenum_save
@@ -1200,19 +1123,6 @@ frefld(
       "(' EXIT \"FREFLD\".  KILL, KOLBEG, ARRAY(1) =',2i6,e20.10)"),
       kill, kolbeg, array(1);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 void
@@ -1278,9 +1188,9 @@ cimage(
   double& xunits = cmn.xunits;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
-  const int& lunit4 = cmn.lunit4;
-  const int& lunit5 = cmn.lunit5;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit4 = cmn.lunit4;
+  auto& lunit5 = cmn.lunit5;
+  auto& lunit7 = cmn.lunit7;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -2020,22 +1930,7 @@ statement_5106:
   ibr++;
   xoptbr(ibr) = xopt;
   coptbr(ibr) = copt;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
+
 }
 
 void ibrinc(common& cmn) // for UNHANDLED: ENTRY ibrinc
@@ -2143,22 +2038,7 @@ namea6(
       "(' EXIT \"NAMEA6\".  TEXT1, MAXBUS, N24, J =',2x,a6,3i10)"),
       text1, maxbus, n24, j;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
+
 }
 
 int
@@ -4161,51 +4041,7 @@ tacs1a(
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE TACS1A.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
+
 }
 
 //void
@@ -4354,7 +4190,7 @@ tacs1b(
   const auto& date1= cmn.date1;
   const auto& tclock= cmn.tclock;
   double& fltinf = cmn.fltinf;
-  const int& lunit4 = cmn.lunit4;
+  auto& lunit4 = cmn.lunit4;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_ref<int> iprsov(cmn.iprsov, dimension(39));
   int& maxbus = cmn.maxbus;
@@ -5711,51 +5547,7 @@ tacs1b(
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE TACS1B.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
+
 }
 
 struct tacs1_save
@@ -6794,52 +6586,7 @@ tacs1(
     write(lunit6, "('  \"EXIT  MODULE TACS1.\"')");
   }
   sptacs(5) = kcolcs;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
+
 }
 
 void
@@ -8186,51 +7933,7 @@ csup(
   if (i > 0) {
     goto statement_1234;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
+
 }
 
 void
@@ -8755,52 +8458,7 @@ tacs3(
   if (iprsup >= 1) {
     write(lunit6, "(/,' NORMAL TERMINATION OF RUN WITHIN  ''TACS3'' .')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
+
 }
 
 void
@@ -8981,27 +8639,7 @@ flager(
   //C OUTPUT OF CHARACTER VARIABLE MUNIT6
   window(cmn);
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -10017,8 +9655,8 @@ spyink(
   auto& tclock= cmn.tclock;
   const auto& abuff = cmn.abuff;
   double& fltinf = cmn.fltinf;
-  const int& lunit4 = cmn.lunit4;
-  const int& lunit5 = cmn.lunit5;
+  auto& lunit4 = cmn.lunit4;
+  auto& lunit5 = cmn.lunit5;
   arr_ref<int> kprchg(cmn.kprchg, dimension(6));
   arr_ref<int> multpr(cmn.multpr, dimension(5));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -10192,7 +9830,7 @@ spyink(
   int& kud3 = sve.kud3;
   //int& kxtcs = sve.kxtcs;
   int& L = sve.L;
-  const int& lunit6 = cmn.lunit6;
+  auto& lunit6 = cmn.lunit6;
   int& m = sve.m;
   int& mmfind = sve.mmfind;
   arr_ref<int> mmhold(sve.mmhold, dimension(20));
@@ -12704,59 +12342,7 @@ spyink(
   sptacs(2) = koncur;
   sptacs(3) = kontot;
   statement_3496:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -12802,19 +12388,7 @@ tdelay(
     statement_3641:;
   }
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -12889,27 +12463,7 @@ honker(
   //C LOOP BACK TO REPEAT STRING OF 10 BELLS
   goto statement_3608;
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -13491,27 +13045,7 @@ spylin(
   //C     VAX/VMS, WE WILL JUST WRITE TO LUNIT6 IN UNIVERSAL FORM:          M37.7082
   auto& lunit6 = cmn.lunit6;
   write(lunit6, "(1x)");
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+ 
 }
 
 void
@@ -17382,8 +16916,8 @@ spying(
   double& tmax = cmn.tmax;
   double& flzero = cmn.flzero;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  const int& lunit4 = cmn.lunit4;
-  const int& lunt14 = cmn.lunt14;
+  auto& lunit4 = cmn.lunit4;
+  auto& lunt14 = cmn.lunt14;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& kwtspy = cmn.kwtspy;
   int& kanal = cmn.kanal;
@@ -19755,64 +19289,7 @@ spying(
   }
   prompt(cmn);
   statement_9833:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -20068,32 +19545,7 @@ emtspy(
     kbreak, nchain, cmn.lastov, cmn.m4plot;
   window(cmn);
   statement_9008:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
+
 }
 
 void
@@ -21371,67 +20823,7 @@ locatn(
   locate(730) = locint(cmn.nitera);
   locate(731) = locint(cmn.nekreq);
   locate(732) = locint(nekcod);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 struct initsp_save
@@ -21607,27 +20999,7 @@ initsp(
   cmn.lidnt1 = 1;
   cmn.lidnt2 = 1;
   cmn.linspn = 1;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -21678,27 +21050,7 @@ stopin(
   statement_1244:
   file6(istep) = buff77;
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 struct datain_save
@@ -21785,7 +21137,7 @@ void datain(
   common_write write(cmn);
   auto& date1= cmn.date1;
   auto& tclock= cmn.tclock;
-  const int& lunt13 = cmn.lunt13;
+  auto& lunt13 = cmn.lunt13;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_ref<int> iprsov(cmn.iprsov, dimension(39));
   int& istep = cmn.istep;
@@ -24259,19 +23611,7 @@ vecrsv(
   if (iprsup >= 2) {
     write(lunit6, "(' KOFVEC =',20i6)"), kofvec;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -24483,27 +23823,7 @@ fltopt(
       "(' EXIT \"FLTOPT\".  N14 =',i3,'   ANSI32(N14:32) =',a)"),
       n14, ansi32(n14, 32);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 
@@ -24829,19 +24149,7 @@ cominv(
     k += nph2;
   }
   goto statement_130;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 
@@ -25942,22 +25250,7 @@ last14(
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT  \"LAST14\".')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
+
 }
 
 //C      SUBROUTINE QYQTR(NPHS,DY,Q,Y)                                     VAX.2322
@@ -27161,22 +26454,7 @@ identifier_switch(
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT \"SWITCH\".')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
+
 }
 
 
@@ -27267,7 +26545,7 @@ plotng(
   common_read read(cmn);
   common_write write(cmn);
   double& tolmat = cmn.tolmat;
-  const int& lunt12 = cmn.lunt12;
+  auto& lunt12 = cmn.lunt12;
   int& iprsup = cmn.iprsup;
   //
   //arr_ref<int> kdig(sve.kdig, dimension(10));
@@ -27441,19 +26719,7 @@ plotng(
       "1x,131a1)"),
       krv, klm, kut;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct innr29_save
@@ -27535,8 +26801,8 @@ innr29(
   double& fltinf = cmn.fltinf;
   double& pu = cmn.pu;
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit3 = cmn.lunit3;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit3 = cmn.lunit3;
+  auto& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -29359,19 +28625,7 @@ innr29(
   lstat(18) = 29;
   lastov = nchain;
   nchain = 51;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct fltdat_save
@@ -29426,8 +28680,8 @@ fltdat(
   const auto& abuff = cmn.abuff;
   double& epsiln = cmn.epsiln;
   double& fltinf = cmn.fltinf;
-  const int& lunit1 = cmn.lunit1;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit1 = cmn.lunit1;
+  auto& lunit7 = cmn.lunit7;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_cref<int> iprsov(cmn.iprsov, dimension(39));
   int& ipunch = cmn.ipunch;
@@ -30123,19 +29377,7 @@ fltdat(
   if (iprsov(nchain) >= 1) {
     write(lunit6, "(' EXIT \"FLTDAT\".  KILL =',i5)"), kill;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 #endif
 }
 
@@ -30154,7 +29396,7 @@ statrs(
 {
   FEM_CMN_SVE(statrs);
   common_write write(cmn);
-  const int& lunit1 = cmn.lunit1;
+  auto& lunit1 = cmn.lunit1;
   arr_cref<int> lstat(cmn.lstat, dimension(80));
   int& iprsup = cmn.iprsup;
   //
@@ -30263,9 +29505,9 @@ guts29(
   double& xmaxmx = cmn.xmaxmx;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit1 = cmn.lunit1;
-  const int& lunit3 = cmn.lunit3;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit1 = cmn.lunit1;
+  auto& lunit3 = cmn.lunit3;
+  auto& lunit9 = cmn.lunit9;
   arr_ref<int> ipntv(cmn.ipntv, dimension(11));
   arr_ref<int> indtv(cmn.indtv, dimension(10));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -30896,19 +30138,7 @@ guts29(
     write(lunit6, "(' EXIT \"GUTS29\".  KILL, NCHAIN, N18 =',3i6)"),
       kill, nchain, n18;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -31007,19 +30237,7 @@ subr29(
     write(lunit6, "(' AT EXIT OF \"SUBR29\".  IOFARR, KILL =',2i8)"),
       iofarr, cmn.kill;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -31440,19 +30658,7 @@ series(
   }
   write(lunit6, "(/,/,1x)");
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -31473,19 +30679,7 @@ begplt(
   if (iprsov(38) == 0) {
     plots(0, 0, 0);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -31514,19 +30708,7 @@ fintp(
     cmn.io.close(20)
       .status("DELETE");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct axis_save
@@ -31712,19 +30894,7 @@ axis(
     "' ERROR STOP WITHIN BPA CDC MODULE  ''AXIS''  OF OVERLAY 31.     GO SEE P"
     "ROGRAM MAINTENANCE AT ONCE.')");
   stoptp(cmn);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 #endif
 }
 
@@ -32011,30 +31181,7 @@ linplt(
   statement_410:
   kut(klm) = ktsin(krv);
   statement_999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -36778,24 +35925,7 @@ misc39(
   if (iprsup >= 6) {
     write(lunit6, "(' EXIT \"MISC39\".')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     BEGIN WITH FUNCTIONS OF  MMODES=18  LIMIT ON MODES:               M32.  17
-  //C     NEXT COME FUNCTIONS OF  MPOLES=100  LIMIT ON POLES:               M32.  20
-  //C     NEXT  MXCHKR=2*SUM(2**I), I=0,1,..N  WITH 2**N .GE. MPOLES        M32.  25
-  //C     NEXT COME FUNCTIONS OF  MXKNEE=100  LIMIT ON UPS AND DOWNS:       M32.  27
-  //C     NEXT COME SCALARS, WITH REALS BEFORE INTEGERS (A LA IBM):         M32.  29
+
 }
 
 struct subr39_save
@@ -36856,10 +35986,10 @@ subr39(
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  const int& lunit1 = cmn.lunit1;
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit7 = cmn.lunit7;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit1 = cmn.lunit1;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit7 = cmn.lunit7;
+  auto& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& kolbeg = cmn.kolbeg;
   arr_ref<int> indtv(cmn.indtv, dimension(10));
@@ -39559,24 +38689,7 @@ subr39(
     "') EXCEEDED. EXECUTION TERMINATED %%%')"),
     mpoles;
   stoptp(cmn);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     BEGIN WITH FUNCTIONS OF  MMODES=18  LIMIT ON MODES:               M32.  17
-  //C     NEXT COME FUNCTIONS OF  MPOLES=100  LIMIT ON POLES:               M32.  20
-  //C     NEXT  MXCHKR=2*SUM(2**I), I=0,1,..N  WITH 2**N .GE. MPOLES        M32.  25
-  //C     NEXT COME FUNCTIONS OF  MXKNEE=100  LIMIT ON UPS AND DOWNS:       M32.  27
-  //C     NEXT COME SCALARS, WITH REALS BEFORE INTEGERS (A LA IBM):         M32.  29
+
 }
 
 void
@@ -39596,7 +38709,7 @@ punpie(
 {
   common_write write(cmn);
   // COMMON cmn
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   int& iprsup = cmn.iprsup;
   // COMMON com44
   str_arr_cref<1> brname(cmn.brname, dimension(40));
@@ -39633,20 +38746,7 @@ punpie(
   if (iprsup >= 1) {
     write(6, star), " Exit \"PUNPIE\".";
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C!COMMON  / C29B01 /   KARRAY(1)
+
 }
 
 void
@@ -40466,19 +39566,7 @@ comlr(
   ierr = ien;
   statement_1001:;
   //C     :::::::::: LAST CARD OF COMLR ::::::::::                          M29.5041
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -41072,19 +40160,7 @@ comlr2(
     }
   }
   //C     :::::::::: LAST CARD OF COMLR2 ::::::::::                         M29.5403
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -41376,19 +40452,7 @@ redu44(
   statement_9:
   i = ij + k;
   goto statement_5;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct unwind_save
@@ -41905,19 +40969,7 @@ unwind(
   //CCCC      PS(I+LI)=TPS(ISEQ(I)+LI)                                      VAX.4770
   //CCCC 1010 CONTINUE                                                      VAX.4771
   //CCC      write(*,*) 'Done with UNWIND '                                 VAX.4772
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct modal_save
@@ -42012,9 +41064,9 @@ modal(
   const auto& abuff = cmn.abuff;
   double& twopi = cmn.twopi;
   double& onehaf = cmn.onehaf;
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit7 = cmn.lunit7;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit7 = cmn.lunit7;
+  auto& lunit9 = cmn.lunit9;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
@@ -42941,20 +41993,7 @@ modal(
   lastov = nchain;
   nchain = 51;
   statement_9900:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C!COMMON  / C29B01 /   KARRAY(1)
+ 
 }
 
 void
@@ -43206,19 +42245,7 @@ symm(
   z(1) = f1 + f2;
   z(3) = f1 - f2;
   z(5) = z(3);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -43497,19 +42524,7 @@ skin(
   if (jjj == 3) {
     z = vsmall;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -43770,19 +42785,7 @@ output(
     kk = 0;
   }
   goto statement_21;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -43848,19 +42851,7 @@ outspc(
     "(' MUTUAL IMPEDANCE  POSITIVE=',f8.5,' OHM/KM    NEGATIVE=',f8.5,"
     "' OHM/KM    ZERO=',f8.4,' OHM/KM  ')"),
     c1, c2, c0;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct guts44_save
@@ -43962,13 +42953,13 @@ guts44(
   double& fltinf = cmn.fltinf;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  const int& lunit1 = cmn.lunit1;
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit3 = cmn.lunit3;
+  auto& lunit1 = cmn.lunit1;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit3 = cmn.lunit3;
   int lunit5 = cmn.lunit5;
-  const int& lunit7 = cmn.lunit7;
-  const int& lunit9 = cmn.lunit9;
-  const int& lunt13 = cmn.lunt13;
+  auto& lunit7 = cmn.lunit7;
+  auto& lunit9 = cmn.lunit9;
+  auto& lunt13 = cmn.lunt13;
   int& nright = cmn.nright;
   int& kolbeg = cmn.kolbeg;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -47365,27 +46356,7 @@ guts44(
   lastov = nchain;
   nchain = 51;
   statement_9900:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C!COMMON  / C29B01 /   KARRAY(1)
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 void
@@ -47522,20 +46493,7 @@ subr44(
     write(lunit6, "('  \"EXIT  MODULE SUBR44.\"')");
   }
   statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C!COMMON  / C29B01 /   KARRAY(1)
+
 }
 
 void
@@ -47786,26 +46744,7 @@ cxc(
     k += nph2;
   }
   goto statement_130;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 void
@@ -47854,7 +46793,7 @@ frqdom(
   common_read read(cmn);
   common_write write(cmn);
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  const int& lunit3 = cmn.lunit3;
+  auto& lunit3 = cmn.lunit3;
   arr_cref<int> ipntv(cmn.ipntv, dimension(11));
   arr_cref<int> indtv(cmn.indtv, dimension(10));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -48963,26 +47902,7 @@ frqdom(
   ioutp = n2;
   goto statement_13;
   statement_9200:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 struct xift_save
@@ -49183,19 +48103,7 @@ xift(
     n1 = n1 - 1;
   }
   return return_value;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -49351,26 +48259,7 @@ rise(
   kill = 156;
   lstat(11) = nfit;
   lstat(12) = nfit - n1 + 1;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 struct tdfit_save
@@ -50150,26 +49039,7 @@ tdfit(
     iter, error1;
   setstd();
   statement_9200:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 struct guts45_save
@@ -50281,9 +49151,9 @@ guts45(
   double& fltinf = cmn.fltinf;
   arr_cref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit3 = cmn.lunit3;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit3 = cmn.lunit3;
+  auto& lunit7 = cmn.lunit7;
   arr_ref<int> ipntv(cmn.ipntv, dimension(11));
   arr_ref<int> indtv(cmn.indtv, dimension(10));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -51955,26 +50825,7 @@ guts45(
   statement_9900:
   lastov = 45;
   statement_9999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 void
@@ -52134,19 +50985,7 @@ subr45(
   cmn.io.rewind(cmn.lunit3);
   goto statement_5655;
   statement_9999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -52850,22 +51689,7 @@ print(
     }
     write(lunit6, "('+',i2,/,1x)"), i;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
+
 }
 
 void
@@ -53119,22 +51943,7 @@ eigen(
   if (iprs47 >= 6) {
     print(cmn, a(1, 1), n, ll0, ldn);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
+
 }
 
 void
@@ -53354,22 +52163,7 @@ minv(
   if (iprs47 >= 7) {
     print(cmn, tcmpx(1, 1), m, ll0, ldn);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
+
 }
 
 void
@@ -53488,7 +52282,7 @@ prcon(
   f(dimension(ldn, ldn2));
   common_write write(cmn);
   double& twopi = cmn.twopi;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit9 = cmn.lunit9;
   int& lastov = cmn.lastov;
   int& iprsup = cmn.iprsup;
   std::complex<double>& creal1 = cmn.creal1;
@@ -54011,22 +52805,7 @@ prcon(
   if (iprs47 >= 1) {
     write(logsix, "(/,' EXIT  ''PRCON'' .')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
+
 }
 
 void
@@ -56241,7 +55020,7 @@ zymx(
   f(dimension(ldn, ldn2));
   common_write write(cmn);
   double& twopi = cmn.twopi;
-  const int& lunit3 = cmn.lunit3;
+  auto& lunit3 = cmn.lunit3;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
   std::complex<double>& czero = cmn.czero;
@@ -56585,22 +55364,7 @@ zymx(
   if (iprs47 >= 1) {
     write(logsix, "(/,' EXIT  ''ZYMX'' .')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
+
 }
 
 void
@@ -57201,10 +55965,10 @@ guts47(
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   double& speedl = cmn.speedl;
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit4 = cmn.lunit4;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit4 = cmn.lunit4;
   int lunit5 = cmn.lunit5;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit9 = cmn.lunit9;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& ipunch = cmn.ipunch;
   int& lastov = cmn.lastov;
@@ -58795,29 +57559,7 @@ guts47(
       "(/,' EXIT  ''SUBR47'' .','  NCHAIN  LUNIT5  NUMAKI  IALTER',/,17x,4i8)"),
       nchain, lunit5, numaki, ialter;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 void
@@ -59015,22 +57757,7 @@ subr47(
     lstat(18) = nchain;
   }
   cmn.lastov = 47;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     END OF COMPLEX VARIABLES                                          M29.  14
-  //C     END OF REAL VARIABLES                                             M29.  18
-  //C     END OF INTEGER VARIABLES                                          M29.  19
+
 }
 
 void
@@ -61561,7 +60288,7 @@ crdchg(
   const auto& abuff = cmn.abuff;
   double& twopi = cmn.twopi;
   double& xopt = cmn.xopt;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit9 = cmn.lunit9;
   fem::str<32>& ansi32 = cmn.ansi32;
   //
   fem::str<80> blanks = fem::char0;
@@ -61779,27 +60506,7 @@ crdchg(
   }
   statement_10200:
   FEM_STOP(0);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
 }
 
 void
@@ -61899,19 +60606,7 @@ newton(
     k, m, kcode;
   stoptp(cmn);
   statement_1:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct bctran_save
@@ -61934,7 +60629,7 @@ bctran(
   double& epsiln = cmn.epsiln;
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_ref<double> rwin(cmn.rwin, dimension(10));
   double& zhl = cmn.zhl;
@@ -62891,19 +61586,7 @@ bctran(
     "' CURRENT (EITHER IN POS. OR ZERO SEQUENCE)')");
   statement_312:
   stoptp(cmn);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -63068,7 +61751,7 @@ over41(
   double& omega = cmn.omega;
   double& xopt = cmn.xopt;
   double& statfr = cmn.statfr;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -63823,19 +62506,7 @@ over41(
     write(lunit6, format_4568);
   }
   statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct hysdat_save
@@ -63858,7 +62529,7 @@ hysdat(
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
   int& ipunch = cmn.ipunch;
@@ -64091,19 +62762,7 @@ hysdat(
   write(lunit6, format_175);
   goto statement_3548;
   statement_9200:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct arrdat_save
@@ -64137,7 +62796,7 @@ arrdat(
   const auto& abuff = cmn.abuff;
   double& ci1 = cmn.ci1;
   double& ck1 = cmn.ck1;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   //
   fem::str<8>& text1 = sve.text1;
@@ -64834,19 +63493,7 @@ arrdat(
   statement_9200:
   cmn.kill = 1000;
   statement_9900:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -64856,7 +63503,7 @@ zinold(
   common_read read(cmn);
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   int& noutpr = cmn.noutpr;
   //
   auto& lunit6 = cmn.lunit6;
@@ -65152,19 +63799,7 @@ zinold(
   goto statement_600;
   statement_620:
   noutpr = noup;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -65177,7 +63812,7 @@ over42(
   double& twopi = cmn.twopi;
   double& fltinf = cmn.fltinf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -65692,19 +64327,7 @@ over42(
     write(lunit6, format_4568);
   }
   statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 struct subr51_save
@@ -66650,19 +65273,7 @@ subr51(
     write(lunit6, format_8943), nchain, kill;
   }
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -68846,19 +67457,7 @@ over53(
     write(lunit6, "(' \"EXIT  MODULE OVER53.\" ')");
   }
   statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -69845,26 +68444,7 @@ over54(
     write(lunit6, format_4568);
   }
   statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     DECK USED ONLY BY "SEMLYEN SETUP" (OVERLAY 45) AND                M31.  60
-  //C     "HAUER SETUP" (OVERLAYS 48 AND 49) TO PROVIDE INTER-              M31.  61
-  //C     OVERLAY COMMUNICATION (TO "LINE CONSTANTS" [44],                  M31.  62
-  //C     "CABLE CONSTANTS" [47],  AND KILL=183 ERROR STOP [54]).           M31.  63
-  //C     THIS DECK WAS ADDED AS A QUICK AND DIRTY FIX WHEN WE              M31.  64
-  //C     MOVED VOLTI, ETC. FROM BLKCOM TO LABCOM (AS PART OF               M31.  65
-  //C     VARIABLE DIMENSIONING).   DECK IS ALWAYS IN MEMORY.               M31.  66
+
 }
 
 void
@@ -69924,8 +68504,8 @@ subr55(
   double& epsiln = cmn.epsiln;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
   arr_cref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit3 = cmn.lunit3;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit3 = cmn.lunit3;
+  auto& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -71215,19 +69795,7 @@ subr55(
   statement_6769:
   goto statement_6740;
   statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -71544,19 +70112,7 @@ over55(
     write(lunit6, format_4568), kill;
   }
   statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -71785,7 +70341,7 @@ vecrxx(
   array(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  const int& lunt13 = cmn.lunt13;
+  auto& lunt13 = cmn.lunt13;
   int& iprsup = cmn.iprsup;
   //
   auto& lunit6 = cmn.lunit6;
@@ -71849,19 +70405,7 @@ vecrxx(
     write(lunit6, "(' EXIT \"VECRSV\".  ARRAY(1;2;N13) =',3e15.6)"),
       array(1), array(2), array(n13);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -71874,7 +70418,7 @@ vecixx(
   karr(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  const int& lunt13 = cmn.lunt13;
+  auto& lunt13 = cmn.lunt13;
   int& iprsup = cmn.iprsup;
   //
   auto& lunit6 = cmn.lunit6;
@@ -71908,19 +70452,7 @@ vecixx(
     write(lunit6, "(' EXIT \"VECISV\".  KARR(1;2;N13) =',3i10)"),
       karr(1), karr(2), karr(n13);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void
@@ -72754,19 +71286,7 @@ store(
   zoutx(km4) = bx;
   zoutx(km5) = bx;
   zoutx(km6) = bx;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
+
 }
 
 void

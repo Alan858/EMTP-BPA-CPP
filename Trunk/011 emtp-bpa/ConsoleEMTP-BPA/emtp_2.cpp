@@ -48,19 +48,7 @@ namespace emtp {
         "(' EXIT \"PLTLU2\".  D2, VOLTI(1,IOFGND) =',3e14.5)"), d2,
         volti(1), volti(iofgnd);
     }
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
+
   }
 
   struct expchk_save
@@ -161,19 +149,7 @@ namespace emtp {
       return;
     statement_2625:;
     }
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
+
   }
 
   void
@@ -228,19 +204,7 @@ namespace emtp {
       return;
     statement_2648:;
     }
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
+
   }
 
 
@@ -264,10 +228,10 @@ namespace emtp {
   {
     common_write write(cmn);
     arr_cref<int> moncar(cmn.moncar, dimension(10));
-    const int& lunit2 = cmn.lunit2;
-    const int& lunit3 = cmn.lunit3;
-    const int& lunit9 = cmn.lunit9;
-    const int& lunt12 = cmn.lunt12;
+    auto& lunit2 = cmn.lunit2;
+    auto& lunit3 = cmn.lunit3;
+    auto& lunit9 = cmn.lunit9;
+    auto& lunt12 = cmn.lunt12;
     arr_cref<int> lstat(cmn.lstat, dimension(80));
     int& m4plot = cmn.m4plot;
     int& iplot = cmn.iplot;
@@ -347,27 +311,7 @@ namespace emtp {
     //C WRITE LITTLE TO PLOT FILE, NOT NOTHING
     iplot = cmn.intinf;
   statement_5947:;
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
-    //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-    //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-    //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-    //C REAL*4 PLOT STORA
-    //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-    //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-    //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-    //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
+
   }
 
   struct reques_save
@@ -445,7 +389,7 @@ namespace emtp {
     arr_ref<double> flstat(cmn.flstat, dimension(20));
     double& pu = cmn.pu;
     arr_ref<int> moncar(cmn.moncar, dimension(10));
-    const int& lunit2 = cmn.lunit2;
+    auto& lunit2 = cmn.lunit2;
     int& nright = cmn.nright;
     int& nfrfld = cmn.nfrfld;
     int& kolbeg = cmn.kolbeg;
@@ -2034,22 +1978,6 @@ namespace emtp {
     if (iprsup >= 1) {
       write(lunit6, "('  \"EXIT  MODULE REQUES.\"')");
     }
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
-    //C!REAL*8        BUSUM
-    //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-    //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
   }
 
 
@@ -2263,51 +2191,6 @@ namespace emtp {
       write(lunit6, "(' ANOTHER TACS SOURCE CHANGING CARD')");
     }
   statement_2868:;
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
-    //C
-    //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-    //C!REAL*8  BUS
-    //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-    //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-    //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-    //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-    //C!w DIMENSION PARSUP(1), AWKCS (1)
-    //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-    //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-    //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-    //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-    //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-    //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-    //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-    //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-    //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-    //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-    //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-    //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-    //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-    //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-    //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-    //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-    //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-    //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-    //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-    //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-    //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-    //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-    //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-    //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
   }
 
 
@@ -2346,16 +2229,16 @@ namespace emtp {
     auto& date1= cmn.date1;
     auto& tclock= cmn.tclock;
     auto& abuff = cmn.abuff;
-    const int& lunit1 = cmn.lunit1;
+    auto& lunit1 = cmn.lunit1;
     auto lunit2 = cmn.lunit2;
-    const int& lunit3 = cmn.lunit3;
+    auto& lunit3 = cmn.lunit3;
     auto lunit4 = cmn.lunit4;
-    const int& lunt10 = cmn.lunt10;
-    const int& lunt11 = cmn.lunt11;
-    const int& lunt12 = cmn.lunt12;
-    const int& lunt13 = cmn.lunt13;
-    const int& lunt14 = cmn.lunt14;
-    const int& lunt15 = cmn.lunt15;
+    auto& lunt10 = cmn.lunt10;
+    auto& lunt11 = cmn.lunt11;
+    auto& lunt12 = cmn.lunt12;
+    auto& lunt13 = cmn.lunt13;
+    auto& lunt14 = cmn.lunt14;
+    auto& lunt15 = cmn.lunt15;
     arr_ref<int> nbyte(cmn.nbyte, dimension(6));
     arr_ref<int> iprsov(cmn.iprsov, dimension(39));
     int& m4plot = cmn.m4plot;
@@ -2771,22 +2654,6 @@ namespace emtp {
     if (iprsup >= 1) {
       write(lunit6, "('  EXIT  MODULE \"SWMODF.\" ')");
     }
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
-    //C
-    //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-    //C!REAL*8  BUS
   }
 
 
@@ -2870,11 +2737,11 @@ void over1(common& cmn)
   arr_ref<double> voltbc(cmn.voltbc, dimension(50));
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit1 = cmn.lunit1;
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit3 = cmn.lunit3;
-  const int& lunit4 = cmn.lunit4;
-  const int& lunit5 = cmn.lunit5;
+  auto& lunit1 = cmn.lunit1;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit3 = cmn.lunit3;
+  auto& lunit4 = cmn.lunit4;
+  auto& lunit5 = cmn.lunit5;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -4128,25 +3995,6 @@ statement_9800:
   if (iprsup >= 1) {
     write(lunit6, "(' \"EXIT  MODULE OVER1.\" ')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
 } // over1
 
 
@@ -4168,7 +4016,7 @@ inlmfs(
   FEM_CMN_SVE(inlmfs);
   common_read read(cmn);
   common_write write(cmn);
-  const int& lunt13 = cmn.lunt13;
+  auto& lunt13 = cmn.lunt13;
   int& numcrd = cmn.numcrd;
   int& iprspy = cmn.iprspy;
   int& limcrd = cmn.limcrd;
@@ -4626,27 +4474,6 @@ statement_1832:
   numcrd = j;
   //C     write (*,*) ' Exit INLMFS.   NUMDCD, NUMCRD =',
   //C    1                             NUMDCD, NUMCRD
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 
@@ -4830,22 +4657,6 @@ statement_3742:
 statement_3719:
   kill = 37;
 statement_9999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 struct nonln2_save
@@ -5905,22 +5716,6 @@ statement_9999:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE NONLN2.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 struct distr2_save
@@ -8472,22 +8267,6 @@ statement_9999:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE DISTR2.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 
@@ -11189,30 +10968,6 @@ statement_9900:
       "10i8)"),
       ibr, inonl, ntot, kill;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 } // over2
 
 void
@@ -11394,8 +11149,6 @@ void over3(common& cmn)
     text3 = "CADE";
     text4 = "    ";
   }
-  int i = fem::int0;
-  int j = fem::int0;
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = lunit6;
   int ll0 = fem::int0;
@@ -11452,7 +11205,8 @@ void over3(common& cmn)
   auto node2  = ArraySpan(reinterpret_cast<int*>(&cmn.voltk(1)), cmn.voltk.size() * 2);
   auto& ipoint = cmn.iprsov(35);
   auto& locz11 = cmn.iprsov(36);
-
+  int i = 1;
+  int j = 1;
   arr_2d<1000, 1000, int> locatn(fem::fill0);
   locatn(i, j) = (j * j - j) / 2 + i;
   if (iprsup >= 1) {
@@ -13152,22 +12906,6 @@ statement_3458:
   if (cmn.noutpr == 0) {
     write(kunit6, "('+U.M. DATA BEGINS.  LIST-25 CELLS USED =',i5)"), n5;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
 }
 
 
@@ -15290,55 +15028,6 @@ statement_17970:
   //C  END READING SM TYPE-59 DATA INPUT $$$$$$$$$$$$$$$$$$$$$$$$$$         M42.4426
 statement_9600:
   stoptp(cmn);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
 }
 
 
@@ -17085,55 +16774,6 @@ statement_18020:
   return;
 statement_9600:
   stoptp(cmn);
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
 }
 
 
@@ -17350,22 +16990,6 @@ statement_54174:
     goto statement_54147;
   }
 statement_54180:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 struct smdat_save
@@ -19023,57 +18647,6 @@ statement_9999:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE SMDAT.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 
@@ -20045,68 +19618,6 @@ statement_9000:
   lstat(16) = iprint;
   kill = 1;
 statement_9999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 
@@ -21151,51 +20662,6 @@ statement_9200:
     write(lunit6, format_4568);
   }
 statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
 } // over5
 
 
@@ -21282,19 +20748,6 @@ statement_9000:
   if (iprsup >= 2) {
     write(lunit6, "(' KOFVEC =',20i6)"), kofvec;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 void
@@ -21397,47 +20850,6 @@ statement_5:
   irr = icc;
   ic = irrr;
   goto statement_99;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
 }
 
 // NETWORK CONNECTIVITY OUTPUT. SETUP OF TRANSIENT-NETWORK
@@ -21449,7 +20861,7 @@ void over6(
   fem::str<8>& bus5 = cmn.bus5;
   fem::str<8>& trash = cmn.trash;
   fem::str<8>& terra = cmn.terra;
-  const int& lunit2 = cmn.lunit2;
+  auto& lunit2 = cmn.lunit2;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   arr_cref<int> nbyte(cmn.nbyte, dimension(6));
   int& inonl = cmn.inonl;
@@ -23649,22 +23061,6 @@ statement_9204:
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT \"FRQCHK\".')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 void
@@ -25174,50 +24570,6 @@ statement_2300:
   statement_2350:;
   }
 statement_2400:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
 }
 
 
@@ -27445,50 +26797,6 @@ statement_14000:
       loopss(10), kconst, ibr, cmn.inonl, cmn.kswtch, cmn.istead,
       cmn.omegrf;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
 }
 
 void
@@ -27635,19 +26943,6 @@ equiv(
     goto statement_4;
   statement_5:;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 
@@ -27781,8 +27076,8 @@ void over8(
   double& onehaf = cmn.onehaf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit2 = cmn.lunit2;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit2 = cmn.lunit2;
+  auto& lunit9 = cmn.lunit9;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& inonl = cmn.inonl;
   int& it2 = cmn.it2;
@@ -29761,8 +29056,6 @@ void over9(
   arr_ref<double> fixbu8(cmn.fixbu8, dimension(1));
   arr_ref<double> fixbu9(cmn.fixbu9, dimension(1));
   //
-  int i = fem::int0;
-  int j = fem::int0;
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
   int next = fem::int0;
@@ -29795,6 +29088,8 @@ void over9(
   int isubs2 = fem::int0;
   int icas = fem::int0;
   //C     FOLLOWING CARRIES "NEXT" AMONG OVER6, INSERT, OVER7, & OVER9:     M37.3694
+  int i = 1;
+  int j = 1;
   //locatn(i, j) = (j * j - j) / 2 + i;
   next = loopss(11);
   iofkol = cmn.iofgnd;
@@ -30544,47 +29839,6 @@ statement_9990:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE OVER9.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
 } // over9
 
 void
@@ -30707,22 +29961,6 @@ sseqiv(
     volti(kb) = volti(kb) * den;
     voltk(kb) = -voltk(kb) * den / omegal;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 
@@ -31530,8 +30768,6 @@ void over10(
   arr_ref<int> iloc(cmn.iloc, dimension(30000));
   arr_ref<double> gnd(cmn.gnd, dimension(30000));
   //
-  int i = fem::int0;
-  int j = fem::int0;
   auto& lunit6 = cmn.lunit6;
   int n14 = fem::int0;
   int ia = fem::int0;
@@ -31643,6 +30879,8 @@ void over10(
 
   auto itemp = ArraySpan(reinterpret_cast<int*>(&voltk(1)), voltk.size()*2);
   arr<int, 2> locatn(dimension(1000, 1000), fem::fill0);
+  int i = 1;
+  int j = 1;
   locatn(i, j) = (j * j - j) / 2 + i;
   if (iprsup >= 1) {
     write(lunit6,
@@ -33111,47 +32349,6 @@ statement_9999:
     write(lunit6, format_4568);
   }
 statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
 } // over10
 
 
@@ -33343,22 +32540,6 @@ statement_2051:
   write(lunit6, format_2052), eim, thm, curim, cam, qm;
   write(lunit6, format_2052);
 statement_4500:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 void
@@ -33620,27 +32801,6 @@ statement_13:
       }
     }
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 void
@@ -34844,82 +34004,6 @@ statement_918:
   if (iprsup >= 1) {
     write(lunit6, "(/,' UPON EXIT  ''SMINIT'' ,  KCONST =',i3)"), kconst;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 
@@ -34977,9 +34061,9 @@ void pltfil(
 
   if (volti(1) < 0) return; // the last item is -9999
 
-  cmn.out_stream << SState("g9.4") << std::left << volti[0]; // time
+  cmn.out_stream << SState("f10.6") << volti[0]; // time
   for (int i = 1; i < k; ++i) {
-    cmn.out_stream << ',' << SState("g11.4") << volti[i];
+    cmn.out_stream << ',' << SState("f11.4") << volti[i];
   }
   cmn.out_stream << '\n';
 
@@ -35159,7 +34243,7 @@ void over11(
   double& onehaf = cmn.onehaf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit4 = cmn.lunit4;
+  auto& lunit4 = cmn.lunit4;
   arr_ref<int> lstat(cmn.lstat, dimension(80));
   int& icheck = cmn.icheck;
   int& iout = cmn.iout;
@@ -35262,8 +34346,6 @@ void over11(
     //w text6 = "PCTANG";
     nfsout = 0;
   }
-  int i = fem::int0;
-  int j = fem::int0;
   int ll2 = fem::int0;
   auto& lunit6 = cmn.lunit6;
   int llm1 = fem::int0;
@@ -35403,6 +34485,8 @@ void over11(
   //C      PRECEDING "JCH2" USES "IMFD" JUST FOR "FREQUENCY SCAN".          M35.1236
   //C      AS SUCH, THERE MUST BE NO FREQ-DEPEND SOURCES PRESENT.           M35.1237
   //arr<int, 2> locatn(dimension(1000, 1000), fem::fill0); //w
+  int i = 1;
+  int j = 1;
   //locatn(i, j) = (j * j - j) / 2 + i;
   auto& knt = cmn.moncar(1);
   ll2 = 2;
@@ -36867,55 +35951,6 @@ statement_9900:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE OVER11.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 } // over11
 
 
@@ -37234,51 +36269,6 @@ statement_10:
   if (i > 0) {
     goto statement_1234;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
 }
 
 void
@@ -37485,51 +36475,6 @@ statement_10:
   if (i > 0) {
     goto statement_1234;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
 }
 
 struct sandnm_save
@@ -37698,19 +36643,6 @@ statement_2632:
   }
   return_value = a(L);
   return return_value;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 
@@ -37782,19 +36714,6 @@ randnm(
   return_value = sandnm(cmn, x);
   statement_9800:
   return return_value;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 
@@ -40242,52 +39161,6 @@ statement_9000:
       "e15.5)"),
       istep, nchain, ioutcs, t;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
 }
 
 
@@ -40881,56 +39754,6 @@ elecyy(
     }
   }
 statement_2500:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 void
@@ -41101,56 +39924,6 @@ premec(
     }
   statement_1:;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 void
@@ -41234,22 +40007,6 @@ dteqiv(
       "(' EQUIVALENT BRANCH IMPEDANCES (MODAL)',4x,2e22.10)"), azr,
       azi;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 void
@@ -41376,11 +40133,11 @@ void over12(
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   double& angle = cmn.angle;
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit3 = cmn.lunit3;
+  auto& lunit3 = cmn.lunit3;
   int lunit5 = cmn.lunit5;
-  const int& lunit9 = cmn.lunit9;
-  const int& lunt10 = cmn.lunt10;
-  const int& lunt12 = cmn.lunt12;
+  auto& lunit9 = cmn.lunit9;
+  auto& lunt10 = cmn.lunt10;
+  auto& lunt12 = cmn.lunt12;
   arr_cref<int> kprchg(cmn.kprchg, dimension(6));
   arr_cref<int> multpr(cmn.multpr, dimension(5));
   arr_cref<int> ipntv(cmn.ipntv, dimension(11));
@@ -43476,85 +42233,6 @@ statement_9800:
     write(lunit6, format_4568);
   }
 statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 } // over12
 
 void
@@ -43725,22 +42403,6 @@ fdint(
       }
     }
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 double
@@ -45405,22 +44067,6 @@ statement_9200:
       "(' EXIT  MODULE \"LAST13\".  KILL, LSTAT(19) =',2i8)"), kill,
       lstat(19);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 void
@@ -45584,22 +44230,6 @@ breqiv(
     }
   }
 statement_15:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 }
 
 
@@ -48570,22 +47200,6 @@ statement_9800:
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT MODULE  \"OVER13\".')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 } // over13
 
 void
@@ -49047,56 +47661,6 @@ past(
     }
   }
 statement_2500:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 struct zincox_save
@@ -50014,30 +48578,6 @@ statement_4567:
       "(' EXIT MODULE \"ZINCOX\".  KILL, LSTAT(19) =',2i8)"), kill,
       lstat(19);
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 // FORM (Y) FOR THE TRANSIENTS NETWORK. TRIANGULARIZE THE     
@@ -51151,27 +49691,6 @@ smout(
   d12 = nbyte(4);
   d12 = (3 * nsmout) * d12 / nbyte(3);
   cmn.msmout = d12 + 1.0f;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 
@@ -51222,8 +49741,8 @@ void over15(
   double& fltinf = cmn.fltinf;
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit4 = cmn.lunit4;
-  const int& lunit9 = cmn.lunit9;
+  auto& lunit4 = cmn.lunit4;
+  auto& lunit9 = cmn.lunit9;
   arr_cref<int> kprchg(cmn.kprchg, dimension(6));
   arr_cref<int> multpr(cmn.multpr, dimension(5));
   arr_ref<int> lstat(cmn.lstat, dimension(80));
@@ -53093,30 +51612,6 @@ statement_9000:
       "(' EXIT \"ANALYT\".  NTOT, IBR, NUMRMP, KILL =',4i8)"), ntot,
       ibr, numrmp, kill;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 void
@@ -53381,19 +51876,6 @@ statement_5681:
       }
     }
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
 }
 
 
@@ -54369,60 +52851,6 @@ statement_9200:
   lastov = nchain;
   nchain = 51;
 statement_9999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 struct subts1_save
@@ -54823,56 +53251,6 @@ statement_214:
   }
   write(lunit6, "('  \"EXIT  MODULE INCREM.\"')");
 statement_216:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
 }
 
 
@@ -55804,65 +54182,6 @@ update(
   if (iprsup > 0) {
     write(lunit6, "('  \"EXIT  MODULE UPDATE.\"')");
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 struct yserlc_save
@@ -56092,30 +54411,6 @@ statement_3000:
   statement_8276:;
   }
 statement_9000:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 
@@ -58910,55 +57205,6 @@ statement_21000:
       "17x,4i8,e14.5,/)"),
       istart, loopss(1), loopss(8), numum, t;
   }
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
-  //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
 }
 
 
@@ -63855,7 +62101,7 @@ katalg(
 {
   common_read read(cmn);
   common_write write(cmn);
-  const int& lunit2 = cmn.lunit2;
+  auto& lunit2 = cmn.lunit2;
   int& memsav = cmn.memsav;
   int& ltlabl = cmn.ltlabl;
   int& indbuf = cmn.indbuf;
@@ -63957,27 +62203,6 @@ statement_2634:
 statement_9700:
   cmn.kbreak = 1;
 statement_9800:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C     THIS DECK IS USED ONLY BY INTERACTIVE EXECUTION MODULES           M35.  11
-  //C     WHICH BEGIN WITH "EMTSPY".  NOTE "DECK29" WORKING SPACE:          M35.  12
-  //C!COMMON /C29B01/  KARRAY(1)  ! "DECK29" STORES PLOT POINTS
-  //C REAL*4 PLOT STORA
-  //C!w EQUIVALENCE  ( PLTBUF(1), KARRAY(1) )  ! /C29B01/ PLOT POINTS
-  //C LOGICAL VARIABLE FOR "INQUIRE" USAGE
-  //C       END REALS, NEXT COME INTEGERS, IN NEW COMMON BLOCK:             M35.  20
-  //C!w EQUIVALENCE (KAR1, FKAR1), (KAR2, FKAR2)
 }
 
 // PUNCH AND PRINT TERMINAL CONDITIONS (IF REQUESTED).          
@@ -63996,7 +62221,7 @@ void over20(
   arr_ref<double> flstat(cmn.flstat, dimension(20));
   double& angle = cmn.angle;
   //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  const int& lunit7 = cmn.lunit7;
+  auto& lunit7 = cmn.lunit7;
   int& max99m = cmn.max99m;
   arr_cref<int> ipntv(cmn.ipntv, dimension(11));
   arr_cref<int> lstat(cmn.lstat, dimension(80));
@@ -64612,22 +62837,6 @@ statement_9850:
     write(lunit6, format_4568);
   }
 statement_99999:;
-  //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-  //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-  //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-  //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-  //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-  //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-  //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-  //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-  //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-  //C                                        PRECEDING ARRAYS).                                     M10.   5
-  //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-  //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-  //C                PRECEDING SCALARS).                                    M10.   9
-  //C
-  //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-  //C!REAL*8  BUS
 } // over20
 
 
@@ -64792,55 +63001,6 @@ statement_99999:;
     //C          MISC. DATA PARAMETER  'ICAT'  IS POSITIVE.                   
     //C                                                                       
   statement_9000:;
-    //C!w EQUIVALENCE  ( KUNIT6, LUNIT6 )
-    //C     FLAG-1.   BEGIN CLASS-1  /BLANK/  VARIABLES                       M10.   1
-    //C               (ALPHANUMERIC VARIABLES, CAPABLE OF STORING  A6  INFO). M10.   2
-    //C!REAL*8           BUS1, BUS2, BUS3, BUS4, BUS5, BUS6
-    //C!REAL*8           TRASH, BLANK, TERRA, USERID, BRANCH, COPY
-    //C!REAL*8           CSEPAR, CHCONT, TEXCOL, TEXTA6
-    //C!REAL*8           DATE1, TCLOCK, VSTACS, ABUFF
-    //C     FLAG-2.            BEGIN CLASS-2  /BLANK/  VARIABLES                       M10.   3
-    //C                                        (FLOATING-POINT NUMERIC USAGE ONLY, WITH SCALARS        M10.   4
-    //C                                        PRECEDING ARRAYS).                                     M10.   5
-    //C     FLAG-3.   BEGIN CLASS-3  /BLANK/  VARIABLES                       M10.   7
-    //C               (INTEGER-NUMERIC USAGE ONLY, WITH ARRAYS                M10.   8
-    //C                PRECEDING SCALARS).                                    M10.   9
-    //C
-    //C     %%%%  BOUNDARY FOR OVER6 AND OVER8 "LABCOM" DUMPING               M32.  66
-    //C!REAL*8  BUS
-    //C     000000            DEFINITION OF TABLE NAMES                 000000M22.  15
-    //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-    //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-    //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-    //C!w DIMENSION PARSUP(1), AWKCS (1)
-    //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-    //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-    //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-    //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-    //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-    //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-    //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-    //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-    //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-    //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-    //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-    //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-    //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-    //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-    //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-    //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-    //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-    //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-    //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-    //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-    //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-    //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-    //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-    //C replace ISBLK/KSUS/IUTY/ILNTAB/ICOLCS/J
-    //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-    //C!REAL*8        BUSUM
-    //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-    //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
   }
 
   void fixs10(common& cmn)
