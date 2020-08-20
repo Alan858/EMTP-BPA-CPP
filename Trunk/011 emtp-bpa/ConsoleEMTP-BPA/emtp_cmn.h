@@ -523,7 +523,7 @@ struct common_cmn
   int lwt;
   int last;
   int npower;
-  int max;
+  int maxpe;
   int lsiz12;
   int lsmout;
   int limass;
@@ -754,7 +754,7 @@ struct common_cmn
     lwt(fem::int0),
     last(fem::int0),
     npower(fem::int0),
-    max(fem::int0),
+    maxpe(fem::int0),
     lsiz12(fem::int0),
     lsmout(fem::int0),
     limass(fem::int0),
@@ -4662,7 +4662,7 @@ struct common :
     arr_ref<T>& intb,
     int const i0,
     int const n) {
-    for (int i = i0, cnt = std::min(n, int(intb.size_1d() - i0 + 1)); i <= cnt; ++i)
+    for (int i = i0, cnt = std::min(i0 + n, int(intb.size_1d())); i < cnt; ++i)
       intb(i) = 0; // 1 based
   }
   template<typename T>
@@ -4677,7 +4677,7 @@ struct common :
     vectorEx<T>& intb,
     int const i0,
     int const n) {
-    for (int i = i0, cnt = std::min(n, int(intb.size())); i <= cnt; ++i)
+    for (int i = i0, cnt = std::min(i0 + n, int(intb.size())); i < cnt; ++i)
       intb(i) = 0; // 1 based
   }
   template<typename T>
