@@ -12393,6 +12393,7 @@ catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
+
 void tdelay(
   common& cmn,
   double& d8) try
@@ -21172,6 +21173,7 @@ bool data_input(common& cmn) try {
 
   std::string sLine;
   for (int j = 1; std::getline(cmn.inp_stream, sLine); ++j) {
+    sLine.resize(80, ' ');
     file6(krdoff + j) = sLine;
     if (kcut == 1) {
       goto statement_5486;
@@ -21235,28 +21237,28 @@ void datain(
   bool& logvar = cmn.logvar;
   fem::str<1>& char1 = cmn.char1;
   fem::str<80>& buff77 = cmn.buff77;
-  str_arr_ref<1> file6(cmn.file6, dimension(30000));
+  auto& file6 = cmn.file6;
   fem::str<80>& blan80 = cmn.blan80;
   fem::str<80>& prom80 = cmn.prom80;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
-  fem::str<8>& ansi8 = cmn.ansi8;
-  fem::str<32>& ansi32 = cmn.ansi32;
-  fem::str<80>& answ80 = cmn.answ80;
-  fem::str<132>& munit6 = cmn.munit6;
-  arr_ref<int> kssfrq(cmn.kssfrq, dimension(3002));
-  arr_ref<int> kode(cmn.kode, dimension(3002));
-  arr_ref<int> kpsour(cmn.kpsour, dimension(3002));
+  const auto& digit = cmn.digit;
+  auto& ansi8 = cmn.ansi8;
+  auto& ansi32 = cmn.ansi32;
+  auto& answ80 = cmn.answ80;
+  auto& munit6 = cmn.munit6;
+  auto& kssfrq = cmn.kssfrq;
+  auto& kode = cmn.kode;
+  auto& kpsour = cmn.kpsour;
   int& kexact = cmn.kexact;
   int& numrun = cmn.numrun;
   //
   fem::str<6>& dumnam = sve.dumnam;
   fem::str<32>& filsav = sve.filsav;
   int& komlev = sve.komlev;
-  arr_ref<int> lentyp(sve.lentyp, dimension(18));
+  auto& lentyp = sve.lentyp;
   int& nchpre = sve.nchpre;
   int& nchsuf = sve.nchsuf;
   int& numtyp = sve.numtyp;
-  str_arr_ref<1> typdat(sve.typdat, dimension(18));
+  auto& typdat = sve.typdat;
   if (is_called_first_time) {
     komlev = -1;
     nchpre = 0;
@@ -22732,16 +22734,16 @@ statement_1724:
   n24 = numcrd;
   //C  INITIALIZE CARD NUMBER OF ORIGINAL DATA DONE
   j = 0;
-  if (file6(1)(1, 9) != "C $ATTACH") {
-    goto statement_2445;
-  }
-  //C INCREMENT DESTINATION ADDRESS PAST THIS
-  n24++;
-  //C TRANSFER CASE-MARKER CARD BELOW
-  file6(n24) = file6(1);
-  //C UPDATE NUMBER OF ORIGINAL DATA CARDS NOW DONE
-  j = 1;
-  statement_2445:
+  //if (file6(1)(1, 9) != "C $ATTACH") {
+  //  goto statement_2445;
+  //}
+  ////C INCREMENT DESTINATION ADDRESS PAST THIS
+  //n24++;
+  ////C TRANSFER CASE-MARKER CARD BELOW
+  //file6(n24) = file6(1);
+  ////C UPDATE NUMBER OF ORIGINAL DATA CARDS NOW DONE
+  //j = 1;
+  //statement_2445:
   if (file6(j + 1)(1, 16) != "BEGIN NEW DATA C") {
     goto statement_2446;
   }
@@ -22827,6 +22829,10 @@ statement_1724:
     n14 = fem::index(file6(j), typdat(k)(1, n8));
     //C YES, ONE OF OUR DATA CLASSES FOUN
     if (n14 > 0) {
+      if (k == 11) { //w break a loop bug for case0004
+        file6(j)(1, 2) = "C ";
+        goto statement_2493;
+      }
       goto statement_2469;
     }
     //C END  DO 2464  LOOP SEEKING TO IDENTIFY BLANK CARD
@@ -71718,9 +71724,7 @@ void program_main(
   auto s10 = aa2(1);
 
   }
-
 #endif // _DEBUG // test
-
 
   cmn.inp_stream.open(inpFile);
   if (!cmn.inp_stream.good()) {

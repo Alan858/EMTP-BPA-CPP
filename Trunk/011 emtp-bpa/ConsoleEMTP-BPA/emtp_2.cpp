@@ -2799,6 +2799,7 @@ void over1(common& cmn)
   int& iprsup = cmn.iprsup;
   int& intinf = cmn.intinf;
   int& lsyn = cmn.lsyn;
+  auto& maxpe = cmn.maxpe;
   int& kssout = cmn.kssout;
   arr_ref<int> loopss(cmn.loopss, dimension(13));
   int& limstp = cmn.limstp;
@@ -2872,7 +2873,6 @@ void over1(common& cmn)
   auto& kunit6 = cmn.lunit6;
   arr_1d<8, int> lstacs(fem::fill0);
   int j = fem::int0;
-  int maxpe = fem::int0;
   double d13 = fem::double0;
   double d1 = fem::double0;
   double d2 = fem::double0;
@@ -8307,6 +8307,7 @@ void over2(common& cmn) // INPUT BRANCH DATA.
   int& lnonl = cmn.lnonl;
   int& nv = cmn.nv;
   int& npower = cmn.npower;
+  int& maxpe = cmn.maxpe;
   int& lsiz12 = cmn.lsiz12;
   arr_ref<int> ktrlsw(cmn.ktrlsw, dimension(8));
   int& num99 = cmn.num99;
@@ -8536,7 +8537,6 @@ void over2(common& cmn) // INPUT BRANCH DATA.
   int idumy = fem::int0;
   int itrans = fem::int0;
   int n8 = fem::int0;
-  int maxpe = fem::int0;
   int mpower = fem::int0;
   int n16 = fem::int0;
   fem::str<8> text15 = fem::char0;
@@ -11205,9 +11205,10 @@ void over3(common& cmn)
   auto node2  = ArraySpan(reinterpret_cast<int*>(&cmn.voltk(1)), cmn.voltk.size() * 2);
   auto& ipoint = cmn.iprsov(35);
   auto& locz11 = cmn.iprsov(36);
+
+  arr_2d<1000, 1000, int> locatn(fem::fill0);
   int i = 1;
   int j = 1;
-  arr_2d<1000, 1000, int> locatn(fem::fill0);
   locatn(i, j) = (j * j - j) / 2 + i;
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER3.\"')");
@@ -13112,7 +13113,7 @@ umdatb(
   int& ibr = cmn.ibr;
   int& kssout = cmn.kssout;
   arr_cref<int> loopss(cmn.loopss, dimension(13));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_ref<int> kswtyp(cmn.kswtyp, dimension(1200));
   arr_ref<double> topen(cmn.topen, dimension(3600));
   arr_ref<double> c(cmn.c, dimension(10000));
@@ -13138,8 +13139,6 @@ umdatb(
   str_arr_ref<1> bus(cmn.bus, dimension(3002));
   int& ncltot = cmn.ncltot;
   arr_ref<int> ndum(cmn.ndum, dimension(40));
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
   arr_ref<int> ismtac(cmn.ismtac, dimension(20));
   int& ntotac = cmn.ntotac;
   int& lbstac = cmn.lbstac;
@@ -13224,10 +13223,16 @@ umdatb(
     "' IN THE FIRST QUADRANT. THE MACHINE CONCERNED',' IS UM NUMBER',i4,'.')";
   //C!w n1, n2, n3, n4 changed to nz1, nz2, nz3, nz4
   //C  START READING SM TYPE -50 TO 59 DATA INPUT FORMAT **********         M42.3148
-  auto kaliu =  *reinterpret_cast<int*>(&sptacs(11));
-  auto kiuty =  *reinterpret_cast<int*>(&sptacs(13));
-  auto kud1 =   *reinterpret_cast<int*>(&sptacs(14));
-  auto klntab = *reinterpret_cast<int*>(&sptacs(18));
+
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
+
+  auto& kaliu =  isptacs(11);
+  auto& kiuty =  isptacs(13);
+  auto& kud1 =   isptacs(14);
+  auto& klntab = isptacs(18);
+
   auto& niu = lstat(54);
   cmn.initum = 1;
   cmn.nsmach = numum;
@@ -15031,7 +15036,6 @@ statement_9600:
 }
 
 
-
 struct umdata_save
 {
   fem::str<8> tesm1;
@@ -15196,7 +15200,7 @@ umdata(
   int& ntot = cmn.ntot;
   int& ibr = cmn.ibr;
   arr_ref<int> loopss(cmn.loopss, dimension(13));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_ref<double> c(cmn.c, dimension(10000));
   arr_ref<double> tr(cmn.tr, dimension(20000));
   arr_ref<double> tx(cmn.tx, dimension(20000));
@@ -15222,8 +15226,9 @@ umdata(
   int& nclfix = cmn.nclfix;
   int& numfix = cmn.numfix;
   int& nsmach = cmn.nsmach;
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
   //
   fem::str<8>& tesm1 = sve.tesm1;
   fem::str<8>& tesm9 = sve.tesm9;
@@ -15361,6 +15366,7 @@ umdata(
   double rppair = fem::double0;
   int kcl = fem::int0;
   int n4 = fem::int0;
+
   static const char* format_1207 = "(13a6,a2)";
   static const char* format_13206 =
     "(/,' ERROR STOP.  JUST-READ COIL CARD',' BEARS ILLEGAL NODE NAME:',a6)";
@@ -17066,7 +17072,7 @@ smdat(
   int& it = cmn.it;
   int& ibr = cmn.ibr;
   int& lsyn = cmn.lsyn;
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_ref<double> c(cmn.c, dimension(10000));
   arr_ref<double> tr(cmn.tr, dimension(20000));
   arr_ref<double> tx(cmn.tx, dimension(20000));
@@ -17082,8 +17088,9 @@ smdat(
   arr_ref<int> mbus(cmn.mbus, dimension(3000));
   arr_cref<double> sfreq(cmn.sfreq, dimension(100));
   arr_ref<int> ismtac(cmn.ismtac, dimension(20));
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
   int& ntotac = cmn.ntotac;
   int& lbstac = cmn.lbstac;
   arr_ref<double> x1(cmn.x1, dimension(36));
@@ -18649,7 +18656,6 @@ statement_9999:
   }
 }
 
-
 struct over5a_save
 {
   fem::str<8> text12;
@@ -18704,7 +18710,7 @@ over5a(
   int& it = cmn.it;
   int& ntot = cmn.ntot;
   int& ibr = cmn.ibr;
-  arr_cref<double> sptacs(cmn.sptacs, dimension(90000));
+  const auto& sptacs = cmn.sptacs;
   arr_ref<int> kswtyp(cmn.kswtyp, dimension(1200));
   arr_ref<double> topen(cmn.topen, dimension(3600));
   arr_ref<double> crit(cmn.crit, dimension(1200));
@@ -18745,8 +18751,9 @@ over5a(
 
   str_arr_ref<1> bus(cmn.bus, dimension(3002));
   arr_ref<int> ksmspy(cmn.ksmspy, dimension(3));
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&cmn.sptacs(1)), sptacs.size() * 2);
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
   //
   fem::str<8>& text12 = sve.text12;
   if (is_called_first_time) {
@@ -18793,7 +18800,7 @@ over5a(
   int ndx2 = fem::int0;
   static const char* format_6304 = "(i2,a6,i2)";
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * 2);
+  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * sizeof(spum(1)) / sizeof(int));
 
   auto& klntab = sptacs(18);
   ll2 = 2;
@@ -19384,9 +19391,10 @@ statement_362:
   i = -i;
 statement_331:
   node(kconst) = i;
-  k13 = j30 + machfl;
-  if (0 < k13 && k13 <= ismdat.size()) //w added due to K13 == 0 bug
+  if (0 < machfl) {
+    k13 = j30 + machfl;
     ismdat(k13) = i;
+  }
   if (n2 > 0) {
     goto statement_4266;
   }
@@ -19622,7 +19630,6 @@ statement_9999:;
 
 
 
-
 struct over5_save
 {
   fem::str<8> text1;
@@ -19692,6 +19699,7 @@ void over5(
   int& ifdep = cmn.ifdep;
   int& lfdep = cmn.lfdep;
   int& npower = cmn.npower;
+  int& maxpe = cmn.maxpe;
   int& lastov = cmn.lastov;
   int& noutpr = cmn.noutpr;
   int& ktab = cmn.ktab;
@@ -19713,7 +19721,7 @@ void over5(
   arr_cref<double> zinf(cmn.zinf, dimension(5));
   arr_cref<double> eta(cmn.eta, dimension(5));
   arr_ref<int> koutvp(cmn.koutvp, dimension(508));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_ref<int> kswtyp(cmn.kswtyp, dimension(1200));
   arr_ref<double> topen(cmn.topen, dimension(3600));
   arr_ref<double> crit(cmn.crit, dimension(1200));
@@ -19736,8 +19744,6 @@ void over5(
   arr_ref<int> namesw(cmn.namesw, dimension(1200));
   str_arr_ref<1> bus(cmn.bus, dimension(3002));
   arr_ref<double> a8sw(cmn.a8sw, dimension(400));
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
   //
   fem::str<8>& text1 = sve.text1;
   fem::str<8>& text13 = sve.text13;
@@ -19765,9 +19771,6 @@ void over5(
   }
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
-  //int kxtcs = fem::int0;
-  //int klntab = fem::int0;
-  int nuk = fem::int0;
   int i = fem::int0;
   int n1 = fem::int0;
   int n3 = fem::int0;
@@ -19791,7 +19794,6 @@ void over5(
   int iprint = fem::int0;
   int n24 = fem::int0;
   double atemp = fem::double0;
-  int maxpe = fem::int0;
   int mpower = fem::int0;
   double adube1 = fem::double0;
   double adube2 = fem::double0;
@@ -19821,15 +19823,19 @@ void over5(
   static const char* format_4568 = "('  \"EXIT  MODULE OVER5.\"')";
   static const char* format_8026 = "(/,' KOUTVP, KOUTIE',/(1x,10i10))";
 
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
+  auto& kxtcs =  isptacs(17);
+  auto& klntab = isptacs(18);
+
   auto& knt = cmn.moncar(1);
   auto& isw = cmn.moncar(4);
   auto& idist = cmn.moncar(5);
   auto& itest = cmn.moncar(6);
   auto& kloaep = cmn.moncar(9);
   //C
-  auto kxtcs = *reinterpret_cast<int*>(&sptacs(17));
-  auto klntab = *reinterpret_cast<int*>(&sptacs(18));
-  nuk = lstat(51);
+  auto& nuk = lstat(51);
 
   if (iprsup >= 1) {
     write(lunit6, "(' BEGIN MODULE \"OVER5\".')");
@@ -20662,6 +20668,7 @@ statement_9200:
     write(lunit6, format_4568);
   }
 statement_99999:;
+
 } // over5
 
 
@@ -20672,7 +20679,7 @@ vecisv(
   int const& n13,
   int const& n2)
 {
-  karr(dimension(1));
+  karr(dimension(n13));
   common_write write(cmn);
   arr_cref<int> nbyte(cmn.nbyte, dimension(6));
   int& iprsup = cmn.iprsup;
@@ -20690,7 +20697,7 @@ vecisv(
   //C     ALSO NEEDED ARE UNCOUNTED HOLLERITH.  PARALLEL TO "VECISV".       M37. 952
   //C!w EQUIVALENCE  ( KARRAY(1),  FARRAY(1) )
   //C     BLOCK /VECCOM/ IS SHARED WITH "VECRSV" (SEE FOR MORE INFO)        M34.  61
-  auto farray = reinterpret_cast<double* const>(cmn.karray.begin());
+  auto farray = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
   if (iprsup >= 1) {
     write(lunit6, "(' BEGIN \"VECISV\".  N13, N2 =',2i8)"), n13, n2;
   }
@@ -20704,7 +20711,7 @@ vecisv(
     write(lunit6, "(' READY TO RESTORE.  KNTVEC, N4 =',2i10)"), kntvec, n4;
   }
   FEM_DO_SAFE(k, 1, n13) {
-    karr(k) = farray[n4-1]; // (n4);
+    karr(k) = farray(n4);
     n4++;
   }
   goto statement_9000;
@@ -20728,7 +20735,7 @@ statement_1474:
   //C CORRECT INTEGER-VECTOR BEGINNING
   kofvec(kntvec) = n4;
   FEM_DO_SAFE(k, 1, n13) {
-    farray[n4-1] = karr(k);
+    farray(n4) = karr(k);
     n4++;
   }
   //C IF /VECCOM/ STORAGE EXCEEDED,
@@ -21475,7 +21482,7 @@ statement_5379:
     else kolum(isubs1 - 300) = i + 1;
   }
   isubs1 = iofkor + last;
-  if (isubs1 <= korder.size())   
+  if (isubs1 <= korder.size())
     korder(isubs1) = 0;
   icas = 0;
   if (iprsup >= 2) {
@@ -29056,6 +29063,8 @@ void over9(
   arr_ref<double> fixbu8(cmn.fixbu8, dimension(1));
   arr_ref<double> fixbu9(cmn.fixbu9, dimension(1));
   //
+  int i = fem::int0;
+  int j = fem::int0;
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
   int next = fem::int0;
@@ -29088,8 +29097,6 @@ void over9(
   int isubs2 = fem::int0;
   int icas = fem::int0;
   //C     FOLLOWING CARRIES "NEXT" AMONG OVER6, INSERT, OVER7, & OVER9:     M37.3694
-  int i = 1;
-  int j = 1;
   //locatn(i, j) = (j * j - j) / 2 + i;
   next = loopss(11);
   iofkol = cmn.iofgnd;
@@ -29848,19 +29855,16 @@ addmxd(
   arr_ref<double> c,
   int const& n)
 {
-  a(dimension(1));
-  c(dimension(1));
-  int k = fem::int0;
-  int j = fem::int0;
-  int jt = fem::int0;
-  int L = fem::int0;
+  int jt = n * (n + 1) / 2;
+  a(dimension(jt));   // only upper trangular
+  c(dimension(jt));
   //C)    SUBROUTINE  ADDMXD  FORMS MATRIX   (C) = (A) + B(U)  , WHERE (A), M15. 322
   //C)    AND (C)  ARE N BY N MATRICES,  B  IS A SCALAR, AND (U) IS THE     M15. 323
   //C)    IDENTITY MATRIX.   ARRAY (C) MAY BE THE SAME AS (A), IF DESIRED.  M15. 324
   //C)    SEE SUBR.  MULT  FOR SYMMETRIC-MATRIC STORAGE SCHEME ASSUMED.     M15. 325
-  k = 1;
-  j = 1;
-  jt = n * (n + 1) / 2;
+  int k = 1;
+  int j = 1;
+  int L = fem::int0;
   FEM_DO_SAFE(L, 1, jt) {
     c(L) = a(L);
     if (L < k) {
@@ -29972,10 +29976,10 @@ multmx(
   arr_ref<double> temp,
   int const& n)
 {
-  a(dimension(1));
-  b(dimension(1));
-  c(dimension(1));
-  temp(dimension(1));
+  a(dimension(n * n));
+  b(dimension(n * n));
+  c(dimension(n * n));
+  temp(dimension(n+n));
   int ll0 = fem::int0;
   int ii = fem::int0;
   int j = fem::int0;
@@ -30875,6 +30879,7 @@ void over10(
   double bj = fem::double0;
   int ik = fem::int0;
   int jk = fem::int0;
+
   static const char* format_4568 = "('  \"EXIT  MODULE OVER10.\"')";
 
   auto itemp = ArraySpan(reinterpret_cast<int*>(&voltk(1)), voltk.size()*2);
@@ -32349,6 +32354,7 @@ statement_9999:
     write(lunit6, format_4568);
   }
 statement_99999:;
+
 } // over10
 
 
@@ -34068,6 +34074,10 @@ void pltfil(
   cmn.out_stream << '\n';
 
 
+
+
+
+
 #if 0
   auto& lunit6 = cmn.lunit6;
   arr_ref<double> forbyt(sve.forbyt, dimension(600));
@@ -34475,6 +34485,8 @@ void over11(
   int n22 = fem::int0;
   int ndum = fem::int0;
   fem::str<6> chhold = fem::char0;
+  int i = fem::int0;
+  int j = fem::int0;
   static const char* format_3082 =
     "(20x,"
     "'************************************************************************"
@@ -34485,8 +34497,6 @@ void over11(
   //C      PRECEDING "JCH2" USES "IMFD" JUST FOR "FREQUENCY SCAN".          M35.1236
   //C      AS SUCH, THERE MUST BE NO FREQ-DEPEND SOURCES PRESENT.           M35.1237
   //arr<int, 2> locatn(dimension(1000, 1000), fem::fill0); //w
-  int i = 1;
-  int j = 1;
   //locatn(i, j) = (j * j - j) / 2 + i;
   auto& knt = cmn.moncar(1);
   ll2 = 2;
@@ -35951,6 +35961,7 @@ statement_9900:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE OVER11.\"')");
   }
+
 } // over11
 
 
@@ -35961,20 +35972,8 @@ csupdc(
 {
   common_write write(cmn);
   arr_cref<int> lstat(cmn.lstat, dimension(80));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
+  auto& sptacs = cmn.sptacs;
   //
-  int kspvar = fem::int0;
-  int kprsup = fem::int0;
-  int kxtcs = fem::int0;
-  int kksus = fem::int0;
-  int kalksu = fem::int0;
-  int kinsup = fem::int0;
-  int nuk = fem::int0;
-  int nsup = fem::int0;
-  int karg = fem::int0;
-  int kpar = fem::int0;
   int kjsup = fem::int0;
   int kksup = fem::int0;
   auto& lunit6 = cmn.lunit6;
@@ -35997,16 +35996,20 @@ csupdc(
   int n7 = fem::int0;
   double contss = fem::double0;
   int ji = fem::int0;
-  kspvar = sptacs(6);
-  kprsup = sptacs(9);
-  kxtcs = sptacs(17);
-  kksus = sptacs(21);
-  kalksu = sptacs(22);
-  kinsup = sptacs(23);
-  nuk = lstat(51);
-  nsup = lstat(55);
-  karg = lstat(56);
-  kpar = lstat(57);
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
+
+  auto& kspvar = isptacs(6);
+  auto& kprsup = isptacs(9);
+  auto& kxtcs =  isptacs(17);
+  auto& kksus =  isptacs(21);
+  auto& kalksu = isptacs(22);
+  auto& kinsup = isptacs(23);
+  auto& nuk =  lstat(51);
+  auto& nsup = lstat(55);
+  auto& karg = lstat(56);
+  auto& kpar = lstat(57);
   kjsup = kinsup + lstat(65);
   kksup = kjsup + lstat(65);
   if (cmn.iprsup < 6) {
@@ -36278,18 +36281,8 @@ csupac(
   double const& omegar)
 {
   arr_cref<int> lstat(cmn.lstat, dimension(80));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
-  //arr_cref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*const>(&sptacs(1)), sptacs.size() * 2);
+  auto& sptacs = cmn.sptacs;
   //
-  int kxar = fem::int0;
-  int kksus = fem::int0;
-  int kalksu = fem::int0;
-  int kinsup = fem::int0;
-  int kjsup = fem::int0;
-  int kksup = fem::int0;
-  int nuk = fem::int0;
-  int nnn = fem::int0;
   int i = fem::int0;
   double a = fem::double0;
   double ai = fem::double0;
@@ -36311,13 +36304,21 @@ csupac(
   double contss = fem::double0;
   int ndx1 = fem::int0;
   int ndx2 = fem::int0;
-  kxar = sptacs(16);
-  kksus = sptacs(21);
-  kalksu = sptacs(22);
-  kinsup = sptacs(23);
-  kjsup = kinsup + lstat(65);
-  kksup = kjsup + lstat(65);
-  nnn = kxar + nuk + lstat(64);
+
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
+
+  auto& kxar =   isptacs(16);
+  auto& kksus =  isptacs(21);
+  auto& kalksu = isptacs(22);
+  auto& kinsup = isptacs(23);
+
+  auto& nuk = lstat(51);
+
+  int kjsup = kinsup + lstat(65);
+  int kksup = kjsup + lstat(65);
+  int nnn = kxar + nuk + lstat(64);
   i = L;
 statement_1234:
   a = 0.0f;
@@ -36758,7 +36759,7 @@ tacs2(
   int& limstp = cmn.limstp;
   int& indstp = cmn.indstp;
   int& nenerg = cmn.nenerg;
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_cref<double> energy(cmn.energy, dimension(1200));
   arr_cref<double> cu(cmn.cu, dimension(96));
   arr_cref<int> ismdat(cmn.ismdat, dimension(120));
@@ -36773,36 +36774,9 @@ tacs2(
   str_arr_cref<1> bus(cmn.bus, dimension(3002));
   arr_cref<double> etac(cmn.etac, dimension(20));
   arr_cref<int> ismtac(cmn.ismtac, dimension(20));
-  //arr_ref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
 
   int& ntotac = cmn.ntotac;
   //
-  int kcolcs = fem::int0;
-  int katcs = fem::int0;
-  int kprsup = fem::int0;
-  int kivarb = fem::int0;
-  int kaliu = fem::int0;
-  int kjout = fem::int0;
-  int kiuty = fem::int0;
-  int kud1 = fem::int0;
-  int kawkcs = fem::int0;
-  int kxar = fem::int0;
-  int kxtcs = fem::int0;
-  int klntab = fem::int0;
-  int kisblk = fem::int0;
-  int krsblk = fem::int0;
-  int kksus = fem::int0;
-  int kalksu = fem::int0;
-  int kinsup = fem::int0;
-  int nuk = fem::int0;
-  int nsu = fem::int0;
-  int niu = fem::int0;
-  int nsup = fem::int0;
-  int kxic = fem::int0;
-  int ioutcs = fem::int0;
-  int kbase = fem::int0;
-  int ltdelt = fem::int0;
   auto& lunit6 = cmn.lunit6;
   int i = fem::int0;
   double picon = fem::double0;
@@ -36926,31 +36900,36 @@ tacs2(
     "(' ---- ITERATION IS BEYOND ',i4,' TIMES, BUT THE',"
     "' RESULT IS NOT CONVERGENT YET, PROGRAM WILL CONTINUE  ----')";
   //C!EQUIVALENCE  (MONCAR(2),  KBASE),   (MONCAR(3), LTDELT)
-  kcolcs = sptacs(5);
-  katcs = sptacs(7);
-  kprsup = sptacs(9);
-  kivarb = sptacs(10);
-  kaliu = sptacs(11);
-  kjout = sptacs(12);
-  kiuty = sptacs(13);
-  kud1 = sptacs(14);
-  kawkcs = sptacs(15);
-  kxar = sptacs(16);
-  kxtcs = sptacs(17);
-  klntab = sptacs(18);
-  kisblk = sptacs(19);
-  krsblk = sptacs(20);
-  kksus = sptacs(21);
-  kalksu = sptacs(22);
-  kinsup = sptacs(23);
-  nuk = lstat(51);
-  nsu = lstat(53);
-  niu = lstat(54);
-  nsup = lstat(55);
-  kxic = lstat(58);
-  ioutcs = lstat(59);
-  kbase = moncar(2);
-  ltdelt = moncar(3);
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
+
+  auto& kcolcs = isptacs(5);
+  auto& katcs =  isptacs(7);
+  auto& kprsup = isptacs(9);
+  auto& kivarb = isptacs(10);
+  auto& kaliu =  isptacs(11);
+  auto& kjout =  isptacs(12);
+  auto& kiuty =  isptacs(13);
+  auto& kud1 =   isptacs(14);
+  auto& kawkcs = isptacs(15);
+  auto& kxar =   isptacs(16);
+  auto& kxtcs =  isptacs(17);
+  auto& klntab = isptacs(18);
+  auto& kisblk = isptacs(19);
+  auto& krsblk = isptacs(20);
+  auto& kksus =  isptacs(21);
+  auto& kalksu = isptacs(22);
+  auto& kinsup = isptacs(23);
+
+  auto& nuk = lstat(51);
+  auto& nsu = lstat(53);
+  auto& niu = lstat(54);
+  auto& nsup = lstat(55);
+  auto& kxic = lstat(58);
+  auto& ioutcs = lstat(59);
+  auto& kbase = moncar(2);
+  auto& ltdelt = moncar(3);
   if (iprsup >= 1) {
     write(lunit6, "(' ENTER \"TACS2\".  LASTOV, M4PLOT =',2i6)"),
       lastov, m4plot;
@@ -40015,7 +39994,7 @@ reduct(
   int const& n,
   int const& m)
 {
-  a(dimension(1));
+  a(dimension(n* (n + 1) / 2));
   int j = fem::int0;
   double w = fem::double0;
   int ij = fem::int0;
@@ -49482,7 +49461,6 @@ statement_9800:
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE UMINIT.\"')");
   }
-
 }
 
 
@@ -49756,6 +49734,7 @@ void over15(
   int& ncomp = cmn.ncomp;
   int& nv = cmn.nv;
   int& npower = cmn.npower;
+  int& maxpe = cmn.maxpe;
   int& lsiz12 = cmn.lsiz12;
   arr_ref<int> ktrlsw(cmn.ktrlsw, dimension(8));
   int& maxbus = cmn.maxbus;
@@ -49782,7 +49761,7 @@ void over15(
   arr_ref<int> koutvp(cmn.koutvp, dimension(508));
   arr_ref<int> ibsout(cmn.ibsout, dimension(900));
   arr_ref<double> bvalue(cmn.bvalue, dimension(900));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_cref<int> kswtyp(cmn.kswtyp, dimension(1200));
   arr_ref<int> modswt(cmn.modswt, dimension(1200));
   arr_cref<double> topen(cmn.topen, dimension(3600));
@@ -49862,8 +49841,6 @@ void over15(
   }
   int lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
-  int kjout = fem::int0;
-  int klntab = fem::int0;
   double d2 = fem::double0;
   int ijk = fem::int0;
   arr_1d<13, fem::str<8> > aupper(fem::fill0);
@@ -49877,7 +49854,6 @@ void over15(
   int iprint = fem::int0;
   int nk1 = fem::int0;
   int nk2 = fem::int0;
-  int maxpe = fem::int0;
   int mpower = fem::int0;
   int kswpe4 = fem::int0;
   fem::str<8> text2 = fem::char0;
@@ -49940,10 +49916,12 @@ void over15(
   auto& idist = moncar(5);
   auto& itest = moncar(6);
 
-  kjout = sptacs(12);
-  klntab = sptacs(18);
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
 
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
+  auto& kjout =  isptacs(12);
+  auto& klntab = isptacs(18);
 
   //C     TRANSFER TO  "TOP15"  FOR FRONT END OF OVERLAY 15.                M28.4664
   if (iprsup >= 1) {
@@ -50754,7 +50732,7 @@ statement_3103:
 
       cmn.out_stream << "Time";
       for (int i = 1; i <= numnvo; ++i) { // node voltage
-        cmn.out_stream << ',' << bus(ibsout(i))(1, 6).std_str();
+        cmn.out_stream << ',' << bus(ibsout(i))(1,6).std_str();
       }
       if (nc == 0)
         cmn.out_stream << '\n';
@@ -50770,9 +50748,9 @@ statement_3104:
       FEM_DO_SAFE(i, 1, nc) {
         wloop, jbrnch(i);
       }
-
+      if (numnvo == 0) cmn.out_stream << "Time";
       for (int i = 1; i <= nc; ++i) { // branch current
-        cmn.out_stream << ',' << bus(ibrnch(i))(1, 6).std_str() << "->" << bus(jbrnch(i))(1, 6).std_str();
+        cmn.out_stream << ',' << bus(ibrnch(i))(1,6).std_str() << "->" << bus(jbrnch(i))(1,6).std_str();
       }
       cmn.out_stream << '\n';
     }
@@ -51337,67 +51315,6 @@ statement_9999:
     write(lunit6, format_4568);
   }
 statement_99999:;
-  //C!w DIMENSION ISBLK (1), INSUP (1), JOUT  (1), ICOLCS(1), ILNTAB(1
-  //C!w DIMENSION KSUS  (1), IUTY  (1), IVARB (1)
-  //C!w DIMENSION RSBLK (1), UD1   (1), XTCS  (1), ATCS  (1), XAR   (1
-  //C!w DIMENSION PARSUP(1), AWKCS (1)
-  //C     !!w EQUIVALENCING OF SCALARS WHICH ARE TO BE CARRIED BETWEEN MODULES. M37.  31
-  //C!w EQUIVALENCE (KONSCE, SPTACS(  1)), (KONCUR, SPTACS(  2))
-  //C!w EQUIVALENCE (KONTOT, SPTACS(  3)), (KOFSCE, SPTACS(  4))
-  //C!w EQUIVALENCE (KCOLCS, SPTACS(  5)), (KSPVAR, SPTACS(  6))
-  //C!w EQUIVALENCE (KATCS , SPTACS(  7)), (KONSUP, SPTACS(  8))
-  //C!w EQUIVALENCE (KPRSUP, SPTACS(  9)), (KIVARB, SPTACS( 10))
-  //C!w EQUIVALENCE (KALIU , SPTACS( 11)), (KJOUT , SPTACS( 12))
-  //C!w EQUIVALENCE (KIUTY , SPTACS( 13)), (KUD1  , SPTACS( 14))
-  //C!w EQUIVALENCE (KAWKCS, SPTACS( 15)), (KXAR  , SPTACS( 16))
-  //C!w EQUIVALENCE (KXTCS , SPTACS( 17)), (KLNTAB, SPTACS( 18))
-  //C!w EQUIVALENCE (KISBLK, SPTACS( 19)), (KRSBLK, SPTACS( 20))
-  //C!w EQUIVALENCE (KKSUS , SPTACS( 21)), (KALKSU, SPTACS( 22))
-  //C!w EQUIVALENCE (KINSUP, SPTACS( 23))
-  //C!w EQUIVALENCE ( SPTACS(1), ISBLK (1), KSUS  (1), IUTY  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ILNTAB(1), ICOLCS(1), JOUT  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), INSUP (1), SPTACS (1), PARSUP(1) )
-  //C!w EQUIVALENCE ( SPTACS(1), RSBLK (1), UD1   (1), XTCS  (1) )
-  //C!w EQUIVALENCE ( SPTACS(1), ATCS  (1), XAR   (1), AWKCS (1) )
-  //C!w EQUIVALENCE   ( NUK   , LSTAT(51) ),     ( IA    , LSTAT(52) )
-  //C!w EQUIVALENCE   ( NSU   , LSTAT(53) ),     ( NIU   , LSTAT(54) )
-  //C!w EQUIVALENCE   ( NSUP  , LSTAT(55) ),     ( KARG  , LSTAT(56) )
-  //C!w EQUIVALENCE   ( KPAR  , LSTAT(57) ),     ( KXIC  , LSTAT(58) )
-  //C!w EQUIVALENCE   ( IOUTCS, LSTAT(59) ),     ( NSUDV , LSTAT(60) )
-  //C     THIS DECK CONTAINS S.M. STORAGE USED BY TACS MODULES.             M38.  41
-  //C     REAL VARIABLES PRECEDE INTEGER ONES          *********************M33.   5
-  //C     AUXILLIARY ARRAYS ( SIZE BASED ON NO. OF WINDINGS = 7 )  ******** M33.  32
-  //C     SPY INTERFACE VARIABLES ***************************************** M39.  37
-  //C     COMPUTATIONAL CONSTANTS  *****************************************M33.  34
-  //C     INTEGER VARIABLES      *******************************************M33.  37
-  //C!REAL*8        BUSUM
-  //C     NEXT COME OFFSETS FOR VARIABLE-DIMENSIONING, IN ORDER.            M27.  13
-  //C     DONE WITH OFFSETS FOR SUBROUTINE CALLS.                           M27.  24
-  //C      COMMON  /SPAC02/   NORDER(1)
-  //C      COMMON  /SPAC03/   INDEX (1)
-  //C      COMMON  /SPAC04/   DIAG  (1)
-  //C      DIMENSION                               ICH2(1)                   M25.  37
-  //C      EQUIVALENCE                (   DIAG(1), ICH2(1)  )                M25.  37
-  //C      COMMON  /SPAC05/   DIAB  (1)
-  //C      DIMENSION                               LOC(1)                    M22. 483
-  //C      EQUIVALENCE                (   DIAB(1), LOC(1)  )                 M22. 483
-  //C      COMMON  /SPAC06/   SOLR  (1)
-  //C      DIMENSION                                KOWNT(1)                 M32. 102
-  //C      EQUIVALENCE                (   SOLR(1),  KOWNT(1)  )              M32. 102
-  //C      COMMON  /SPAC07/   SOLI  (1)
-  //C      COMMON  /SPAC08/   ICH1  (1)
-  //C      COMMON  /SPAC01/   BND   (1)
-  //C      DIMENSION                              KORDER(1)                  M28. 110
-  //C      EQUIVALENCE                (   BND(1), KORDER(1)  )                M28. 11
-  //C      COMMON  /SPAC10/   ILOC  (1)
-  //C      COMMON  /SPAC11/   GND   (1)
-  //C      DIMENSION                              KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)                                             M23.  25
-  //C      EQUIVALENCE                (   GND(1), KOLUM(1),                  M28. 112
-  //C     1 FRANDN(1), IRANDN(1)  )                                          M23.  25
-  //C
-  //C!w
-  //C
 } // over15
 
 
@@ -51905,6 +51822,7 @@ void subts3(
   int& istep = cmn.istep;
   int& nv = cmn.nv;
   int& npower = cmn.npower;
+  int& maxpe = cmn.maxpe;
   int& lsiz12 = cmn.lsiz12;
   int& kpartb = cmn.kpartb;
   int& nstacs = cmn.nstacs;
@@ -51929,7 +51847,7 @@ void subts3(
   arr_ref<double> bnrg(cmn.bnrg, dimension(254));
   arr_cref<int> ibsout(cmn.ibsout, dimension(900));
   arr_ref<double> bvalue(cmn.bvalue, dimension(900));
-  arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+  auto& sptacs = cmn.sptacs;
   arr_cref<int> nonlad(cmn.nonlad, dimension(300));
   arr_cref<int> nonle(cmn.nonle, dimension(300));
   arr_cref<double> vnonl(cmn.vnonl, dimension(300));
@@ -51963,11 +51881,17 @@ void subts3(
   arr_ref<double> f(static_cast<common_c0b119&>(cmn).f, dimension(3002));
   arr_cref<int> kode(cmn.kode, dimension(3002));
   auto& volti = static_cast<common_c0b123&>(cmn).volti;
+  auto& nsmout = cmn.nsmout;
 
   str_arr_cref<1> bus(cmn.bus, dimension(3002));
-  //arr_ref<int> ivarb(cmn.ivarb, dimension(90000));
-  auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * 2);
-  int& nsmout = cmn.nsmout;
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& ivarb = isptacs;
+
+  auto& koncur = isptacs(2);
+  auto& kjout =  isptacs(12); 
+  auto& kiuty =  isptacs(13); 
+  auto& kxtcs =  isptacs(17);
   //
   //int koncur = fem::int0;
   //int kjout = fem::int0;
@@ -51991,7 +51915,6 @@ void subts3(
   int nodev = fem::int0;
   double sdlat = fem::double0;
   int ndx1 = fem::int0;
-  int maxpe = fem::int0;
   int mpower = fem::int0;
   double d4 = fem::double0;
   int L = fem::int0;
@@ -52033,10 +51956,7 @@ void subts3(
   auto& d2 = sm;
   auto& h1 = sk;
 
-  auto& koncur = sptacs(2);
-  auto& kjout = sptacs(12);
-  auto& kiuty = sptacs(13);
-  auto& kxtcs = sptacs(17);
+
   auto& ioutcs = lstat(59);
   auto& kbase = moncar(2);
   auto& iupper = iprsov(36);
@@ -53272,7 +53192,7 @@ update(
   int& iprsup = cmn.iprsup;
   int& ibr = cmn.ibr;
   arr_ref<double> ykm(cmn.ykm, dimension(20000));
-  arr_cref<double> sptacs(cmn.sptacs, dimension(90000));
+  const auto& sptacs = cmn.sptacs;
   arr_ref<double> cik(cmn.cik, dimension(3000));
   arr_ref<int> ismout(cmn.ismout, dimension(1052));
   arr_ref<double> elp(cmn.elp, dimension(404));
@@ -54577,7 +54497,7 @@ solvum(
   int& iprsup = cmn.iprsup;
   int& ntot = cmn.ntot;
   arr_ref<int> loopss(cmn.loopss, dimension(13));
-  arr_cref<double> sptacs(cmn.sptacs, dimension(90000));
+  const auto& sptacs = cmn.sptacs;
   arr_ref<double> cursub(cmn.cursub, dimension(312));
   arr_cref<double> znonl(cmn.znonl, dimension(72048));
   arr_cref<int> isubeg(cmn.isubeg, dimension(304));
@@ -57258,7 +57178,7 @@ void subts1(
   arr_ref<double> ykm(cmn.ykm, dimension(20000));
   arr_ref<int> km(cmn.km, dimension(20000));
   arr_ref<double> bvalue(cmn.bvalue, dimension(900));
-  arr_cref<double> sptacs(cmn.sptacs, dimension(90000));
+  const auto& sptacs = cmn.sptacs;
   arr_cref<int> kswtyp(cmn.kswtyp, dimension(1200));
   arr_ref<int> modswt(cmn.modswt, dimension(1200));
   arr_cref<double> topen(cmn.topen, dimension(3600));
@@ -57471,7 +57391,9 @@ void subts1(
   auto& ipoint = iprsov(35);
   auto& iupper = iprsov(36);
 
-  auto kxtcs = *reinterpret_cast<int*>(&cmn.sptacs(17));
+  // handling equivalence in tacsar.inc
+  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& kxtcs = isptacs(17);
 
   if (iprsup >= 1) {
     write(lunit6,
@@ -59944,7 +59866,7 @@ statement_1100:
   it2 = length(k);
   n1 = kbus(k);
   if (iprsup >= 1) {
-    write(6, star), "Top of SUBTS2 ,N1=", n1;
+    write(lunit6, star), "Top of SUBTS2 ,N1=", n1;
   }
   if (n1 < 0) {
     goto statement_1180;
@@ -60343,7 +60265,7 @@ statement_481:
       hkout = sconst(nq6) * sconst(n6);
       hmout = sconst(nq6) * sconst(nn5);
       if (iprsup > 0) {
-        write(6,
+        write(lunit6,
           "(' KQ NTEQ IADRS    CJQ(IADS)','      QK0(KQ)',"
           "'    ESUMQ(KQ)        HKOUT        HMOUT',"
           "'     AIK5(KA)    AIK5DT(J)   AIKJDT(IS)','     AIM5(KA)')");
@@ -60654,7 +60576,7 @@ statement_119:
     //C     1 write( *,*)'##equi. voltage sour. HMP(I), HKP(I)',              M44.2224
     //C     2                                   HMP(KST), HKP(KST)            M44.2225
     if (iprsup > 0) {
-      write(6, star), "##equi. voltage sour. VM5DT(I), VK5DT(I)",
+      write(lunit6, star), "##equi. voltage sour. VM5DT(I), VK5DT(I)",
         semaux(koff1 + kst), semaux(koff2 + kst);
     }
     kst++;
@@ -60677,7 +60599,7 @@ statement_119:
   statement_483:;
   }
   if (iprsup > 0) {
-    write(6, star), " subts2 cable done.  k, it2 =", k, it2;
+    write(lunit6, star), " subts2 cable done.  k, it2 =", k, it2;
   }
   it2 = 0;
   goto statement_1200;
