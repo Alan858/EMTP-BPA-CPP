@@ -350,7 +350,7 @@ void tapsav(
   common_read read(cmn);
   common_write write(cmn);
   fem::str<8>& trash = cmn.trash;
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  const auto& nbyte = cmn.nbyte;
   int& kburro = cmn.kburro;
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
@@ -481,10 +481,10 @@ void tables(
   FEM_CMN_SVE(tables);
   common_read read(cmn);
   common_write write(cmn);
-  arr_cref<double> voltbc(cmn.voltbc, dimension(50));
+  const auto& voltbc = cmn.voltbc;
   auto& lunit2 = cmn.lunit2;
-  arr_cref<int> lunsav(cmn.lunsav, dimension(15));
-  arr_ref<int> iprsov(cmn.iprsov, dimension(39));
+  const auto& lunsav = cmn.lunsav;
+  auto& iprsov= cmn.iprsov;
   int& numsm = cmn.numsm;
   int& lastov = cmn.lastov;
   int& numdcd = cmn.numdcd;
@@ -493,10 +493,10 @@ void tables(
   int& iprsup = cmn.iprsup;
   int& nword1 = cmn.nword1;
   int& nword2 = cmn.nword2;
-  arr_cref<double> etac(cmn.etac, dimension(20));
-  str_arr_ref<1> locker(cmn.locker, dimension(2));
-  arr_cref<double> z(static_cast<common_smach&>(cmn).z, dimension(100));
-  str_arr_cref<1> busum(cmn.busum, dimension(50));
+  const auto& etac = cmn.etac;
+  auto& locker = cmn.locker;
+  const auto& z = static_cast<common_smach&>(cmn).z;
+  const auto& busum = cmn.busum;
   //
   arr_ref<int> iprsav(sve.iprsav, dimension(4));
   if (is_called_first_time) {
@@ -908,7 +908,7 @@ void frefld(
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
   //
@@ -1212,8 +1212,8 @@ void cimage(
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_cref<int> lunsav(cmn.lunsav, dimension(15));
+  auto& ipntv = cmn.ipntv;
+  const auto& lunsav = cmn.lunsav;
   int& kol132 = cmn.kol132;
   int& inecho = cmn.inecho;
   int& noutpr = cmn.noutpr;
@@ -1224,7 +1224,7 @@ void cimage(
   int& intinf = cmn.intinf;
   int& ibr = cmn.ibr;
   arr_ref<double> xoptbr(cmn.xoptbr, dimension(3000));
-  arr_ref<double> coptbr(cmn.coptbr, dimension(3000));
+  auto& coptbr = cmn.coptbr;
   //
   fem::str<8>& charc = sve.charc;
   fem::str<8>& chtacs = sve.chtacs;
@@ -1982,7 +1982,7 @@ void namea6(
   common_write write(cmn);
   int& maxbus = cmn.maxbus;
   int& iprsup = cmn.iprsup;
-  str_arr_ref<1> texvec(cmn.texvec, dimension(4000));
+  auto& texvec = cmn.texvec;
   //
   int& n17 = sve.n17;
   fem::str<8>& text2 = sve.text2;
@@ -2167,12 +2167,12 @@ void tacs1a(
   const auto& texta6 = cmn.texta6;
   const auto& abuff = cmn.abuff;
   double& deltat = cmn.deltat;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& voltbc = cmn.voltbc;
+  auto& flstat = cmn.flstat;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& noutpr = cmn.noutpr;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
@@ -4216,15 +4216,15 @@ void tacs1b(
   const auto& tclock= cmn.tclock;
   double& fltinf = cmn.fltinf;
   auto& lunit4 = cmn.lunit4;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_ref<int> iprsov(cmn.iprsov, dimension(39));
+  auto& lstat = cmn.lstat;
+  auto& iprsov= cmn.iprsov;
   int& maxbus = cmn.maxbus;
   int& ktab = cmn.ktab;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
   auto& sptacs = cmn.sptacs;
-  str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
+  const auto& texvec = cmn.texvec;
 
 
   fem::str<8>& delay = sve.delay;
@@ -5579,13 +5579,13 @@ void tacs1(
   const auto& abuff = cmn.abuff;
   double& deltat = cmn.deltat;
   double& fltinf = cmn.fltinf;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
+  auto& voltbc = cmn.voltbc;
   double& pu = cmn.pu;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
   int& ltacst = cmn.ltacst;
   int& noutpr = cmn.noutpr;
   int& ktab = cmn.ktab;
@@ -5593,12 +5593,12 @@ void tacs1(
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
   auto& sptacs = cmn.sptacs;
-  str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
-  arr_cref<int> kmswit(cmn.kmswit, dimension(3600));
-  str_arr_cref<1> bus(cmn.bus, dimension(3002));
+  const auto& texvec = cmn.texvec;
+  const auto& kmswit = cmn.kmswit;
+  const auto& bus = cmn.bus;
   //arr_ref<int> ivarb(cmn.ivarb, dimension(90000));
-  arr_cref<double> etac(cmn.etac, dimension(20));
-  arr_cref<int> ismtac(cmn.ismtac, dimension(20));
+  const auto& etac = cmn.etac;
+  const auto& ismtac = cmn.ismtac;
   //
   str_arr_ref<1> sbn(sve.sbn, dimension(2));
   fem::str<8>& sminus = sve.sminus;
@@ -6631,10 +6631,10 @@ void csup(
   double& twopi = cmn.twopi;
   double& onehaf = cmn.onehaf;
   double& flzero = cmn.flzero;
-  arr_cref<int> lstat(cmn.lstat, dimension(80));
+  const auto& lstat = cmn.lstat;
   int& iprsup = cmn.iprsup;
   auto& sptacs = cmn.sptacs;
-  str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
+  const auto& texvec = cmn.texvec;
   //
   //int kspvar = fem::int0;
   //int kprsup = fem::int0;
@@ -7954,15 +7954,15 @@ void tacs3(
   double& t = cmn.t;
   double& twopi = cmn.twopi;
   double& flzero = cmn.flzero;
-  arr_cref<int> lstat(cmn.lstat, dimension(80));
+  const auto& lstat = cmn.lstat;
   int& istep = cmn.istep;
   int& iprsup = cmn.iprsup;
   auto& sptacs = cmn.sptacs;
-  str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
-  arr_cref<double> tclose(cmn.tclose, dimension(1200));
-  arr_cref<int> kpos(cmn.kpos, dimension(1200));
-  arr_cref<double> e(cmn.e, dimension(3002));
-  arr_cref<double> etac(cmn.etac, dimension(20));
+  const auto& texvec = cmn.texvec;
+  const auto& tclose = cmn.tclose;
+  const auto& kpos = cmn.kpos;
+  const auto& e = cmn.e;
+  const auto& etac = cmn.etac;
   //
   //int kcolcs = fem::int0;
   //int katcs = fem::int0;
@@ -8545,7 +8545,7 @@ void flager(
   int& kspsav = cmn.kspsav;
   int& iprspy = cmn.iprspy;
   fem::str<80>& buff77 = cmn.buff77;
-  str_arr_ref<1> file6(cmn.file6, dimension(30000));
+  auto& file6 = cmn.file6;
   fem::str<132>& munit6 = cmn.munit6;
   int& kwtvax = cmn.kwtvax;
   //
@@ -8732,7 +8732,7 @@ void spyout(
 {
   FEM_CMN_SVE(spyout);
   common_write write(cmn);
-  str_arr_cref<1> bus(cmn.bus, dimension(3002));
+  const auto& bus = cmn.bus;
   fem::str<132>& munit6 = cmn.munit6;
   //
   int& j = sve.j;
@@ -8831,7 +8831,7 @@ void frefix(
 {
   common_write write(cmn);
   int& iprspy = cmn.iprspy;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   fem::str<132>& munit6 = cmn.munit6;
   //
   fem::str<80> hold = fem::char0;
@@ -9002,7 +9002,7 @@ void intpar(
 {
   common_write write(cmn);
   fem::str<20>& bytbuf = cmn.bytbuf;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   fem::str<132>& munit6 = cmn.munit6;
   //
   int i = fem::int0;
@@ -9169,7 +9169,7 @@ void getnum(
   int& iendcl = cmn.iendcl;
   int& iprspy = cmn.iprspy;
   fem::str<20>& bytbuf = cmn.bytbuf;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   fem::str<132>& munit6 = cmn.munit6;
   //
   int n1 = fem::int0;
@@ -9695,9 +9695,9 @@ void spyink(
   double& fltinf = cmn.fltinf;
   auto& lunit4 = cmn.lunit4;
   auto& lunit5 = cmn.lunit5;
-  arr_ref<int> kprchg(cmn.kprchg, dimension(6));
-  arr_ref<int> multpr(cmn.multpr, dimension(5));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& kprchg = cmn.kprchg;
+  auto& multpr = cmn.multpr;
+  auto& lstat = cmn.lstat;
   int& inonl = cmn.inonl;
   int& iout = cmn.iout;
   int& kol132 = cmn.kol132;
@@ -9723,76 +9723,76 @@ void spyink(
   int& indstp = cmn.indstp;
   int& nc = cmn.nc;
   int& numnvo = cmn.numnvo;
-  arr_cref<double> x(static_cast<common_c0b001&>(cmn).x, dimension(10000));
-  arr_cref<double> ykm(cmn.ykm, dimension(20000));
-  arr_cref<int> km(cmn.km, dimension(20000));
-  arr_cref<int> ibsout(cmn.ibsout, dimension(900));
+  const auto& x = static_cast<common_c0b001&>(cmn).x;
+  const auto& ykm = cmn.ykm;
+  const auto& km = cmn.km;
+  const auto& ibsout = cmn.ibsout;
   auto& sptacs = cmn.sptacs;
-  arr_cref<int> kswtyp(cmn.kswtyp, dimension(1200));
+  const auto& kswtyp = cmn.kswtyp;
   arr_cref<int> modswt(cmn.modswt, dimension(1200));
   arr_cref<int> kentnb(cmn.kentnb, dimension(1200));
-  arr_cref<double> topen(cmn.topen, dimension(3600));
-  arr_cref<double> crit(cmn.crit, dimension(1200));
-  arr_cref<double> energy(cmn.energy, dimension(1200));
-  arr_cref<int> nonlad(cmn.nonlad, dimension(300));
-  arr_cref<int> nonle(cmn.nonle, dimension(300));
-  arr_cref<double> vnonl(cmn.vnonl, dimension(300));
-  arr_cref<double> curr(cmn.curr, dimension(300));
-  arr_cref<double> anonl(cmn.anonl, dimension(300));
-  arr_cref<double> vecnl1(cmn.vecnl1, dimension(300));
-  arr_cref<double> vecnl2(cmn.vecnl2, dimension(300));
-  arr_cref<int> namenl(cmn.namenl, dimension(300));
-  arr_cref<double> vzer5(cmn.vzer5, dimension(300));
-  arr_cref<int> ilast(cmn.ilast, dimension(300));
-  arr_cref<int> nltype(cmn.nltype, dimension(300));
-  arr_cref<int> kupl(cmn.kupl, dimension(300));
-  arr_cref<int> nlsub(cmn.nlsub, dimension(300));
-  arr_cref<double> cchar(cmn.cchar, dimension(900));
-  arr_cref<double> vchar(cmn.vchar, dimension(900));
-  arr_cref<double> gslope(cmn.gslope, dimension(900));
-  arr_cref<int> kk(cmn.kk, dimension(3002));
-  arr_ref<double> c(cmn.c, dimension(10000));
-  arr_ref<double> tr(cmn.tr, dimension(20000));
-  arr_ref<double> tx(cmn.tx, dimension(20000));
-  arr_ref<double> r(static_cast<common_c0b064&>(cmn).r, dimension(10000));
-  arr_ref<int> nr(cmn.nr, dimension(3000));
-  arr_ref<double> cik(cmn.cik, dimension(3000));
-  arr_ref<double> ci(cmn.ci, dimension(3000));
-  arr_ref<double> ck(cmn.ck, dimension(3000));
-  str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
-  arr_cref<int> ibrnch(cmn.ibrnch, dimension(900));
-  arr_cref<int> jbrnch(cmn.jbrnch, dimension(900));
-  arr_cref<int> nonlk(cmn.nonlk, dimension(300));
-  arr_cref<int> nonlm(cmn.nonlm, dimension(300));
-  arr_cref<int> kks(cmn.kks, dimension(3002));
-  arr_cref<int> kknonl(cmn.kknonl, dimension(72048));
-  arr_cref<double> znonl(cmn.znonl, dimension(72048));
+  const auto& topen = cmn.topen;
+  const auto& crit = cmn.crit;
+  const auto& energy = cmn.energy;
+  const auto& nonlad = cmn.nonlad;
+  const auto& nonle = cmn.nonle;
+  const auto& vnonl = cmn.vnonl;
+  const auto& curr = cmn.curr;
+  const auto& anonl = cmn.anonl;
+  const auto& vecnl1 = cmn.vecnl1;
+  const auto& vecnl2 = cmn.vecnl2;
+  const auto& namenl = cmn.namenl;
+  const auto& vzer5 = cmn.vzer5;
+  const auto& ilast = cmn.ilast;
+  const auto& nltype = cmn.nltype;
+  const auto& kupl = cmn.kupl;
+  const auto& nlsub = cmn.nlsub;
+  const auto& cchar = cmn.cchar;
+  const auto& vchar = cmn.vchar;
+  const auto& gslope = cmn.gslope;
+  const auto& kk = cmn.kk;
+  auto& c = cmn.c;
+  auto& tr = cmn.tr;
+  auto& tx = cmn.tx;
+  auto& r = static_cast<common_c0b064&>(cmn).r;
+  auto& nr = cmn.nr;
+  auto& cik = cmn.cik;
+  auto& ci = cmn.ci;
+  auto& ck = cmn.ck;
+  const auto& texvec = cmn.texvec;
+  const auto& ibrnch = cmn.ibrnch;
+  const auto& jbrnch = cmn.jbrnch;
+  const auto& nonlk = cmn.nonlk;
+  const auto& nonlm = cmn.nonlm;
+  const auto& kks = cmn.kks;
+  const auto& kknonl = cmn.kknonl;
+  const auto& znonl = cmn.znonl;
   arr_cref<double> finit(cmn.finit, dimension(3002));
-  arr_ref<int> litype(cmn.litype, dimension(3000));
-  arr_ref<int> imodel(cmn.imodel, dimension(3000));
-  arr_ref<int> kbus(cmn.kbus, dimension(3000));
-  arr_ref<int> mbus(cmn.mbus, dimension(3000));
-  arr_ref<double> cki(cmn.cki, dimension(3000));
-  arr_ref<double> ckkjm(cmn.ckkjm, dimension(3000));
-  arr_ref<int> namebr(cmn.namebr, dimension(18000));
-  arr_cref<int> iform(cmn.iform, dimension(100));
-  arr_cref<int> node(cmn.node, dimension(100));
-  arr_cref<double> crest(cmn.crest, dimension(100));
-  arr_cref<double> time1(cmn.time1, dimension(100));
-  arr_cref<double> tstart(cmn.tstart, dimension(100));
-  arr_cref<double> sfreq(cmn.sfreq, dimension(100));
-  arr_cref<int> kmswit(cmn.kmswit, dimension(3600));
-  arr_cref<int> nextsw(cmn.nextsw, dimension(1200));
-  arr_cref<double> tclose(cmn.tclose, dimension(1200));
-  arr_cref<double> adelay(cmn.adelay, dimension(3600));
-  arr_cref<int> kpos(cmn.kpos, dimension(1200));
-  arr_cref<int> namesw(cmn.namesw, dimension(1200));
-  arr_cref<double> e(cmn.e, dimension(3002));
-  arr_cref<double> f(static_cast<common_c0b119&>(cmn).f, dimension(3002));
-  arr_cref<int> kssfrq(cmn.kssfrq, dimension(3002));
-  arr_cref<int> kode(cmn.kode, dimension(3002));
+  auto& litype = cmn.litype;
+  auto& imodel = cmn.imodel;
+  auto& kbus = cmn.kbus;
+  auto& mbus = cmn.mbus;
+  auto& cki = cmn.cki
+  auto& ckkjm = cmn.ckkjm;
+  auto& namebr = cmn.namebr;
+  const auto& iform = cmn.iform;
+  const auto& node = cmn.node;
+  const auto& crest = cmn.crest;
+  const auto& time1 = cmn.time1;
+  const auto& tstart = cmn.tstart;
+  const auto& sfreq = cmn.sfreq;
+  const auto& kmswit = cmn.kmswit;
+  const auto& nextsw = cmn.nextsw;
+  const auto& tclose = cmn.tclose;
+  const auto& adelay = cmn.adelay;
+  const auto& kpos = cmn.kpos;
+  const auto& namesw = cmn.namesw;
+  const auto& e = cmn.e;
+  const auto& f = static_cast<common_c0b119&>(cmn).f;
+  const auto& kssfrq = cmn.kssfrq;
+  const auto& kode = cmn.kode;
   const auto& volti = static_cast<common_c0b123&>(cmn).volti;
-  str_arr_cref<1> bus(cmn.bus, dimension(3002));
+  const auto& bus = cmn.bus;
   arr_ref<double> epskon(cmn.epskon, dimension(14));
   arr_ref<int> iascii(cmn.iascii, dimension(1000));
 
@@ -9819,16 +9819,16 @@ void spyink(
   int& nexmod = cmn.nexmod;
   arr_ref<int> kontac(cmn.kontac, dimension(14));
   arr_ref<int> konadd(cmn.konadd, dimension(14));
-  arr_cref<int> kar1(cmn.kar1, dimension(1));
+  const auto& kar1 = cmn.kar1;
   fem::str<20>& bytfnd = cmn.bytfnd;
   fem::str<1>& char1 = cmn.char1;
   fem::str<20>& bytbuf = cmn.bytbuf;
   fem::str<80>& buff77 = cmn.buff77;
   str_arr_ref<1> file6b(cmn.file6b, dimension(20));
-  str_arr_ref<1> file6(cmn.file6, dimension(30000));
+  auto& file6 = cmn.file6;
   fem::str<80>& blan80 = cmn.blan80;
   fem::str<80>& prom80 = cmn.prom80;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   str_arr_ref<1> spykwd(cmn.spykwd, dimension(75));
   fem::str<8>& ansi8 = cmn.ansi8;
   fem::str<32>& ansi32 = cmn.ansi32;
@@ -12525,7 +12525,7 @@ void numchk(
 {
   vbyte(dimension(1));
   common_write write(cmn);
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   fem::str<132>& munit6 = cmn.munit6;
   //
   int koldig = fem::int0;
@@ -12639,18 +12639,18 @@ void examin(
   common& cmn) try
 {
   common_write write(cmn);
-  arr_cref<int> ivec(cmn.ivec, dimension(1000));
-  arr_cref<int> iascii(cmn.iascii, dimension(1000));
+  const auto& ivec = cmn.ivec;
+  const auto& iascii = cmn.iascii;
   int& memkar = cmn.memkar;
   int& iprspy = cmn.iprspy;
-  arr_cref<int> locate(cmn.locate, dimension(1000));
+  const auto& locate = cmn.locate;
   int& kolout = cmn.kolout;
-  arr_cref<int> imin(cmn.imin, dimension(55));
-  arr_cref<int> imax(cmn.imax, dimension(55));
+  const auto& imin = cmn.imin;
+  const auto& imax = cmn.imax;
   int& numex = cmn.numex;
-  arr_cref<int> locout(cmn.locout, dimension(55));
-  arr_cref<int> intout(cmn.intout, dimension(55));
-  arr_cref<int> kar1(cmn.kar1, dimension(1));
+  const auto& locout = cmn.locout;
+  const auto& intout = cmn.intout;
+  const auto& kar1 = cmn.kar1;
   fem::str<8>& ansi8 = cmn.ansi8;
   fem::str<16>& ansi16 = cmn.ansi16;
   fem::str<132>& munit6 = cmn.munit6;
@@ -12812,11 +12812,11 @@ void deposi(
 {
   common_read read(cmn);
   common_write write(cmn);
-  arr_cref<int> iascii(cmn.iascii, dimension(1000));
+  const auto& iascii = cmn.iascii;
   int& memkar = cmn.memkar;
   int& iprspy = cmn.iprspy;
-  arr_cref<int> locate(cmn.locate, dimension(1000));
-  arr_ref<int> kar1(cmn.kar1, dimension(1));
+  const auto& locate = cmn.locate;
+  auto& kar1 = cmn.kar1;
   fem::str<8>& ansi8 = cmn.ansi8;
   fem::str<132>& munit6 = cmn.munit6;
   //
@@ -12912,9 +12912,9 @@ void helper(
 {
   common_write write(cmn);
   int& numkey = cmn.numkey;
-  arr_cref<int> kbegtx(cmn.kbegtx, dimension(85));
+  const auto& kbegtx = cmn.kbegtx;
   fem::str<132>& munit6 = cmn.munit6;
-  str_arr_cref<1> texspy(cmn.texspy, dimension(1250));
+  const auto& texspy = cmn.texspy;
   fem::str<80>& buffin = cmn.buffin;
   //
   int n8 = fem::int0;
@@ -13296,12 +13296,12 @@ void setrtm(
   int& iprspy = cmn.iprspy;
   fem::str<80>& prom80 = cmn.prom80;
   fem::str<132>& munit6 = cmn.munit6;
-  arr_ref<double> fvcom(cmn.fvcom, dimension(50));
-  arr_ref<int> ivcom(cmn.ivcom, dimension(60));
+  auto& fvcom = cmn.fvcom;
+  auto& ivcom = cmn.ivcom;
   fem::str<8>& ansi = cmn.ansi;
   fem::str<80>& buffin = cmn.buffin;
   fem::str<8>& textd1 = cmn.textd1;
-  str_arr_ref<1> anplt(cmn.anplt, dimension(60));
+  auto& anplt = cmn.anplt;
   //
   double& d1 = sve.d1;
   double& d6 = sve.d6;
@@ -13748,16 +13748,16 @@ void chrplt(
   fem::str<132>& munit6 = cmn.munit6;
   double& tmult = cmn.tmult;
   double& dy = cmn.dy;
-  arr_cref<double> ew(cmn.ew, dimension(15000));
-  arr_cref<double> aaa(cmn.aaa, dimension(20));
-  arr_cref<double> bbb(cmn.bbb, dimension(20));
-  arr_ref<int> kp(cmn.kp, dimension(20));
-  arr_cref<int> mstart(cmn.mstart, dimension(20));
-  arr_cref<int> mplot(cmn.mplot, dimension(20));
+  const auto& ew = cmn.ew;
+  const auto& aaa = cmn.aaa;
+  const auto& bbb = cmn.bbb;
+  auto& kp = cmn.kp;
+  const auto& mstart = cmn.mstart;
+  const auto& mplot = cmn.mplot;
   int& jplt = cmn.jplt;
   int& ind1 = cmn.ind1;
   int& kptplt = cmn.kptplt;
-  str_arr_cref<1> sext(cmn.sext, dimension(6));
+  const auto& sext = cmn.sext;
   //
   double& d1 = sve.d1;
   double& d2 = sve.d2;
@@ -14245,26 +14245,26 @@ void timval(
   double& tstep = static_cast<common_cblock&>(cmn).tstep;
   double& gxmin = cmn.gxmin;
   double& gxmax = cmn.gxmax;
-  arr_ref<double> ew(cmn.ew, dimension(15000));
+  auto& ew = cmn.ew;
   double& finfin = cmn.finfin;
-  arr_ref<double> yymin(cmn.yymin, dimension(20));
-  arr_ref<double> yymax(cmn.yymax, dimension(20));
-  arr_ref<double> ttmin(cmn.ttmin, dimension(20));
-  arr_ref<double> ttmax(cmn.ttmax, dimension(20));
-  arr_ref<double> ylevel(cmn.ylevel, dimension(20));
-  arr_ref<double> ttlev(cmn.ttlev, dimension(20));
-  arr_ref<double> dyold(cmn.dyold, dimension(20));
-  arr_ref<int> mlevel(cmn.mlevel, dimension(20));
-  arr_ref<double> aaa(cmn.aaa, dimension(20));
-  arr_ref<double> bbb(cmn.bbb, dimension(20));
-  arr_ref<double> ev(cmn.ev, dimension(15000));
-  arr_ref<double> bx(cmn.bx, dimension(150));
+ auto& yymin = cmn.yymin;
+  auto& yymax = cmn.yymax;
+  auto& ttmin = cmn.ttmin;
+  auto& ttmax = cmn.ttmax;
+  auto& ylevel = cmn.ylevel;
+  auto& ttlev= cmn.ttlev;
+  auto& dyold= cmn.dyold;
+  auto& mlevel = cmn.mlevel;
+  auto& aaa = cmn.aaa;
+  auto& bbb = cmn.bbb;
+  auto& ev = cmn.ev;
+  auto& bx = cmn.bx;
   double& vminr = cmn.vminr;
   double& vmaxr = cmn.vmaxr;
-  arr_ref<int> mmm(cmn.mmm, dimension(20));
-  arr_ref<int> mstart(cmn.mstart, dimension(20));
-  arr_ref<int> numpts(cmn.numpts, dimension(20));
-  arr_cref<int> mplot(cmn.mplot, dimension(20));
+  auto& mmm = cmn.mmm;
+  auto& mstart = cmn.mstart;
+  auto& numpts = cmn.numpts;
+  const auto& mplot = cmn.mplot;
   int& jplt = cmn.jplt;
   int& icurse = cmn.icurse;
   int& mxypl = cmn.mxypl;
@@ -14276,7 +14276,7 @@ void timval(
   int& limfix = cmn.limfix;
   int& maxew = cmn.maxew;
   fem::str<80>& buffin = cmn.buffin;
-  str_arr_cref<1> slot1(cmn.slot1, dimension(20));
+  const auto& slot1 = cmn.slot1;
   fem::str<8>& textd1 = cmn.textd1;
   fem::str<8>& textd2 = cmn.textd2;
   fem::str<24>& xytitl = cmn.xytitl;
@@ -16414,13 +16414,13 @@ void tpplot(
   arr_ref<double> tclopl(cmn.tclopl, dimension(2));
   arr_ref<double> bbus(cmn.bbus, dimension(300));
   double& tstep = static_cast<common_cblock&>(cmn).tstep;
-  arr_cref<double> ew(cmn.ew, dimension(15000));
-  arr_ref<double> ylevel(cmn.ylevel, dimension(20));
-  arr_ref<double> aaa(cmn.aaa, dimension(20));
-  arr_ref<double> bbb(cmn.bbb, dimension(20));
+  const auto& ew = cmn.ew;
+  auto& ylevel = cmn.ylevel;
+  auto& aaa = cmn.aaa;
+  auto& bbb = cmn.bbb;
   arr_cref<double> ev(cmn.ev, dimension(15000));
   arr_cref<double> bx(cmn.bx, dimension(150));
-  arr_ref<int> mmm(cmn.mmm, dimension(20));
+  auto& mmm = cmn.mmm;
   arr_ref<int> mcurve(cmn.mcurve, dimension(20));
   int& numbrn = cmn.numbrn;
   int& jbegbv = cmn.jbegbv;
@@ -16985,10 +16985,10 @@ void spying(
   double& t = cmn.t;
   double& tmax = cmn.tmax;
   double& flzero = cmn.flzero;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& flstat = cmn.flstat;
   auto& lunit4 = cmn.lunit4;
   auto& lunt14 = cmn.lunt14;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& kwtspy = cmn.kwtspy;
   int& kanal = cmn.kanal;
   int& ialter = cmn.ialter;
@@ -16998,29 +16998,29 @@ void spying(
   int& nchain = cmn.nchain;
   int& ibr = cmn.ibr;
   int& numnvo = cmn.numnvo;
-  arr_ref<int> ibsout(cmn.ibsout, dimension(900));
-  arr_cref<int> nr(cmn.nr, dimension(3000));
-  arr_cref<int> length(cmn.length, dimension(3000));
-  arr_cref<double> cik(cmn.cik, dimension(3000));
-  arr_cref<double> ci(cmn.ci, dimension(3000));
-  arr_cref<double> ck(cmn.ck, dimension(3000));
-  arr_cref<double> elp(cmn.elp, dimension(404));
-  arr_cref<double> cu(cmn.cu, dimension(96));
-  arr_cref<double> shp(cmn.shp, dimension(1008));
-  arr_cref<double> histq(cmn.histq, dimension(504));
-  arr_cref<int> ismdat(cmn.ismdat, dimension(120));
-  str_arr_cref<1> texvec(cmn.texvec, dimension(4000));
-  arr_cref<int> litype(cmn.litype, dimension(3000));
-  arr_cref<int> imodel(cmn.imodel, dimension(3000));
-  arr_ref<int> kbus(cmn.kbus, dimension(3000));
-  arr_ref<int> mbus(cmn.mbus, dimension(3000));
-  arr_cref<int> kodebr(cmn.kodebr, dimension(3000));
-  arr_cref<double> cki(cmn.cki, dimension(3000));
-  arr_cref<double> ckkjm(cmn.ckkjm, dimension(3000));
-  arr_cref<int> indhst(cmn.indhst, dimension(3000));
-  arr_cref<int> kodsem(cmn.kodsem, dimension(3000));
-  arr_cref<int> namebr(cmn.namebr, dimension(18000));
-  str_arr_ref<1> bus(cmn.bus, dimension(3002));
+  auto& ibsout = cmn.ibsout;
+  const auto& nr = cmn.nr;
+  const auto& length = cmn.length;
+  const auto& cik = cmn.cik;
+  const auto& ci = cmn.ci;
+  const auto& ck = cmn.ck;
+  const auto& elp = cmn.elp;
+  const auto& cu = cmn.cu;
+  const auto& shp = cmn.shp;
+  const auto& histq = cmn.histq;
+  const auto& ismdat = cmn.ismdat;
+  const auto& texvec = cmn.texvec;
+  const auto& litype = cmn.litype;
+  const auto& imodel = cmn.imodel;
+  auto& kbus = cmn.kbus;
+  auto& mbus = cmn.mbus;
+  const auto& kodebr = cmn.kodebr;
+  const auto& cki = cmn.cki;
+  const auto& ckkjm = cmn.ckkjm;
+  const auto& indhst = cmn.indhst;
+  const auto& kodsem = cmn.kodsem;
+  const auto& namebr = cmn.namebr;
+  auto& bus = cmn.bus;
   arr_cref<double> smoutv(cmn.smoutv, dimension(15));
   double& factom = cmn.factom;
   arr_ref<double> rampcn(cmn.rampcn, dimension(20));
@@ -17034,8 +17034,8 @@ void spying(
   arr_ref<double> fbegrp(cmn.fbegrp, dimension(20));
   double& tbreak = cmn.tbreak;
   arr_ref<int> indxrp(cmn.indxrp, dimension(20));
-  arr_cref<int> ivec(cmn.ivec, dimension(1000));
-  arr_cref<int> iascii(cmn.iascii, dimension(1000));
+  const auto& ivec = cmn.ivec;
+  const auto& iascii = cmn.iascii;
   int& numsym = cmn.numsym;
   int& jjroll = cmn.jjroll;
   int& maxarg = cmn.maxarg;
@@ -17047,12 +17047,12 @@ void spying(
   int& munit5 = cmn.munit5;
   int& numkey = cmn.numkey;
   int& memkar = cmn.memkar;
-  arr_ref<int> ksmspy(cmn.ksmspy, dimension(3));
+  auto& ksmspy = cmn.ksmspy;
   int& lockbr = cmn.lockbr;
   int& komadd = cmn.komadd;
   int& iprspy = cmn.iprspy;
   int& monitr = cmn.monitr;
-  arr_cref<int> locate(cmn.locate, dimension(1000));
+  const auto& locate = cmn.locate;
   int& kbreak = cmn.kbreak;
   int& kolout = cmn.kolout;
   arr_ref<int> limarr(cmn.limarr, dimension(4));
@@ -17069,8 +17069,8 @@ void spying(
   arr_ref<int> looprp(cmn.looprp, dimension(20));
   arr_ref<int> n10rmp(cmn.n10rmp, dimension(20));
   arr_ref<int> memrmp(cmn.memrmp, dimension(20));
-  arr_cref<int> kbegtx(cmn.kbegtx, dimension(85));
-  arr_cref<int> kar1(cmn.kar1, dimension(1));
+  const auto& kbegtx = cmn.kbegtx;
+  const auto& kar1 = cmn.kar1;
   int& numrmp = cmn.numrmp;
   int& luntsp = cmn.luntsp;
   bool& logvar = cmn.logvar;
@@ -17079,10 +17079,10 @@ void spying(
   str_arr_ref<1> symbrp(cmn.symbrp, dimension(20));
   fem::str<20>& bytbuf = cmn.bytbuf;
   fem::str<80>& buff77 = cmn.buff77;
-  str_arr_ref<1> file6(cmn.file6, dimension(30000));
+  auto& file6 = cmn.file6;
   fem::str<80>& blan80 = cmn.blan80;
   fem::str<80>& prom80 = cmn.prom80;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   str_arr_ref<1> texpar(cmn.texpar, dimension(10));
   str_arr_cref<1> spykwd(cmn.spykwd, dimension(75));
   fem::str<8>& ansi8 = cmn.ansi8;
@@ -17093,7 +17093,7 @@ void spying(
   fem::str<132>& outlin = cmn.outlin;
   fem::str<132>& outsav = cmn.outsav;
   fem::str<132>& heding = cmn.heding;
-  str_arr_cref<1> texspy(cmn.texspy, dimension(1250));
+  const auto& texspy = cmn.texspy;
   //
   fem::str<8>& chard7 = sve.chard7;
   double& d1 = sve.d1;
@@ -19493,7 +19493,7 @@ void emtspy(
   int& iprspy = cmn.iprspy;
   int& kbreak = cmn.kbreak;
   fem::str<80>& buff77 = cmn.buff77;
-  str_arr_cref<1> file6(cmn.file6, dimension(30000));
+  const auto& file6 = cmn.file6;
   fem::str<132>& munit6 = cmn.munit6;
   //
   int& n18 = sve.n18;
@@ -19634,45 +19634,45 @@ void locatn(
   const auto& tclock= cmn.tclock;
   const auto& vstacs= cmn.vstacs;
   const auto& abuff = cmn.abuff;
-  arr_cref<double> begmax(cmn.begmax, dimension(6));
-  arr_cref<double> peaknd(cmn.peaknd, dimension(3));
-  arr_cref<double> voltbc(cmn.voltbc, dimension(50));
+  const auto& begmax = cmn.begmax;
+  const auto& peaknd = cmn.peaknd;
+  const auto& voltbc = cmn.voltbc;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  arr_cref<int> kprchg(cmn.kprchg, dimension(6));
-  arr_cref<int> multpr(cmn.multpr, dimension(5));
-  arr_cref<int> ipntv(cmn.ipntv, dimension(11));
+  const auto& kprchg = cmn.kprchg;
+  const auto& multpr = cmn.multpr;
+  const auto& ipntv = cmn.ipntv;
   arr_cref<int> indtv(cmn.indtv, dimension(10));
-  arr_cref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
-  arr_cref<int> lunsav(cmn.lunsav, dimension(15));
-  arr_cref<int> iprsov(cmn.iprsov, dimension(39));
+  const auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
+  const auto& lunsav = cmn.lunsav;
+  const auto& iprsov = cmn.iprsov;
   arr_cref<int> ktrlsw(cmn.ktrlsw, dimension(8));
   arr_cref<int> nexout(cmn.nexout, dimension(17));
-  arr_cref<int> loopss(cmn.loopss, dimension(13));
+  const auto& loopss = cmn.loopss;
   // COMMON c0b001
-  arr_cref<double> x(static_cast<common_c0b001&>(cmn).x, dimension(10000));
+  const auto& x = static_cast<common_c0b001&>(cmn).x;
   // COMMON c0b002
-  arr_cref<double> ykm(cmn.ykm, dimension(20000));
+  const auto& ykm = cmn.ykm;
   // COMMON c0b003
-  arr_cref<int> km(cmn.km, dimension(20000));
+  const auto& km = cmn.km;
   // COMMON c0b004
   arr_cref<double> xk(cmn.xk, dimension(121080));
   // COMMON c0b005
   arr_cref<double> xm(cmn.xm, dimension(121080));
   // COMMON c0b006
-  arr_cref<double> weight(cmn.weight, dimension(460));
+  const auto& weight = cmn.weight;
   // COMMON c0b007
-  arr_cref<int> iwtent(cmn.iwtent, dimension(31));
+  const auto& iwtent = cmn.iwtent;
   // COMMON c0b008
-  arr_cref<double> con1(cmn.con1, dimension(30));
+  const auto& con1 = cmn.con1;
   // COMMON c0b009
-  arr_cref<int> iskip(cmn.iskip, dimension(5));
+  const auto& iskip = cmn.iskip;
   // COMMON c0b010
-  arr_cref<double> zinf(cmn.zinf, dimension(5));
+  const auto& zinf = cmn.zinf;
   // COMMON c0b011
-  arr_cref<double> eta(cmn.eta, dimension(5));
+  const auto& eta = cmn.eta;
   // COMMON c0b012
-  arr_cref<int> nhist(cmn.nhist, dimension(5));
+  const auto& nhist = cmn.nhist;
   // COMMON c0b013
   arr_cref<double> stailm(cmn.stailm, dimension(90));
   // COMMON c0b014
@@ -19680,27 +19680,27 @@ void locatn(
   // COMMON c0b015
   arr_cref<double> xmax(cmn.xmax, dimension(3600));
   // COMMON c0b016
-  arr_cref<int> koutvp(cmn.koutvp, dimension(508));
+  const auto& koutvp = cmn.koutvp;
   // COMMON c0b017
   arr_cref<double> bnrg(cmn.bnrg, dimension(254));
   // COMMON c0b018
-  arr_cref<double> sconst(cmn.sconst, dimension(100000));
+  const auto& sconst = cmn.sconst;
   // COMMON c0b019
-  arr_cref<double> cnvhst(cmn.cnvhst, dimension(53000));
+  const auto& cnvhst = cmn.cnvhst;
   // COMMON c0b020
-  arr_cref<double> sfd(cmn.sfd, dimension(6000));
+  const auto& sfd = cmn.sfd;
   // COMMON c0b021
-  arr_cref<double> qfd(cmn.qfd, dimension(6000));
+  const auto& qfd = cmn.qfd;
   // COMMON c0b022
   arr_cref<double> semaux(cmn.semaux, dimension(50000));
   // COMMON c0b023
-  arr_cref<int> ibsout(cmn.ibsout, dimension(900));
+  const auto& ibsout = cmn.ibsout;
   // COMMON c0b024
   arr_cref<double> bvalue(cmn.bvalue, dimension(900));
   // COMMON c0b025
   const auto& sptacs = cmn.sptacs;
   // COMMON c0b026
-  arr_cref<int> kswtyp(cmn.kswtyp, dimension(1200));
+  const auto& kswtyp = cmn.kswtyp;
   // COMMON c0b027
   arr_cref<int> modswt(cmn.modswt, dimension(1200));
   // COMMON c0b028
@@ -19712,97 +19712,97 @@ void locatn(
   // COMMON c0b031
   arr_cref<int> nbhdsw(cmn.nbhdsw, dimension(3600));
   // COMMON c0b032
-  arr_cref<double> topen(cmn.topen, dimension(3600));
+  const auto& topen = cmn.topen;
   // COMMON c0b033
-  arr_cref<double> crit(cmn.crit, dimension(1200));
+  const auto& crit = cmn.crit;
   // COMMON c0b034
-  arr_cref<int> kdepsw(cmn.kdepsw, dimension(3600));
+  const auto& kdepsw = cmn.kdepsw;
   // COMMON c0b035
-  arr_cref<double> tdns(cmn.tdns, dimension(1200));
+  const auto& tdns = cmn.tdns;
   // COMMON c0b036
-  arr_cref<int> isourc(cmn.isourc, dimension(1200));
+  const auto& isourc = cmn.isourc;
   // COMMON c0b037
-  arr_cref<double> energy(cmn.energy, dimension(1200));
+  const auto& energy = cmn.energy;
   // COMMON c0b038
-  arr_cref<int> iardub(cmn.iardub, dimension(3600));
+  const auto& iardub = cmn.iardub;
   // COMMON c0b039
   arr_cref<double> ardube(cmn.ardube, dimension(4800));
   // COMMON c0b040
-  arr_cref<int> nonlad(cmn.nonlad, dimension(300));
+  const auto& nonlad = cmn.nonlad;
   // COMMON c0b041
-  arr_cref<int> nonle(cmn.nonle, dimension(300));
+  const auto& nonle = cmn.nonle;
   // COMMON c0b042
-  arr_cref<double> vnonl(cmn.vnonl, dimension(300));
+  const auto& vnonl = cmn.vnonl;
   // COMMON c0b043
-  arr_cref<double> curr(cmn.curr, dimension(300));
+  const auto& curr = cmn.curr;
   // COMMON c0b044
-  arr_cref<double> anonl(cmn.anonl, dimension(300));
+  const auto& anonl = cmn.anonl;
   // COMMON c0b045
-  arr_cref<double> vecnl1(cmn.vecnl1, dimension(300));
+  const auto& vecnl1 = cmn.vecnl1;
   // COMMON c0b046
-  arr_cref<double> vecnl2(cmn.vecnl2, dimension(300));
+  const auto& vecnl2 = cmn.vecnl2;
   // COMMON c0b048
-  arr_cref<double> vzer5(cmn.vzer5, dimension(300));
+  const auto& vzer5 = cmn.vzer5;
   // COMMON c0b049
-  arr_cref<int> ilast(cmn.ilast, dimension(300));
+  const auto& ilast = cmn.ilast;
   // COMMON c0b050
-  arr_cref<int> nltype(cmn.nltype, dimension(300));
+  const auto& nltype = cmn.nltype;
   // COMMON c0b051
-  arr_cref<int> kupl(cmn.kupl, dimension(300));
+  const auto& kupl = cmn.kupl;
   // COMMON c0b052
-  arr_cref<int> nlsub(cmn.nlsub, dimension(300));
+  const auto& nlsub = cmn.nlsub;
   // COMMON c0b055
-  arr_cref<double> cursub(cmn.cursub, dimension(312));
+  const auto& cursub = cmn.cursub;
   // COMMON c0b056
-  arr_cref<double> cchar(cmn.cchar, dimension(900));
+  const auto& cchar = cmn.cchar;
   // COMMON c0b057
-  arr_cref<double> vchar(cmn.vchar, dimension(900));
+  const auto& vchar = cmn.vchar;
   // COMMON c0b058
-  arr_cref<double> gslope(cmn.gslope, dimension(900));
+  const auto& gslope = cmn.gslope;
   // COMMON c0b060
-  arr_cref<int> kk(cmn.kk, dimension(3002));
+  const auto& kk = cmn.kk;
   // COMMON c0b061
-  arr_cref<double> c(cmn.c, dimension(10000));
+  const auto& c = cmn.c;
   // COMMON c0b062
-  arr_cref<double> tr(cmn.tr, dimension(20000));
+  const auto& tr = cmn.tr;
   // COMMON c0b063
-  arr_cref<double> tx(cmn.tx, dimension(20000));
+  const auto& tx = cmn.tx;
   // COMMON c0b064
-  arr_cref<double> r(static_cast<common_c0b064&>(cmn).r, dimension(10000));
+  const auto& r = static_cast<common_c0b064&>(cmn).r;
   // COMMON c0b065
-  arr_cref<int> nr(cmn.nr, dimension(3000));
+  const auto& nr = cmn.nr;
   // COMMON c0b066
-  arr_cref<int> length(cmn.length, dimension(3000));
+  const auto& length = cmn.length;
   // COMMON c0b067
-  arr_cref<double> cik(cmn.cik, dimension(3000));
+  const auto& cik = cmn.cik;
   // COMMON c0b068
-  arr_cref<double> ci(cmn.ci, dimension(3000));
+  const auto& ci = cmn.ci;
   // COMMON c0b069
-  arr_cref<double> ck(cmn.ck, dimension(3000));
+  const auto& ck = cmn.ck;
   // COMMON c0b070
-  arr_cref<int> ismout(cmn.ismout, dimension(1052));
+  const auto& ismout = cmn.ismout;
   // COMMON c0b072
-  arr_cref<double> cu(cmn.cu, dimension(96));
+  const auto& cu = cmn.cu;
   // COMMON c0b074
-  arr_cref<double> histq(cmn.histq, dimension(504));
+  const auto& histq = cmn.histq;
   // COMMON c0b077
-  arr_cref<int> ibrnch(cmn.ibrnch, dimension(900));
+  const auto& ibrnch = cmn.ibrnch;
   // COMMON c0b078
-  arr_cref<int> jbrnch(cmn.jbrnch, dimension(900));
+  const auto& jbrnch = cmn.jbrnch;
   // COMMON c0b079
   arr_cref<double> tstop(cmn.tstop, dimension(100));
   // COMMON c0b080
-  arr_cref<int> nonlk(cmn.nonlk, dimension(300));
+  const auto& nonlk = cmn.nonlk;
   // COMMON c0b081
-  arr_cref<int> nonlm(cmn.nonlm, dimension(300));
+  const auto& nonlm = cmn.nonlm;
   // COMMON c0b082
-  arr_cref<double> spum(cmn.spum, dimension(30000));
+  const auto& spum = cmn.spum;
   // COMMON c0b083
-  arr_cref<int> kks(cmn.kks, dimension(3002));
+  const auto& kks = cmn.kks;
   // COMMON c0b084
-  arr_cref<int> kknonl(cmn.kknonl, dimension(72048));
+  const auto& kknonl = cmn.kknonl;
   // COMMON c0b085
-  arr_cref<double> znonl(cmn.znonl, dimension(72048));
+  const auto& znonl = cmn.znonl;
   // COMMON c0b086
   arr_cref<double> znonlb(cmn.znonlb, dimension(3002));
   // COMMON c0b087
@@ -19810,69 +19810,69 @@ void locatn(
   // COMMON c0b088
   arr_cref<double> finit(cmn.finit, dimension(3002));
   // COMMON c0b089
-  arr_cref<int> ksub(cmn.ksub, dimension(312));
+  const auto& ksub = cmn.ksub;
   // COMMON c0b090
-  arr_cref<int> msub(cmn.msub, dimension(312));
+  const auto& msub = cmn.msub;
   // COMMON c0b091
-  arr_cref<int> isubeg(cmn.isubeg, dimension(304));
+  const auto& isubeg = cmn.isubeg;
   // COMMON c0b092
-  arr_cref<int> litype(cmn.litype, dimension(3000));
+  const auto& litype = cmn.litype;
   // COMMON c0b093
-  arr_cref<int> imodel(cmn.imodel, dimension(3000));
+  const auto& imodel = cmn.imodel;
   // COMMON c0b094
-  arr_cref<int> kbus(cmn.kbus, dimension(3000));
+  const auto& kbus = cmn.kbus;
   // COMMON c0b095
-  arr_cref<int> mbus(cmn.mbus, dimension(3000));
+  const auto& mbus = cmn.mbus;
   // COMMON c0b096
-  arr_cref<int> kodebr(cmn.kodebr, dimension(3000));
+  const auto& kodebr = cmn.kodebr;
   // COMMON c0b097
-  arr_cref<double> cki(cmn.cki, dimension(3000));
+  const auto& cki = cmn.cki;
   // COMMON c0b098
-  arr_cref<double> ckkjm(cmn.ckkjm, dimension(3000));
+  const auto& ckkjm = cmn.ckkjm;
   // COMMON c0b099
-  arr_cref<int> indhst(cmn.indhst, dimension(3000));
+  const auto& indhst = cmn.indhst;
   // COMMON c0b100
-  arr_cref<int> kodsem(cmn.kodsem, dimension(3000));
+  const auto& kodsem = cmn.kodsem;
   // COMMON c0b102
-  arr_cref<int> iform(cmn.iform, dimension(100));
+  const auto& iform = cmn.iform;
   // COMMON c0b103
-  arr_cref<int> node(cmn.node, dimension(100));
+  const auto& node = cmn.node;
   // COMMON c0b104
-  arr_cref<double> crest(cmn.crest, dimension(100));
+  const auto& crest = cmn.crest;
   // COMMON c0b105
-  arr_cref<double> time1(cmn.time1, dimension(100));
+  const auto& time1 = cmn.time1;
   // COMMON c0b106
-  arr_cref<double> time2(cmn.time2, dimension(100));
+  const auto& time2 = cmn.time2;
   // COMMON c0b107
-  arr_cref<double> tstart(cmn.tstart, dimension(100));
+  const auto& tstart = cmn.tstart;
   // COMMON c0b108
-  arr_cref<double> sfreq(cmn.sfreq, dimension(100));
+  const auto& sfreq = cmn.sfreq;
   // COMMON c0b109
-  arr_cref<int> kmswit(cmn.kmswit, dimension(3600));
+  const auto& kmswit = cmn.kmswit;
   // COMMON c0b110
-  arr_cref<int> nextsw(cmn.nextsw, dimension(1200));
+  const auto& nextsw = cmn.nextsw;
   // COMMON c0b111
-  arr_cref<double> rmfd(cmn.rmfd, dimension(1));
+  const auto& rmfd = cmn.rmfd;
   // COMMON c0b112
   arr_cref<double> cikfd(cmn.cikfd, dimension(1));
   // COMMON c0b113
-  arr_cref<int> imfd(cmn.imfd, dimension(600));
+  const auto& imfd = cmn.imfd;
   // COMMON c0b114
-  arr_cref<double> tclose(cmn.tclose, dimension(1200));
+  const auto& tclose = cmn.tclose;
   // COMMON c0b115
-  arr_cref<double> adelay(cmn.adelay, dimension(3600));
+  const auto& adelay = cmn.adelay;
   // COMMON c0b116
-  arr_cref<int> kpos(cmn.kpos, dimension(1200));
+  const auto& kpos = cmn.kpos;
   // COMMON c0b118
-  arr_cref<double> e(cmn.e, dimension(3002));
+  const auto& e = cmn.e;
   // COMMON c0b119
-  arr_cref<double> f(static_cast<common_c0b119&>(cmn).f, dimension(3002));
+  const auto& f = static_cast<common_c0b119&>(cmn).f;
   // COMMON c0b120
-  arr_cref<int> kssfrq(cmn.kssfrq, dimension(3002));
+  const auto& kssfrq = cmn.kssfrq;
   // COMMON c0b121
-  arr_cref<int> kode(cmn.kode, dimension(3002));
+  const auto& kode = cmn.kode;
   // COMMON c0b122
-  arr_cref<int> kpsour(cmn.kpsour, dimension(3002));
+  const auto& kpsour = cmn.kpsour;
   // COMMON c0b123
   const auto& volti = static_cast<common_c0b123&>(cmn).volti;
   // COMMON c0b124
@@ -19881,12 +19881,12 @@ void locatn(
   // COMMON c0b125
   const auto& volt = cmn.volt;
   // COMMON c0b126
-  str_arr_cref<1> bus(cmn.bus, dimension(3002));
+  const auto& bus = cmn.bus;
   // COMMON smach
-  arr_cref<double> z(static_cast<common_smach&>(cmn).z, dimension(100));
+  const auto& z = static_cast<common_smach&>(cmn).z;
   arr_cref<double> x1(cmn.x1, dimension(36));
   // COMMON umcom
-  str_arr_cref<1> busum(cmn.busum, dimension(50));
+  const auto& busum = cmn.busum;
   arr_cref<double, 2> ptheta(cmn.ptheta, dimension(3, 3));
   arr_cref<double, 2> zthevr(cmn.zthevr, dimension(3, 3));
   arr_cref<double> vinp(cmn.vinp, dimension(40));
@@ -19903,24 +19903,24 @@ void locatn(
   arr_cref<int> karray(static_cast<common_c29b01&>(cmn).karray,
     dimension(1992869));
   // COMMON spycom
-  arr_cref<double> rampcn(cmn.rampcn, dimension(20));
-  arr_cref<double> rampsl(cmn.rampsl, dimension(20));
-  arr_cref<int> kyramp(cmn.kyramp, dimension(20));
-  arr_cref<double> fendrp(cmn.fendrp, dimension(20));
-  arr_cref<double> tbegrp(cmn.tbegrp, dimension(20));
-  arr_cref<double> tendrp(cmn.tendrp, dimension(20));
+  const auto& rampcn = cmn.rampcn;
+  const auto& rampsl = cmn.rampsl;
+  const auto& kyramp = cmn.kyramp;
+  const auto& fendrp = cmn.fendrp;
+  const auto& tbegrp = cmn.tbegrp;
+  const auto& tendrp = cmn.tendrp;
   arr_cref<double> fbegrp(cmn.fbegrp, dimension(20));
   // COMMON spykom
-  arr_cref<int> indxrp(cmn.indxrp, dimension(20));
-  arr_cref<int> ivec(cmn.ivec, dimension(1000));
-  arr_cref<int> iascii(cmn.iascii, dimension(1000));
+  const auto& indxrp = cmn.indxrp;
+  const auto& ivec = cmn.ivec;
+  const auto& iascii = cmn.iascii;
   arr_cref<int> labels(cmn.labels, dimension(15));
   arr_ref<int> locate(cmn.locate, dimension(1000));
   arr_cref<int> nline(cmn.nline, dimension(1000));
   arr_cref<int> looprp(cmn.looprp, dimension(20));
-  arr_cref<int> n10rmp(cmn.n10rmp, dimension(20));
-  arr_cref<int> memrmp(cmn.memrmp, dimension(20));
-  arr_cref<int> kar1(cmn.kar1, dimension(1));
+  const auto& n10rmp = cmn.n10rmp;
+  const auto& memrmp = cmn.memrmp;
+  const auto& kar1 = cmn.kar1;
   arr_cref<int> kar2(cmn.kar2, dimension(2));
   // COMMON spyf77
   str_arr_cref<1> filext(cmn.filext, dimension(10));
@@ -19928,8 +19928,8 @@ void locatn(
   str_arr_cref<1> col(cmn.col, dimension(25));
   str_arr_cref<1> symbrp(cmn.symbrp, dimension(20));
   str_arr_cref<1> file6b(cmn.file6b, dimension(20));
-  str_arr_cref<1> file6(cmn.file6, dimension(30000));
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& file6 = cmn.file6;
+  const auto& digit = cmn.digit;
   str_arr_cref<1> texpar(cmn.texpar, dimension(10));
   // COMMON ekcom1
   arr_cref<double, 2> ekbuf(cmn.ekbuf, dimension(15, 9));
@@ -21084,10 +21084,10 @@ void stopin(
 {
   common_read read(cmn);
   common_write write(cmn);
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& istep = cmn.istep;
   fem::str<80>& buff77 = cmn.buff77;
-  str_arr_ref<1> file6(cmn.file6, dimension(30000));
+  auto& file6 = cmn.file6;
   fem::str<132>& munit6 = cmn.munit6;
   //
   //C     UNIVERSAL MODULE OF INTERACTIVE EMTP (SPY OF "EMTSPY").           M37. 831
@@ -21220,8 +21220,8 @@ void datain(
   auto& date1= cmn.date1;
   auto& tclock= cmn.tclock;
   auto& lunt13 = cmn.lunt13;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_ref<int> iprsov(cmn.iprsov, dimension(39));
+  auto& lstat = cmn.lstat;
+  auto& iprsov= cmn.iprsov;
   int& istep = cmn.istep;
   int& m4plot = cmn.m4plot;
   int& llbuff = cmn.llbuff;
@@ -23595,7 +23595,7 @@ void vecrsv(
 {
   array(dimension(n13));
   common_write write(cmn);
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  const auto& nbyte = cmn.nbyte;
   int& iprsup = cmn.iprsup;
   int& kntvec = cmn.kntvec;
   arr_ref<int> kofvec(cmn.kofvec, dimension(20));
@@ -23706,7 +23706,7 @@ void fltopt(
   common_write write(cmn);
   int& iprsup = cmn.iprsup;
   fem::str<80>& blan80 = cmn.blan80;
-  str_arr_cref<1> digit(cmn.digit, dimension(10));
+  const auto& digit = cmn.digit;
   fem::str<32>& ansi32 = cmn.ansi32;
   fem::str<35>& spycd2 = cmn.spycd2;
   //
@@ -24124,8 +24124,8 @@ void cominv(
   a(dimension(1));
   b(dimension(1));
   double& t = cmn.t;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& flstat = cmn.flstat;
+  auto& lstat = cmn.lstat;
   //
   double epspv2 = fem::double0;
   int i = fem::int0;
@@ -24244,7 +24244,7 @@ void last14(
   double& epsiln = cmn.epsiln;
   double& unity = cmn.unity;
   double& fltinf = cmn.fltinf;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& icheck = cmn.icheck;
   int& inonl = cmn.inonl;
   int& it1 = cmn.it1;
@@ -24258,45 +24258,45 @@ void last14(
   int& kconst = cmn.kconst;
   int& ntot = cmn.ntot;
   int& ibr = cmn.ibr;
-  arr_cref<double> x(static_cast<common_c0b001&>(cmn).x, dimension(10000));
-  arr_ref<double> ykm(cmn.ykm, dimension(20000));
-  arr_ref<int> km(cmn.km, dimension(20000));
-  arr_cref<double> eta(cmn.eta, dimension(5));
-  arr_ref<double> sconst(cmn.sconst, dimension(100000));
-  arr_cref<double> cnvhst(cmn.cnvhst, dimension(53000));
-  arr_cref<double> qfd(cmn.qfd, dimension(6000));
-  arr_ref<double> semaux(cmn.semaux, dimension(50000));
-  arr_cref<int> nonlad(cmn.nonlad, dimension(300));
-  arr_cref<double> anonl(cmn.anonl, dimension(300));
-  arr_cref<int> nltype(cmn.nltype, dimension(300));
-  arr_cref<double> gslope(cmn.gslope, dimension(900));
-  arr_cref<double> c(cmn.c, dimension(10000));
-  arr_cref<double> tx(cmn.tx, dimension(20000));
-  arr_cref<int> nr(cmn.nr, dimension(3000));
-  arr_cref<int> length(cmn.length, dimension(3000));
-  arr_cref<double> cik(cmn.cik, dimension(3000));
-  arr_ref<double> ci(cmn.ci, dimension(3000));
-  arr_cref<double> ck(cmn.ck, dimension(3000));
-  arr_cref<int> nonlk(cmn.nonlk, dimension(300));
-  arr_cref<int> nonlm(cmn.nonlm, dimension(300));
-  arr_ref<int> kks(cmn.kks, dimension(3002));
-  arr_cref<int> litype(cmn.litype, dimension(3000));
-  arr_cref<int> imodel(cmn.imodel, dimension(3000));
-  arr_cref<int> kbus(cmn.kbus, dimension(3000));
-  arr_cref<int> mbus(cmn.mbus, dimension(3000));
-  arr_cref<int> kodebr(cmn.kodebr, dimension(3000));
-  arr_cref<double> cki(cmn.cki, dimension(3000));
-  arr_cref<int> indhst(cmn.indhst, dimension(3000));
-  arr_cref<int> kodsem(cmn.kodsem, dimension(3000));
-  arr_cref<int> namebr(cmn.namebr, dimension(18000));
-  arr_cref<int> iform(cmn.iform, dimension(100));
-  arr_cref<double> time1(cmn.time1, dimension(100));
-  arr_cref<int> kmswit(cmn.kmswit, dimension(3600));
-  arr_ref<double> e(cmn.e, dimension(3002));
-  arr_ref<double> f(static_cast<common_c0b119&>(cmn).f, dimension(3002));
-  arr_ref<int> kpsour(cmn.kpsour, dimension(3002));
+  const auto& x = static_cast<common_c0b001&>(cmn).x;
+  auto& ykm = cmn.ykm;
+  auto& km = cmn.km;
+  const auto& eta = cmn.eta;
+  auto& sconst = cmn.sconst;
+  const auto& cnvhst = cmn.cnvhst;
+  const auto& qfd = cmn.qfd;
+  auto& semaux = cmn.semaux;
+  const auto& nonlad = cmn.nonlad;
+  const auto& anonl = cmn.anonl;
+  const auto& nltype = cmn.nltype;
+  const auto& gslope = cmn.gslope;
+  const auto& c = cmn.c;
+  const auto& tx = cmn.tx;
+  const auto& nr = cmn.nr;
+  const auto& length = cmn.length;
+  const auto& cik = cmn.cik;
+  auto& ci = cmn.ci;
+  const auto& ck = cmn.ck;
+  const auto& nonlk = cmn.nonlk;
+  const auto& nonlm = cmn.nonlm;
+  auto& kks = cmn.kks;
+  const auto& litype = cmn.litype;
+  const auto& imodel = cmn.imodel;
+  const auto& kbus = cmn.kbus;
+  const auto& mbus = cmn.mbus;
+  const auto& kodebr = cmn.kodebr;
+  const auto& cki = cmn.cki;
+  const auto& indhst = cmn.indhst;
+  const auto& kodsem = cmn.kodsem;
+  const auto& namebr = cmn.namebr;
+  const auto& iform = cmn.iform;
+  const auto& time1 = cmn.time1;
+  const auto& kmswit = cmn.kmswit;
+  auto& e = cmn.e;
+  auto& f = static_cast<common_c0b119&>(cmn).f;
+  auto& kpsour = cmn.kpsour;
   auto& volt = cmn.volt;
-  str_arr_cref<1> bus(cmn.bus, dimension(3002));
+  const auto& bus = cmn.bus;
   int& koff20 = cmn.koff20;
   int& koff21 = cmn.koff21;
   int& koff22 = cmn.koff22;
@@ -25370,9 +25370,9 @@ void identifier_switch(
   common& cmn) try
 {
   common_write write(cmn);
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& lswtch = cmn.lswtch;
-  arr_ref<int> ktrlsw(cmn.ktrlsw, dimension(8));
+  auto& ktrlsw = cmn.ktrlsw;
   int& kpartb = cmn.kpartb;
   int& iprsup = cmn.iprsup;
   int& kswtch = cmn.kswtch;
@@ -25382,10 +25382,10 @@ void identifier_switch(
   arr_ref<int> lastsw(cmn.lastsw, dimension(1200));
   arr_cref<int> kentnb(cmn.kentnb, dimension(1200));
   arr_cref<int> nbhdsw(cmn.nbhdsw, dimension(3600));
-  arr_cref<int> kmswit(cmn.kmswit, dimension(3600));
-  arr_ref<int> nextsw(cmn.nextsw, dimension(1200));
-  arr_ref<int> kode(cmn.kode, dimension(3002));
-  str_arr_cref<1> bus(cmn.bus, dimension(3002));
+  const auto& kmswit = cmn.kmswit;
+  auto& nextsw = cmn.nextsw;
+  auto& kode = cmn.kode;
+  const auto& bus = cmn.bus;
   //
   int n20 = fem::int0;
   auto& lunit6 = cmn.lunit6;
@@ -26870,13 +26870,13 @@ void innr29(
   double& tolmat = cmn.tolmat;
   double& fltinf = cmn.fltinf;
   double& pu = cmn.pu;
-  arr_ref<int> moncar(cmn.moncar, dimension(10));
+  auto& moncar = cmn.moncar;
   auto& lunit3 = cmn.lunit3;
   auto& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& lswtch = cmn.lswtch;
   int& nv = cmn.nv;
   int& maxbus = cmn.maxbus;
@@ -28753,8 +28753,8 @@ void fltdat(
   double& fltinf = cmn.fltinf;
   auto& lunit1 = cmn.lunit1;
   auto& lunit7 = cmn.lunit7;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> iprsov(cmn.iprsov, dimension(39));
+  auto& lstat = cmn.lstat;
+  const auto& iprsov = cmn.iprsov;
   int& ipunch = cmn.ipunch;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -29470,7 +29470,7 @@ void statrs(
   FEM_CMN_SVE(statrs);
   common_write write(cmn);
   auto& lunit1 = cmn.lunit1;
-  arr_cref<int> lstat(cmn.lstat, dimension(80));
+  const auto& lstat = cmn.lstat;
   int& iprsup = cmn.iprsup;
   //
   fem::str<1>& c1 = sve.c1;
@@ -29578,15 +29578,15 @@ void guts29(
   const auto& abuff = cmn.abuff;
   double& aincr = cmn.aincr;
   double& xmaxmx = cmn.xmaxmx;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  arr_ref<int> moncar(cmn.moncar, dimension(10));
+  auto& voltbc = cmn.voltbc;
+  auto& moncar = cmn.moncar;
   auto& lunit1 = cmn.lunit1;
   auto& lunit3 = cmn.lunit3;
   auto& lunit9 = cmn.lunit9;
-  arr_ref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_ref<int> indtv(cmn.indtv, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  auto& ipntv = cmn.ipntv;
+  auto& indtv = cmn.indtv;
+  auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
   int& istep = cmn.istep;
   int& lastov = cmn.lastov;
   int& numout = cmn.numout;
@@ -29598,7 +29598,7 @@ void guts29(
   int& iprsup = cmn.iprsup;
   int& kswtch = cmn.kswtch;
   int& ntot = cmn.ntot;
-  arr_cref<int> loopss(cmn.loopss, dimension(13));
+  const auto& loopss = cmn.loopss;
   int& nc = cmn.nc;
   int& numnvo = cmn.numnvo;
   int& nenerg = cmn.nenerg;
@@ -30223,7 +30223,7 @@ void subr29(
 {
   common_write write(cmn);
   fem::str<8>& trash = cmn.trash;
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  const auto& nbyte = cmn.nbyte;
   int& lbus = cmn.lbus;
   int& lswtch = cmn.lswtch;
   int& lsiz12 = cmn.lsiz12;
@@ -30751,7 +30751,7 @@ begplt(
   common& cmn)
 {
   // COMMON cmn
-  arr_cref<int> iprsov(cmn.iprsov, dimension(39));
+  const auto& iprsov = cmn.iprsov;
   //
   if (iprsov(38) == 0) {
     plots(0, 0, 0);
@@ -30776,7 +30776,7 @@ fintp(
   common& cmn)
 {
   // COMMON cmn
-  arr_cref<int> iprsov(cmn.iprsov, dimension(39));
+  const auto& iprsov = cmn.iprsov;
   //
   if (iprsov(38) > 0) {
     plot(0.0f, 0.0f, 999);
@@ -31421,16 +31421,16 @@ void subr31(
   double& flzero = cmn.flzero;
   double& degmax = cmn.degmax;
   double& statfr = cmn.statfr;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  //arr_ref<int> moncar(cmn.moncar, dimension(10));
+  auto& voltbc = cmn.voltbc;
+  //auto& moncar = cmn.moncar;
   int& lunit4 = cmn.lunit4;
   int& lunt13 = cmn.lunt13;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
-  arr_ref<int> iprsov(cmn.iprsov, dimension(39));
+  auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
+  auto& iprsov= cmn.iprsov;
   int& iout = cmn.iout;
   int& iplot = cmn.iplot;
   int& nsmth = cmn.nsmth;
@@ -35862,7 +35862,7 @@ misc39(
   fem::str<8>& bus1 = cmn.bus1;
   fem::str<8>& bus3 = cmn.bus3;
   auto& abuff = cmn.abuff;
-  arr_ref<int> indtv(cmn.indtv, dimension(10));
+  auto& indtv = cmn.indtv;
   int& ipunch = cmn.ipunch;
   int& iprsup = cmn.iprsup;
   arr_ref<int, 2> modskp(cmn.modskp, dimension(2, 18));
@@ -36091,15 +36091,15 @@ subr39(
   double& tenm3 = cmn.tenm3;
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
+  auto& voltbc = cmn.voltbc;
   auto& lunit1 = cmn.lunit1;
   auto& lunit2 = cmn.lunit2;
   auto& lunit7 = cmn.lunit7;
   auto& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> indtv(cmn.indtv, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& indtv = cmn.indtv;
+  auto& lstat = cmn.lstat;
   int& ipunch = cmn.ipunch;
   int& lastov = cmn.lastov;
   int& ktab = cmn.ktab;
@@ -40469,8 +40469,8 @@ redu44(
   common_write write(cmn);
   double& epsiln = cmn.epsiln;
   double& unity = cmn.unity;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& flstat = cmn.flstat;
+  auto& lstat = cmn.lstat;
   //
   int j = fem::int0;
   double w = fem::double0;
@@ -41183,7 +41183,7 @@ modal(
   auto& lunit2 = cmn.lunit2;
   auto& lunit7 = cmn.lunit7;
   auto& lunit9 = cmn.lunit9;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -43083,7 +43083,7 @@ guts44(
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
   double& fltinf = cmn.fltinf;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
+  auto& voltbc = cmn.voltbc;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
   auto& lunit1 = cmn.lunit1;
   auto& lunit2 = cmn.lunit2;
@@ -43094,7 +43094,7 @@ guts44(
   auto& lunt13 = cmn.lunt13;
   auto& nright = cmn.nright;
   auto& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& icheck = cmn.icheck;
   int& ipunch = cmn.ipunch;
   int& izero = cmn.izero;
@@ -46499,8 +46499,8 @@ subr44(
 {
   common_write write(cmn);
   fem::str<8>& trash = cmn.trash;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
   int& kburro = cmn.kburro;
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
@@ -46683,8 +46683,8 @@ cxc(
   b(dimension(1));
   c(dimension(1));
   double& t = cmn.t;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& flstat = cmn.flstat;
+  auto& lstat = cmn.lstat;
   double& f = static_cast<common_com45&>(cmn).f;
   int& nph = cmn.nph;
   int& nph2 = cmn.nph2;
@@ -46934,11 +46934,11 @@ frqdom(
   xc(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& flstat = cmn.flstat;
   auto& lunit3 = cmn.lunit3;
-  arr_cref<int> ipntv(cmn.ipntv, dimension(11));
+  const auto& ipntv = cmn.ipntv;
   arr_cref<int> indtv(cmn.indtv, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
   double& f = static_cast<common_com45&>(cmn).f;
@@ -48267,8 +48267,8 @@ rise(
   si(dimension(1));
   cosi(dimension(1));
   common_write write(cmn);
-  arr_cref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  const auto& ipntv = cmn.ipntv;
+  auto& lstat = cmn.lstat;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
   double& ffin = cmn.ffin;
@@ -48447,10 +48447,10 @@ tdfit(
   double& t = cmn.t;
   double& onehaf = cmn.onehaf;
   double& fltinf = cmn.fltinf;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
-  arr_cref<int> ipntv(cmn.ipntv, dimension(11));
+  auto& flstat = cmn.flstat;
+  const auto& ipntv = cmn.ipntv;
   arr_cref<int> indtv(cmn.indtv, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
   str_arr_ref<1> pl(cmn.pl, dimension(91));
@@ -49301,14 +49301,14 @@ guts45(
   double& twopi = cmn.twopi;
   double& tenm6 = cmn.tenm6;
   double& fltinf = cmn.fltinf;
-  arr_cref<double> voltbc(cmn.voltbc, dimension(50));
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  const auto& voltbc = cmn.voltbc;
+  auto& flstat = cmn.flstat;
   auto& lunit2 = cmn.lunit2;
   auto& lunit3 = cmn.lunit3;
   auto& lunit7 = cmn.lunit7;
-  arr_ref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_ref<int> indtv(cmn.indtv, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& ipntv = cmn.ipntv;
+  auto& indtv = cmn.indtv;
+  auto& lstat = cmn.lstat;
   int& icheck = cmn.icheck;
   int& lastov = cmn.lastov;
   int& ialter = cmn.ialter;
@@ -50987,10 +50987,10 @@ subr45(
   common& cmn) try
 {
   fem::str<8>& trash = cmn.trash;
-  arr_cref<double> voltbc(cmn.voltbc, dimension(50));
+  const auto& voltbc = cmn.voltbc;
   arr_cref<int> indtv(cmn.indtv, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -56200,14 +56200,14 @@ guts47(
   double& unity = cmn.unity;
   double& fltinf = cmn.fltinf;
   double& statfr = cmn.statfr;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& voltbc = cmn.voltbc;
+  auto& flstat = cmn.flstat;
   double& speedl = cmn.speedl;
   auto& lunit2 = cmn.lunit2;
   auto& lunit4 = cmn.lunit4;
   int lunit5 = cmn.lunit5;
   auto& lunit9 = cmn.lunit9;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& ipunch = cmn.ipunch;
   int& lastov = cmn.lastov;
   int& ktab = cmn.ktab;
@@ -57808,8 +57808,8 @@ subr47(
 {
   common_write write(cmn);
   fem::str<8>& trash = cmn.trash;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> nbyte(cmn.nbyte, dimension(6));
+  auto& lstat = cmn.lstat;
+  const auto& nbyte = cmn.nbyte;
   arr_cref<int> ktrlsw(cmn.ktrlsw, dimension(8));
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -60247,11 +60247,11 @@ blockdata_blkplt(
 {
   FEM_CMN_SVE(blockdata_blkplt);
   // COMMON cblock
-  arr_ref<double> fvcom(cmn.fvcom, dimension(50));
-  arr_ref<int> ivcom(cmn.ivcom, dimension(60));
+  auto& fvcom = cmn.fvcom;
+  auto& ivcom = cmn.ivcom;
   // COMMON pltans
   str_arr_ref<1> horzl(cmn.horzl, dimension(8));
-  str_arr_ref<1> anplt(cmn.anplt, dimension(60));
+  auto& anplt = cmn.anplt;
   //
   if (is_called_first_time) {
     cmn.texfnt = "F7X13.B ";
@@ -60885,7 +60885,7 @@ bctran(
   double& unity = cmn.unity;
   double& onehaf = cmn.onehaf;
   auto& lunit7 = cmn.lunit7;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   arr_ref<double> rwin(cmn.rwin, dimension(10));
   double& zhl = cmn.zhl;
   double& zht = cmn.zht;
@@ -62015,7 +62015,7 @@ over41(
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& ipunch = cmn.ipunch;
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
@@ -62790,7 +62790,7 @@ hysdat(
   common_read read(cmn);
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
-  arr_ref<double> voltbc(cmn.voltbc, dimension(50));
+  auto& voltbc = cmn.voltbc;
   auto& lunit7 = cmn.lunit7;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
@@ -63061,7 +63061,7 @@ arrdat(
   double& ci1 = cmn.ci1;
   double& ck1 = cmn.ck1;
   auto& lunit7 = cmn.lunit7;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   //
   fem::str<8>& text1 = sve.text1;
   fem::str<8>& text2 = sve.text2;
@@ -64079,11 +64079,11 @@ over42(
   const auto& abuff = cmn.abuff;
   double& twopi = cmn.twopi;
   double& fltinf = cmn.fltinf;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& flstat = cmn.flstat;
   auto& lunit7 = cmn.lunit7;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -64624,10 +64624,10 @@ subr51(
   auto& texcol = cmn.texcol;
   const auto& abuff = cmn.abuff;
   double& t = cmn.t;
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& flstat = cmn.flstat;
   int& nfrfld = cmn.nfrfld;
-  arr_ref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& ipntv = cmn.ipntv;
+  auto& lstat = cmn.lstat;
   int& lastov = cmn.lastov;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -65553,7 +65553,7 @@ over51(
   common& cmn) try
 {
   common_write write(cmn);
-  arr_ref<double> flstat(cmn.flstat, dimension(20));
+  auto& flstat = cmn.flstat;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
@@ -65591,7 +65591,7 @@ over52(
   common_write write(cmn);
   fem::str<8>& bus1 = cmn.bus1;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  arr_cref<int> lstat(cmn.lstat, dimension(80));
+  const auto& lstat = cmn.lstat;
   int& lbus = cmn.lbus;
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
@@ -66315,9 +66315,9 @@ over53(
   fem::str<8>& bus6 = cmn.bus6;
   double& deltat = cmn.deltat;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  arr_cref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_cref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> iprsov(cmn.iprsov, dimension(39));
+  const auto& ipntv = cmn.ipntv;
+  const auto& lstat = cmn.lstat;
+  const auto& iprsov = cmn.iprsov;
   int& kburro = cmn.kburro;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -67748,9 +67748,9 @@ over54(
   fem::str<8>& bus4 = cmn.bus4;
   fem::str<8>& bus5 = cmn.bus5;
   double& twopi = cmn.twopi;
-  arr_cref<double> voltbc(cmn.voltbc, dimension(50));
+  const auto& voltbc = cmn.voltbc;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  auto& lstat = cmn.lstat;
   int& numsm = cmn.numsm;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
@@ -68785,14 +68785,14 @@ subr55(
   const auto& abuff = cmn.abuff;
   double& epsiln = cmn.epsiln;
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  arr_cref<int> moncar(cmn.moncar, dimension(10));
+  const auto& moncar = cmn.moncar;
   auto& lunit3 = cmn.lunit3;
   auto& lunit9 = cmn.lunit9;
   int& nright = cmn.nright;
   int& nfrfld = cmn.nfrfld;
   int& kolbeg = cmn.kolbeg;
-  arr_cref<int> ipntv(cmn.ipntv, dimension(11));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
+  const auto& ipntv = cmn.ipntv;
+  auto& lstat = cmn.lstat;
   int& kpartb = cmn.kpartb;
   int& lastov = cmn.lastov;
   int& noutpr = cmn.noutpr;
@@ -70088,9 +70088,9 @@ over55(
 {
   common_write write(cmn);
   arr_cref<double> flstat(cmn.flstat, dimension(20));
-  //arr_ref<int> moncar(cmn.moncar, dimension(10));
-  arr_ref<int> lstat(cmn.lstat, dimension(80));
-  arr_cref<int> iprsov(cmn.iprsov, dimension(39));
+  //auto& moncar = cmn.moncar;
+  auto& lstat = cmn.lstat;
+  const auto& iprsov = cmn.iprsov;
   int& kol132 = cmn.kol132;
   arr_cref<int> ktrlsw(cmn.ktrlsw, dimension(8));
   int& lastov = cmn.lastov;
@@ -71736,7 +71736,7 @@ void program_main(
   blockdata_blkplt(cmn);
   FEM_CMN_SVE(program_main);
   common_write write(cmn);
-  arr_ref<int> iprsov(cmn.iprsov, dimension(39));
+  auto& iprsov= cmn.iprsov;
   int& kill = cmn.kill;
   int& nchain = cmn.nchain;
   //
