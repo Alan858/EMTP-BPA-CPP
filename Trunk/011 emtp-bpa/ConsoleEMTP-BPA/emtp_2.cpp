@@ -2111,7 +2111,7 @@ namespace emtp {
     const auto& abuff = cmn.abuff;
     double& deltat = cmn.deltat;
     const auto& lstat = cmn.lstat;
-    arr_ref<double> sptacs(cmn.sptacs, dimension(90000));
+    auto& sptacs = cmn.sptacs;
     const auto& texvec = cmn.texvec;
     //arr_ref<int> ivarb(cmn.ivarb, dimension(90000));
     auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size_1d() * 2);
@@ -20684,7 +20684,7 @@ vecisv(
   const auto& nbyte = cmn.nbyte;
   int& iprsup = cmn.iprsup;
   int& kntvec = cmn.kntvec;
-  arr_ref<int> kofvec(cmn.kofvec, dimension(20));
+  auto& kofvec = cmn.kofvec;
   //
   auto& lunit6 = cmn.lunit6;
   int n4 = fem::int0;
