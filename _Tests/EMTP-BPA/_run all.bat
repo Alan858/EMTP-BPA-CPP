@@ -1,7 +1,7 @@
 @echo off
 
 setlocal enabledelayedexpansion
-set num_cases=3
+set num_cases=4
 FOR /L %%A IN (1, 1, %num_cases%) do (
 set n=0000%%A
 set name=case!n:~-4!

@@ -93,9 +93,9 @@ namespace emtp {
       }
       else {
         switch (fmt[0]) {
-        case 'f': o.setf(std::ios_base::fixed); break;
-        case 'e': o.setf(std::ios_base::scientific); break;
-        case 'g': o.unsetf(std::ios_base::scientific | std::ios_base::fixed); break;
+        case 'f': o << std::fixed; break;
+        case 'e': o << std::scientific; break;
+        case 'g': o << std::defaultfloat; break;
         default:
           throw std::runtime_error("unhandled format!");
         }
@@ -3840,7 +3840,7 @@ struct common_c44b02
   arr<double> p;
 
   common_c44b02() :
-    p(dimension(1), fem::fill0)
+    p(dimension(77815), fem::fill0)
   {}
 };
 
@@ -3849,7 +3849,7 @@ struct common_c44b03
   arr<double> z;
 
   common_c44b03() :
-    z(dimension(1), fem::fill0)
+    z(dimension(77815), fem::fill0)
   {}
 };
 
@@ -3858,7 +3858,7 @@ struct common_c44b04
   arr<int> ic;
 
   common_c44b04() :
-    ic(dimension(1), fem::fill0)
+    ic(dimension(394), fem::fill0)
   {}
 };
 
@@ -3867,7 +3867,7 @@ struct common_c44b05
   arr<double> r;
 
   common_c44b05() :
-    r(dimension(1), fem::fill0)
+    r(dimension(394), fem::fill0)
   {}
 };
 
@@ -3876,7 +3876,7 @@ struct common_c44b06
   arr<double> dz;
 
   common_c44b06() :
-    dz(dimension(1), fem::fill0)
+    dz(dimension(394), fem::fill0)
   {}
 };
 
@@ -3885,7 +3885,7 @@ struct common_c44b07
   arr<double> gmd;
 
   common_c44b07() :
-    gmd(dimension(1), fem::fill0)
+    gmd(dimension(394), fem::fill0)
   {}
 };
 
@@ -3894,7 +3894,7 @@ struct common_c44b08
   arr<double> x;
 
   common_c44b08() :
-    x(dimension(1), fem::fill0)
+    x(dimension(394), fem::fill0)
   {}
 };
 
@@ -3903,7 +3903,7 @@ struct common_c44b09
   arr<double> y;
 
   common_c44b09() :
-    y(dimension(1), fem::fill0)
+    y(dimension(394), fem::fill0)
   {}
 };
 
@@ -3912,7 +3912,7 @@ struct common_c44b10
   arr<double> tb2;
 
   common_c44b10() :
-    tb2(dimension(1), fem::fill0)
+    tb2(dimension(394), fem::fill0)
   {}
 };
 
@@ -3921,7 +3921,7 @@ struct common_c44b11
   arr<int> itb3;
 
   common_c44b11() :
-    itb3(dimension(1), fem::fill0)
+    itb3(dimension(394), fem::fill0)
   {}
 };
 
@@ -3930,7 +3930,7 @@ struct common_c44b12
   arr<double> workr1;
 
   common_c44b12() :
-    workr1(dimension(1), fem::fill0)
+    workr1(dimension(394), fem::fill0)
   {}
 };
 
@@ -3939,7 +3939,7 @@ struct common_c44b13
   arr<double> workr2;
 
   common_c44b13() :
-    workr2(dimension(1), fem::fill0)
+    workr2(dimension(394), fem::fill0)
   {}
 };
 
@@ -3948,7 +3948,7 @@ struct common_c44b14
   arr<fem::str<8> > text;
 
   common_c44b14() :
-    text(dimension(1), fem::fill0)
+    text(dimension(788), fem::fill0)
   {}
 };
 
@@ -3957,7 +3957,7 @@ struct common_c44b15
   arr<double> gd;
 
   common_c44b15() :
-    gd(dimension(1), fem::fill0)
+    gd(dimension(19503), fem::fill0)
   {}
 };
 
@@ -3966,7 +3966,7 @@ struct common_c44b16
   arr<double> bd;
 
   common_c44b16() :
-    bd(dimension(1), fem::fill0)
+    bd(dimension(19503), fem::fill0)
   {}
 };
 
@@ -3975,7 +3975,7 @@ struct common_c44b17
   arr<double> yd;
 
   common_c44b17() :
-    yd(dimension(1), fem::fill0)
+    yd(dimension(19503), fem::fill0)
   {}
 };
 
@@ -3984,7 +3984,7 @@ struct common_c44b18
   arr<int> itbic;
 
   common_c44b18() :
-    itbic(dimension(1), fem::fill0)
+    itbic(dimension(395), fem::fill0)
   {}
 };
 
@@ -3993,7 +3993,7 @@ struct common_c44b19
   arr<double> tbr;
 
   common_c44b19() :
-    tbr(dimension(1), fem::fill0)
+    tbr(dimension(395), fem::fill0)
   {}
 };
 
@@ -4002,7 +4002,7 @@ struct common_c44b20
   arr<double> tbd;
 
   common_c44b20() :
-    tbd(dimension(1), fem::fill0)
+    tbd(dimension(395), fem::fill0)
   {}
 };
 
@@ -4011,7 +4011,7 @@ struct common_c44b21
   arr<double> tbg;
 
   common_c44b21() :
-    tbg(dimension(1), fem::fill0)
+    tbg(dimension(395), fem::fill0)
   {}
 };
 
@@ -4020,7 +4020,7 @@ struct common_c44b22
   arr<double> tbx;
 
   common_c44b22() :
-    tbx(dimension(1), fem::fill0)
+    tbx(dimension(395), fem::fill0)
   {}
 };
 
@@ -4029,7 +4029,7 @@ struct common_c44b23
   arr<double> tby;
 
   common_c44b23() :
-    tby(dimension(1), fem::fill0)
+    tby(dimension(395), fem::fill0)
   {}
 };
 
@@ -4038,7 +4038,7 @@ struct common_c44b24
   arr<double> tbtb2;
 
   common_c44b24() :
-    tbtb2(dimension(1), fem::fill0)
+    tbtb2(dimension(395), fem::fill0)
   {}
 };
 
@@ -4047,7 +4047,7 @@ struct common_c44b25
   arr<int> itbtb3;
 
   common_c44b25() :
-    itbtb3(dimension(1), fem::fill0)
+    itbtb3(dimension(395), fem::fill0)
   {}
 };
 
@@ -4056,7 +4056,7 @@ struct common_c44b26
   arr<fem::str<8> > tbtext;
 
   common_c44b26() :
-    tbtext(dimension(1), fem::fill0)
+    tbtext(dimension(395), fem::fill0)
   {}
 };
 

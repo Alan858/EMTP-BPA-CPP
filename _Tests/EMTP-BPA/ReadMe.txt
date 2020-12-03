@@ -14,3 +14,5 @@
 
 case0001 - single-phase series RLC circuit with step voltage input from "EMTP Primer.pdf"
 case0002 - single-phase parallel RLC circuit with capacitor discharge from "EMTP Primer.pdf"
+case0003 - RLC circuit from ATP email users using ATPDraw. The atp file using "/" cards
+case0004 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3

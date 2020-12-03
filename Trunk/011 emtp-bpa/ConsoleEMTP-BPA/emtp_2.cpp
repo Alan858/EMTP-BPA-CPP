@@ -6,11 +6,6 @@ namespace emtp {
 
 
 
-
-
-
-
-
   void
     pltlu2(
       common& cmn,
@@ -2113,8 +2108,6 @@ namespace emtp {
     const auto& lstat = cmn.lstat;
     auto& sptacs = cmn.sptacs;
     const auto& texvec = cmn.texvec;
-    //arr_ref<int> ivarb(cmn.ivarb, dimension(90000));
-    auto ivarb = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size_1d() * 2);
     //
     //int kaliu = fem::int0;
     //int kiuty = fem::int0;
@@ -2132,10 +2125,15 @@ namespace emtp {
     int ndy5 = fem::int0;
     int i = fem::int0;
     int ndx1 = fem::int0;
-    //C     CALLED ONLY BY OVER1 FOR START AGAIN USAGE                        M37.1094
-    auto kaliu = *reinterpret_cast<int*>(&sptacs(11));
-    auto kiuty = *reinterpret_cast<int*>(&sptacs(13));
-    auto kud1 =  *reinterpret_cast<int*>(&sptacs(14));
+    //C     CALLED ONLY BY OVER1 FOR START AGAIN USAGE
+    // handling equivalence in tacsar.inc
+    auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+    auto& ivarb = isptacs;
+
+    auto& kaliu = isptacs(11);
+    auto& kiuty = isptacs(13);
+    auto& kud1 =  isptacs(14);
+
     auto& niu = lstat(54);
     if (cmn.iprsup >= 1) {
       write(lunit6, "('  \"BEGIN MODULE TACS1C.\"')");
@@ -2239,6 +2237,7 @@ namespace emtp {
     auto& lunt13 = cmn.lunt13;
     auto& lunt14 = cmn.lunt14;
     auto& lunt15 = cmn.lunt15;
+    auto& nbyte = cmn.nbyte;
     auto& iprsov= cmn.iprsov;
     int& m4plot = cmn.m4plot;
     auto& ktrlsw = cmn.ktrlsw;
@@ -2249,7 +2248,6 @@ namespace emtp {
     int& icat = cmn.icat;
     int& nenerg = cmn.nenerg;
     int& numcrd = cmn.numcrd;
-    auto& nbyte = cmn.nbyte;
     auto& col = cmn.col;
     const auto& file6 = cmn.file6;
     fem::str<32>& ansi32 = cmn.ansi32;
