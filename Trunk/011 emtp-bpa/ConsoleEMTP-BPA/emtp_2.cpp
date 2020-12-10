@@ -2468,7 +2468,7 @@ namespace emtp {
     cmn.fltinf = 1.e+20;
     cmn.flzero = 1.e-12;
     cmn.epsiln = 1.e-8;
-    cmn.twopi = 6.28318530717958647692e+00;
+    //cmn.twopi = 6.28318530717958647692e+00;
     cmn.userid = blank;
     if (noutpr == 0) {
       {
@@ -2720,7 +2720,7 @@ void over1(common& cmn)
   auto& znolim = cmn.znolim;
   double& t = cmn.t;
   double& tolmat = cmn.tolmat;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& tmax = cmn.tmax;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
@@ -5765,7 +5765,7 @@ distr2(
   const auto& abuff = cmn.abuff;
   double& ci1 = cmn.ci1;
   double& deltat = cmn.deltat;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& tmax = cmn.tmax;
   double& omega = cmn.omega;
   double& copt = cmn.copt;
@@ -11112,7 +11112,7 @@ void over3(common& cmn)
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
   double& freqcs = cmn.freqcs;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
   auto& lstat = cmn.lstat;
@@ -13093,7 +13093,7 @@ umdatb(
   fem::str<8>& blank = cmn.blank;
   const auto& abuff = cmn.abuff;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
   double& fltinf = cmn.fltinf;
@@ -15184,7 +15184,7 @@ umdata(
   fem::str<8>& trash = cmn.trash;
   fem::str<8>& blank = cmn.blank;
   const auto& abuff = cmn.abuff;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& xopt = cmn.xopt;
   double& statfr = cmn.statfr;
   int& istep = cmn.istep;
@@ -15217,7 +15217,7 @@ umdata(
   auto& kode = cmn.kode;
   auto& bus = cmn.bus;
   auto& busum = cmn.busum;
-  double& pi = static_cast<common_umcom&>(cmn).pi;
+  auto& pi = cmn.pi;
   int& numbus = cmn.numbus;
   int& ncltot = cmn.ncltot;
   int& initum = cmn.initum;
@@ -15474,7 +15474,7 @@ statement_40:
   statement_50:
     busum(n2) = texta(n3);
   }
-  pi = twopi * cmn.onehaf;
+  //pi = twopi * cmn.onehaf;
   d2 = 2.0f;
   d3 = 3.0f;
   cmn.sroot2 = sqrtz(d2);
@@ -18680,7 +18680,7 @@ over5a(
   double& ck1 = cmn.ck1;
   double& deltat = cmn.deltat;
   double& delta2 = cmn.delta2;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   auto& voltbc = cmn.voltbc;
   auto& flstat = cmn.flstat;
@@ -23143,7 +23143,7 @@ umrnu2(
   int& nminum = cmn.nminum;
   double& slip = cmn.slip;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& xopt = cmn.xopt;
   int& istep = cmn.istep;
   int& lexct = cmn.lexct;
@@ -24684,7 +24684,7 @@ umrenu(
   int& kclq1 = cmn.kclq1;
   double& slip = cmn.slip;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
   int& istep = cmn.istep;
@@ -27068,7 +27068,7 @@ void over8(
   common_write write(cmn);
   fem::str<8>& bus1 = cmn.bus1;
   double& delta2 = cmn.delta2;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& tmax = cmn.tmax;
   double& omega = cmn.omega;
   double& copt = cmn.copt;
@@ -29010,7 +29010,7 @@ void over9(
   fem::str<8>& bus1 = cmn.bus1;
   fem::str<8>& blank = cmn.blank;
   const auto& abuff = cmn.abuff;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& fltinf = cmn.fltinf;
   auto& lstat = cmn.lstat;
   int& lbus = cmn.lbus;
@@ -30702,7 +30702,7 @@ void over10(
   fem::str<8>& bus1 = cmn.bus1;
   fem::str<8>& bus2 = cmn.bus2;
   double& tolmat = cmn.tolmat;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
@@ -32840,7 +32840,7 @@ smint(
   common_write write(cmn);
   double& delta2 = cmn.delta2;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   double& tenm6 = cmn.tenm6;
   double& onehaf = cmn.onehaf;
@@ -34235,7 +34235,7 @@ void over11(
   const auto& tclock= cmn.tclock;
   const auto& abuff = cmn.abuff;
   double& ck1 = cmn.ck1;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
@@ -36721,7 +36721,7 @@ tacs2(
   double& deltat = cmn.deltat;
   double& epsiln = cmn.epsiln;
   double& t = cmn.t;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& epsuba = cmn.epsuba;
   auto& begmax = cmn.begmax;
   double& fltinf = cmn.fltinf;
@@ -40092,7 +40092,7 @@ void over12(
   double& delta2 = cmn.delta2;
   double& aincr = cmn.aincr;
   double& t = cmn.t;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
@@ -44229,7 +44229,7 @@ void over13(
   double& deltat = cmn.deltat;
   double& delta2 = cmn.delta2;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   double& flzero = cmn.flzero;
   auto& flstat = cmn.flstat;
@@ -54129,7 +54129,7 @@ yserlc(
   common_read read(cmn);
   common_write write(cmn);
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& copt = cmn.copt;
   double& xopt = cmn.xopt;
   int& kpartb = cmn.kpartb;
@@ -54475,7 +54475,7 @@ solvum(
   common_write write(cmn);
   double& deltat = cmn.deltat;
   double& t = cmn.t;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   int& iout = cmn.iout;
   int& numum = cmn.numum;
   int& numout = cmn.numout;
@@ -54499,7 +54499,7 @@ solvum(
   auto& con = cmn.con;
   auto& dumvec = cmn.dumvec;
   auto& dummat = cmn.dummat;
-  double& pi = static_cast<common_umcom&>(cmn).pi;
+  auto& pi = cmn.pi;
   double& sroot2 = cmn.sroot2;
   double& sroot3 = cmn.sroot3;
   double& omegrf = cmn.omegrf;

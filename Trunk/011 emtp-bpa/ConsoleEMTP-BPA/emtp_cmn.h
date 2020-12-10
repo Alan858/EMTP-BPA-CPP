@@ -1,4 +1,7 @@
-
+/////////// EMTP C++
+// Copyright (c)
+// Alan W. Zhang <w.zhang858@gmail.com>
+// all rights resereved
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -425,7 +428,8 @@ struct common_cmn
   double epstop;
   double t;
   double tolmat;
-  double twopi;
+  const double pi;
+  const double twopi;
   double tmax;
   double omega;
   double copt;
@@ -656,7 +660,8 @@ struct common_cmn
     epstop(fem::double0),
     t(fem::double0),
     tolmat(fem::double0),
-    twopi(fem::double0),
+    pi(3.14159265358979323846),
+    twopi(2 * 3.14159265358979323846),
     tmax(fem::double0),
     omega(fem::double0),
     copt(fem::double0),
@@ -2099,7 +2104,6 @@ struct common_umcom
   arr<double, 2> dummat;
   arr<double> date;
   arr<double> clock;
-  double pi;
   double sroot2;
   double sroot3;
   double omegrf;
@@ -2173,7 +2177,6 @@ struct common_umcom
     dummat(dimension(3, 3), fem::fill0),
     date(dimension(2), fem::fill0),
     clock(dimension(2), fem::fill0),
-    pi(fem::double0),
     sroot2(fem::double0),
     sroot3(fem::double0),
     omegrf(fem::double0),
@@ -3271,7 +3274,7 @@ struct common_com44
   arr<double> fbed;
   arr<double> fke;
   arr<double> fked;
-  double pi;
+  //double pi;
   double picon;
   double sqrt2;
   double valu1;
@@ -3316,7 +3319,7 @@ struct common_com44
     fbed(dimension(20), fem::fill0),
     fke(dimension(20), fem::fill0),
     fked(dimension(20), fem::fill0),
-    pi(fem::double0),
+    //pi(fem::double0),
     picon(fem::double0),
     sqrt2(fem::double0),
     valu1(fem::double0),
@@ -4686,12 +4689,16 @@ struct common :
     int const n) {
     move0(intb, 1, n);
   }
+  void mover(
+      arr_cref<double> a,
+      arr_ref<double> b,
+      int const& n);
 
   void dimens(
       arr_ref<int> lsize,
       int const& nchain,
-      str_ref bus1,
-      str_ref bus2);
+      str_cref bus1,
+      str_cref bus2);
   void copyi(
       int const& n1,
       arr_ref<int> ito,
@@ -4761,10 +4768,6 @@ struct common :
       arr_ref<double> yum);
   void datain(common& cmn);
   void locatn(common& cmn);
-  void mover(
-      arr_cref<double> a,
-      arr_ref<double> b,
-      int const& n);
   void mult(
       arr_cref<double> a,
       arr_cref<double> x,

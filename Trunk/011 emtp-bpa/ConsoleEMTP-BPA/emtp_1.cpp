@@ -220,8 +220,8 @@ catch (...) {
 void dimens(
   arr_ref<int> lsize,
   int const& nchain,
-  str_ref bus1,
-  str_ref bus2) try
+  str_cref bus1,
+  str_cref bus2) try
 {
   lsize(dimension(62));
   int n7 = fem::int0;
@@ -259,9 +259,9 @@ void dimens(
   lsize(28) = 1080;
   n7 = 28 + 1;
   lsize(n7) = 1842869;
-  //C!w
-  bus1 = "91205";
-  bus2 = "123093";
+
+  //bus1 = "91205";
+  //bus2 = "123093";
   return;
   statement_2900:
   if (nchain > 29) {
@@ -333,7 +333,7 @@ void dimens(
   lsize(2) = 300;
   return;
   statement_9900:
-  lsize(1) = locint(bus1) - locint(bus2);
+  lsize(1) = 0; //locint(bus1) - locint(bus2);
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -6627,7 +6627,7 @@ void csup(
   common_write write(cmn);
   double& deltat = cmn.deltat;
   double& t = cmn.t;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& onehaf = cmn.onehaf;
   double& flzero = cmn.flzero;
   const auto& lstat = cmn.lstat;
@@ -7951,7 +7951,7 @@ void tacs3(
 {
   common_write write(cmn);
   double& t = cmn.t;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& flzero = cmn.flzero;
   const auto& lstat = cmn.lstat;
   int& istep = cmn.istep;
@@ -19895,7 +19895,7 @@ void locatn(
   const auto& dummat = cmn.dummat;
   const auto& date = static_cast<common_umcom&>(cmn).date;
   const auto& clock = cmn.clock;
-  double& pi = static_cast<common_umcom&>(cmn).pi;
+  auto& pi = cmn.pi;
   const auto& ndum = cmn.ndum;
   // COMMON c29b01
   const auto& karray = static_cast<common_c29b01&>(cmn).karray;
@@ -24087,8 +24087,8 @@ void cominv(
   int const& m,
   double const& freq) try
 {
-  a(dimension(1));
-  b(dimension(1));
+  a(dimension(2 * m * m));
+  b(dimension(2 * m * m));
   double& t = cmn.t;
   auto& flstat = cmn.flstat;
   auto& lstat = cmn.lstat;
@@ -30523,7 +30523,7 @@ void series(
   int ioffa = fem::int0;
   int ioffb = fem::int0;
   int j = fem::int0;
-  double pi = fem::double0;
+  auto& pi = cmn.pi;
   double an = fem::double0;
   int m = fem::int0;
   double d12 = fem::double0;
@@ -30622,7 +30622,7 @@ void series(
       }
     }
   }
-  pi = cmn.twopi * onehaf;
+  //pi = cmn.twopi * onehaf;
   an = kpl;
   an = an * onehaf;
   j = an + 1.6f;
@@ -36049,7 +36049,7 @@ subr39(
   auto& vstacs= cmn.vstacs;
   const auto& abuff = cmn.abuff;
   double& ck1 = cmn.ck1;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& sglfir = cmn.sglfir;
   double& tenm3 = cmn.tenm3;
   double& unity = cmn.unity;
@@ -39670,7 +39670,7 @@ comlr2(
   int const& ndim,
   arr_ref<int> iord) try
 {
-  // int(dimension(20));
+  identifier_int(dimension(20));
   hr(dimension(ndim, ndim));
   hi(dimension(ndim, ndim));
   zi(dimension(ndim, ndim));
@@ -40200,6 +40200,8 @@ comlr2(
   statement_1000:
   ierr = ien;
   statement_1001:
+  ;
+#if 0
   //CCCC      DO 1002 I=LOW, IGH                                            M43.3967
   //CCCC      WR(I) = UMR(I)                                                M43.3968
   //CCCC      WI(I) = UMI(I)                                                M43.3969
@@ -40242,6 +40244,7 @@ comlr2(
       zi(i, j) = ppi(i, lseq(j));
     }
   }
+#endif
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -41141,7 +41144,7 @@ modal(
   const auto& date1= cmn.date1;
   const auto& tclock= cmn.tclock;
   const auto& abuff = cmn.abuff;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& onehaf = cmn.onehaf;
   auto& lunit2 = cmn.lunit2;
   auto& lunit7 = cmn.lunit7;
@@ -41152,7 +41155,7 @@ modal(
   int& nchain = cmn.nchain;
   int& iprsup = cmn.iprsup;
   const auto& brname = cmn.brname;
-  double& pi = static_cast<common_com44&>(cmn).pi;
+  auto& pi = cmn.pi;
   int& ll0 = cmn.ll0;
   int& ll1 = cmn.ll1;
   int& nfreq = cmn.nfreq;
@@ -41307,21 +41310,25 @@ modal(
     goto statement_7030;
   }
   write(lunit6, "(/,/,' MODAL PARAMETERS AT FREQ = ',e13.5,' HZ')"), freq;
+  cmn.out_stream << "\nMODAL PARAMETERS AT FREQ = " << SState("e13.5") << freq << " HZ\n";
   write(lunit6,
     "(/,/,"
     "' MODE   RESISTANCE  REACTANCE  SUSCEPTANCE             SURGE IMPEDANCE(O"
     "HM)          VELOCITY  ATTENUATION')");
+  cmn.out_stream << "\nMODE   RESISTANCE  REACTANCE  SUSCEPTANCE             SURGE IMPEDANCE(OHM)          VELOCITY  ATTENUATION\n";
   if (metrik == 1) {
     goto statement_7029;
   }
   write(lunit6,
     "('          OHM/MILE    OHM/MILE   S/MILE        REAL         IMAG       "
     "LOSSLESS     MILE/SEC  NEPER/MILE')");
+  cmn.out_stream << "         OHM/MILE    OHM/MILE   S/MILE        REAL         IMAG       LOSSLESS     MILE/SEC  NEPER/MILE\n";
   goto statement_7030;
   statement_7029:
   write(lunit6,
     "('          OHM/KM      OHM/KM     S/KM         REAL          IMAG      L"
     "OSSLESS     KM/SEC     NEPER/KM')");
+  cmn.out_stream << "         OHM/KM      OHM/KM     S/KM         REAL          IMAG      LOSSLESS     KM/SEC     NEPER/KM\n";
   statement_7030:
   //C ***** CREATE Y * Z MATRIX FROM ARRAY FROM LCP MAIN                    M29.4278
   k = 0;
@@ -41628,7 +41635,9 @@ modal(
   }
   write(lunit6,
     "(' CURRENT TRANSFORMATION MATRIX BEFORE ZEROING THE IMAGINARY PART:')");
+  cmn.out_stream << "CURRENT TRANSFORMATION MATRIX BEFORE ZEROING THE IMAGINARY PART:\n";
   write(lunit6, format_39);
+  cmn.out_stream << " REAL COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41636,8 +41645,14 @@ modal(
         wloop, tir(k, j);
       }
     }
+    cmn.out_stream << "  ";
+    FEM_DO_SAFE(j, 1, m) {
+      cmn.out_stream << SState("e12.4") << tir(k, j);
+    }
+    cmn.out_stream << '\n';
   }
   write(lunit6, format_60);
+  cmn.out_stream << "\n IMAGINARY COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41645,6 +41660,11 @@ modal(
         wloop, tii(k, j);
       }
     }
+    cmn.out_stream << "  ";
+    FEM_DO_SAFE(j, 1, m) {
+      cmn.out_stream << SState("e12.4") << tii(k, j);
+    }
+    cmn.out_stream << '\n';
   }
   statement_88:
   FEM_DO_SAFE(j, 1, m) {
@@ -41746,8 +41766,13 @@ modal(
   FEM_DO_SAFE(i, 1, m) {
     FEM_DO_SAFE(j, 1, m) {
       //C     $$$ Now, using TV to get Ymode $$$                                M43.3839
+#if 0 // provides exact numbers given in "EMTP Primer" 230 kV case
       xtir(j) = tvr(j, i);
       xtii(j) = tvi(j, i);
+#else
+      xtir(j) = tir(j, i);
+      xtii(j) = tii(j, i);
+#endif
     }
     mult(xwy, xtir, dummi, m, ll0);
     b = 0.0f;
@@ -41873,6 +41898,9 @@ modal(
     statement_137:
     write(lunit6, "(i5,3x,9e12.5)"), i, g, b, dumm1, zcharr, zchari,
       zsurge(i), vmode, cc;
+    cmn.out_stream << std::setw(4) << i << "   " << SState("e12.4") << g << SState("e12.4") << b
+      << SState("e12.4") << dumm1 << SState("e12.4") << zcharr << SState("e12.4") << zchari
+      << SState("e12.4") << zsurge(i) << SState("e12.4") << vmode << SState("e12.4") << cc << '\n';
     distm = -dist;
     if (m < 10 && lastov == 1) {
       write(lunit7, "('-',i1,2a6,12x,4e12.5,' 1',2x,i1)"), i, brname(
@@ -41985,7 +42013,9 @@ modal(
   write(lunit6,
     "(/,/,/,/,"
     "' EIGENVECTOR MATRIX TI FOR CURRENT TRANSFORMATION I(PHASE)=TI*I(MODE)')");
+  cmn.out_stream << "\nEIGENVECTOR MATRIX TI FOR CURRENT TRANSFORMATION I(PHASE)=TI*I(MODE)\n";
   write(lunit6, format_39);
+  cmn.out_stream << " REAL COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41993,8 +42023,14 @@ modal(
         wloop, tir(k, j);
       }
     }
+    cmn.out_stream << "  ";
+    FEM_DO_SAFE(j, 1, m) {
+      cmn.out_stream << SState("e12.4") << tir(k, j);
+    }
+    cmn.out_stream << '\n';
   }
   write(lunit6, format_60);
+  cmn.out_stream << "\n IMAGINARY COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -42002,6 +42038,11 @@ modal(
         wloop, tii(k, j);
       }
     }
+    cmn.out_stream << "  ";
+    FEM_DO_SAFE(j, 1, m) {
+      cmn.out_stream << SState("e12.4") << tii(k, j);
+    }
+    cmn.out_stream << '\n';
   }
   FEM_DO_SAFE(i, 1, m) {
     if (lastov == 39) {
@@ -42055,6 +42096,7 @@ modal(
     goto statement_9200;
   }
   write(lunit6, "(/,' PHASE DOMAIN ZSURGE (REAL; THE IMAG. OF Ti IGNORED)')");
+  cmn.out_stream << "\n PHASE DOMAIN ZSURGE (REAL; THE IMAG. OF Ti IGNORED)\n";
   n = 1;
   FEM_DO_SAFE(i, 1, m) {
     k = n + i - 1;
@@ -42063,6 +42105,11 @@ modal(
       FEM_DO_SAFE(j, n, k) {
         wloop, xwc(j);
       }
+      cmn.out_stream << "  ";
+      FEM_DO_SAFE(j, n, k) {
+        cmn.out_stream << SState("e12.4") << xwc(j);
+      }
+      cmn.out_stream << '\n';
     }
     n += i;
   }
@@ -42199,8 +42246,8 @@ symm(
   int const& kcirct,
   int& kk) try
 {
-  p(dimension(kk*2));
-  z(dimension(kk*2));
+  p(dimension(cmn.p.size_1d()));
+  z(dimension(static_cast<common_c44b03&>(cmn).z.size_1d()));
   double& onehaf = cmn.onehaf;
   //
   arr_1d<3, double> fr(fem::fill0);
@@ -42700,8 +42747,7 @@ struct output_save
   {}
 };
 
-void
-output(
+void output(
   common& cmn,
   int const& metrik,
   arr_cref<double> p,
@@ -42771,46 +42817,46 @@ output(
   statement_305:
   write(lunit6,
     "('0',12x,'INVERTED CAPACITANCE MATRIX (DARAF-',a4,')')"), txtunt;
-  cmn.out_stream << "INVERTED CAPACITANCE MATRIX (DARAF-" << std::string(txtunt) << ")\n";
+  cmn.out_stream << "\nINVERTED CAPACITANCE MATRIX (DARAF-" << std::string(txtunt) << ")\n";
   goto statement_5;
   statement_306:
   write(lunit6, "('0',14x,'INVERTED SUSCEPTANCE MATRIX (OHM-',a4,')')"), txtunt;
-  cmn.out_stream << "INVERTED SUSCEPTANCE MATRIX (OHM-" << std::string(txtunt) << ")\n";
+  cmn.out_stream << "\nINVERTED SUSCEPTANCE MATRIX (OHM-" << std::string(txtunt) << ")\n";
   goto statement_5;
   statement_307:
   write(lunit6, "('0',21x,'CAPACITANCE MATRIX (FARAD/',a4,')')"), txtunt;
-  cmn.out_stream << "CAPACITANCE MATRIX (FARAD/" << std::string(txtunt) << ")\n";
+  cmn.out_stream << "\nCAPACITANCE MATRIX (FARAD/" << std::string(txtunt) << ")\n";
   unit = 1.0f / unit;
   goto statement_5;
   statement_308:
   write(lunit6, "('0',23x,'SUSCEPTANCE MATRIX (MHO/',a4,')')"), txtunt;
-  cmn.out_stream << "SUSCEPTANCE MATRIX (MHO/" << std::string(txtunt) << ")\n";
+  cmn.out_stream << "\nSUSCEPTANCE MATRIX (MHO/" << std::string(txtunt) << ")\n";
   unit = 1.0f / unit;
   goto statement_5;
   statement_332:
   write(lunit6, "('0',16x,'INVERTED IMPEDANCE MATRIX (MHO-',a4,')')"), txtunt;
-  cmn.out_stream << "INVERTED IMPEDANCE MATRIX (MHO-" << std::string(txtunt) << ")\n";
+  cmn.out_stream << "\nINVERTED IMPEDANCE MATRIX (MHO-" << std::string(txtunt) << ")\n";
   goto statement_5;
   statement_333:
   write(lunit6, "('0',25x,'IMPEDANCE MATRIX (OHM/',a4,')')"), txtunt;
-  cmn.out_stream << "IMPEDANCE MATRIX (OHM/" << std::string(txtunt) << ")\n";
+  cmn.out_stream << "\nIMPEDANCE MATRIX (OHM/" << std::string(txtunt) << ")\n";
   unit = 1.0f / unit;
   goto statement_5;
   statement_336:
   write(lunit6, "('0',19x,'TRANSFER ADMITTANCE MATRIX (MHOS)')");
-  cmn.out_stream << "TRANSFER ADMITTANCE MATRIX (MHOS)\n";
+  cmn.out_stream << "\nTRANSFER ADMITTANCE MATRIX (MHOS)\n";
   goto statement_5;
   statement_337:
   write(lunit6, "('0',16x,'TWICE SHUNT ADMITTANCE MATRIX (MHOS)')");
-  cmn.out_stream << "TWICE SHUNT ADMITTANCE MATRIX (MHOS)\n";
+  cmn.out_stream << "\nTWICE SHUNT ADMITTANCE MATRIX (MHOS)\n";
   goto statement_5;
   statement_340:
   write(lunit6, "('0',20x,'TRANSFER IMPEDANCE MATRIX (OHMS)')");
-  cmn.out_stream << "TRANSFER IMPEDANCE MATRIX (OHMS)\n";
+  cmn.out_stream << "\nTRANSFER IMPEDANCE MATRIX (OHMS)\n";
   goto statement_5;
   statement_341:
   write(lunit6, "('0',11x,'ONE HALF OF SHUNT IMPEDANCE MATRIX (OHMS)')");
-  cmn.out_stream << "ONE HALF OF SHUNT IMPEDANCE MATRIX (OHMS)\n";
+  cmn.out_stream << "\nONE HALF OF SHUNT IMPEDANCE MATRIX (OHMS)\n";
   statement_5:
   switch (k2) {
     case 1: goto statement_320;
@@ -43077,7 +43123,7 @@ void guts44(common& cmn,  // Line Constants
   double& ci1 = cmn.ci1;
   double& ck1 = cmn.ck1;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& omega = cmn.omega;
   double& fminfs = cmn.fminfs;
   double& fmaxfs = cmn.fmaxfs;
@@ -43139,7 +43185,7 @@ void guts44(common& cmn,  // Line Constants
   auto& fbed = cmn.fbed;
   auto& fke = cmn.fke;
   auto& fked = cmn.fked;
-  double& pi = static_cast<common_com44&>(cmn).pi;
+  auto& pi = cmn.pi;
   double& picon = cmn.picon;
   double& sqrt2 = cmn.sqrt2;
   double& valu1 = cmn.valu1;
@@ -43489,7 +43535,7 @@ void guts44(common& cmn,  // Line Constants
   liu = 0;
   nfreq = 0;
   nbundl = 0;
-  pi = twopi * onehaf;
+  //pi = twopi * onehaf;
   picon = 360.f / twopi;
   corchk = unity - tenm6 / 10.f;
   //C              BEGIN CALCULATE CONSTANTS FOR CARSON % BESSEL.           M14.2854
@@ -48111,7 +48157,7 @@ xift(
   double& pi2 = cmn.pi2;
   double& dmin = cmn.dmin;
   int& nfr = cmn.nfr;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& onehaf = cmn.onehaf;
   const auto& indtv = cmn.indtv;
   //
@@ -49330,7 +49376,7 @@ guts45(
   const auto& abuff = cmn.abuff;
   double& ci1 = cmn.ci1;
   double& ck1 = cmn.ck1;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& tenm6 = cmn.tenm6;
   double& fltinf = cmn.fltinf;
   const auto& voltbc = cmn.voltbc;
@@ -52499,7 +52545,7 @@ prcon(
   cc(dimension(ldn, ldn));
   f(dimension(ldn, ldn2));
   common_write write(cmn);
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   auto& lunit9 = cmn.lunit9;
   int& lastov = cmn.lastov;
   int& iprsup = cmn.iprsup;
@@ -55278,7 +55324,7 @@ zymx(
   cd(dimension(ldn, ldn));
   f(dimension(ldn, ldn2));
   common_write write(cmn);
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   auto& lunit3 = cmn.lunit3;
   int& kill = cmn.kill;
   int& iprsup = cmn.iprsup;
@@ -56226,7 +56272,7 @@ guts47(
   double& ci1 = cmn.ci1;
   double& ck1 = cmn.ck1;
   double& epsiln = cmn.epsiln;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& tenm3 = cmn.tenm3;
   double& tenm6 = cmn.tenm6;
   double& unity = cmn.unity;
@@ -60566,7 +60612,7 @@ crdchg(
   common_read read(cmn);
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& xopt = cmn.xopt;
   auto& lunit9 = cmn.lunit9;
   fem::str<32>& ansi32 = cmn.ansi32;
@@ -64109,7 +64155,7 @@ over42(
   common_read read(cmn);
   common_write write(cmn);
   const auto& abuff = cmn.abuff;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   double& fltinf = cmn.fltinf;
   auto& flstat = cmn.flstat;
   auto& lunit7 = cmn.lunit7;
@@ -64124,7 +64170,7 @@ over42(
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = lunit6;
   int maxpt = fem::int0;
-  double pi = fem::double0;
+  auto& pi = cmn.pi;
   double picon = fem::double0;
   int i = fem::int0;
   arr_1d<90, double> sss(fem::fill0);
@@ -64184,7 +64230,7 @@ over42(
     write(lunit6, "('  \"BEGIN MODULE OVER42.\"')");
   }
   maxpt = 101;
-  pi = twopi / 2.0f;
+  //pi = twopi / 2.0f;
   picon = pi / 180.f;
   FEM_DO_SAFE(i, 1, 90) {
     sss(i) = sinz(i * picon);
@@ -67779,7 +67825,7 @@ over54(
   common_write write(cmn);
   fem::str<8>& bus4 = cmn.bus4;
   fem::str<8>& bus5 = cmn.bus5;
-  double& twopi = cmn.twopi;
+  auto& twopi = cmn.twopi;
   const auto& voltbc = cmn.voltbc;
   const auto& flstat = cmn.flstat;
   auto& lstat = cmn.lstat;
