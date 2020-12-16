@@ -1,3 +1,7 @@
+// EMTP C++
+// Dr. Alan W. Zhang <w.zhang858@outlook.com>
+// Copyright (c) 2020~, all rights reserved.
+//
 #include "emtp_cmn.h"
 
 namespace emtp {
@@ -6,8 +10,7 @@ namespace emtp {
 
 
 
-  void
-    pltlu2(
+  void pltlu2(
       common& cmn,
       double& d2,
       arr_ref<double> volti)
@@ -61,8 +64,7 @@ namespace emtp {
     {}
   };
 
-  void
-    expchk(
+  void expchk(
       common& cmn,
       int const& n1,
       int const& n2,
@@ -147,8 +149,7 @@ namespace emtp {
 
   }
 
-  void
-    intchk(
+  void intchk(
       common& cmn,
       int const& n1,
       int const& n2,
@@ -203,22 +204,7 @@ namespace emtp {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  void
-    midov1(
+  void midov1(
       common& cmn)
   {
     common_write write(cmn);
@@ -346,8 +332,7 @@ namespace emtp {
     {}
   };
 
-  void
-    reques(
+  void reques(
       common& cmn)
   {
     FEM_CMN_SVE(reques);
@@ -2097,8 +2082,7 @@ namespace emtp {
   }
 
 
-  void
-    tacs1c(
+  void tacs1c(
       common& cmn)
   {
     common_read read(cmn);
@@ -2398,7 +2382,7 @@ namespace emtp {
     date44(cmn, date1(1));
     time44(cmn, tclock(1));
     if (noutpr == 0) {
-    write(lunit6, "(' ELECTROMAGNETIC TRANSIENTS PROGRAM (EMTP)')");
+      write(lunit6, "(' ELECTROMAGNETIC TRANSIENTS PROGRAM (EMTP)')");
       //write(lunit6,
       //  "(' ELECTROMAGNETIC TRANSIENTS PROGRAM (EMTP),',"
       //  "' DIGITAL (DEC) VAX-11/780 TRANSLATION AS',"
@@ -2549,8 +2533,7 @@ namespace emtp {
     {}
   };
 
-  void
-    swmodf(
+  void swmodf(
       common& cmn)
   {
     FEM_CMN_SVE(swmodf);
@@ -3599,6 +3582,7 @@ statement_4206:
   }
   read(abuff, format_5), iout, iplot, idoubl, kssout, maxout, ipun,
     memsav, icat, n1, n2;
+  icat = memsav = 0;  //w disable
   goto statement_4208;
 statement_4207:
   nfrfld = 10;
@@ -4007,8 +3991,7 @@ struct inlmfs_save
   {}
 };
 
-void
-inlmfs(
+void inlmfs(
   common& cmn)
 {
   FEM_CMN_SVE(inlmfs);
@@ -4522,8 +4505,7 @@ struct over2_save
   {}
 };
 
-void
-fddata(
+void fddata(
   common& cmn,
   int& ikf,
   int& isfd,
@@ -10968,8 +10950,7 @@ statement_9900:
   }
 } // over2
 
-void
-cxred(
+void cxred(
   arr_ref<double> a,
   arr_ref<double> c,
   int const& n,
@@ -12751,8 +12732,7 @@ statement_99999:;
 
 } // over4
 
-void
-umoffs(
+void umoffs(
   common& cmn)
 {
   common_write write(cmn);
@@ -12935,8 +12915,7 @@ struct umdatb_save
   {}
 };
 
-void
-umdatb(
+void umdatb(
   common& cmn,
   arr_ref<double> reacl,
   arr_ref<double> gpar,
@@ -16780,9 +16759,7 @@ statement_9600:
   stoptp(cmn);
 }
 
-
-void
-smpfit(
+void smpfit(
   common& cmn,
   arr_ref<double> x,
   int const& ism,
@@ -16873,8 +16850,7 @@ statement_13:
   x(6) = f4;
 }
 
-void
-rinfin(
+void rinfin(
   common& cmn)
 {
   common_write write(cmn);
@@ -17031,8 +17007,7 @@ struct smdat_save
   {}
 };
 
-void
-smdat(
+void smdat(
   common& cmn,
   int const& mtype)
 {
@@ -18663,8 +18638,7 @@ struct over5a_save
   {}
 };
 
-void
-over5a(
+void over5a(
   common& cmn)
 {
   FEM_CMN_SVE(over5a);
@@ -20669,9 +20643,7 @@ statement_99999:;
 
 } // over5
 
-
-void
-vecisv(
+void vecisv(
   common& cmn,
   arr_ref<int> karr,
   int const& n13,
@@ -20755,8 +20727,8 @@ statement_9000:
   }
 }
 
-void
-insert(
+
+void insert(
   common& cmn,
   int const& irrr,
   int const& icc)
@@ -22704,8 +22676,7 @@ statement_99999:;
 } // over7
 
 
-void
-frqchk(
+void frqchk(
   common& cmn)
 {
   common_write write(cmn);
@@ -23068,8 +23039,7 @@ statement_9204:
   }
 }
 
-void
-umrnu2(
+void umrnu2(
   common& cmn,
   arr_ref<double> reacl,
   arr_ref<double> gpar,
@@ -24577,9 +24547,7 @@ statement_2300:
 statement_2400:;
 }
 
-
-void
-umrenu(
+void umrenu(
   common& cmn,
   arr_ref<double> reacl,
   arr_ref<double> gpar,
@@ -26804,8 +26772,7 @@ statement_14000:
   }
 }
 
-void
-equiv(
+void equiv(
   common& cmn,
   arr_ref<double> req,
   arr_ref<double> xeq,
@@ -26950,9 +26917,7 @@ equiv(
   }
 }
 
-
-void
-cxred8(
+void cxred8(
   arr_ref<double> a,
   arr_ref<double> c,
   int const& n,
@@ -29844,8 +29809,7 @@ statement_9990:
   }
 } // over9
 
-void
-addmxd(
+void addmxd(
   arr_cref<double> a,
   double const& b,
   arr_ref<double> c,
@@ -29873,8 +29837,7 @@ addmxd(
   }
 }
 
-void
-sseqiv(
+void sseqiv(
   common& cmn,
   int& ikf,
   int& isfd,
@@ -29963,9 +29926,7 @@ sseqiv(
   }
 }
 
-
-void
-multmx(
+void multmx(
   arr_cref<double> a,
   arr_cref<double> b,
   arr_ref<double> c,
@@ -30010,8 +29971,7 @@ multmx(
   }
 }
 
-void
-fxsour(
+void fxsour(
   common& cmn)
 {
   common_read read(cmn);
@@ -32374,8 +32334,7 @@ struct over11_save
 };
 
 
-void
-ssout(
+void ssout(
   common& cmn,
   int const& L,
   double const& erk,
@@ -32542,8 +32501,7 @@ statement_2051:
 statement_4500:;
 }
 
-void
-reducn(
+void reducn(
   arr_ref<double> x,
   arr_ref<double> y,
   int const& m,
@@ -32621,9 +32579,7 @@ statement_3:
 }
 
 
-
-void
-uncor(
+void uncor(
   common& cmn,
   arr_ref<double> sci,
   int const& i)
@@ -32803,8 +32759,7 @@ statement_13:
   }
 }
 
-void
-slope(
+void slope(
   double const& sft,
   double const& ssld,
   double const& ssad,
@@ -32832,8 +32787,7 @@ struct smint_save
   {}
 };
 
-void
-smint(
+void smint(
   common& cmn)
 {
   FEM_CMN_SVE(smint);
@@ -34523,14 +34477,14 @@ void over11(
     ndx1 = lsiz26;
     FEM_DO_SAFE(i, 1, n6) {
       ndx1++;
-      if (sfreq(m) == voltk(ndx1)) {
+      if (sfreq(m) == volt(ndx1)) {
         goto statement_1854;
       }
     }
   statement_1846:
     n6++;
     ndx1 = lsiz26 + n6;
-    voltk(ndx1) = sfreq(m);
+    volt(ndx1) = sfreq(m);
     if (n6 < lsiz26) {
       goto statement_1854;
     }
@@ -34551,7 +34505,7 @@ void over11(
       "AY FROM BUS, AND REAL PART, MAGNITUDE, OR P',/,"
       "' IS PRINTED ABOVE THE IMAGINARY PART, THE',"
       "' ANGLE, OR Q.   FIRST SOLUTION FREQUENCY =',e18.9,'   HERTZ.')"),
-      voltk(lsiz26 + 1);
+      volt(lsiz26 + 1);
   }
   if (kol132 != 132) {
     write(lunit6,
@@ -34560,7 +34514,7 @@ void over11(
       "'   VM-AMPLITUDE','  IKM-AMPLITUDE','   PKM (WATTS) ',/,15x,'BUS M',"
       "'   VK-DEGREES  ','   VM-DEGREES  ','   IKM-DEGREES ',"
       "'   QKM (VARS)  ')"),
-      voltk(lsiz26 + 1);
+      volt(lsiz26 + 1);
   }
   ndx1 = lsiz26 + 2;
   ndx2 = lsiz26 + n6;
@@ -34569,7 +34523,7 @@ void over11(
       write_loop wloop(cmn, lunit6,
         "(' ADDED SUBNETWORK FREQUENCIES :',6e14.5)");
       FEM_DO_SAFE(i, ndx1, ndx2) {
-        wloop, voltk(i);
+        wloop, volt(i);
       }
     }
   }
@@ -35956,9 +35910,7 @@ statement_9900:
 
 } // over11
 
-
-void
-csupdc(
+void csupdc(
   common& cmn,
   int const& L)
 {
@@ -36479,8 +36431,7 @@ struct sandnm_save
   {}
 };
 
-double
-sandnm(
+double sandnm(
   common& cmn,
   double const& x)
 {
@@ -36638,9 +36589,7 @@ statement_2632:
   return return_value;
 }
 
-
-double
-randnm(
+double randnm(
   common& cmn,
   double const& x)
 {
@@ -36710,8 +36659,7 @@ randnm(
 }
 
 
-void
-tacs2(
+void tacs2(
   common& cmn)
 {
   common_read read(cmn);
@@ -39134,9 +39082,7 @@ statement_9000:
   }
 }
 
-
-void
-reduce(
+void reduce(
   arr_ref<double> x1,
   int const& m,
   int const& n)
@@ -39202,8 +39148,7 @@ statement_3:
 
 
 
-void
-elecyy(
+void elecyy(
   common& cmn)
 {
   common_write write(cmn);
@@ -39727,8 +39672,7 @@ elecyy(
 statement_2500:;
 }
 
-void
-premec(
+void premec(
   common& cmn)
 {
   common_write write(cmn);
@@ -39897,8 +39841,7 @@ premec(
   }
 }
 
-void
-dteqiv(
+void dteqiv(
   common& cmn,
   int& ikf,
   int& isfd,
@@ -39980,8 +39923,7 @@ dteqiv(
   }
 }
 
-void
-reduct(
+void reduct(
   arr_ref<double> a,
   int const& n,
   int const& m)
@@ -42206,8 +42148,7 @@ statement_9800:
 statement_99999:;
 } // over12
 
-void
-fdint(
+void fdint(
   common& cmn,
   int& ikf,
   int& isfd,
@@ -42375,8 +42316,7 @@ fdint(
   }
 }
 
-double
-funp13(
+double funp13(
   double const& y,
   double const& x,
   double const& twopi)
@@ -42417,8 +42357,7 @@ statement_110:
   return return_value;
 }
 
-void
-redu13(
+void redu13(
   arr_ref<double> a,
   int const& n,
   int const& m)
@@ -42509,8 +42448,7 @@ statement_9:
   goto statement_5;
 }
 
-void
-last13(
+void last13(
   common& cmn)
 {
   common_write write(cmn);
@@ -44037,8 +43975,7 @@ statement_9200:
   }
 }
 
-void
-breqiv(
+void breqiv(
   common& cmn,
   int& ikf,
   int& isfd,
@@ -47168,8 +47105,7 @@ statement_9800:
   }
 } // over13
 
-void
-banmul(
+void banmul(
   arr_cref<double> ab,
   arr_cref<double> x,
   arr_ref<double> y,
@@ -47209,8 +47145,7 @@ statement_20:
   y(n) += ab(i2 + 1) * d1 + s1;
 }
 
-void
-bandel(
+void bandel(
   arr_ref<double> ab,
   int const& n)
 {
@@ -47245,8 +47180,7 @@ statement_20:;
 
 
 
-void
-past(
+void past(
   common& cmn)
 {
   common_write write(cmn);
@@ -48803,8 +48737,7 @@ statement_99999:;
 
 
 
-void
-top15(
+void top15(
   common& cmn)
 {
   common_write write(cmn);
@@ -49464,8 +49397,7 @@ struct smout_save
   {}
 };
 
-void
-smout(
+void smout(
   common& cmn)
 {
   FEM_CMN_SVE(smout);
@@ -51320,8 +51252,7 @@ struct analyt_save
 };
 
 
-void
-analyt(
+void analyt(
   common& cmn)
 {
   FEM_CMN_SVE(analyt);
@@ -51516,8 +51447,7 @@ statement_9000:
   }
 }
 
-void
-arrest(
+void arrest(
   common& cmn,
   arr_cref<double> a,
   arr_ref<double> b,
@@ -52791,8 +52721,7 @@ struct subts1_save
   {}
 };
 
-void
-bansol(
+void bansol(
   arr_cref<double> ab,
   arr_ref<double> x,
   int const& n)
@@ -52831,8 +52760,7 @@ statement_20:
 statement_40:;
 }
 
-void
-redusm(
+void redusm(
   arr_ref<double> x,
   int const& m,
   int const& n)
@@ -52892,9 +52820,7 @@ statement_3:
   }
 }
 
-
-void
-increm(
+void increm(
   common& cmn,
   int const& ilk,
   double const& sf3)
@@ -53161,8 +53087,7 @@ statement_216:;
 
 
 
-void
-update(
+void update(
   common& cmn)
 {
   common_write write(cmn);
@@ -54102,8 +54027,7 @@ struct yserlc_save
   {}
 };
 
-void
-frefp3(
+void frefp3(
   common& cmn,
   str_ref ansi,
   double& d12,
@@ -54121,8 +54045,7 @@ frefp3(
 }
 
 
-void
-yserlc(
+void yserlc(
   common& cmn)
 {
   FEM_CMN_SVE(yserlc);
@@ -54318,9 +54241,7 @@ statement_3000:
 statement_9000:;
 }
 
-
-void
-lineqs(
+void lineqs(
   arr_cref<double, 2> aum,
   arr_ref<double> yum)
 {
@@ -54381,9 +54302,7 @@ statement_50:
 }
 
 
-
-void
-solvum(
+void solvum(
   common& cmn,
   arr_ref<double> reacl,
   arr_cref<double> gpar,
@@ -59310,8 +59229,7 @@ statement_9900:
 
 }
 
-void
-redu17(
+void redu17(
   arr_ref<double> a,
   int const& n,
   int const& m)
@@ -59395,8 +59313,7 @@ statement_9:
   goto statement_5;
 }
 
-void
-fdcinj(
+void fdcinj(
   common& cmn,
   int& ikf,
   int& isfd,
@@ -62002,10 +61919,10 @@ statement_99999:;
 
 } // over16
 
-void
-katalg(
+void katalg(
   common& cmn)
 {
+#if 0
   common_read read(cmn);
   common_write write(cmn);
   auto& lunit2 = cmn.lunit2;
@@ -62109,6 +62026,7 @@ statement_2634:
 statement_9700:
   cmn.kbreak = 1;
 statement_9800:;
+#endif
 }
 
 // PUNCH AND PRINT TERMINAL CONDITIONS (IF REQUESTED).          
@@ -62283,7 +62201,7 @@ statement_5022:
   }
 statement_8005:
   if (icat > 0 || cmn.memsav > 0) {
-    katalg(cmn);
+    //w katalg(cmn);
   }
   cmn.io.close(79);
   k = lstat(32);

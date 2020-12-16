@@ -18,3 +18,4 @@ case0003 - RLC circuit from ATP email users using ATPDraw. The atp file using "/
 case0004 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3, 500 kV
 case0005 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3, 345 kV
 case0006 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3, 220 kV
+case0007 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5

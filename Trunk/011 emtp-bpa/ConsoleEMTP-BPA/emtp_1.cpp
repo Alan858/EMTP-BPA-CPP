@@ -1,3 +1,7 @@
+// EMTP C++
+// Dr. Alan W. Zhang <w.zhang858@outlook.com>
+// Copyright (c) 2020~, all rights reserved.
+//
 #include "emtp_cmn.h"
 
 namespace emtp {
@@ -346,7 +350,7 @@ void tapsav(
   int const& n2,
   int const& n3) try
 {
-  narray(dimension(1));
+  narray(dimension(n2));
   common_read read(cmn);
   common_write write(cmn);
   fem::str<8>& trash = cmn.trash;
@@ -800,16 +804,16 @@ catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
-struct frenum_save
-{
-  fem::str<8> blank;
-  fem::logical_star_1 textb;
+//struct frenum_save
+//{
+//  fem::str<8> blank;
+//  fem::logical_star_1 textb;
 
-  frenum_save() :
-    blank(fem::char0),
-    textb(fem::zero<fem::logical_star_1>())
-  {}
-};
+//  frenum_save() :
+//    blank(fem::char0),
+//    textb(fem::zero<fem::logical_star_1>())
+//  {}
+//};
 
 void frenum(
   common& cmn,
@@ -817,8 +821,10 @@ void frenum(
   int const& n3,
   double& d1) try
 {
-  FEM_CMN_SVE(frenum);
-  text1(dimension(1));
+  //FEM_CMN_SVE(frenum);
+  text1(dimension(n3));
+  d1 = std::stod(std::string(text1.begin(), text1.len()));
+#if 0
   common_read read(cmn);
   common_write write(cmn);
   fem::str<8>& blank = sve.blank;
@@ -860,6 +866,7 @@ void frenum(
     texta(i) = textb;
   }
   read(texta(1), "(e30.0)"), d1;
+#endif
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -988,7 +995,7 @@ void frefld(
     }
     goto statement_5827;
     statement_5819:
-    if (kolbeg <= 80) {
+    if (kolbeg < 80) {
       goto statement_5603;
     }
     statement_5827:
@@ -71790,6 +71797,7 @@ void program_main(
   sext(2) = "11111111";
   auto spa1 = ArraySpan(sext.begin(), sext.size());
   
+  auto bus1 = cmn.bus1;
   auto a1 = spa1(1);  
   auto a2 = spa1(2);    
   auto a8 = spa1(8);

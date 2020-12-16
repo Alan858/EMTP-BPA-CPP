@@ -1,7 +1,7 @@
-/////////// EMTP C++
-// Copyright (c)
-// Alan W. Zhang <w.zhang858@gmail.com>
-// all rights resereved
+// EMTP C++
+// Dr. Alan W. Zhang <w.zhang858@outlook.com>
+// Copyright (c) 2020~, all rights reserved.
+//
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -620,20 +620,20 @@ struct common_cmn
   int nenerg;
 
   common_cmn() :
-    bus1(fem::char0),
-    bus2(fem::char0),
-    bus3(fem::char0),
-    bus4(fem::char0),
-    bus5(fem::char0),
-    bus6(fem::char0),
-    trash(fem::char0),
-    blank(fem::char0),
-    terra(fem::char0),
-    userid(fem::char0),
-    branch(fem::char0),
-    copy(fem::char0),
-    csepar(fem::char0),
-    chcont(fem::char0),
+    bus1(""),
+    bus2(""),
+    bus3(""),
+    bus4(""),
+    bus5(""),
+    bus6(""),
+    trash(""),
+    blank(""),
+    terra(""),
+    userid(""),
+    branch(""),
+    copy(""),
+    csepar(""),
+    chcont(""),
     //texcol(dimension(80), fem::fill0),
     //texta6(dimension(15), fem::fill0),
     //date1(dimension(2), fem::fill0),

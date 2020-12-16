@@ -1,0 +1,50 @@
+BEGIN NEW DATA CASE
+C SIMULATES OPENING OF UNGROUNOED SHUNT CAPACITOR BANK
+C WITH NORMAL SWITCH OPERATION 
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+C SECNDS SECONDS    0=MH    0=UF 
+C                  F(HZ)   F(HZ) 
+  50.E-6  50.E-3     60. 
+C
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C  PRINT    PLOT NETWORK   PR.SS  PR.MAX   I PUN   PUNCH    DUMP   MULT.  OUGNOS
+C 0-EACH  0-EACH    0-NO    0-NO    0-NO    0-NO    0-NO    INTO  ENERG.   PRINT
+C K-K-TH  K-K-TH   1=YES   1-YES   1-YES   1-YES   1-YES    DISK STUDIES    0-NO   
+   20000       1       1       1       0       0       0       0       0
+C
+C BRANCH
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><>
+C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>
+C SOURCE IMPEDANCE          R
+  SRCE ABUS  A             .01
+  SRCE BBUS  B             .01
+  SRCE CBUS  C             .01
+C CAPACITOR BANK
+  BANK ABANK N                        1000.0                                   2
+  BANK BBANK N                        1000.0                                   2
+  BANK CBANK N                        1000.0                                   2
+C STRAY BANK NEUTRAL CAPACITANCE
+  BANK N                                  .1
+BLANK CARD ENDING BRANCHES   
+C CAPACITOR SWITCH
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  BUS  ABANK A     -1.0      .001                                              2
+  BUS  BBANK B     -1.0      .001                                              2
+  BUS  CBANK C     -1.0      .001                                              2
+BLANK CARD ENDING SWITCHES
+C SINUSOIDAL SOURES 
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  > 
+14SRCE A        1.0       60.        0.                         -1
+14SRCE B        1.0       60.     -120.                         -1
+14SRCE C        1.0       60.     -240.                         -1
+BLANK CARD ENDING SOURCES 
+C OUTPUT BUS AND CAPACITOR BANK VOLTAGES
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+  BANK ABANK BBANK CBANK NBUS  ABUS  BBUS  C
+BLANK OUTPUT  
+BLANK PLOT
+BEGIN NEW DATA CASE
+BLANK
