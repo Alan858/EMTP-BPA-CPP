@@ -18,4 +18,7 @@ case0003 - RLC circuit from ATP email users using ATPDraw. The atp file using "/
 case0004 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3, 500 kV
 case0005 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3, 345 kV
 case0006 - LINE CONSTANTS CALCULATIONS, "EMTP Primer.pdf" Section 3, Case 3, 220 kV
-case0007 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5
+case0007 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Capacitor Switch Recovery Voltages
+case0008 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Back-to-Back Capacitor Banks With Current-Limiting Reactors
+case0009 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Restrike Simulation
+case0010 - Steady-state solution with a fault, "EMTP Primer.pdf" Section 6, Case 6: Parallel EHV Line Resonance
