@@ -26784,13 +26784,13 @@ void equiv(
   double const& w,
   int const& n)
 {
-  req(dimension(1));
-  xeq(dimension(1));
-  geq(dimension(1));
-  beq(dimension(1));
-  z(dimension(1));
-  r(dimension(1));
-  tau(dimension(1));
+  req(dimension(n));
+  xeq(dimension(n));
+  geq(dimension(n));
+  beq(dimension(n));
+  z(dimension(n));
+  r(dimension(n));
+  tau(dimension(n));
   common_write write(cmn);
   int L = fem::int0;
   int j = fem::int0;
@@ -26923,8 +26923,8 @@ void cxred8(
   int const& n,
   int const& m)
 {
-  a(dimension(1));
-  c(dimension(1));
+  a(dimension(n * (n+1) / 2));
+  c(dimension(n * (n+1) / 2));
   int j = fem::int0;
   double w = fem::double0;
   int ij = fem::int0;
@@ -34526,6 +34526,8 @@ void over11(
       "' IS PRINTED ABOVE THE IMAGINARY PART, THE',"
       "' ANGLE, OR Q.   FIRST SOLUTION FREQUENCY =',e18.9,'   HERTZ.')"),
       volt(lsiz26 + 1);
+    cmn.out_stream << " SINUSOIDAL STEADY STATE SOLUTION, BRANCH BY BRANCH. ALL FLOWS ARE AWAY FROM BUS, AND REAL PART, MAGNITUDE, OR P\n"
+      << " IS PRINTED ABOVE THE IMAGINARY PART, THE ANGLE, OR Q. FIRST SOLUTION FREQUENCY = " << SState("e18.9") << volt(lsiz26 + 1) << "Hertz\n";
   }
   if (kol132 != 132) {
     write(lunit6,
@@ -34535,8 +34537,6 @@ void over11(
       "'   VK-DEGREES  ','   VM-DEGREES  ','   IKM-DEGREES ',"
       "'   QKM (VARS)  ')"),
       volt(lsiz26 + 1);
-    cmn.out_stream << " SINUSOIDAL STEADY STATE SOLUTION, BRANCH BY BRANCH. ALL FLOWS ARE AWAY FROM BUS, AND REAL PART, MAGNITUDE, OR P\n"
-      << " IS PRINTED ABOVE THE IMAGINARY PART, THE ANGLE, OR Q. FIRST SOLUTION FREQUENCY = " << SState("e18.9") << volt(lsiz26 + 1) << "Hertz\n";
   }
   ndx1 = lsiz26 + 2;
   ndx2 = lsiz26 + n6;
@@ -42417,7 +42417,7 @@ void redu13(
   int const& n,
   int const& m)
 {
-  a(dimension(1));
+  a(dimension(n * (n+1) / 2));
   int j = fem::int0;
   double w = fem::double0;
   int ij = fem::int0;

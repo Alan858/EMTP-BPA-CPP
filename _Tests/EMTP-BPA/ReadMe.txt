@@ -22,3 +22,4 @@ case0007 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Capacitor S
 case0008 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Back-to-Back Capacitor Banks With Current-Limiting Reactors
 case0009 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Restrike Simulation
 case0010 - Steady-state solution with a fault, "EMTP Primer.pdf" Section 6, Case 6: Parallel EHV Line Resonance
+case0011 - Reclosing Of Transmission Lines, "EMTP Primer.pdf" Section 7, Case 7

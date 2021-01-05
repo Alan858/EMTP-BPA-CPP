@@ -1,0 +1,92 @@
+BEGIN NEW DATA CASE
+C A fault is applied at "REC A". The main breaker opens after .02 sec.
+C The auxiliary switch is taken out. This run will show the trapped 
+C charge on the 120 mile line after the breaker clears the fault.
+C The fault is discqnnected after 96 ms.
+C FIRST MISCELLANEOUS DATA CARD
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+C SECNDS SECONDS    0=MH    0=UF 
+C                  F(HZ)   F(HZ) 
+33.30E-6    .08     60.       0 
+C
+C SECOND MISCELLANEOUS DATA CARD
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C  PRINT    PLOT NETWORK   PR.SS  PR.MAX   I PUN   PUNCH    DUMP   MULT.  OUGNOS
+   20000       1       1       0       1       0       0       0       0
+C BRANCH
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><>   
+C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>
+C LOCAL SOURCE (GENERATOR)
+  B26  AEQUL A                   .203
+  B26  BEQUL B                   .203
+  B26  CEQUL C                   .203
+C FAULT AT THE RECEIVING END. PHASE A
+  FAULTA                   .01 
+C REMOTE SOURCE (MUTUALLY COUPLED) 
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><>  
+C                            SEQUENCE VALUES
+51LINE AEQUR A                           50.
+52LlNE BEQUR B                          125.
+53LlNE CEQUR C  
+C TRANSMISSION LINES
+-1B500 ALINE A             .55801.6722.01268   90. 0
+-2B500 BLINE B             .0310 .5816.01940   90. 0
+-3B500 CLINE C            
+C 120 MILE LINE. FLAT CONFIGURATION
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><> 
+-1SEND AREC  A            .5294 1.7659.01224 120.  0 
+-2SEND BREC  B            .02499.59614.01914 120.  0 
+-3SEND CREC  C            
+C TRANSFORMER
+C 345678901234567890123456789012345678901234567890
+C        3-13  15-20       27-32 33-38 39-44 45-50
+C REQUESTWORD    BUS          I   FLUX   BUS R-MAG 
+  TRANSFORMER               2.33 1137.     X  3.E5 
+C           1-16           17-32 
+C        CURRENT            FLUX 
+            2.33          1137.0
+            5.44          1250.0
+           23.33          1364.0
+         1579.00          2274.0
+			9999 
+C TRANSFORMER WINDINGS
+C COLUMN 1.2: WINDING NUMBER 
+C 345678901234567890123456789012345678901234567890 
+C    3-8  9-14             27-32 33-38 39-44 
+C   BUS1  BUS2               R-K   L-K TURNS
+ 1B500 A                         27.55 11.66
+ 2B26  AB26  B                   .2026    1.
+  TRANSFORMER      X                       Y
+ 1B500 B 
+ 2B26  BB26  C
+  TRANSFORMER      X                       Z
+ 1B500 C 
+ 2B26  CB26  A  
+BLANK CARD TERMINATING BRANCH CARDS
+C SWITCH CARDS
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  B500 ASEND A      -1.      .020
+  B500 BSENO B      -1.      .020
+  B500 CSEND C      -1.      .020
+  REC  AFAULTA     -.01     .0960                                              1
+BLANK CARD TERMINATING SWITCH CARDS 
+C SOURCE CARDS
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14EQUL A     18863.     60.0        0.                          -1.0
+14EQUL B     18863.     60.0     -120.                          -1.0 
+14EQUL C     18863.     60.0     -240.                          -1.0 
+C REMOTE SOURCE
+14EQUR A    380281.     60.0       30.                          -1.0
+14EQUR B    380281.     60.0      -90.                          -1.0
+14EQUR C    380281.     60.0     -210.                          -1.0
+BLANK CARD ENDING SOURCES 
+C NODE VOLTAGE OUTPUT
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+  B500 AB500 BB500 CSEND ASEND BSEND CREC  AREC  BREC  C 
+BLANK CARD ENDING NODE OUTPUT REQUESTS 
+BLANK CARD ENDING PLOT
+BEGIN NEW DATA CASE
+BLANK TERMINATING THE CASE
