@@ -501,6 +501,7 @@ void tables(
   const auto& z = static_cast<common_smach&>(cmn).z;
   const auto& busum = cmn.busum;
   //
+#if 0
   auto& iprsav = sve.iprsav;
   if (is_called_first_time) {
     static const int values[] = {
@@ -690,6 +691,7 @@ void tables(
   if (iprsup >= 1) {
     write(lunit6, "(' EXIT \"TABLES\".')");
   }
+#endif
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -21167,13 +21169,14 @@ bool data_input(common& cmn) try {
   cmn.m4plot = 2;
 
   std::string sLine;
-  for (int j = 1; std::getline(cmn.inp_stream, sLine); ++j) {
-    if (1000 < j) {
+  for (int j = 0; std::getline(cmn.inp_stream, sLine); ) {
+    sLine.resize(80, ' ');
+    if (sLine.substr(0, 2) == "C ") continue;
+    if (1000 < ++j) {
       write(cmn.lunit6, "(1x,a30)"), " Input data cards overflow !";
       //cmn.log_stream << " Input data cards overflow !\n";
       return false;
     }
-    sLine.resize(80, ' ');
     file6(j) = sLine;
     cmn.numcrd = j;
     if (file6(j)(1, 4) == "EOF ") break;
