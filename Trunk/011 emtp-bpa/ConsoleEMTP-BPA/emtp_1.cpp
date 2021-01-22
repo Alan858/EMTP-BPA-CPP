@@ -337,7 +337,7 @@ void dimens(
   lsize(2) = 300;
   return;
   statement_9900:
-  lsize(1) = 0; //locint(bus1) - locint(bus2);
+  lsize(1) = bus2.len(); //locint(bus1) - locint(bus2);
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -2070,17 +2070,17 @@ catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
-int locf(
-  arr_cref<double> array) try
-{
-  int return_value = fem::int0;
-  array(dimension(1));
-  return_value = locint(array(1)) / 2;
-  return return_value;
-}
-catch (...) {
-  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
-}
+//int locf(
+//  arr_cref<double> array) try
+//{
+//  int return_value = fem::int0;
+//  array(dimension(1));
+//  return_value = locint(array(1)) / 2;
+//  return return_value;
+//}
+//catch (...) {
+//  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+//}
 
 //void
 //move0( // using mover0
@@ -5855,7 +5855,7 @@ void tacs1(
   d1 = alog1z(fltinf);
   ivarb(kiuty + 11) = d1 + 0.5f;
   //C                                                        $$$  INPUT  $$$M13. 364
-  cmn.lbstac = locf(ismtac(1)) - locf(etac(1));
+  cmn.lbstac = etac.size(); // locf(ismtac(1)) - locf(etac(1));
   cmn.ntotac = 0;
   nsu = 0;
   lstat(53) = nsu;
@@ -39805,8 +39805,8 @@ comlr2(
   //C     DATA EPMACH/Z3410000000000000/                                    M29.5117
   //C     LIKE IN SUBROUTINE COMLR, EPMACH IS SET TO BE FLZERO              M29.5118
   //CCCC      EPMACH = 1.0E-50      ! NOW IN CHOICE.DAT }                   M43.3951
-  epmach = 1.e-32f;
-  itsmax = 300;
+  epmach = cmn.flzero; //1.e-32f;
+  itsmax = 300; 
   ierr = 0;
   //C     :::::::::: INITIALIZE EIGENVECTOR MATRIX ::::::::::               M29.5121
   FEM_DO_SAFE(i, 1, n) {
@@ -43503,7 +43503,7 @@ void guts44(common& cmn,  // Line Constants
   l5save = lunit5;
   lunit5 = lunit2;
   statement_7407:
-  ldisfr = locf(flstat(1)) - locf(voltbc(1));
+  ldisfr = voltbc.size(); // locf(flstat(1)) - locf(voltbc(1));
   metrik = 0;
   finpcm = unity / 2.5400e0;
   ftpm = 100.f * finpcm / 12.f;
@@ -56504,7 +56504,7 @@ guts47(
   l5save = lunit5;
   lunit5 = lunit2;
   statement_7407:
-  ldisfr = locf(voltk(1)) - locf(volti(1));
+  ldisfr = volti.size(); // locf(voltk(1)) - locf(volti(1));
   cmn.spdlgt = speedl;
   logsix = lunit6;
   iprs47 = iprsup;

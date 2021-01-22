@@ -4658,7 +4658,7 @@ struct common :
   void main10(common& cmn); // in emtp_2.cpp called from emtp_2.cpp
 
   void stoptp(common& cmn);
-  int locf(arr_cref<double> array);
+  //int locf(arr_cref<double> array);
 
   template<typename T>
   void move0(

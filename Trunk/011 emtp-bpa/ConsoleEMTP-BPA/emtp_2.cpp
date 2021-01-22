@@ -12277,7 +12277,7 @@ void over4(common& cmn)
   if (cmn.kburro == 1) {
     goto statement_8716;
   }
-  iofa1p = (locf(weight(1)) - locf(ykm(1))) / 4;
+  iofa1p = ykm.size() / 4; // (locf(weight(1)) - locf(ykm(1))) / 4;
   goto statement_8721;
 statement_8716:
   iofa1p = cmn.lsiz23 / 4;
@@ -16767,7 +16767,7 @@ void smpfit(
   int const& lunit6,
   int const& noutpr)
 {
-  x(dimension(1));
+  x(dimension(6));
   common_write write(cmn);
   double d1 = fem::double0;
   double h3 = fem::double0;
@@ -17309,7 +17309,7 @@ void smdat(
     goto statement_123;
   }
   rinfin(cmn);
-  n19 = locf(flstat(1)) - locf(voltbc(1));
+  n19 = voltbc.size(); // locf(flstat(1)) - locf(voltbc(1));
   if (n19 >= 41) {
     goto statement_8258;
   }
@@ -21447,9 +21447,7 @@ statement_5379:
     isubs1 = iofkol + i;
     kolum(isubs1) = 0;
     isubs1 = iofkor + i;
-    if (isubs1 <= korder.size())
-      korder(isubs1) = i + 1;
-    else kolum(isubs1 - 300) = i + 1;
+    korder(isubs1) = i + 1;
   }
   isubs1 = iofkor + last;
   if (isubs1 <= korder.size())
@@ -39142,7 +39140,7 @@ void reduce(
   int const& m,
   int const& n)
 {
-  x1(dimension(1));
+  x1(dimension(m*m));
   int j = fem::int0;
   int ik = fem::int0;
   int nk = fem::int0;
@@ -47166,9 +47164,9 @@ void banmul(
   arr_ref<double> y,
   int const& n)
 {
-  ab(dimension(1));
-  x(dimension(1));
-  y(dimension(1));
+  ab(dimension((n-1)*2+1));
+  x(dimension(n));
+  y(dimension(n));
   double s1 = fem::double0;
   int i2 = fem::int0;
   double d1 = fem::double0;
@@ -47204,7 +47202,7 @@ void bandel(
   arr_ref<double> ab,
   int const& n)
 {
-  ab(dimension(1));
+  ab(dimension(n+n));
   int n2 = fem::int0;
   int i2 = fem::int0;
   double d = fem::double0;
@@ -52781,8 +52779,8 @@ void bansol(
   arr_ref<double> x,
   int const& n)
 {
-  ab(dimension(1));
-  x(dimension(1));
+  ab(dimension(n*2));
+  x(dimension(n));
   int i2 = fem::int0;
   int i1 = fem::int0;
   double d = fem::double0;
@@ -52820,7 +52818,7 @@ void redusm(
   int const& m,
   int const& n)
 {
-  x(dimension(1));
+  x(dimension(m*m));
   int j = fem::int0;
   int ik = fem::int0;
   int nk = fem::int0;
@@ -53728,7 +53726,8 @@ void update(
       }
     statement_8201:
       L = n5 + n8;
-      ismout(icnt) = cu(L);
+      if (0 < L && L <= cu.size()) ismout(icnt) = cu(L);
+      else ismout(icnt) = 0;
       goto statement_8200;
     statement_8202:
       ismout(icnt) = d6;
@@ -53770,7 +53769,9 @@ void update(
       ipout += 3;
       icnt++;
       n5 = ismout(ipout) + iu;
-      ismout(icnt) = (histq(n5) - d9) * cmn.radeg;
+      if (0 < n5 && n5 <= histq.size())
+        ismout(icnt) = (histq(n5) - d9) * cmn.radeg;
+      else ismout(icnt) = 0;
     }
   statement_8225:
     n9 = ismdat(i30 + 19);
@@ -53783,7 +53784,9 @@ void update(
       ipout += 3;
       icnt++;
       n13 = ismout(ipout) + n12;
-      ismout(icnt) = histq(n13) - d9;
+      if (0 < n13 && n13 <= histq.size())
+        ismout(icnt) = histq(n13) - d9;
+      else ismout(icnt) = 0;
     }
   statement_8235:
     n9 = ismdat(i30 + 20);
@@ -53798,8 +53801,10 @@ void update(
       mp = jt + n5;
       m = iu + n5;
       n5 = m + numask;
-      ismout(icnt) = shp(mp + numask) * (histq(m) - histq(m + 1)) +
+      if (0 < m && m < histq.size() && 0 < n5 && n5 < histq.size())
+        ismout(icnt) = shp(mp + numask) * (histq(m) - histq(m + 1)) +
         shp(mp) * (histq(n5) - histq(n5 + 1));
+      else ismout(icnt) = 0;
     }
     //C     PREDICT NEW ROTOR ANGLE AND SPEED. CALCULATE ALSO CONSTANT TERMS  M37.5422
     //C     FOR THE ITERATION LOOP IN THE NEXT TIME-STEP   * * * * * * * * * *M37.5423
