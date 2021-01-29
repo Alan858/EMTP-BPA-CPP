@@ -557,6 +557,7 @@ void tables(
   // solved EQUIVALENCE  ( MONCAR(2), KBASE )
   //C     BURROUGHS: PRESERVE LOCAL VARIABLE BETWEEN MODULE CALLS:          M42.1016
   //C
+
   ll1 = 1;
   ll2 = 2;
   ll4 = 4;
@@ -830,7 +831,7 @@ void frenum(
   common_read read(cmn);
   common_write write(cmn);
   fem::str<8>& blank = sve.blank;
-  fem::logical_star_1& textb = sve.textb;
+  auto& textb = sve.textb;
   if (is_called_first_time) {
     blank = "      ";
     textb = " ";
@@ -2313,17 +2314,7 @@ void tacs1a(
   }
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = lunit6;
-  //int kspvar = fem::int0;
-  //int kprsup = fem::int0;
-  //int kivarb = fem::int0;
-  //int kksus = fem::int0;
-  //int kalksu = fem::int0;
-  //int kinsup = fem::int0;
-  //int nsu = fem::int0;
-  //int nsup = fem::int0;
-  //int karg = fem::int0;
-  //int kpar = fem::int0;
-  //int nsudv = fem::int0;
+
   int kjsup = fem::int0;
   int kksup = fem::int0;
   int n = fem::int0;
@@ -4332,7 +4323,6 @@ void tacs1b(
   int j2 = fem::int0;
   int ij9 = fem::int0;
   int ij = fem::int0;
-  int kofsce = fem::int0;
   int k1 = fem::int0;
   int n = fem::int0;
   int nivarb = fem::int0;
@@ -4348,6 +4338,7 @@ void tacs1b(
   // handling equivalence in tacsar.inc
   auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
   auto& ivarb = isptacs;
+  auto& kofsce = isptacs(4);
   auto& kcolcs = isptacs(5);
   auto& kspvar = isptacs(6);
   auto& katcs =  isptacs(7);
@@ -5052,7 +5043,6 @@ void tacs1b(
     goto statement_7104;
   }
   kofsce = ktab;
-  sptacs(4) = kofsce;
   kaliu = klntab + nuk;
   sptacs(11) = kaliu;
   kspvar = kaliu + lstat(64);
@@ -5632,40 +5622,13 @@ void tacs1(
   }
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = lunit6;
-  //int kcolcs = fem::int0;
-  //int kspvar = fem::int0;
-  //int katcs = fem::int0;
-  //int kprsup = fem::int0;
-  //int kivarb = fem::int0;
-  //int kaliu = fem::int0;
-  //int kiuty = fem::int0;
-  //int kawkcs = fem::int0;
-  //int kxtcs = fem::int0;
-  //int kjout = fem::int0;
-  //int kud1 = fem::int0;
-  //int kxar = fem::int0;
-  //int klntab = fem::int0;
-  //int kisblk = fem::int0;
-  //int krsblk = fem::int0;
-  //int kksus = fem::int0;
-  //int kalksu = fem::int0;
-  //int kinsup = fem::int0;
-  //int nuk = fem::int0;
-  //int nsu = fem::int0;
-  //int niu = fem::int0;
-  //int nsup = fem::int0;
-  //int karg = fem::int0;
-  //int kpar = fem::int0;
-  //int kxic = fem::int0;
-  //int ioutcs = fem::int0;
-  //int nsudv = fem::int0;
+
   int i = fem::int0;
   int ndy5 = fem::int0;
   int kxai = fem::int0;
   int kbwkcs = fem::int0;
   int kbtcs = fem::int0;
   int n1 = fem::int0;
-  int koncur = fem::int0;
   int isour = fem::int0;
   int n23 = fem::int0;
   fem::str<8> alnm1 = fem::char0;
@@ -5697,8 +5660,6 @@ void tacs1(
   int ndx2 = fem::int0;
   int n22 = fem::int0;
   int is = fem::int0;
-  int konsce = fem::int0;
-  int konsup = fem::int0;
   int ndx5 = fem::int0;
   int kjsup = fem::int0;
   int kksup = fem::int0;
@@ -5714,9 +5675,12 @@ void tacs1(
   // handling equivalence in tacsar.inc
   auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
   auto& ivarb = isptacs;
+  auto& konsce = isptacs(1);
+  auto& koncur = isptacs(2);
   auto& kcolcs = isptacs(5);
   auto& kspvar = isptacs(6);
   auto& katcs =  isptacs(7);
+  auto& konsup = isptacs(8);
   auto& kprsup = isptacs(9);
   auto& kivarb = isptacs(10);
   auto& kaliu =  isptacs(11);
@@ -6244,7 +6208,6 @@ void tacs1(
   statement_101:
   konsce = niu;
   konsup = nsup;
-  sptacs(8) = konsup;
   if (nuk > 0) {
     goto statement_231;
   }
@@ -6644,17 +6607,6 @@ void csup(
   auto& sptacs = cmn.sptacs;
   const auto& texvec = cmn.texvec;
   //
-  //int kspvar = fem::int0;
-  //int kprsup = fem::int0;
-  //int kiuty = fem::int0;
-  //int kxtcs = fem::int0;
-  //int kksus = fem::int0;
-  //int kalksu = fem::int0;
-  //int kinsup = fem::int0;
-  //int nuk = fem::int0;
-  //int nsup = fem::int0;
-  //int karg = fem::int0;
-  //int kpar = fem::int0;
   int kjsup = fem::int0;
   int kksup = fem::int0;
 
@@ -7972,26 +7924,6 @@ void tacs3(
   const auto& e = cmn.e;
   const auto& etac = cmn.etac;
   //
-  //int kcolcs = fem::int0;
-  //int katcs = fem::int0;
-  //int konsup = fem::int0;
-  //int kprsup = fem::int0;
-  //int kaliu = fem::int0;
-  //int kiuty = fem::int0;
-  //int kud1 = fem::int0;
-  //int kxtcs = fem::int0;
-  //int klntab = fem::int0;
-  //int kisblk = fem::int0;
-  //int krsblk = fem::int0;
-  //int kksus = fem::int0;
-  //int kalksu = fem::int0;
-  //int kinsup = fem::int0;
-  //int nuk = fem::int0;
-  //int ia = fem::int0;
-  //int nsu = fem::int0;
-  //int niu = fem::int0;
-  //int nsup = fem::int0;
-  //int ioutcs = fem::int0;
   auto& lunit6 = cmn.lunit6;
   int niunrs = fem::int0;
   int kjsup = fem::int0;
@@ -7999,7 +7931,6 @@ void tacs3(
   int ma1 = fem::int0;
   int ma2 = fem::int0;
   int ndx1 = fem::int0;
-  int konsce = fem::int0;
   int i = fem::int0;
   int ndy5 = fem::int0;
   int n1 = fem::int0;
@@ -8039,7 +7970,7 @@ void tacs3(
   // handling equivalence in tacsar.inc
   auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
   auto& ivarb = isptacs;
-
+  auto& konsce = isptacs(1);
   auto& kcolcs = isptacs(5);
   auto& katcs =  isptacs(7);
   auto& konsup = isptacs(8);
@@ -8093,7 +8024,7 @@ void tacs3(
   sptacs(ndx1) = istep;
   ndx1++;
   sptacs(ndx1) = cmn.deltat;
-  konsce = sptacs(1);
+
   if (konsce < niunrs) {
     goto statement_505;
   }

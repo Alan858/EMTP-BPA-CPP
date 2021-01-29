@@ -2093,10 +2093,6 @@ namespace emtp {
     auto& sptacs = cmn.sptacs;
     const auto& texvec = cmn.texvec;
     //
-    //int kaliu = fem::int0;
-    //int kiuty = fem::int0;
-    //int kud1 = fem::int0;
-    //int niu = fem::int0;
     auto& lunit6 = cmn.lunit6;
     int n = fem::int0;
     fem::str<8> alnode = fem::char0;
@@ -4456,7 +4452,6 @@ statement_1832:
   //C     write (*,*) ' Exit INLMFS.   NUMDCD, NUMCRD =',
   //C    1                             NUMDCD, NUMCRD
 }
-
 
 void over3(common& cmn);
 
@@ -15207,6 +15202,9 @@ umdata(
   auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
   auto& ivarb = isptacs;
   //
+  auto& kxtcs = isptacs(17);
+  auto& klntab = isptacs(18);
+
   fem::str<8>& tesm1 = sve.tesm1;
   fem::str<8>& tesm9 = sve.tesm9;
   fem::str<8>& textm = sve.textm;
@@ -15325,8 +15323,7 @@ umdata(
   }
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
-  int kxtcs = fem::int0;
-  int klntab = fem::int0;
+
   int n1 = fem::int0;
   int n2 = fem::int0;
   int n3 = fem::int0;
@@ -15418,8 +15415,7 @@ umdata(
   //C   IF MECH NETWORK OPTION IS USED, ROTMOM IS USED TO STORE             M37.2469
   //C      FREQUENCY OF NETWORK CONNECTED TO POWER COIL. INITIALI -         M37.2470
   //C      ZATION IS IN UMRENU, EXCEPT IF SM TYPE-59 IS USED.               M37.2471
-  kxtcs = sptacs(17);
-  klntab = sptacs(18);
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE UMDATA.\"')");
   }
@@ -17018,33 +17014,33 @@ void smdat(
   fem::str<8>& bus6 = cmn.bus6;
   const auto& texta6 = cmn.texta6;
   const auto& abuff = cmn.abuff;
-  double& omega = cmn.omega;
-  double& epsuba = cmn.epsuba;
-  double& epdgel = cmn.epdgel;
-  double& tenm6 = cmn.tenm6;
-  double& onehaf = cmn.onehaf;
-  double& flzero = cmn.flzero;
+  auto& omega = cmn.omega;
+  auto& epsuba = cmn.epsuba;
+  auto& epdgel = cmn.epdgel;
+  auto& tenm6 = cmn.tenm6;
+  auto& onehaf = cmn.onehaf;
+  auto& flzero = cmn.flzero;
   auto& voltbc = cmn.voltbc;
   auto& flstat = cmn.flstat;
-  int& nright = cmn.nright;
-  int& nfrfld = cmn.nfrfld;
-  int& kolbeg = cmn.kolbeg;
+  auto& nright = cmn.nright;
+  auto& nfrfld = cmn.nfrfld;
+  auto& kolbeg = cmn.kolbeg;
   auto& lstat = cmn.lstat;
   const auto& nbyte = cmn.nbyte;
   auto& iprsov= cmn.iprsov;
-  int& numsm = cmn.numsm;
-  int& lsmout = cmn.lsmout;
-  int& limass = cmn.limass;
-  int& iv = cmn.iv;
-  int& noutpr = cmn.noutpr;
-  int& ktab = cmn.ktab;
-  int& kill = cmn.kill;
-  int& nchain = cmn.nchain;
-  int& iprsup = cmn.iprsup;
-  int& kconst = cmn.kconst;
-  int& it = cmn.it;
-  int& ibr = cmn.ibr;
-  int& lsyn = cmn.lsyn;
+  auto& numsm = cmn.numsm;
+  auto& lsmout = cmn.lsmout;
+  auto& limass = cmn.limass;
+  auto& iv = cmn.iv;
+  auto& noutpr = cmn.noutpr;
+  auto& ktab = cmn.ktab;
+  auto& kill = cmn.kill;
+  auto& nchain = cmn.nchain;
+  auto& iprsup = cmn.iprsup;
+  auto& kconst = cmn.kconst;
+  auto& it = cmn.it;
+  auto& ibr = cmn.ibr;
+  auto& lsyn = cmn.lsyn;
   auto& sptacs = cmn.sptacs;
   auto& c = cmn.c;
   auto& tr = cmn.tr;
@@ -17064,16 +17060,16 @@ void smdat(
   // handling equivalence in tacsar.inc
   auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
   auto& ivarb = isptacs;
-  int& ntotac = cmn.ntotac;
-  int& lbstac = cmn.lbstac;
+  auto& ntotac = cmn.ntotac;
+  auto& lbstac = cmn.lbstac;
   auto& x1 = cmn.x1;
-  double& sqrt3 = cmn.sqrt3;
-  double& thtw = cmn.thtw;
-  double& om2 = cmn.om2;
-  double& bdam = cmn.bdam;
-  int& mfirst = cmn.mfirst;
-  int& nst = cmn.nst;
-  int& nsmout = cmn.nsmout;
+  auto& sqrt3 = cmn.sqrt3;
+  auto& thtw = cmn.thtw;
+  auto& om2 = cmn.om2;
+  auto& bdam = cmn.bdam;
+  auto& mfirst = cmn.mfirst;
+  auto& nst = cmn.nst;
+  auto& nsmout = cmn.nsmout;
   //
   fem::str<8>& text1 = sve.text1;
   fem::str<8>& text10 = sve.text10;
@@ -17105,14 +17101,14 @@ void smdat(
     text21 = "DC    ";
     text16 = " PART ";
   }
+  auto& lunit6 = cmn.lunit6;
+  auto& kunit6 = cmn.lunit6;
   int ipout = fem::int0;
   int n56 = fem::int0;
   int ismold = fem::int0;
   int nn10 = fem::int0;
   int nn4 = fem::int0;
   int nn14 = fem::int0;
-  auto& lunit6 = cmn.lunit6;
-  auto& kunit6 = cmn.lunit6;
   int kaliu = fem::int0;
   int kiuty = fem::int0;
   int kud1 = fem::int0;
@@ -36823,7 +36819,6 @@ void tacs2(
   arr_1d<5, fem::str<8> > texnam(fem::fill0);
   int ip = fem::int0;
   arr_1d<9, fem::str<8> > dumj(fem::fill0);
-  int ia = fem::int0;
   int nukj = fem::int0;
   int nuks = fem::int0;
   double dpd = fem::double0;
@@ -36916,6 +36911,7 @@ void tacs2(
   auto& kinsup = isptacs(23);
 
   auto& nuk = lstat(51);
+  auto& ia = lstat(52);
   auto& nsu = lstat(53);
   auto& niu = lstat(54);
   auto& nsup = lstat(55);
@@ -37415,7 +37411,6 @@ statement_256:
     goto statement_3042;
   }
   ia = 0;
-  lstat(52) = ia;
   nuki = kisblk - 8;
   nukr = krsblk - 4;
   FEM_DO_SAFE(i, 1, nuk) {
@@ -37552,7 +37547,6 @@ statement_256:
         goto statement_268;
       }
       ia++;
-      lstat(52) = ia;
       if (ia <= lstat(62)) {
         goto statement_8122;
       }
@@ -38532,7 +38526,6 @@ statement_3000:
     //C     ***  FORM  SPARSE  MATRIX  ***                                    M13.2082
   statement_3004:
     ia = 0;
-    lstat(52) = ia;
     nuki = kisblk - 8;
     FEM_DO_SAFE(i, 1, nuk) {
       nuki += 8;
@@ -38707,7 +38700,6 @@ statement_3000:
         }
       statement_13265:
         ia++;
-        lstat(52) = ia;
         if (ia <= lstat(62)) {
           goto statement_8127;
         }
@@ -49842,7 +49834,6 @@ void over15(
   int n14 = fem::int0;
   int mpr = fem::int0;
   int n44 = fem::int0;
-  int ioutcs = fem::int0;
   int n5 = fem::int0;
   int n16 = fem::int0;
   int n9 = fem::int0;
@@ -49892,6 +49883,7 @@ void over15(
 
   auto& kjout =  isptacs(12);
   auto& klntab = isptacs(18);
+  auto& ioutcs = lstat(59);
 
   //C     TRANSFER TO  "TOP15"  FOR FRONT END OF OVERLAY 15.                M28.4664
   if (iprsup >= 1) {
@@ -50519,7 +50511,6 @@ statement_7327:
     goto statement_4752;
   }
   ioutcs = 0;
-  lstat(59) = ioutcs;
 statement_4752:
   if (cmn.numsm > 0) {
     smout(cmn);
@@ -51861,13 +51852,6 @@ void subts3(
   auto& kiuty =  isptacs(13); 
   auto& kxtcs =  isptacs(17);
   //
-  //int koncur = fem::int0;
-  //int kjout = fem::int0;
-  //int kiuty = fem::int0;
-  //int kxtcs = fem::int0;
-  //int ioutcs = fem::int0;
-  //int kbase = fem::int0;
-  //int iupper = fem::int0;
   int ll2 = fem::int0;
   int ll6 = fem::int0;
   int ll8 = fem::int0;
