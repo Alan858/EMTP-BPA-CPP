@@ -35,7 +35,16 @@
     </Expand>
   </Type> 
   
-
+  <Type Name="emtp::ArraySpan&lt;*&gt;">
+    <DisplayString>{{ size={s_} }}</DisplayString>
+    <Expand>
+      <Item Name="[capacity]" ExcludeView="simple">s_</Item>
+      <ArrayItems>
+        <Size>s_</Size>
+        <ValuePointer>d_</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type> 
   
   
  <!-- 

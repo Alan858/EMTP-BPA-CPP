@@ -1,5 +1,5 @@
 // EMTP C++
-// Dr. Alan W. Zhang <w.zhang858@outlook.com>
+// Dr. Alan W. Zhang <Alan92127@gmail.com>
 // Copyright (c) 2020~, all rights reserved.
 //
 #include "emtp_cmn.h"
@@ -21537,7 +21537,6 @@ void over7(
   const auto& node = cmn.node;
   const auto& tstart = cmn.tstart;
   const auto& kmswit = cmn.kmswit;
-  auto& e = cmn.e;
   const auto& kode = cmn.kode;
   auto& norder = cmn.norder;
   auto& index = cmn.index;
@@ -21589,6 +21588,11 @@ void over7(
   auto& next = cmn.loopss(11);
   auto& iofkol = cmn.iofgnd;
   auto& iofkor = cmn.iofbnd;
+
+  //auto& e = cmn.e;
+  //auto ndex = ArraySpan(reinterpret_cast<int*>(&cmn.e(1)), cmn.e.size() * 2);
+  vectorEx<int> ndex((cmn.e.size()), fem::fill0);
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER7.\"')");
   }
@@ -21618,7 +21622,7 @@ statement_4054:
   zzza = 0.0f;
   lastxx = last;
   //C     N1 = LBUS + 1  // USE LBUS, NOT THIS N1,  IN FOLLOWING:               M32.3023
-  move0(e, lbus);
+  move0(ndex, lbus);
   nz = ncurr;
   i = 0;
 statement_140:
@@ -21632,7 +21636,7 @@ statement_140:
     goto statement_170;
   }
 statement_155:
-  k = e(j + 1);
+  k = ndex(j + 1);
   jsub = j + 1;
   subscr(cmn, jsub, lbus, 155, 1);
   ich1(i) = k;
@@ -21641,7 +21645,7 @@ statement_155:
     ich2(k) = i;
   }
   subscr(cmn, k, lbus, 155, 99);
-  e(j + 1) = i;
+  ndex(j + 1) = i;
   ich2(i) = 0;
   norder(i) = 0;
   goto statement_180;
@@ -21669,7 +21673,7 @@ statement_200:
   }
   jsub = ncn + 1;
   subscr(cmn, jsub, lbus, 200, 1);
-  if (e(ncn + 1) != 0) {
+  if (ndex(ncn + 1) != 0) {
     goto statement_220;
   }
   ncn++;
@@ -21680,7 +21684,7 @@ statement_220:
   }
   jsub = ncn + 1;
   subscr(cmn, jsub, lbus, 220, 1);
-  i = e(ncn + 1);
+  i = ndex(ncn + 1);
   index(nelim) = ioffd + 1;
   subscr(cmn, nelim, lbus, 220, 2);
   if (iprsup <= 25) {
@@ -21700,12 +21704,12 @@ statement_220:
     n1 = ii + iofkol;
     n2 = ii + iofkor;
     write(lunit6, "(22x,8i8)"), ii, kolum(n1), korder(n2), kownt(ii),
-      loc(ii), ich1(ii), ich2(ii), e(ii);
+      loc(ii), ich1(ii), ich2(ii), ndex(ii);
   }
 statement_222:
   j = ich1(i);
   subscr(cmn, i, lbus, 222, 1);
-  e(ncn + 1) = j;
+  ndex(ncn + 1) = j;
   jsub = ncn + 1;
   subscr(cmn, jsub, lbus, 222, 2);
   if (j > 0) {
@@ -22344,15 +22348,15 @@ statement_850:
   m = kownt(j);
   jsub = m + 1;
   subscr(cmn, jsub, lbus, 850, 3);
-  e(m + 1) = k;
+  ndex(m + 1) = k;
   m += icon;
 statement_860:
   kownt(j) = m;
   subscr(cmn, j, lbus, 860, 1);
   jsub = m + 1;
   subscr(cmn, jsub, lbus, 860, 2);
-  k = e(m + 1);
-  e(m + 1) = j;
+  k = ndex(m + 1);
+  ndex(m + 1) = j;
   ich1(j) = k;
   subscr(cmn, k, lbus, 860, 99);
   if (k > 0) {
@@ -22501,15 +22505,15 @@ statement_1460:
   m = kownt(j);
   jsub = m + 1;
   subscr(cmn, jsub, lbus, 1460, 3);
-  e(m + 1) = k;
+  ndex(m + 1) = k;
   m = icon;
 statement_1470:
   kownt(j) = m;
   jsub = m + 1;
   subscr(cmn, jsub, lbus, 1470, 1);
   subscr(cmn, j, lbus, 1470, 2);
-  k = e(m + 1);
-  e(m + 1) = j;
+  k = ndex(m + 1);
+  ndex(m + 1) = j;
   ich1(j) = k;
   ich2(k) = j;
   subscr(cmn, k, lbus, 1470, 3);
@@ -27303,6 +27307,9 @@ void over8(
   //C 9-PHASE AS LIMIT FOR LMFS TEST
   //C
   auto& knt = cmn.moncar(1);
+
+  auto ispum = ArraySpan(reinterpret_cast<int*>(&cmn.spum(1)), cmn.spum.size() * 2);
+
   if (iprsup >= 1) {
     write(lunit6,
       "(' TOP OF \"OVER8\".   LOOPSS(1)',' IV, IT, TMAX =',3i8,e15.5)"),
@@ -27513,19 +27520,18 @@ statement_6666:
   //C     FOR CASES HAVING ONE OR MORE U.M. (NUMUM .GT. 0).                 M31.1167
 statement_2236:
   if (numum > 0) {
-    //w 
-    //umrenu(cmn, spum(cmn.iureac), spum(cmn.iugpar), spum(cmn.iufpar),
-    //  spum(cmn.iuhist), spum(cmn.iuumrp), spum(cmn.iunod1), spum(cmn.iunod2),
-    //  spum(cmn.iujclt), spum(cmn.iujclo), spum(cmn.iujtyp), spum(cmn.iunodo),
-    //  spum(cmn.iujtmt), spum(cmn.iuhism), spum(cmn.iuomgm), spum(cmn.iuomld),
-    //  spum(cmn.iutham), spum(cmn.iuredu), spum(cmn.iureds), spum(cmn.iuflds),
-    //  spum(cmn.iufldr), spum(cmn.iurequ), spum(cmn.iuflqs), spum(cmn.iuflqr),
-    //  spum(cmn.iujcds), spum(cmn.iujcqs), spum(cmn.iuflxd), spum(cmn.iuflxq),
-    //  spum(cmn.iunppa), spum(cmn.iurotm), spum(cmn.iuncld), spum(cmn.iunclq),
-    //  spum(cmn.iujtqo), spum(cmn.iujomo), spum(cmn.iujtho), spum(cmn.iureqs),
-    //  spum(cmn.iuepso), spum(cmn.iudcoe), spum(cmn.iukcoi), spum(cmn.iuvolt),
-    //  spum(cmn.iuangl), spum(cmn.iunodf), spum(cmn.iunodm), spum(cmn.iukumo),
-    //  spum(cmn.iujumo), spum(cmn.iuumou));
+    umrenu(cmn, spum(cmn.iureac), spum(cmn.iugpar), spum(cmn.iufpar), spum(cmn.iuhist), 
+      spum(cmn.iuumrp), ispum(cmn.iunod1), ispum(cmn.iunod2), ispum(cmn.iujclt), 
+      ispum(cmn.iujclo), ispum(cmn.iujtyp), ispum(cmn.iunodo), ispum(cmn.iujtmt), 
+      spum(cmn.iuhism), spum(cmn.iuomgm), spum(cmn.iuomld), spum(cmn.iutham), 
+      spum(cmn.iuredu), spum(cmn.iureds), spum(cmn.iuflds), spum(cmn.iufldr), 
+      spum(cmn.iurequ), spum(cmn.iuflqs), spum(cmn.iuflqr), ispum(cmn.iujcds), 
+      ispum(cmn.iujcqs), spum(cmn.iuflxd), spum(cmn.iuflxq), ispum(cmn.iunppa), 
+      spum(cmn.iurotm), ispum(cmn.iuncld), ispum(cmn.iunclq), ispum(cmn.iujtqo), 
+      ispum(cmn.iujomo), ispum(cmn.iujtho), spum(cmn.iureqs), spum(cmn.iuepso), 
+      spum(cmn.iudcoe), spum(cmn.iukcoi), spum(cmn.iuvolt), spum(cmn.iuangl), 
+      ispum(cmn.iunodf), ispum(cmn.iunodm), ispum(cmn.iukumo), ispum(cmn.iujumo), 
+      spum(cmn.iuumou));
   }
   if (kill > 0) {
     goto statement_9200;
@@ -29022,9 +29028,6 @@ void over9(
   int j = fem::int0;
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = cmn.lunit6;
-  int next = fem::int0;
-  int iofkol = fem::int0;
-  int iofkor = fem::int0;
   int nkr = fem::int0;
   int nk = fem::int0;
   int k = fem::int0;
@@ -29053,9 +29056,9 @@ void over9(
   int icas = fem::int0;
   //C     FOLLOWING CARRIES "NEXT" AMONG OVER6, INSERT, OVER7, & OVER9:     M37.3694
   //locatn(i, j) = (j * j - j) / 2 + i;
-  next = loopss(11);
-  iofkol = cmn.iofgnd;
-  iofkor = cmn.iofbnd;
+  auto& next = loopss(11);
+  auto& iofkol = cmn.iofgnd;
+  auto& iofkor = cmn.iofbnd;
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER9.\"')");
   }
@@ -30835,6 +30838,7 @@ void over10(
   int i = 1;
   int j = 1;
   locatn(i, j) = (j * j - j) / 2 + i;
+
   if (iprsup >= 1) {
     write(lunit6,
       "(' TOP OF \"OVER10\".   NTOT, IOFFD, LOOPSS(2) =',2i8)"),
@@ -34460,6 +34464,7 @@ void over11(
   //locatn(i, j) = (j * j - j) / 2 + i;
   auto& knt = cmn.moncar(1);
   ll2 = 2;
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER11.\"')");
   }

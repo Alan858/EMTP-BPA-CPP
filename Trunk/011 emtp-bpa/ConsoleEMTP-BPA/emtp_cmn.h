@@ -1,5 +1,5 @@
 // EMTP C++
-// Dr. Alan W. Zhang <w.zhang858@outlook.com>
+// Dr. Alan W. Zhang <alan92127@gmail.com>
 // Copyright (c) 2020~, all rights reserved.
 //
 #include <iostream>

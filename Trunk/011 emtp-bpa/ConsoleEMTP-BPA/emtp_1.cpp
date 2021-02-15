@@ -1,5 +1,5 @@
 // EMTP C++
-// Dr. Alan W. Zhang <w.zhang858@outlook.com>
+// Dr. Alan W. Zhang <alan92127@gmail.com>
 // Copyright (c) 2020~, all rights reserved.
 //
 #include "emtp_cmn.h"
@@ -51021,7 +51021,6 @@ subr45(
   int& nfr = cmn.nfr;
   int& nfr1 = cmn.nfr1;
   //
-  int npoint = fem::int0;
   double d13 = fem::double0;
   int n8 = fem::int0;
   arr_1d<20, int> lltemp(fem::fill0);
@@ -51051,8 +51050,6 @@ subr45(
   int lsi = fem::int0;
   int lvresp = fem::int0;
   int lzift = fem::int0;
-  arr_1d<11, double> stg(fem::fill0);
-  arr_1d<11, double> zift(fem::fill0);
   int lym = fem::int0;
   int lfv = fem::int0;
   int lhhm = fem::int0;
@@ -51071,7 +51068,12 @@ subr45(
   //C!w EQUIVALENCE( ZIFT(1), KARRAY(1) )
   //C!w EQUIVALENCE ( STG(1), KARRAY(1) )
   //C!EQUIVALENCE (INDTV(1),NPOINT)
-  npoint = indtv(1);
+
+  //arr_1d<11, double> stg(fem::fill0);
+  //arr_1d<11, double> zift(fem::fill0);
+  auto stg = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
+  auto& zift = stg;
+  auto& npoint = indtv(1);
   if (lastov == 1) {
     goto statement_20;
   }
@@ -57903,11 +57905,15 @@ subr47(
   int iof52 = fem::int0;
   int iof53 = fem::int0;
   int n13 = fem::int0;
-  arr_1d<1, int> itg(fem::fill0);
-  arr_1d<1, double> rtg(fem::fill0);
-  arr_1d<1, std::complex<double> > ctg(fem::fill0);
   //C!w EQUIVALENCE  ( KARRAY(1), ITG(1), RTG(1), CTG(1) )
   //C
+  //arr_1d<1, int> itg(fem::fill0);
+  //arr_1d<1, double> rtg(fem::fill0);
+  //arr_1d<1, std::complex<double> > ctg(fem::fill0);
+  auto itg = ArraySpan(reinterpret_cast<int* const>(cmn.karray.begin()), cmn.karray.size());
+  auto rtg = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
+  auto ctg = ArraySpan(reinterpret_cast<std::complex<double>*const>(cmn.karray.begin()), cmn.karray.size() / 4);
+
   if (iprsup >= 1) {
     write(lunit6, "('  BEGIN MODULE \"SUBR47\".')");
   }
@@ -68903,7 +68909,7 @@ subr55(
   auto& knt = moncar(1);
   auto& isw = moncar(4);
   auto& mtape = moncar(10);
-  //C
+  
   if (iprsup >= 1) {
     write(lunit6, "(' TOP OF \"SUBR55\".  KILL =',i6)"), kill;
   }
@@ -71730,6 +71736,8 @@ void program_main(
   arr_1d<13, fem::str<8> > sext(fem::fill0);
   sext(2) = "11111111";
   auto spa1 = ArraySpan(sext.begin(), sext.size());
+  auto ispum = ArraySpan(reinterpret_cast<int*>(&cmn.spum(1)), cmn.spum.size() * 2);
+
   
   auto bus1 = cmn.bus1;
   auto a1 = spa1(1);  
