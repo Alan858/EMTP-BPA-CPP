@@ -807,39 +807,24 @@ catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
-//struct frenum_save
-//{
-//  fem::str<8> blank;
-//  fem::logical_star_1 textb;
-
-//  frenum_save() :
-//    blank(fem::char0),
-//    textb(fem::zero<fem::logical_star_1>())
-//  {}
-//};
-
-void frenum(
+void frenum( // $VINTAGE
   common& cmn,
-  str_arr_cref<> text1,
+  str_cref text1,
   int const& n3,
   double& d1) try
 {
-  //FEM_CMN_SVE(frenum);
-  text1(dimension(n3));
-  d1 = std::stod(std::string(text1.begin(), text1.len()));
-#if 0
+  //text1(dimension(n3));
+  d1 = std::stod(std::string(text1)); // .begin(), text1.len()));
+
   common_read read(cmn);
   common_write write(cmn);
-  fem::str<8>& blank = sve.blank;
-  auto& textb = sve.textb;
-  if (is_called_first_time) {
-    blank = "      ";
-    textb = " ";
-  }
+  fem::str<8> blank = "      ";
+  char textb = ' ';
+
   int n9 = fem::int0;
   int n4 = fem::int0;
   int i = fem::int0;
-  arr_1d<30, fem::logical_star_1> texta(fem::fill0);
+  arr_1d<30, char> texta(fem::fill0);
   //C     VAX-11/780  INSTALLATION-DEPENDENT MODULE CALLED ONLY BY          M28. 250
   //C     THE FREE-FORMAT DATA MODULE  "FREFLD" .   PURPOSE IS TO           M28. 251
   //C     CONVERT INPUT CHARACTERS  (TEXT1(1) ... TEXT1(N3))  INTO          M28. 252
@@ -861,15 +846,16 @@ void frenum(
     //C INSTALLATION-DEPENDENT PROGRAM STOP CARD
     stoptp(cmn);
     statement_4711:
-    write(texta(n9), "(80a1)"), text1(n4);
+    //write(texta(n9), "(80a1)"), text1(n4);
+    texta(n9) = text1[n4 - 1];
     n9 = n9 - 1;
     statement_4718:;
   }
   FEM_DO_SAFE(i, 1, n9) {
     texta(i) = textb;
   }
-  read(texta(1), "(e30.0)"), d1;
-#endif
+  std::string textf(&texta(1), 30);
+  read(textf.c_str(), "(e30.0)"), d1;
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));

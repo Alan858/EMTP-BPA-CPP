@@ -1,5 +1,5 @@
 // EMTP C++
-// Dr. Alan W. Zhang <Alan92127@gmail.com>
+// Dr. Alan W. Zhang <alan92127@gmail.com>
 // Copyright (c) 2020~, all rights reserved.
 //
 #include "emtp_cmn.h"
@@ -34033,9 +34033,9 @@ void pltfil(
 
   if (volti(1) < 0) return; // the last item is -9999
 
-  cmn.out_stream << SState("f10.6") << volti[0]; // time
+  cmn.out_stream << SState("e10.3") << volti[0]; // time
   for (int i = 1; i < k; ++i) {
-    cmn.out_stream << ',' << SState("f11.4") << volti[i];
+    cmn.out_stream << ',' << SState("e10.3") << volti[i];
   }
   cmn.out_stream << '\n';
 
@@ -39202,11 +39202,11 @@ void elecyy(
   common& cmn)
 {
   common_write write(cmn);
-  double& omega = cmn.omega;
-  int& numsm = cmn.numsm;
-  int& iprsup = cmn.iprsup;
-  int& it = cmn.it;
-  int& ibr = cmn.ibr;
+  auto& omega = cmn.omega;
+  auto& numsm = cmn.numsm;
+  auto& iprsup = cmn.iprsup;
+  auto& it = cmn.it;
+  auto& ibr = cmn.ibr;
   auto& c = cmn.c;
   auto& tr = cmn.tr;
   auto& tx = cmn.tx;
@@ -39223,7 +39223,7 @@ void elecyy(
   auto& mbus = cmn.mbus;
   auto& z = static_cast<common_smach&>(cmn).z;
   auto& x1 = cmn.x1;
-  double& omdt = cmn.omdt;
+  auto& omdt = cmn.omdt;
   //
   int imech = fem::int0;
   int ilk = fem::int0;
@@ -50716,8 +50716,13 @@ statement_3104:
       }
       if (numnvo == 0) cmn.out_stream << "Time";
       for (int i = 1; i <= nc; ++i) { // branch current
-        cmn.out_stream << ',' << bus(ibrnch(i))(1,6).std_str() << "->" << bus(jbrnch(i))(1,6).std_str();
+        if (auto n1 = ibrnch(i), n2 = jbrnch(i); n1 <= ntot && n2 <= ntot)
+          cmn.out_stream << ',' << bus(n1)(1,6).std_str() << "->" << bus(n2)(1,6).std_str();
+        else // machine variables: based on case0019
+          cmn.out_stream << ',' << texvec(n1 - ntot)(1, 6).std_str() 
+                        << "->" << texvec(n2 - ntot)(1, 6).std_str();
       }
+
       cmn.out_stream << '\n';
     }
   }
@@ -52607,7 +52612,6 @@ statement_1550:
     }
     vsl = vzero2 + a2 * cchar(n1);
     h1 = vsl - vchar(n1);
-    sk = h1;
     goto statement_3800;
   statement_3100:
     n1++;
@@ -53133,10 +53137,10 @@ void update(
   common& cmn)
 {
   common_write write(cmn);
-  double& delta2 = cmn.delta2;
-  double& omega = cmn.omega;
-  double& onehaf = cmn.onehaf;
-  double& flzero = cmn.flzero;
+  auto& delta2 = cmn.delta2;
+  auto& omega = cmn.omega;
+  auto& onehaf = cmn.onehaf;
+  auto& flzero = cmn.flzero;
   auto& flstat = cmn.flstat;
   auto& lstat = cmn.lstat;
   const auto& iprsov = cmn.iprsov;
@@ -53158,13 +53162,12 @@ void update(
   const auto& ismtac = cmn.ismtac;
   auto& x1 = cmn.x1;
   auto& smoutv = cmn.smoutv;
-  double& sqrt32 = cmn.sqrt32;
-  double& athtw = cmn.athtw;
-  double& damrat = cmn.damrat;
-  double& om2 = cmn.om2;
+  auto& sqrt32 = cmn.sqrt32;
+  auto& athtw = cmn.athtw;
+  auto& damrat = cmn.damrat;
+  auto& om2 = cmn.om2;
   auto& ksmspy = cmn.ksmspy;
-  //
-  int kxtcs = fem::int0;
+  
   auto& lunit6 = cmn.lunit6;
   int ilk = fem::int0;
   int ll0 = fem::int0;
@@ -53311,7 +53314,8 @@ void update(
   //C     INTRINSIC  COSZ, SINZ, ABSZ, SQRTZ, ATAN2Z                        M34. 158
   //C     THIS ROUTINE ADJUSTS THE CURRENT SOURCES TO BE INJECTED INTO      M20.4303
   //C     THE EQUIVALENT PI-CIRCUITS * * * * * * * * * * * * * * * * * * * *M20.4304
-  kxtcs = sptacs(17);
+  auto vsmout = ArraySpan(reinterpret_cast<double*>(&cmn.ismout(1)), cmn.ismout.size() / 2);
+  auto& kxtcs = sptacs(17);
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE UPDATE.\"')");
   }
@@ -53639,7 +53643,7 @@ void update(
       if (jmset == 13) {
         goto statement_1685;
       }
-      etac(lmset) = sqrtz(fem::pow2(sf4) + fem::pow2(sf5));
+      etac(lmset) = std::sqrt(fem::pow2(sf4) + fem::pow2(sf5));
       goto statement_8650;
     statement_1685:
       etac(lmset) = std::atan2(sf5, sf4);
@@ -53715,20 +53719,20 @@ void update(
       }
     statement_8201:
       L = n5 + n8;
-      if (0 < L && L <= cu.size()) ismout(icnt) = cu(L);
-      else ismout(icnt) = 0;
+      if (0 < L && L <= cu.size()) vsmout(icnt) = cu(L);
+      else vsmout(icnt) = 0;
       goto statement_8200;
     statement_8202:
-      ismout(icnt) = d6;
+      vsmout(icnt) = d6;
       goto statement_8200;
     statement_8203:
-      ismout(icnt) = d7;
+      vsmout(icnt) = d7;
       goto statement_8200;
     statement_8204:
-      ismout(icnt) = d8;
+      vsmout(icnt) = d8;
       goto statement_8200;
     statement_8205:
-      ismout(icnt) = q3;
+      vsmout(icnt) = q3;
       goto statement_8200;
     statement_8206:
       sf4 = a3 * elp(i26 + 21) + c1 + c2;
@@ -53736,16 +53740,16 @@ void update(
       if (n5 == 13) {
         goto statement_8207;
       }
-      ismout(icnt) = sqrtz(fem::pow2(sf4) + fem::pow2(sf5));
+      vsmout(icnt) = sqrtz(fem::pow2(sf4) + fem::pow2(sf5));
       goto statement_8200;
     statement_8207:
-      ismout(icnt) = std::atan2(sf5, sf4);
+      vsmout(icnt) = std::atan2(sf5, sf4);
       goto statement_8200;
     statement_8208:
-      ismout(icnt) = cd;
+      vsmout(icnt) = cd;
       goto statement_8200;
     statement_8209:
-      ismout(icnt) = cexc;
+      vsmout(icnt) = cexc;
     statement_8200:;
     }
   statement_8215:
@@ -53759,8 +53763,8 @@ void update(
       icnt++;
       n5 = ismout(ipout) + iu;
       if (0 < n5 && n5 <= histq.size())
-        ismout(icnt) = (histq(n5) - d9) * cmn.radeg;
-      else ismout(icnt) = 0;
+        vsmout(icnt) = (histq(n5) - d9) * cmn.radeg;
+      else vsmout(icnt) = 0;
     }
   statement_8225:
     n9 = ismdat(i30 + 19);
@@ -53774,8 +53778,8 @@ void update(
       icnt++;
       n13 = ismout(ipout) + n12;
       if (0 < n13 && n13 <= histq.size())
-        ismout(icnt) = histq(n13) - d9;
-      else ismout(icnt) = 0;
+        vsmout(icnt) = histq(n13) - d9;
+      else vsmout(icnt) = 0;
     }
   statement_8235:
     n9 = ismdat(i30 + 20);
@@ -53791,9 +53795,9 @@ void update(
       m = iu + n5;
       n5 = m + numask;
       if (0 < m && m < histq.size() && 0 < n5 && n5 < histq.size())
-        ismout(icnt) = shp(mp + numask) * (histq(m) - histq(m + 1)) +
+        vsmout(icnt) = shp(mp + numask) * (histq(m) - histq(m + 1)) +
         shp(mp) * (histq(n5) - histq(n5 + 1));
-      else ismout(icnt) = 0;
+      else vsmout(icnt) = 0;
     }
     //C     PREDICT NEW ROTOR ANGLE AND SPEED. CALCULATE ALSO CONSTANT TERMS  M37.5422
     //C     FOR THE ITERATION LOOP IN THE NEXT TIME-STEP   * * * * * * * * * *M37.5423
@@ -57101,32 +57105,32 @@ void subts1(
   double& flzero = cmn.flzero;
   auto& voltbc = cmn.voltbc;
   const auto& moncar = cmn.moncar;
-  int& max99m = cmn.max99m;
+  auto& max99m = cmn.max99m;
   auto& lstat = cmn.lstat;
-  auto& iprsov= cmn.iprsov;
-  int& inonl = cmn.inonl;
-  int& istep = cmn.istep;
-  int& it1 = cmn.it1;
-  int& it2 = cmn.it2;
-  int& kcount = cmn.kcount;
-  int& lymat = cmn.lymat;
-  int& lswtch = cmn.lswtch;
-  int& m4plot = cmn.m4plot;
-  int& lpast = cmn.lpast;
-  int& ncomp = cmn.ncomp;
-  int& nv = cmn.nv;
+  auto& iprsov = cmn.iprsov;
+  auto& inonl = cmn.inonl;
+  auto& istep = cmn.istep;
+  auto& it1 = cmn.it1;
+  auto& it2 = cmn.it2;
+  auto& kcount = cmn.kcount;
+  auto& lymat = cmn.lymat;
+  auto& lswtch = cmn.lswtch;
+  auto& m4plot = cmn.m4plot;
+  auto& lpast = cmn.lpast;
+  auto& ncomp = cmn.ncomp;
+  auto& nv = cmn.nv;
   auto& ktrlsw = cmn.ktrlsw;
-  int& num99 = cmn.num99;
-  int& kpartb = cmn.kpartb;
-  int& lastov = cmn.lastov;
-  int& ialter = cmn.ialter;
-  int& kill = cmn.kill;
-  int& nchain = cmn.nchain;
-  int& iprsup = cmn.iprsup;
-  int& kswtch = cmn.kswtch;
-  int& ntot = cmn.ntot;
+  auto& num99 = cmn.num99;
+  auto& kpartb = cmn.kpartb;
+  auto& lastov = cmn.lastov;
+  auto& ialter = cmn.ialter;
+  auto& kill = cmn.kill;
+  auto& nchain = cmn.nchain;
+  auto& iprsup = cmn.iprsup;
+  auto& kswtch = cmn.kswtch;
+  auto& ntot = cmn.ntot;
   const auto& loopss = cmn.loopss;
-  int& nenerg = cmn.nenerg;
+  auto& nenerg = cmn.nenerg;
   const auto& x = static_cast<common_c0b001&>(cmn).x;
   auto& ykm = cmn.ykm;
   auto& km = cmn.km;
@@ -59511,14 +59515,14 @@ void subts2(
 {
   common_read read(cmn);
   common_write write(cmn);
-  double& ci1 = cmn.ci1;
-  double& ck1 = cmn.ck1;
-  double& deltat = cmn.deltat;
-  double& t = cmn.t;
-  double& tmax = cmn.tmax;
-  double& unity = cmn.unity;
-  double& onehaf = cmn.onehaf;
-  double& dltinv = cmn.dltinv;
+  auto& ci1 = cmn.ci1;
+  auto& ck1 = cmn.ck1;
+  auto& deltat = cmn.deltat;
+  auto& t = cmn.t;
+  auto& tmax = cmn.tmax;
+  auto& unity = cmn.unity;
+  auto& onehaf = cmn.onehaf;
+  auto& dltinv = cmn.dltinv;
   const auto& iprsov = cmn.iprsov;
   int& it1 = cmn.it1;
   int& it2 = cmn.it2;
@@ -59573,8 +59577,7 @@ void subts2(
   auto& f = static_cast<common_c0b119&>(cmn).f;
   auto& volti = static_cast<common_c0b123&>(cmn).volti;
 
-  arr_ref<double> voltk(static_cast<common_c0b124&>(cmn).voltk,
-    dimension(3000));
+  auto& voltk = static_cast<common_c0b124&>(cmn).voltk;
   auto& volt = cmn.volt;
   int& koff1 = cmn.koff1;
   int& koff2 = cmn.koff2;
@@ -59751,8 +59754,6 @@ void subts2(
   int jf = fem::int0;
   int jfdep2 = fem::int0;
   int kfdep2 = fem::int0;
-  double sk = fem::double0;
-  double sm = fem::double0;
   int ik = fem::int0;
   int iklim = fem::int0;
   int L = fem::int0;
@@ -59785,6 +59786,8 @@ void subts2(
   static const char* format_80140 = "(' SCONST FROM',i6,'    TO',i6)";
   static const char* format_80145 = "(1x,10e12.5)";
 
+  double sk = fem::double0;
+  double sm = fem::double0;
   auto& d2 = sm;
   auto& h1 = sk;
 
@@ -61762,18 +61765,15 @@ void subts4(
   if (cmn.numum <= 0) {
     goto statement_1742;
   }
-  solvum(cmn, spum(cmn.iureac), 
-    spum(cmn.iugpar), spum(cmn.iufpar), spum(cmn.iuhist), spum(cmn.iuumrp), 
-    ispum(cmn.iunod1), ispum(cmn.iunod2), ispum(cmn.iujclt), ispum(cmn.iujclo), 
-    ispum(cmn.iujtyp), ispum(cmn.iunodo), ispum(cmn.iujtmt), spum(cmn.iuhism), 
-    spum(cmn.iuomgm), spum(cmn.iuomld), spum(cmn.iutham), spum(cmn.iuredu), 
-    spum(cmn.iureds), spum(cmn.iuflds), spum(cmn.iufldr), spum(cmn.iurequ), 
-    spum(cmn.iuflqs), spum(cmn.iuflqr), ispum(cmn.iujcds), ispum(cmn.iujcqs), 
-    spum(cmn.iuflxd), spum(cmn.iuflxq), ispum(cmn.iunppa), spum(cmn.iurotm), 
-    ispum(cmn.iuncld), ispum(cmn.iunclq), ispum(cmn.iujtqo), ispum(cmn.iujomo), 
-    ispum(cmn.iujtho), spum(cmn.iureqs), spum(cmn.iuepso), spum(cmn.iudcoe), 
-    ispum(cmn.iukcoi), spum(cmn.iuvolt), spum(cmn.iuangl), ispum(cmn.iunodf), 
-    ispum(cmn.iunodm), ispum(cmn.iukumo), ispum(cmn.iujumo), spum(cmn.iuumou));
+  solvum(cmn, spum(cmn.iureac), spum(cmn.iugpar), spum(cmn.iufpar), spum(cmn.iuhist), spum(cmn.iuumrp), 
+    ispum(cmn.iunod1), ispum(cmn.iunod2), ispum(cmn.iujclt), ispum(cmn.iujclo), ispum(cmn.iujtyp),
+    ispum(cmn.iunodo), ispum(cmn.iujtmt), spum(cmn.iuhism), spum(cmn.iuomgm), spum(cmn.iuomld),
+    spum(cmn.iutham), spum(cmn.iuredu), spum(cmn.iureds), spum(cmn.iuflds), spum(cmn.iufldr),
+    spum(cmn.iurequ), spum(cmn.iuflqs), spum(cmn.iuflqr), ispum(cmn.iujcds), ispum(cmn.iujcqs), 
+    spum(cmn.iuflxd), spum(cmn.iuflxq), ispum(cmn.iunppa), spum(cmn.iurotm), ispum(cmn.iuncld), 
+    ispum(cmn.iunclq), ispum(cmn.iujtqo), ispum(cmn.iujomo), ispum(cmn.iujtho), spum(cmn.iureqs),
+    spum(cmn.iuepso), spum(cmn.iudcoe), ispum(cmn.iukcoi), spum(cmn.iuvolt), spum(cmn.iuangl),
+    ispum(cmn.iunodf), ispum(cmn.iunodm), ispum(cmn.iukumo), ispum(cmn.iujumo), spum(cmn.iuumou));
 
   if (cmn.kill > 0) {
     goto statement_9200;
@@ -61842,7 +61842,7 @@ statement_1570:
   if (t + cmn.deltat < tenerg) {
     goto statement_1609;
   }
-  if (iprsup >= -1) {
+  if (iprsup >= 1) {
     write(lunit6,
       "(/,' AT END OF  ''SUBTS4'', COMMON BLOCKS ARE WRITTEN ON  ''LUNIT2''  D"
       "URING THE 1ST ENERGIZATION OF  ''STATISTICS''  CASE.',/,"

@@ -23,3 +23,4 @@ case0008 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Back-to-Bac
 case0009 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Restrike Simulation
 case0010 - Steady-state solution with a fault, "EMTP Primer.pdf" Section 6, Case 6: Parallel EHV Line Resonance
 case0011 - Reclosing Of Transmission Lines, "EMTP Primer.pdf" Section 7, Case 7
+case0012 - Lightning surge studies, "EMTP Primer.pdf" Section 4, Case 4
