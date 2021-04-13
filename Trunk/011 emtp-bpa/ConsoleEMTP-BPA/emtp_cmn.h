@@ -83,16 +83,19 @@ namespace emtp {
   };
 
   class SState {
-    std::string_view fmt_;
+    const std::string fmt_;
   public:
-    SState(std::string_view fmt = "") : fmt_(fmt)
+    SState(std::string_view fmt) : fmt_(fmt)
     {
     }
     friend std::ostream& operator << (std::ostream& o, const SState& ss) {
       std::string_view fmt = ss.fmt_;
       if (fmt.empty()) {  // default
-        std::ostringstream tmpStream;
-        o << tmpStream.width() << tmpStream.precision() << tmpStream.flags() << tmpStream.fill();
+        std::ostringstream t;
+        o.flags(t.flags());
+        o.width(t.width());
+        o.precision(t.precision());
+        o.fill(t.fill());
       }
       else {
         switch (fmt[0]) {
@@ -145,7 +148,15 @@ namespace emtp {
     return str.substr(0, length);    // assumes 32 < number of characters in str         
   }
 
-
+  inline std::string_view trim_left(const std::string_view strv) {
+    return strv.substr(std::min(strv.find_first_not_of(' '), strv.size()));
+  }
+  inline std::string_view trim_right(const std::string_view strv) {
+    return strv.substr(0, strv.find_last_not_of(' ') + 1);
+  }
+  inline std::string_view trim(const std::string_view strv) {
+    return trim_left(trim_right(strv));
+  }
 
 
 

@@ -21087,6 +21087,10 @@ bool data_input(common& cmn) try {
 
   std::string sLine;
   for (int j = 0; std::getline(cmn.inp_stream, sLine); ) {
+    if (auto pos = sLine.find("//"); pos != std::string::npos) 
+      sLine = sLine.substr(0, pos);  // skip comment "//" 
+    sLine = trim_right(sLine);
+    if (sLine.empty()) continue;
     sLine.resize(80, ' ');
     if (sLine.substr(0, 2) == "C ") continue;
     if (1000 < ++j) {
