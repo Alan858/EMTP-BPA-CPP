@@ -2309,7 +2309,7 @@ namespace emtp {
   statement_120:
     cmn.io.close(lunit4)
       .status("DELETE");
-  statement_140:
+  //statement_140:
     cmn.io.close(cmn.lunit9);
     cmn.io.close(lunt10);
     cmn.io.close(lunt11);
@@ -2471,7 +2471,7 @@ namespace emtp {
     // cmn.lunit5 = -5;
     return;
     // UNHANDLED: ENTRY nextcard
-  statement_nextcard:
+  //statement_nextcard:
     //C     THIS ENTRY IS USED ONLY FOR INTERACTIVE EMTP.  IT GETS            M35. 628
     //C     NEXT CARD IMAGE FROM MEMORY RATHER THAN UNIT 5.                   M29.1166
     //C NEXT DATA CARD IS RIGHT AFTER LAST
