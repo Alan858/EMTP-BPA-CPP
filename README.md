@@ -1,5 +1,5 @@
 # EMTP-BPA-CPP
-C++ translation from EMTA-BPA Fortran using fable  
+C++ translation from EMTP-BPA Fortran using fable  
 Licensed under the [MIT License](https://opensource.org/licenses/MIT)  
 Copyright(c) 2021, [Dr. Alan W. Zhang](https://github.com/Alan858/EMTP-BPA-CPP)  
 
