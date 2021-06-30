@@ -3,6 +3,9 @@ C++ translation from EMTA-BPA Fortran using fable
 Licensed under the [MIT License](https://opensource.org/licenses/MIT)  
 Copyright(c) 2021, [Dr. Alan W. Zhang](https://github.com/Alan858/EMTP-BPA-CPP)  
 
+The source codes are compiled under MS Visual Studio 2019 community version.  
+Set language standard to C++ 17.  
+
 1. ConsoleEMTP-BPA.exe  
 
    It takes one input data file to run the program. If no input file was given,  
