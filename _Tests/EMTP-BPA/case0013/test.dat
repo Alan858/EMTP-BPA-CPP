@@ -1,0 +1,92 @@
+BEGIN NEW DATA CASE
+C Simulate ferroresonance on a potential 
+C transformer connected to a 345-kv bus through an SF6 breaker with 
+C voltage grading capacitors. 
+C FIRST MISCELLANEOUS DATA CARD
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C  dT  >< Tmax >< Xopt >< Copt ><Epsiln>
+C SECNDS SECONDS    0=MH    0=UF 
+C                  F(HZ)   F(HZ) 
+  25.E-6      .2     60.       0
+C 
+C SECOND MISCELLANEOUS DATA CARD
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C  PRINT    PLOT NETWORK   PR.SS  PR.MAX   I PUN   PUNCH    DUMP   MULT. DIAGNOS
+    3000       5       1       0       1       0       0       1     
+C BRANCH
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><>   
+C < n1 >< n2 ><ref1><ref2>< R  >< A  >< B  ><Leng><><>
+  SRCE ABUS  A                        .00065
+  SRCE BBUS  BSRCE ABUS  A 
+  SRCE CBUS  CSRCE ABUS  A 
+  BUS  A                              .00015
+  BUS  B      BUS  A 
+  BUS  C      BUS  A    
+C MUTUALLY COUPLEO R.L CIRCUITS
+C 345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><>  
+51THEV ASRCE A                   10.60
+52THEV BSRCE B                    6.64
+53THEV CSRCE C         
+C TRANSFORMER
+C 345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  ><Leng><><>  
+C REQUESTWORD    BUS          I   FLUX   BUS R-MAG 
+  TRANSFORMER              .002 439.23     X
+C           1-16           17-32 
+C        CURRENT            FLUX 
+           .0020          439.23
+           .0043          549.04
+           .0077          604.05
+           .0108          658.84
+           .0153          680.93
+           .0240          713.86
+           .0342          732.91
+           .0540          755.00
+           .0688          774.28
+           .1143          793.34
+           .1511          807.20
+           .1904          818.03
+           .2650          834.71
+           .3561          845.54
+           .6639          859.40
+            9999 
+C TRANSFORMER WINDINGS
+C COLUMN 1,2: WINDING NUMBER 
+C 345678901234567890123456789012345678901234567890 
+C    3-8  9-14             27-32 33-38 39-44 
+C   BUS1  BUS2               R-K   L-K TURNS
+ 1BUS  A                         .0010 1800.
+ 2WYE  A                         .0010    1.
+ 3THRED DELTAB                   .0010    1. 
+  TRANSFORMER      X                       Y
+ 1BUS  B
+ 2WYE  B
+ 3DELTABDELTAC
+  TRANSFORMER      X                       Z
+ 1BUS  C
+ 2WYE  C
+ 3DELTAC
+BLANK CARD TERMINATING BRANCH CARDS
+C SWITCH CARDS
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n 1>< n 2>< Tclose ><Top/Tde ><   Ie   ><Vf/CLOP ><  type  >
+  SRCE ABUS  A       -1.      .020                                             3
+  SRCE BBUS  B       -1.      .020                                             3
+  SRCE CBUS  C       -1.      .020                                             3
+BLANK CARD TERMINATING SWITCH CARDS 
+C SOURCE CARDS
+C LOCAL SOURCE
+C < n 1><>< Ampl.  >< Freq.  ><Phase/T0><   A1   ><   T1   >< TSTART >< TSTOP  >
+14THEV A    281691.     60.0        0.                          -1.0
+14THEV B    281691.     60.0      240.                          -1.0 
+14THEV C    281691.     60.0      120.                          -1.0 
+BLANK CARD ENDING SOURCES
+C NODE VOLTAGE OUTPUT
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+  BUS  ABUS  BBUS  C 
+BLANK CARD ENDING NODE OUTPUT REQUESTS 
+BLANK CARD ENDING PLOT
+BEGIN NEW DATA CASE
+BLANK TERMINATING THE CASE
