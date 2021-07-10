@@ -20733,11 +20733,16 @@ void insert(
   int& iofbnd = cmn.iofbnd;
   int& kill = cmn.kill;
   //auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
 
   auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
+  
   //
   int i = fem::int0;
   int ir = fem::int0;
@@ -20888,9 +20893,9 @@ void over6(
   const auto& bus = cmn.bus;
   auto& ich1 = cmn.ich1;
   //auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
   
   //int iofkol = fem::int0;
   //int iofkor = fem::int0;
@@ -20939,6 +20944,9 @@ void over6(
   auto& iofkor = cmn.iofbnd;
 
   auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER6.\"')");
@@ -21549,9 +21557,9 @@ void over7(
   auto& ich1 = cmn.ich1;
   //auto& ich2 = cmn.ich2;
   //auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
   //
   auto& lunit6 = cmn.lunit6;
   int ischm = fem::int0;
@@ -21600,6 +21608,10 @@ void over7(
 
   auto ich2 = ArraySpan(reinterpret_cast<int*>(&cmn.diag(1)), cmn.diag.size_1d());
   auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER7.\"')");
@@ -29019,9 +29031,9 @@ void over9(
   auto& kode = cmn.kode;
   const auto& bus = cmn.bus;
   //auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
   auto& nekfix = cmn.nekfix;
   auto& fixbu1 = cmn.fixbu1;
   auto& fixbu2 = cmn.fixbu2;
@@ -29070,6 +29082,10 @@ void over9(
   auto& iofkor = cmn.iofbnd;
 
   auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER9.\"')");

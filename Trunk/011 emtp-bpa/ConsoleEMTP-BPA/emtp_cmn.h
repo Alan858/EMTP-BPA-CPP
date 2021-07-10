@@ -2972,18 +2972,18 @@ struct common_ztmp2
 {
   //vectorEx<int> ich2;
   //vectorEx<int> loc;
-  vectorEx<int> kownt;
-  vectorEx<int> korder;
-  vectorEx<int> kolum;
+  //vectorEx<int> kownt;
+  //vectorEx<int> korder;
+  //vectorEx<int> kolum;
   //vectorEx<double> frandn; // only used in over12
   //vectorEx<int> irandn;
 
-  common_ztmp2() :
+  common_ztmp2() 
     //ich2((3002), fem::fill0),
     //loc((3002), fem::fill0),
-    kownt((3002), fem::fill0),
-    korder((sizeBND), fem::fill0),
-    kolum((30000), fem::fill0)
+    //kownt((3002), fem::fill0),
+    //korder((sizeBND), fem::fill0),
+    //kolum((30000), fem::fill0)
     //frandn((30000), fem::fill0),
     //irandn((30000), fem::fill0)
   {}
