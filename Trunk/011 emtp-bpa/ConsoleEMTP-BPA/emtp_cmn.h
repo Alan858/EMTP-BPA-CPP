@@ -2970,22 +2970,22 @@ struct common_spac11
 
 struct common_ztmp2
 {
-  vectorEx<int> ich2;
-  vectorEx<int> loc;
+  //vectorEx<int> ich2;
+  //vectorEx<int> loc;
   vectorEx<int> kownt;
   vectorEx<int> korder;
   vectorEx<int> kolum;
-  vectorEx<double> frandn;
-  vectorEx<int> irandn;
+  //vectorEx<double> frandn; // only used in over12
+  //vectorEx<int> irandn;
 
   common_ztmp2() :
-    ich2((3002), fem::fill0),
-    loc((3002), fem::fill0),
+    //ich2((3002), fem::fill0),
+    //loc((3002), fem::fill0),
     kownt((3002), fem::fill0),
     korder((sizeBND), fem::fill0),
-    kolum((30000), fem::fill0),
-    frandn((30000), fem::fill0),
-    irandn((30000), fem::fill0)
+    kolum((30000), fem::fill0)
+    //frandn((30000), fem::fill0),
+    //irandn((30000), fem::fill0)
   {}
 };
 
@@ -4728,6 +4728,23 @@ struct common :
     int const n) {
     move0(intb, 1, n);
   }
+
+  template<typename T>
+  void move0(
+    ArraySpan<T>& intb,
+    int const i0,
+    int const n) {
+    for (int i = i0, cnt = std::min(i0 + n, int(intb.size())); i < cnt; ++i)
+      intb(i) = 0; // 1 based
+  }
+  template<typename T>
+  void move0(
+    ArraySpan<T>& intb,
+    int const n) {
+    move0(intb, 1, n);
+  }
+
+
   void mover(
       arr_cref<double> a,
       arr_ref<double> b,

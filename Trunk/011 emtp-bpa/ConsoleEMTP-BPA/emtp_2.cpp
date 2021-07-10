@@ -20732,10 +20732,12 @@ void insert(
   int& iofgnd = cmn.iofgnd;
   int& iofbnd = cmn.iofbnd;
   int& kill = cmn.kill;
-  auto& loc = cmn.loc;
+  //auto& loc = cmn.loc;
   auto& kownt = cmn.kownt;
   auto& korder = cmn.korder;
   auto& kolum = cmn.kolum;
+
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
   //
   int i = fem::int0;
   int ir = fem::int0;
@@ -20885,7 +20887,7 @@ void over6(
   auto& volt = cmn.volt;
   const auto& bus = cmn.bus;
   auto& ich1 = cmn.ich1;
-  auto& loc = cmn.loc;
+  //auto& loc = cmn.loc;
   auto& kownt = cmn.kownt;
   auto& korder = cmn.korder;
   auto& kolum = cmn.kolum;
@@ -20935,6 +20937,9 @@ void over6(
   auto& next = cmn.loopss(11);
   auto& iofkol = cmn.iofgnd;
   auto& iofkor = cmn.iofbnd;
+
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER6.\"')");
   }
@@ -21542,8 +21547,8 @@ void over7(
   auto& index = cmn.index;
   auto& iloc = cmn.iloc;
   auto& ich1 = cmn.ich1;
-  auto& ich2 = cmn.ich2;
-  auto& loc = cmn.loc;
+  //auto& ich2 = cmn.ich2;
+  //auto& loc = cmn.loc;
   auto& kownt = cmn.kownt;
   auto& korder = cmn.korder;
   auto& kolum = cmn.kolum;
@@ -21592,6 +21597,9 @@ void over7(
   //auto& e = cmn.e;
   //auto ndex = ArraySpan(reinterpret_cast<int*>(&cmn.e(1)), cmn.e.size() * 2);
   vectorEx<int> ndex((cmn.e.size()), fem::fill0);
+
+  auto ich2 = ArraySpan(reinterpret_cast<int*>(&cmn.diag(1)), cmn.diag.size_1d());
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER7.\"')");
@@ -27132,7 +27140,7 @@ void over8(
   auto& bus = cmn.bus;
   const auto& norder = cmn.norder;
   const auto& ich1 = cmn.ich1;
-  auto& ich2 = cmn.ich2;
+  //auto& ich2 = cmn.ich2;
   int& kexact = cmn.kexact;
   int& nsolve = cmn.nsolve;
   double& fminsv = cmn.fminsv;
@@ -27309,6 +27317,7 @@ void over8(
   auto& knt = cmn.moncar(1);
 
   auto ispum = ArraySpan(reinterpret_cast<int*>(&cmn.spum(1)), cmn.spum.size() * 2);
+  auto ich2 = ArraySpan(reinterpret_cast<int*>(&cmn.diag(1)), cmn.diag.size_1d());
 
   if (iprsup >= 1) {
     write(lunit6,
@@ -29009,7 +29018,7 @@ void over9(
   const auto& kssfrq = cmn.kssfrq;
   auto& kode = cmn.kode;
   const auto& bus = cmn.bus;
-  auto& loc = cmn.loc;
+  //auto& loc = cmn.loc;
   auto& kownt = cmn.kownt;
   auto& korder = cmn.korder;
   auto& kolum = cmn.kolum;
@@ -29059,6 +29068,9 @@ void over9(
   auto& next = loopss(11);
   auto& iofkol = cmn.iofgnd;
   auto& iofkor = cmn.iofbnd;
+
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER9.\"')");
   }
@@ -40186,8 +40198,8 @@ void over12(
 
   auto& volt = cmn.volt;
   const auto& bus = cmn.bus;
-  auto& frandn = cmn.frandn;
-  auto& irandn = cmn.irandn;
+  //auto& frandn = cmn.frandn;
+  //auto& irandn = cmn.irandn;
   int& kbrser = cmn.kbrser;
   int& kbreak = cmn.kbreak;
   int& koff1 = cmn.koff1;
@@ -40385,6 +40397,10 @@ void over12(
 
   auto cmr = ArraySpan(reinterpret_cast<double*>(&kks(1)), kks.size()/2);
   auto cmi = ArraySpan(reinterpret_cast<double*>(&kknonl(1)), kknonl.size()/2); 
+
+  // frandn and irandn may not need
+  vectorEx<double> frandn(3000); // original in space2.inc with equivalence. 
+  auto irandn = ArraySpan(reinterpret_cast<int*>(&frandn(1)), frandn.size());
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER12.\"')");
