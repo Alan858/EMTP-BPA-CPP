@@ -3531,17 +3531,52 @@ statement_2843:
   if (noutpr != 0 && iprsup > 0) {
     noutpr = 0;
   }
-  xopt = statfr;
-  copt = statfr;
-  kolbeg = n9;
-  if (kolbeg > 0) {
-    goto statement_4201;
+  if (cmn.mNewValuesFromLine.find(cmn.numdcd) == cmn.mNewValuesFromLine.end())
+  {
+    xopt = statfr;
+    copt = statfr;
+    kolbeg = n9;
+    if (kolbeg > 0) {
+      goto statement_4201;
+    }
+    expchk(cmn, ll1, ll80, ll8);
+    if (kill > 0) {
+      goto statement_9200;
+    }
+    read(abuff, format_3415), deltat, tmax, d1, d2, d3, tolmat, t; //NALE: place where we extracted something
   }
-  expchk(cmn, ll1, ll80, ll8);
-  if (kill > 0) {
-    goto statement_9200;
+  else
+  {
+    std::list<double> lInputValues = cmn.mNewValuesFromLine[cmn.numdcd];
+    int NumValues = int(lInputValues.size());
+    std::list<double>::iterator iterList = lInputValues.begin();
+
+    while (true)
+    {
+      if (lInputValues.size() > 0)
+      {
+        deltat = *iterList;
+        if (++iterList != lInputValues.end())
+          tmax = *iterList;
+        else break;
+        if (++iterList != lInputValues.end())
+          d1 = *iterList;
+        else break;
+        if (++iterList != lInputValues.end())
+          d2 = *iterList;
+        else break;
+        if (++iterList != lInputValues.end())
+          d3 = *iterList;
+        else break;
+        if (++iterList != lInputValues.end())
+          tolmat = *iterList;
+        else break;
+        if (++iterList != lInputValues.end())
+          t = *iterList;
+        else break;
+      }
+    }
   }
-  read(abuff, format_3415), deltat, tmax, d1, d2, d3, tolmat, t;
   if (t == 0.0f) {
     t = 0.0f;
   }

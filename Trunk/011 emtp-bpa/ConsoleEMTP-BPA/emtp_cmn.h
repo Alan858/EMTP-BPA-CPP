@@ -43,6 +43,8 @@ SOFTWARE.
 #include <random>
 #include <unordered_map>
 
+#include <map>
+#include <list>
 
 #include <fem.hpp> // Fortran EMulation library of fable module
 
@@ -4679,6 +4681,7 @@ struct common :
 
   std::ifstream inp_stream;
   std::ofstream out_stream;
+  std::map<int, std::list<double>> mNewValuesFromLine;
   //std::ofstream log_stream;
 
   common(

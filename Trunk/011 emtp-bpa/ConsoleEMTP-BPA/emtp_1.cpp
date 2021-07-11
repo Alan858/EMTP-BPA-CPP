@@ -3,6 +3,8 @@
 // Copyright (c) 2020~, all rights reserved.
 //
 #include "emtp_cmn.h"
+//#include <map>
+//#include <list>
 
 namespace emtp {
 
@@ -21085,14 +21087,73 @@ bool data_input(common& cmn) try {
   cmn.iprsov(1) = 0;  // EMTP DIAGNOSTIC ONLY THRU 1ST OVERLAY
   cmn.m4plot = 2;
 
+  std::map<int, std::list<double>> mNewValuesFromLine; // map<LineNumber, {0.0001, 0.00001, ...}>
+  std::map<int, std::list<std::string>> mNewStringFromLine; // map<LineNumber, {"-1T1-GW", "Text1", "Text2", ...}>
+
   std::string sLine;
   for (int j = 0; std::getline(cmn.inp_stream, sLine); ) {
     if (auto pos = sLine.find("//"); pos != std::string::npos) 
       sLine = sLine.substr(0, pos);  // skip comment "//" 
     sLine = trim_right(sLine);
     if (sLine.empty()) continue;
-    sLine.resize(80, ' ');
+    
     if (sLine.substr(0, 2) == "C ") continue;
+   
+    //New code to handle the line with comma ',' 
+    //I assume that we can have comma only in numbers, comments and lines which contains "$"
+    //I am converting here directly the text to numbers and saving them in mNewValuesFromLine together with the card No
+    auto TmpLine = sLine;
+    if (TmpLine.substr(0, 1) != "$"&& (TmpLine.find(",") != std::string::npos || TmpLine.size() > 80))
+    {
+      while ( TmpLine.size() > 0)
+      {
+        std::string str;
+        std::string::iterator iPosString = TmpLine.begin();
+        for (iPosString = TmpLine.begin(); iPosString != TmpLine.end(); iPosString++)
+        {
+          if (*iPosString != ' ')
+          {
+            if (*iPosString == ',')
+              str.push_back('.');
+            else
+              str.push_back(*iPosString);
+          }
+          else
+          {
+            break;
+          }
+        }
+        if (iPosString != TmpLine.end() && iPosString++ != TmpLine.end())
+          TmpLine = std::string(iPosString, TmpLine.end());
+        else
+          TmpLine.clear();
+
+        if (str.size() > 0)
+        {
+          std::istringstream iss(str);
+          double Val = -1;
+          bool isString = false;
+          for (auto i : str)
+          {
+            if (!isdigit(i) && i != '-' && i != '.')
+            {
+              isString = true;
+              break;
+            }
+          }
+          if (!isString)
+          {
+            iss >> Val;
+            str.clear(); //to save into mNewStringFromLine empty string if it is double
+          }
+          mNewValuesFromLine[j + 1].push_back(Val);
+          mNewStringFromLine[j + 1].push_back(str);
+        }
+      }
+    }
+    
+    sLine.resize(80, ' ');
+
     if (1000 < ++j) {
       write(cmn.lunit6, "(1x,a30)"), " Input data cards overflow !";
       //cmn.log_stream << " Input data cards overflow !\n";
@@ -21102,6 +21163,8 @@ bool data_input(common& cmn) try {
     cmn.numcrd = j;
     if (file6(j)(1, 4) == "EOF ") break;
   }
+  cmn.mNewValuesFromLine = mNewValuesFromLine;
+  mNewStringFromLine;
   return true;
 }
 catch (...) {
