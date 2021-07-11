@@ -186,7 +186,19 @@ namespace emtp {
     return trim_left(trim_right(strv));
   }
 
-
+  inline std::vector<std::string_view> split(const std::string_view strv, const std::string_view delim) {
+    std::vector<std::string_view> result;
+    size_t pos = 0;
+    size_t len = 0;
+    while ((len = strv.substr(pos).find(delim)) != std::string::npos) {
+      if (0 < len)
+        result.push_back(strv.substr(pos, len));
+      pos += len + delim.length();
+    }
+    if (len = strv.size() - pos; 0 < len)
+      result.push_back(strv.substr(pos, len));
+    return result;
+  }
 
 
 
