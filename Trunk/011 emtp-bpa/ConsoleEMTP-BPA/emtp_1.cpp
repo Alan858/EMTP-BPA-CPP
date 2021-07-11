@@ -40130,8 +40130,7 @@ comlr2(
   //C                EIGENVALUE AFTER 30 ITERATIONS ::::::::::              M29.5400
   statement_1000:
   ierr = ien;
-  statement_1001:
-  ;
+  statement_1001:;
 #if 0
   //CCCC      DO 1002 I=LOW, IGH                                            M43.3967
   //CCCC      WR(I) = UMR(I)                                                M43.3968
@@ -63065,8 +63064,7 @@ struct arrdat_save
   {}
 };
 
-void
-arrdat(
+void arrdat(  // Calculates data for nonlinear arrester medels
   common& cmn) try
 {
   FEM_CMN_SVE(arrdat);

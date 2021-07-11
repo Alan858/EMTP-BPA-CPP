@@ -27,7 +27,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************/
 
-#pragma warning (disable: 4267 4297)
+
 
 
 #include <iostream>
@@ -41,10 +41,12 @@ SOFTWARE.
 #include <array>
 #include <charconv>
 #include <random>
+#include <cassert>
 #include <unordered_map>
-
-
+#pragma warning (disable: 4267 4297)
 #include <fem.hpp> // Fortran EMulation library of fable module
+
+
 
 namespace emtp {
 
@@ -76,6 +78,7 @@ namespace emtp {
     auto& operator()(int ind)
     {
 #ifdef _DEBUG
+      assert(0 < ind && ind <= this->size());
       return std::vector<T>::at(ind - 1);
 #else
       return std::vector<T>::operator[](ind - 1); //(*this)[ind - 1];
