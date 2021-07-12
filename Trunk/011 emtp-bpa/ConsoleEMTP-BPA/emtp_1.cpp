@@ -21100,7 +21100,7 @@ bool data_input(common& cmn) try {
     if (sLine.substr(0, 2) == "C ") continue;
    
     //New code to handle the line with comma ',' 
-    //I assume that we can have comma only in numbers, comments and lines which contains "$"
+    //I assume that we can have comma only in numbers, comments and cards which contains "$"
     //I am converting here directly the text to numbers and saving them in mNewValuesFromLine together with the card No
     auto TmpLine = sLine;
     if (TmpLine.substr(0, 1) != "$"&& (TmpLine.find(",") != std::string::npos || TmpLine.size() > 80))
@@ -40193,8 +40193,7 @@ comlr2(
   //C                EIGENVALUE AFTER 30 ITERATIONS ::::::::::              M29.5400
   statement_1000:
   ierr = ien;
-  statement_1001:
-  ;
+  statement_1001:;
 #if 0
   //CCCC      DO 1002 I=LOW, IGH                                            M43.3967
   //CCCC      WR(I) = UMR(I)                                                M43.3968
@@ -63128,8 +63127,7 @@ struct arrdat_save
   {}
 };
 
-void
-arrdat(
+void arrdat(  // Calculates data for nonlinear arrester medels
   common& cmn) try
 {
   FEM_CMN_SVE(arrdat);

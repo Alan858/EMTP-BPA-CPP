@@ -13,7 +13,7 @@ namespace emtp {
   void pltlu2(
       common& cmn,
       double& d2,
-      arr_ref<double> volti)
+      arr_ref<double> volti) try
   {
     volti(dimension(1));
     common_read read(cmn);
@@ -46,7 +46,9 @@ namespace emtp {
         "(' EXIT \"PLTLU2\".  D2, VOLTI(1,IOFGND) =',3e14.5)"), d2,
         volti(1), volti(iofgnd);
     }
-
+  }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
   }
 
   struct expchk_save
@@ -68,7 +70,7 @@ namespace emtp {
       common& cmn,
       int const& n1,
       int const& n2,
-      int const& n5)
+      int const& n5) try
   {
     FEM_CMN_SVE(expchk);
     common_read read(cmn);
@@ -146,14 +148,16 @@ namespace emtp {
       return;
     statement_2625:;
     }
-
+  }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
   }
 
   void intchk(
       common& cmn,
       int const& n1,
       int const& n2,
-      int const& n5)
+      int const& n5) try
   {
     common_read read(cmn);
     fem::str<8>& blank = cmn.blank;
@@ -200,12 +204,14 @@ namespace emtp {
       return;
     statement_2648:;
     }
-
+  }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
   }
 
 
   void midov1(
-      common& cmn)
+      common& cmn) try
   {
     common_write write(cmn);
     const auto& moncar = cmn.moncar;
@@ -292,7 +298,9 @@ namespace emtp {
     //C WRITE LITTLE TO PLOT FILE, NOT NOTHING
     iplot = cmn.intinf;
   statement_5947:;
-
+  }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
   }
 
   struct reques_save
@@ -333,7 +341,7 @@ namespace emtp {
   };
 
   void reques(
-      common& cmn)
+      common& cmn) try
   {
     FEM_CMN_SVE(reques);
     common_read read(cmn);
@@ -1959,12 +1967,9 @@ namespace emtp {
       write(lunit6, "('  \"EXIT  MODULE REQUES.\"')");
     }
   }
-
-
-
-
-
-
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+  }
 
 
   void sysplt(
@@ -2083,7 +2088,7 @@ namespace emtp {
 
 
   void tacs1c(
-      common& cmn)
+      common& cmn) try
   {
     common_read read(cmn);
     common_write write(cmn);
@@ -2170,7 +2175,9 @@ namespace emtp {
     }
   statement_2868:;
   }
-
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+  }
 
   struct sysdep_save
   {
@@ -2198,7 +2205,7 @@ namespace emtp {
   };
 
   void sysdep(
-      common& cmn)
+      common& cmn) try
   {
     FEM_CMN_SVE(sysdep);
     common_read read(cmn);
@@ -2517,6 +2524,9 @@ namespace emtp {
   statement_9200:;
 
   }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+  }
 
   struct swmodf_save
   {
@@ -2530,7 +2540,7 @@ namespace emtp {
   };
 
   void swmodf(
-      common& cmn)
+      common& cmn) try
   {
     FEM_CMN_SVE(swmodf);
     common_read read(cmn);
@@ -2632,7 +2642,9 @@ namespace emtp {
       write(lunit6, "('  EXIT  MODULE \"SWMODF.\" ')");
     }
   }
-
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+  }
 
 struct over1_save
 {
@@ -2678,7 +2690,7 @@ struct over1_save
 };
 
 // INPUT OF MISCELLANEOUS DATA CARDS
-void over1(common& cmn)
+void over1(common& cmn) try
 {
   FEM_CMN_SVE(over1);
   common_read read(cmn);
@@ -4009,7 +4021,9 @@ statement_9800:
     write(lunit6, "(' \"EXIT  MODULE OVER1.\" ')");
   }
 } // over1
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 
@@ -4023,7 +4037,7 @@ struct inlmfs_save
 };
 
 void inlmfs(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(inlmfs);
   common_read read(cmn);
@@ -4484,8 +4498,10 @@ statement_1832:
     file6(j) = file6(n13);
   }
   numcrd = j;
-  //C     write (*,*) ' Exit INLMFS.   NUMDCD, NUMCRD =',
-  //C    1                             NUMDCD, NUMCRD
+
+}
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
 void over3(common& cmn);
@@ -4539,7 +4555,7 @@ void fddata(
   common& cmn,
   int& ikf,
   int& isfd,
-  int& ibf)
+  int& ibf) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -4668,6 +4684,9 @@ statement_3719:
   kill = 37;
 statement_9999:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct nonln2_save
 {
@@ -4682,7 +4701,7 @@ struct nonln2_save
 
 void
 nonln2(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(nonln2);
   common_read read(cmn);
@@ -5727,6 +5746,9 @@ statement_9999:
     write(lunit6, "('  \"EXIT  MODULE NONLN2.\"')");
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct distr2_save
 {
@@ -5767,7 +5789,7 @@ struct distr2_save
 
 void
 distr2(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(distr2);
   common_read read(cmn);
@@ -8278,10 +8300,13 @@ statement_9999:
     write(lunit6, "('  \"EXIT  MODULE DISTR2.\"')");
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void over4(common& cmn);
-void over2(common& cmn) // INPUT BRANCH DATA. 
+void over2(common& cmn) try // INPUT BRANCH DATA. 
 {
   FEM_CMN_SVE(over2);
   common_read read(cmn);
@@ -10979,12 +11004,15 @@ statement_9900:
       ibr, inonl, ntot, kill;
   }
 } // over2
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void cxred(
   arr_ref<double> a,
   arr_ref<double> c,
   int const& n,
-  int const& m)
+  int const& m) try
 {
   a(dimension(1));
   c(dimension(1));
@@ -11086,18 +11114,9 @@ statement_9:
   i = ij + k;
   goto statement_5;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct over3_save
 {
@@ -11116,7 +11135,7 @@ struct over3_save
 
 // CODE ASSOCIATED WITH THE CASCADING OF PI-CIRCUITS FOR         
 // STEADY-STATE PHASOR SOLUTIONS ONLY.                           
-void over3(common& cmn)
+void over3(common& cmn) try
 {
   FEM_CMN_SVE(over3);
   common_read read(cmn);
@@ -12193,10 +12212,13 @@ statement_9200:
   }
 statement_99999:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // INPUT AND PROCESSING OF FREQUENCY-DEPENDENCE DATA FOR         
 // DISTRIBUTED-PARAMETER LINE MODE.                              
-void over4(common& cmn)
+void over4(common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -12761,9 +12783,12 @@ statement_9200:
 statement_99999:;
 
 } // over4
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void umoffs(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   auto& lstat = cmn.lstat;
@@ -12916,6 +12941,9 @@ statement_3458:
     write(kunit6, "('+U.M. DATA BEGINS.  LIST-25 CELLS USED =',i5)"), n5;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 struct umdatb_save
@@ -12981,7 +13009,7 @@ void umdatb(
   arr_ref<int> jclout,
   arr_ref<double> dcoef,
   arr_ref<int> jomout,
-  arr_ref<double> umoutp)
+  arr_ref<double> umoutp) try
 {
   FEM_CMN_SVE(umdatb);
   reacl(dimension(1));
@@ -15041,6 +15069,9 @@ statement_17970:
 statement_9600:
   stoptp(cmn);
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 struct umdata_save
@@ -15117,7 +15148,7 @@ umdata(
   arr_ref<int> nodmum,
   arr_ref<int> kumout,
   arr_ref<int> jumout,
-  arr_ref<double> umoutp)
+  arr_ref<double> umoutp) try
 {
   FEM_CMN_SVE(umdata);
   reacl(dimension(1));
@@ -16789,6 +16820,9 @@ statement_18020:
 statement_9600:
   stoptp(cmn);
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void smpfit(
   common& cmn,
@@ -16796,7 +16830,7 @@ void smpfit(
   int const& ism,
   double const& fm,
   int const& lunit6,
-  int const& noutpr)
+  int const& noutpr) try
 {
   x(dimension(6));
   common_write write(cmn);
@@ -16880,9 +16914,12 @@ statement_13:
   x(5) = f3;
   x(6) = f4;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void rinfin(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   auto& lstat = cmn.lstat;
@@ -17002,6 +17039,9 @@ statement_54174:
   }
 statement_54180:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct smdat_save
 {
@@ -17040,7 +17080,7 @@ struct smdat_save
 
 void smdat(
   common& cmn,
-  int const& mtype)
+  int const& mtype) try
 {
   FEM_CMN_SVE(smdat);
   common_read read(cmn);
@@ -18659,6 +18699,9 @@ statement_9999:
     write(lunit6, "('  \"EXIT  MODULE SMDAT.\"')");
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct over5a_save
 {
@@ -18670,7 +18713,7 @@ struct over5a_save
 };
 
 void over5a(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(over5a);
   common_read read(cmn);
@@ -19630,6 +19673,9 @@ statement_9000:
   kill = 1;
 statement_9999:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 
@@ -19664,7 +19710,7 @@ struct over5_save
 
 // INPUT OF SWITCH AND SOURCE DATA CARDS.                        
 void over5(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(over5);
   common_read read(cmn);
@@ -20673,12 +20719,15 @@ statement_9200:
 statement_99999:;
 
 } // over5
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void vecisv(
   common& cmn,
   arr_ref<int> karr,
   int const& n13,
-  int const& n2)
+  int const& n2) try
 {
   karr(dimension(n13));
   common_write write(cmn);
@@ -20757,20 +20806,30 @@ statement_9000:
     write(lunit6, "(' KOFVEC =',20i6)"), kofvec;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void insert(
   common& cmn,
   int const& irrr,
-  int const& icc)
+  int const& icc) try
 {
   int& iofgnd = cmn.iofgnd;
   int& iofbnd = cmn.iofbnd;
   int& kill = cmn.kill;
-  auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& loc = cmn.loc;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
+
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
+  
   //
   int i = fem::int0;
   int ir = fem::int0;
@@ -20859,11 +20918,14 @@ statement_5:
   ic = irrr;
   goto statement_99;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // NETWORK CONNECTIVITY OUTPUT. SETUP OF TRANSIENT-NETWORK
 // RENUMBERING TABLES.
 void over6(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   fem::str<8>& bus5 = cmn.bus5;
@@ -20920,10 +20982,10 @@ void over6(
   auto& volt = cmn.volt;
   const auto& bus = cmn.bus;
   auto& ich1 = cmn.ich1;
-  auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& loc = cmn.loc;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
   
   //int iofkol = fem::int0;
   //int iofkor = fem::int0;
@@ -20970,6 +21032,12 @@ void over6(
   auto& next = cmn.loopss(11);
   auto& iofkol = cmn.iofgnd;
   auto& iofkor = cmn.iofbnd;
+
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER6.\"')");
   }
@@ -21514,14 +21582,16 @@ statement_9988:
   }
 statement_99999:;
 } // over6
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void subscr(
   common& cmn,
   int const& j,
   int const& limit,
   int const& istat,
-  int const& n1)
+  int const& n1) try
 {
   common_write write(cmn);
   auto& lunit6 = cmn.lunit6;
@@ -21543,13 +21613,15 @@ statement_9000:
     write(lunit6, "(' TRACE.  J, LIMIT, ISTAT, N1 =',4i8)"), j,
       limit, istat, n1;
   }
-
+}
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
 // NETWORK NODE RENUMBERING ROUTINE (JOHN WALKER'S OLD           
 // SUBROUTINE NUMBER).                                           
 void over7(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   auto& lstat = cmn.lstat;
@@ -21577,11 +21649,11 @@ void over7(
   auto& index = cmn.index;
   auto& iloc = cmn.iloc;
   auto& ich1 = cmn.ich1;
-  auto& ich2 = cmn.ich2;
-  auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& ich2 = cmn.ich2;
+  //auto& loc = cmn.loc;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
   //
   auto& lunit6 = cmn.lunit6;
   int ischm = fem::int0;
@@ -21627,6 +21699,13 @@ void over7(
   //auto& e = cmn.e;
   //auto ndex = ArraySpan(reinterpret_cast<int*>(&cmn.e(1)), cmn.e.size() * 2);
   vectorEx<int> ndex((cmn.e.size()), fem::fill0);
+
+  auto ich2 = ArraySpan(reinterpret_cast<int*>(&cmn.diag(1)), cmn.diag.size_1d());
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER7.\"')");
@@ -22707,10 +22786,12 @@ statement_9996:
 statement_99999:;
 
 } // over7
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void frqchk(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   fem::str<8>& bus1 = cmn.bus1;
@@ -23071,6 +23152,9 @@ statement_9204:
     write(lunit6, "(' EXIT \"FRQCHK\".')");
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void umrnu2(
   common& cmn,
@@ -23101,7 +23185,7 @@ void umrnu2(
   arr_ref<double> anglum,
   arr_cref<int> nodfum,
   arr_ref<int> nodmum,
-  arr_ref<double> umoutp)
+  arr_ref<double> umoutp) try
 {
   reacl(dimension(1));
   gpar(dimension(1));
@@ -24578,6 +24662,9 @@ statement_2300:
   statement_2350:;
   }
 statement_2400:;
+ }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
 void umrenu(
@@ -24626,7 +24713,7 @@ void umrenu(
   arr_ref<int> nodmum,
   arr_cref<int> /* kumout */,
   arr_cref<int> /* jumout */,
-  arr_ref<double> umoutp)
+  arr_ref<double> umoutp) try
 {
   reacl(dimension(1));
   gpar(dimension(1));
@@ -26804,6 +26891,9 @@ statement_14000:
       cmn.omegrf;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void equiv(
   common& cmn,
@@ -26815,7 +26905,7 @@ void equiv(
   arr_cref<double> r,
   arr_cref<double> tau,
   double const& w,
-  int const& n)
+  int const& n) try
 {
   req(dimension(n));
   xeq(dimension(n));
@@ -26949,12 +27039,15 @@ void equiv(
   statement_5:;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void cxred8(
   arr_ref<double> a,
   arr_ref<double> c,
   int const& n,
-  int const& m)
+  int const& m) try
 {
   a(dimension(n * (n+1) / 2));
   c(dimension(n * (n+1) / 2));
@@ -27056,11 +27149,14 @@ statement_9:
   i = ij + k;
   goto statement_5;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // CONVERT TABLES TO NEW NODE NUMBERS. FIND STEADY-STATE       
 // PHASOR EQUIVALENTS FOR DISTRIBUTED BRANCHES.                  
 void over8(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -27167,7 +27263,7 @@ void over8(
   auto& bus = cmn.bus;
   const auto& norder = cmn.norder;
   const auto& ich1 = cmn.ich1;
-  auto& ich2 = cmn.ich2;
+  //auto& ich2 = cmn.ich2;
   int& kexact = cmn.kexact;
   int& nsolve = cmn.nsolve;
   double& fminsv = cmn.fminsv;
@@ -27344,6 +27440,7 @@ void over8(
   auto& knt = cmn.moncar(1);
 
   auto ispum = ArraySpan(reinterpret_cast<int*>(&cmn.spum(1)), cmn.spum.size() * 2);
+  auto ich2 = ArraySpan(reinterpret_cast<int*>(&cmn.diag(1)), cmn.diag.size_1d());
 
   if (iprsup >= 1) {
     write(lunit6,
@@ -29000,10 +29097,13 @@ statement_9600:
       nchain, kconst, kill, itadd, fmaxfs;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // SET UP STEADY-STATE PHASOR NETWORK RENUMBERING TABLES.        
 void over9(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -29044,10 +29144,10 @@ void over9(
   const auto& kssfrq = cmn.kssfrq;
   auto& kode = cmn.kode;
   const auto& bus = cmn.bus;
-  auto& loc = cmn.loc;
-  auto& kownt = cmn.kownt;
-  auto& korder = cmn.korder;
-  auto& kolum = cmn.kolum;
+  //auto& loc = cmn.loc;
+  //auto& kownt = cmn.kownt;
+  //auto& korder = cmn.korder;
+  //auto& kolum = cmn.kolum;
   auto& nekfix = cmn.nekfix;
   auto& fixbu1 = cmn.fixbu1;
   auto& fixbu2 = cmn.fixbu2;
@@ -29094,6 +29194,13 @@ void over9(
   auto& next = loopss(11);
   auto& iofkol = cmn.iofgnd;
   auto& iofkor = cmn.iofbnd;
+
+  auto loc = ArraySpan(reinterpret_cast<int*>(&cmn.diab(1)), cmn.diab.size_1d());
+  auto kownt = ArraySpan(reinterpret_cast<int*>(&cmn.solr(1)), cmn.solr.size_1d());
+  auto korder = ArraySpan(reinterpret_cast<int*>(&cmn.bnd(1)), cmn.bnd.size_1d());
+  auto kolum = ArraySpan(reinterpret_cast<int*>(&cmn.gnd(1)), cmn.gnd.size_1d());
+
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER9.\"')");
   }
@@ -29840,12 +29947,15 @@ statement_9990:
     write(lunit6, "('  \"EXIT  MODULE OVER9.\"')");
   }
 } // over9
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void addmxd(
   arr_cref<double> a,
   double const& b,
   arr_ref<double> c,
-  int const& n)
+  int const& n) try
 {
   int jt = n * (n + 1) / 2;
   a(dimension(jt));   // only upper trangular
@@ -29868,13 +29978,16 @@ void addmxd(
   statement_3010:;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void sseqiv(
   common& cmn,
   int& ikf,
   int& isfd,
   double const& omegal,
-  double const& omegac)
+  double const& omegac) try
 {
   common_write write(cmn);
   int& iprsup = cmn.iprsup;
@@ -29957,13 +30070,16 @@ void sseqiv(
     voltk(kb) = -voltk(kb) * den / omegal;
   }
 }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+  }
 
 void multmx(
   arr_cref<double> a,
   arr_cref<double> b,
   arr_ref<double> c,
   arr_ref<double> temp,
-  int const& n)
+  int const& n) try
 {
   a(dimension(n * n));
   b(dimension(n * n));
@@ -30002,9 +30118,12 @@ void multmx(
     ii += j;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void fxsour(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -30684,11 +30803,14 @@ statement_9000:
   }
 
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // FORM THE STEADY-STATE ADMITTANCE MATRIX (Y). SOLVE FOR
 // STEADY-STATE PHASOR VOLTAGES.
 void over10(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   fem::str<8>& bus1 = cmn.bus1;
@@ -32343,7 +32465,9 @@ statement_9999:
 statement_99999:;
 
 } // over10
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct over11_save
 {
@@ -32377,7 +32501,7 @@ void ssout(
   double const& currk,
   double const& curik,
   double const& currm,
-  double const& curim)
+  double const& curim) try
 {
   common_write write(cmn);
   fem::str<8>& bus1 = cmn.bus1;
@@ -32553,12 +32677,15 @@ statement_2051:
   write(lunit6, format_2052);
 statement_4500:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void reducn(
   arr_ref<double> x,
   arr_ref<double> y,
   int const& m,
-  int const& n)
+  int const& n) try
 {
   x(dimension(1));
   y(dimension(1));
@@ -32630,12 +32757,15 @@ statement_3:
     goto statement_1;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void uncor(
   common& cmn,
   arr_ref<double> sci,
-  int const& i)
+  int const& i) try
 {
   sci(dimension(1));
   common_write write(cmn);
@@ -32811,12 +32941,15 @@ statement_13:
     }
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void slope(
   double const& sft,
   double const& ssld,
   double const& ssad,
-  double& acee)
+  double& acee) try
 {
   double adeld = sft / ssld - .9f;
   int n5 = 10.f * adeld;
@@ -32829,7 +32962,9 @@ void slope(
   double sf7 = sf5 / (1.0f + ssad * (sf5 - ssld));
   acee = (sf7 - sf6) / (sf5 - sf4);
 }
- 
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct smint_save
 {
@@ -32841,7 +32976,7 @@ struct smint_save
 };
 
 void smint(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(smint);
   common_write write(cmn);
@@ -34012,10 +34147,9 @@ statement_918:
     write(lunit6, "(/,' UPON EXIT  ''SMINIT'' ,  KCONST =',i3)"), kconst;
   }
 }
-
-
-
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 struct pltfil_save
@@ -34041,7 +34175,7 @@ struct pltfil_save
 
 void pltfil(
   common& cmn,
-  int const& k)
+  int const& k) try
 {
   //FEM_CMN_SVE(pltfil);
   common_write write(cmn);
@@ -34073,9 +34207,6 @@ void pltfil(
     cmn.out_stream << ',' << SState("e10.3") << volti[i];
   }
   cmn.out_stream << '\n';
-
-
-
 
 
 
@@ -34228,10 +34359,13 @@ statement_9000:
 
 #endif
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // OUTPUT STEADY-STATE PHASOR SOLUTION (IF REQUESTED).          
 void over11(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(over11);
   common_read read(cmn);
@@ -35998,10 +36132,13 @@ statement_9900:
   }
 
 } // over11
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void csupdc(
   common& cmn,
-  int const& L)
+  int const& L) try
 {
   common_write write(cmn);
   const auto& lstat = cmn.lstat;
@@ -36306,12 +36443,15 @@ statement_10:
     goto statement_1234;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void
 csupac(
   common& cmn,
   int const& L,
-  double const& omegar)
+  double const& omegar) try
 {
   const auto& lstat = cmn.lstat;
   auto& sptacs = cmn.sptacs;
@@ -36510,6 +36650,9 @@ statement_10:
     goto statement_1234;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct sandnm_save
 {
@@ -36522,7 +36665,7 @@ struct sandnm_save
 
 double sandnm(
   common& cmn,
-  double const& x)
+  double const& x) try
 {
   double return_value = fem::double0;
   FEM_CMN_SVE(sandnm);
@@ -36677,10 +36820,13 @@ statement_2632:
   return_value = a(L);
   return return_value;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 double randnm(
   common& cmn,
-  double const& x)
+  double const& x) try
 {
   double return_value = fem::double0;
   const auto& moncar = cmn.moncar;
@@ -36746,10 +36892,12 @@ double randnm(
   statement_9800:
   return return_value;
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void tacs2(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -39166,11 +39314,14 @@ statement_9000:
       istep, nchain, ioutcs, t;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void reduce(
   arr_ref<double> x1,
   int const& m,
-  int const& n)
+  int const& n) try
 {
   x1(dimension(m*m));
   int j = fem::int0;
@@ -39227,14 +39378,13 @@ statement_3:
     goto statement_1;
   }
 }
-
-
-
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void elecyy(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   auto& omega = cmn.omega;
@@ -39756,9 +39906,12 @@ void elecyy(
   }
 statement_2500:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void premec(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& delta2 = cmn.delta2;
@@ -39925,6 +40078,9 @@ void premec(
   statement_1:;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void dteqiv(
   common& cmn,
@@ -39932,7 +40088,7 @@ void dteqiv(
   int& isfd,
   double const& d2,
   double& azr,
-  double& azi)
+  double& azi) try
 {
   common_write write(cmn);
   double& delta2 = cmn.delta2;
@@ -40007,11 +40163,14 @@ void dteqiv(
       azi;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void reduct(
   arr_ref<double> a,
   int const& n,
-  int const& m)
+  int const& m) try
 {
   a(dimension(n* (n + 1) / 2));
   int j = fem::int0;
@@ -40098,14 +40257,16 @@ statement_9:
   i = ij + k;
   goto statement_5;
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 
 // BRANCH-TABLE AND SWITCH-TABLE PROCESSING, AS PREPARATION
 // FOR THE INTEGRATION IN TIME-STEP LOOP.                       
 void over12(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -40221,8 +40382,8 @@ void over12(
 
   auto& volt = cmn.volt;
   const auto& bus = cmn.bus;
-  auto& frandn = cmn.frandn;
-  auto& irandn = cmn.irandn;
+  //auto& frandn = cmn.frandn;
+  //auto& irandn = cmn.irandn;
   int& kbrser = cmn.kbrser;
   int& kbreak = cmn.kbreak;
   int& koff1 = cmn.koff1;
@@ -40420,6 +40581,10 @@ void over12(
 
   auto cmr = ArraySpan(reinterpret_cast<double*>(&kks(1)), kks.size()/2);
   auto cmi = ArraySpan(reinterpret_cast<double*>(&kknonl(1)), kknonl.size()/2); 
+
+  // frandn and irandn may not need
+  vectorEx<double> frandn(3000); // original in space2.inc with equivalence. 
+  auto irandn = ArraySpan(reinterpret_cast<int*>(&frandn(1)), frandn.size());
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER12.\"')");
@@ -42232,13 +42397,16 @@ statement_9800:
   }
 statement_99999:;
 } // over12
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void fdint(
   common& cmn,
   int& ikf,
   int& isfd,
   int& ibf,
-  double const& omg)
+  double const& omg) try
 {
   common_write write(cmn);
   int& it2 = cmn.it2;
@@ -42400,11 +42568,14 @@ void fdint(
     }
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 double funp13(
   double const& y,
   double const& x,
-  double const& twopi)
+  double const& twopi) try
 {
   double return_value = fem::double0;
   if (x != 0.0f) {
@@ -42441,11 +42612,14 @@ statement_105:
 statement_110:
   return return_value;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void redu13(
   arr_ref<double> a,
   int const& n,
-  int const& m)
+  int const& m) try
 {
   a(dimension(n * (n+1) / 2));
   int j = fem::int0;
@@ -42532,9 +42706,12 @@ statement_9:
   i = ij + k;
   goto statement_5;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void last13(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& deltat = cmn.deltat;
@@ -44059,12 +44236,15 @@ statement_9200:
       lstat(19);
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void breqiv(
   common& cmn,
   int& ikf,
   int& isfd,
-  int& ibf)
+  int& ibf) try
 {
   common_write write(cmn);
   double& delta2 = cmn.delta2;
@@ -44221,7 +44401,9 @@ void breqiv(
   }
 statement_15:;
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct over13_save
 {
@@ -44237,7 +44419,7 @@ struct over13_save
 // SETUP INITIAL CONDITIONS ON LUMPED ELEMENTS, AND PAST        
 // HISTORY FOR DISTRIBUTED LINES.                               
 void over13(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(over13);
   common_read read(cmn);
@@ -47189,12 +47371,15 @@ statement_9800:
     write(lunit6, "(' EXIT MODULE  \"OVER13\".')");
   }
 } // over13
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void banmul(
   arr_cref<double> ab,
   arr_cref<double> x,
   arr_ref<double> y,
-  int const& n)
+  int const& n) try
 {
   ab(dimension((n-1)*2+1));
   x(dimension(n));
@@ -47229,10 +47414,13 @@ void banmul(
 statement_20:
   y(n) += ab(i2 + 1) * d1 + s1;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void bandel(
   arr_ref<double> ab,
-  int const& n)
+  int const& n) try
 {
   ab(dimension(n+n));
   int n2 = fem::int0;
@@ -47261,12 +47449,13 @@ statement_10:
   goto statement_10;
 statement_20:;
 }
-
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void past(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& omega = cmn.omega;
@@ -47647,6 +47836,9 @@ void past(
   }
 statement_2500:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct zincox_save
 {
@@ -47667,7 +47859,7 @@ struct zincox_save
 void
 zincox(
   common& cmn,
-  int const& ns)
+  int const& ns) try
 {
   FEM_CMN_SVE(zincox);
   common_read read(cmn);
@@ -48562,11 +48754,14 @@ statement_4567:
       lstat(19);
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // FORM (Y) FOR THE TRANSIENTS NETWORK. TRIANGULARIZE THE     
 // FIRST PARTITION (NONSWITCH/SOURCE NODES).                    
 void over14(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& delta2 = cmn.delta2;
@@ -48814,16 +49009,13 @@ statement_9800:
 statement_99999:;
 
 } // over14
-
-
-
-
-
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void top15(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& ci1 = cmn.ci1;
@@ -49092,7 +49284,9 @@ statement_9200:
   }
 
 } // top15
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void uminit(
@@ -49142,7 +49336,7 @@ void uminit(
   arr_cref<int> /* nodmum */,
   arr_cref<int> /* kumout */,
   arr_cref<int> /* jumout */,
-  arr_cref<double> /* umoutp */)
+  arr_cref<double> /* umoutp */) try
 {
   nodvo1(dimension(1));
   nodvo2(dimension(1));
@@ -49465,7 +49659,9 @@ statement_9800:
     write(lunit6, "('  \"EXIT  MODULE UMINIT.\"')");
   }
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct smout_save
 {
@@ -49483,7 +49679,7 @@ struct smout_save
 };
 
 void smout(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(smout);
   common_write write(cmn);
@@ -49672,7 +49868,9 @@ void smout(
   d12 = (3 * nsmout) * d12 / nbyte(3);
   cmn.msmout = d12 + 1.0f;
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 
@@ -49705,7 +49903,7 @@ struct over15_save
 
 // FINAL SETUP OPERATIONS BEFORE TIME-STEP LOOP.                
 void over15(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(over15);
   common_read read(cmn);
@@ -51322,12 +51520,9 @@ statement_9999:
   }
 statement_99999:;
 } // over15
-
-
-
-
-
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 
@@ -51342,7 +51537,7 @@ struct analyt_save
 
 
 void analyt(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(analyt);
   common_read read(cmn);
@@ -51535,6 +51730,9 @@ statement_9000:
       ibr, numrmp, kill;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void arrest(
   common& cmn,
@@ -51542,7 +51740,7 @@ void arrest(
   arr_ref<double> b,
   double const& srt,
   double& svt,
-  double& carst)
+  double& carst) try
 {
   a(dimension(1));
   b(dimension(1));
@@ -51798,10 +51996,12 @@ statement_5681:
     }
   }
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void subts3(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -52768,6 +52968,9 @@ statement_9200:
   nchain = 51;
 statement_9999:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct subts1_save
 {
@@ -52805,7 +53008,7 @@ struct subts1_save
 void bansol(
   arr_cref<double> ab,
   arr_ref<double> x,
-  int const& n)
+  int const& n) try
 {
   ab(dimension(n*2));
   x(dimension(n));
@@ -52840,11 +53043,14 @@ statement_20:
   goto statement_20;
 statement_40:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void redusm(
   arr_ref<double> x,
   int const& m,
-  int const& n)
+  int const& n) try
 {
   x(dimension(m*m));
   int j = fem::int0;
@@ -52900,11 +53106,14 @@ statement_3:
     goto statement_1;
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void increm(
   common& cmn,
   int const& ilk,
-  double const& sf3)
+  double const& sf3) try
 {
   common_write write(cmn);
   int& iprsup = cmn.iprsup;
@@ -53164,12 +53373,15 @@ statement_214:
   write(lunit6, "('  \"EXIT  MODULE INCREM.\"')");
 statement_216:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 
 
 void update(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   auto& delta2 = cmn.delta2;
@@ -54101,6 +54313,9 @@ void update(
     write(lunit6, "('  \"EXIT  MODULE UPDATE.\"')");
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 struct yserlc_save
 {
@@ -54120,7 +54335,7 @@ void frefp3(
   str_ref ansi,
   double& d12,
   double& d13,
-  double& d14)
+  double& d14) try
 {
   common_read read(cmn);
   //C     UNIVERSAL MODULE (WORKS FOR ANY COMPUTER) USED ONLY FOR THE       M35.4281
@@ -54131,10 +54346,12 @@ void frefp3(
   frefix(cmn, ansi, n8);
   read(ansi, "(3e20.0)"), d12, d13, d14;
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void yserlc(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(yserlc);
   common_read read(cmn);
@@ -54328,10 +54545,13 @@ statement_3000:
   }
 statement_9000:;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void lineqs(
   arr_cref<double, 2> aum,
-  arr_ref<double> yum)
+  arr_ref<double> yum) try
 {
   aum(dimension(3, 3));
   yum(dimension(15));
@@ -54388,6 +54608,9 @@ statement_50:
     }
   }
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void solvum(
@@ -54436,7 +54659,7 @@ void solvum(
   arr_cref<int> /* nodmum */,
   arr_cref<int> /* kumout */,
   arr_cref<int> /* jumout */,
-  arr_ref<double> umoutp)
+  arr_ref<double> umoutp) try
 {
   reacl(dimension(1));
   gpar(dimension(1));
@@ -57118,11 +57341,13 @@ statement_21000:
       istart, loopss(1), loopss(8), numum, t;
   }
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
 void subts1(
-  common& cmn)
+  common& cmn) try
 {
   FEM_CMN_SVE(subts1);
   common_read read(cmn);
@@ -59316,11 +59541,14 @@ statement_9900:
   }
 
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void redu17(
   arr_ref<double> a,
   int const& n,
-  int const& m)
+  int const& m) try
 {
   a(dimension(1));
   int j = fem::int0;
@@ -59400,12 +59628,15 @@ statement_9:
   i = ij + k;
   goto statement_5;
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void fdcinj(
   common& cmn,
   int& ikf,
   int& isfd,
-  int& ibf)
+  int& ibf) try
 {
   common_write write(cmn);
   int& it2 = cmn.it2;
@@ -59543,10 +59774,12 @@ void fdcinj(
 statement_15:;
 
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void subts2(
-  common& cmn)
+  common& cmn) try
 {
   common_read read(cmn);
   common_write write(cmn);
@@ -61753,11 +61986,13 @@ statement_1200:
       }
     }
   }
-
+}
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
 void subts4(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& t = cmn.t;
@@ -61907,7 +62142,9 @@ statement_9200:
   nchain = 51;
 
 }
-
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // 16.  FIRST QUARTER OF TIME-STEP LOOP (CHECKING FOR CHANGES OF     
 //      SWITCHES AND PSEUDO-NONLINEAR ELEMENTS, RETRIANGULARIZATION  
@@ -61922,7 +62159,7 @@ statement_9200:
 //      MACHINERY [TYPE-50 S.M., U.M.],  SUPERPOSITION TO            
 //      GIVE THE TOTAL SOLUTION INCLUDING COMPENSATION).             
 void over16(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   const auto& iprsov = cmn.iprsov;
@@ -62002,9 +62239,12 @@ statement_3019:
 statement_99999:;
 
 } // over16
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void katalg(
-  common& cmn)
+  common& cmn) try
 {
 #if 0
   common_read read(cmn);
@@ -62112,12 +62352,15 @@ statement_9700:
 statement_9800:;
 #endif
 }
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 // PUNCH AND PRINT TERMINAL CONDITIONS (IF REQUESTED).          
 // CATALOG PLOT-DATA POINTS ON THE DISK AS A PERMANENT FILE, IF 
 // MISC. DATA PARAMETER 'ICAT' IS POSITIVE.   
 void over20(
-  common& cmn)
+  common& cmn) try
 {
   common_write write(cmn);
   double& ci1 = cmn.ci1;
@@ -62746,10 +62989,12 @@ statement_9850:
   }
 statement_99999:;
 } // over20
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 
-
-  void subr10(common& cmn)
+  void subr10(common& cmn) try
   {
     const auto& iprsov = cmn.iprsov;
     int& nchain = cmn.nchain;
@@ -62909,6 +63154,9 @@ statement_99999:;
     //C          MISC. DATA PARAMETER  'ICAT'  IS POSITIVE.                   
     //C                                                                       
   statement_9000:;
+  }
+  catch (...) {
+    std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
   }
 
   void fixs10(common& cmn)

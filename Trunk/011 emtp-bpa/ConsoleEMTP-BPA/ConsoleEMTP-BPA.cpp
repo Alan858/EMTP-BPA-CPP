@@ -9,6 +9,7 @@
 int main(int argc, char const* argv[])
 {
   namespace fs = std::filesystem;
+
   std::string input{ R"(..\..\..\_Tests\EMTP-BPA\case1002\test.dat)" };
 #ifndef _DEBUG
   if (argc < 2) {

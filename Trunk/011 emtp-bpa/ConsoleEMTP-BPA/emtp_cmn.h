@@ -27,7 +27,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ********************************************************/
 
-#pragma warning (disable: 4267 4297)
+
 
 
 #include <iostream>
@@ -41,12 +41,14 @@ SOFTWARE.
 #include <array>
 #include <charconv>
 #include <random>
+#include <cassert>
 #include <unordered_map>
+#pragma warning (disable: 4267 4297)
+#include <fem.hpp> // Fortran EMulation library of fable module
 
 #include <map>
 #include <list>
 
-#include <fem.hpp> // Fortran EMulation library of fable module
 
 namespace emtp {
 
@@ -78,6 +80,7 @@ namespace emtp {
     auto& operator()(int ind)
     {
 #ifdef _DEBUG
+      assert(0 < ind && ind <= this->size());
       return std::vector<T>::at(ind - 1);
 #else
       return std::vector<T>::operator[](ind - 1); //(*this)[ind - 1];
@@ -188,7 +191,19 @@ namespace emtp {
     return trim_left(trim_right(strv));
   }
 
-
+  inline std::vector<std::string_view> split(const std::string_view strv, const std::string_view delim) {
+    std::vector<std::string_view> result;
+    size_t pos = 0;
+    size_t len = 0;
+    while ((len = strv.substr(pos).find(delim)) != std::string::npos) {
+      if (0 < len)
+        result.push_back(strv.substr(pos, len));
+      pos += len + delim.length();
+    }
+    if (len = strv.size() - pos; 0 < len)
+      result.push_back(strv.substr(pos, len));
+    return result;
+  }
 
 
 
@@ -2972,22 +2987,22 @@ struct common_spac11
 
 struct common_ztmp2
 {
-  vectorEx<int> ich2;
-  vectorEx<int> loc;
-  vectorEx<int> kownt;
-  vectorEx<int> korder;
-  vectorEx<int> kolum;
-  vectorEx<double> frandn;
-  vectorEx<int> irandn;
+  //vectorEx<int> ich2;
+  //vectorEx<int> loc;
+  //vectorEx<int> kownt;
+  //vectorEx<int> korder;
+  //vectorEx<int> kolum;
+  //vectorEx<double> frandn; // only used in over12
+  //vectorEx<int> irandn;
 
-  common_ztmp2() :
-    ich2((3002), fem::fill0),
-    loc((3002), fem::fill0),
-    kownt((3002), fem::fill0),
-    korder((sizeBND), fem::fill0),
-    kolum((30000), fem::fill0),
-    frandn((30000), fem::fill0),
-    irandn((30000), fem::fill0)
+  common_ztmp2() 
+    //ich2((3002), fem::fill0),
+    //loc((3002), fem::fill0),
+    //kownt((3002), fem::fill0),
+    //korder((sizeBND), fem::fill0),
+    //kolum((30000), fem::fill0)
+    //frandn((30000), fem::fill0),
+    //irandn((30000), fem::fill0)
   {}
 };
 
@@ -4731,6 +4746,23 @@ struct common :
     int const n) {
     move0(intb, 1, n);
   }
+
+  template<typename T>
+  void move0(
+    ArraySpan<T>& intb,
+    int const i0,
+    int const n) {
+    for (int i = i0, cnt = std::min(i0 + n, int(intb.size())); i < cnt; ++i)
+      intb(i) = 0; // 1 based
+  }
+  template<typename T>
+  void move0(
+    ArraySpan<T>& intb,
+    int const n) {
+    move0(intb, 1, n);
+  }
+
+
   void mover(
       arr_cref<double> a,
       arr_ref<double> b,
