@@ -24,3 +24,8 @@ case0009 - Capacitor Switching, "EMTP Primer.pdf" Section 5, Case 5: Restrike Si
 case0010 - Steady-state solution with a fault, "EMTP Primer.pdf" Section 6, Case 6: Parallel EHV Line Resonance
 case0011 - Reclosing Of Transmission Lines, "EMTP Primer.pdf" Section 7, Case 7
 case0012 - Lightning surge studies, "EMTP Primer.pdf" Section 4, Case 4
+case0013 - Potential transformer ferroresonance, "EMTP Primer.pdf" Section 9
+case0014 - Subsynchronous resonance studies, "EMTP Primer.pdf" Section 10, Case 10.
+
+
+case0050 - TACS Studies, "EMTP Primer.pdf" Section 11, Case 11.

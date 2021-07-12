@@ -21111,11 +21111,11 @@ bool data_input(common& cmn) try {
         std::string::iterator iPosString = TmpLine.begin();
         for (iPosString = TmpLine.begin(); iPosString != TmpLine.end(); iPosString++)
         {
-          if (*iPosString != ' ')
+          if (*iPosString != ' ' && *iPosString != ',')
           {
-            if (*iPosString == ',')
+    /*        if (*iPosString == ',')
               str.push_back('.');
-            else
+            else*/
               str.push_back(*iPosString);
           }
           else
