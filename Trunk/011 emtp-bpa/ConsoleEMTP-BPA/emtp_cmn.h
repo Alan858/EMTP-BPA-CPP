@@ -189,6 +189,14 @@ namespace emtp {
     return trim_left(trim_right(strv));
   }
 
+  template<typename T>
+  T read(std::string_view v) {
+    T d{};
+    v = trim(v);
+    std::from_chars(v.data(), v.data() + v.size(), d);
+    return d;
+  }
+
   inline std::vector<std::string_view> split(const std::string_view strv, const std::string_view delim) {
     std::vector<std::string_view> result;
     size_t pos = 0;
@@ -202,8 +210,6 @@ namespace emtp {
       result.push_back(strv.substr(pos, len));
     return result;
   }
-
-
 
 
 
