@@ -9,9 +9,9 @@ Set language standard to C++ 17.
 1. ConsoleEMTP-BPA.exe  
 
    It takes one input data file to run the program. If no input file was given,  
-   the program will ask enter the input file name.  
-   if the input data file is test.dat, then the program will put log infprmation  
-   to test.dat.log and output results to test.dat.out in the same folder  
+   the program will ask enter the input file name. Assume the input data file name 
+   is test.dat, then the program will put log information to test.dat.log and   
+   output results to test.dat.out in the same folder  
    
    The input data format is described in "EMTP Rule Book" in the Docs folder, or you can try ATPDraw  
 

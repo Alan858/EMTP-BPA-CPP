@@ -5864,10 +5864,6 @@ distr2(
     textmx(2) = "+TX(  ";
     ipsem = 0;
   }
-  int iaddrs = fem::int0;
-  int itranm = fem::int0;
-  int ichtr2 = fem::int0;
-  double xlong1 = fem::double0;
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = lunit6;
   int n45 = fem::int0;
@@ -6003,10 +5999,10 @@ distr2(
   //C!EQUIVALENCE  (OMEGA, XLONG1 ),  ( INDTV(4), ICHTR2 )
   //C!EQUIVALENCE  (INDTV(1), IADDRS), (INDTV(2), ITRANM)
   //C     BURROUGHS: PRESERVE LOCAL VARIABLE BETWEEN MODULE CALLS:          M32.1216
-  iaddrs = indtv(1);
-  itranm = indtv(2);
-  ichtr2 = indtv(4);
-  xlong1 = omega;
+  auto& iaddrs = indtv(1);
+  auto& itranm = indtv(2);
+  auto& ichtr2 = indtv(4);
+  auto& xlong1 = omega;
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE DISTR2.\"')");
   }
@@ -6715,7 +6711,6 @@ statement_8440:
   icheck = 1;
   nrecur = 0;
   iaddrs = iadd + 1;
-  indtv(1) = iaddrs;
   goto statement_100;
 statement_20000:
   kbus(ibr) = n1;
@@ -7647,7 +7642,6 @@ statement_5874:
 statement_5877:
   d17 = h1 + aa + h3 + xlong;
   ichtr2 = 0;
-  indtv(4) = ichtr2;
   if (d17 != 0.0f) {
     ichtr2 = 1;
   }
@@ -7822,7 +7816,6 @@ statement_50050:
   namebr(inoff1 + ibr2) = idm;
   //C      NCOUNT = IADDRS                                                  M44. 153
   iaddrs += nphs2;
-  indtv(1) = iaddrs;
   namebr(inoff4 + ibr2) = idu;
   if (iprsup >= 4) {
     write(6, star), " BEGIN TO READ Qi. NTLIN,IQ,IDM,IDU,IDT,IDQ= ",
@@ -8058,7 +8051,6 @@ statement_2009:
       kcount;
   }
   itranm = model;
-  indtv(2) = itranm;
   model = 0;
   icheck = 1;
   kgroup = 1;
@@ -8174,10 +8166,8 @@ statement_2733:
   }
   //C     DEFINE NEW ADDRESS FOR FOLLOWING UNTRANSPOSED LINE                M32.1236
 statement_10005:
-  iaddrs = iadd;
-  indtv(1) = iaddrs + 1;
+  iaddrs = iadd + 1;
   itranm = model;
-  indtv(2) = itranm;
   model = 0;
   icheck = 1;
   goto statement_100;
@@ -11199,10 +11189,13 @@ void over3(common& cmn) try
   auto& ipoint = cmn.iprsov(35);
   auto& locz11 = cmn.iprsov(36);
 
-  arr_2d<1000, 1000, int> locatn(fem::fill0);
-  int i = 1;
-  int j = 1;
-  locatn(i, j) = (j * j - j) / 2 + i;
+  int i = 0;
+  int j = 0;
+ 
+  auto locatn = [](int i, int j) {
+    return (j * j - j) / 2 + i;
+  };
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE OVER3.\"')");
   }
@@ -29155,7 +29148,7 @@ void over9(
   int isubs2 = fem::int0;
   int icas = fem::int0;
   //C     FOLLOWING CARRIES "NEXT" AMONG OVER6, INSERT, OVER7, & OVER9:     M37.3694
-  //locatn(i, j) = (j * j - j) / 2 + i;
+ 
   auto& next = loopss(11);
   auto& iofkol = cmn.iofgnd;
   auto& iofkor = cmn.iofbnd;
@@ -30952,14 +30945,16 @@ void over10(
   double bj = fem::double0;
   int ik = fem::int0;
   int jk = fem::int0;
+  int i = 0;
+  int j = 0;
 
   static const char* format_4568 = "('  \"EXIT  MODULE OVER10.\"')";
 
   auto itemp = ArraySpan(reinterpret_cast<int*>(&voltk(1)), voltk.size()*2);
-  arr<int, 2> locatn(dimension(1000, 1000), fem::fill0);
-  int i = 1;
-  int j = 1;
-  locatn(i, j) = (j * j - j) / 2 + i;
+
+  auto locatn = [](int i, int j) {
+    return (j * j - j) / 2 + i;
+  };
 
   if (iprsup >= 1) {
     write(lunit6,
@@ -34594,8 +34589,7 @@ void over11(
   //C
   //C      PRECEDING "JCH2" USES "IMFD" JUST FOR "FREQUENCY SCAN".          M35.1236
   //C      AS SUCH, THERE MUST BE NO FREQ-DEPEND SOURCES PRESENT.           M35.1237
-  //arr<int, 2> locatn(dimension(1000, 1000), fem::fill0); //w
-  //locatn(i, j) = (j * j - j) / 2 + i;
+
   auto& knt = cmn.moncar(1);
   ll2 = 2;
 
