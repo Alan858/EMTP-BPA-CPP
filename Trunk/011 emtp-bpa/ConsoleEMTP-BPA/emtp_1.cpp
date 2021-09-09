@@ -2365,7 +2365,7 @@ void tacs1a(
   int j2 = fem::int0;
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   auto& kspvar = isptacs(6);
   auto& kprsup = isptacs(9);
@@ -2708,8 +2708,7 @@ void tacs1a(
   frefld(cmn, argel(iargel));
   ilst++;
   iel(ilst) = -ilst - 1;
-  //C!EL( ILST)  = IARGEL
-  write(el(ilst), star), iargel;
+  write(el(ilst), "(I8)"), iargel; // EL( ILST)  = IARGEL
   ilgnum = 0;
   iflpnt = 0;
   goto statement_50170;
@@ -4322,7 +4321,7 @@ void tacs1b(
   int kxtcs2 = fem::int0;
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   auto& kofsce = isptacs(4);
   auto& kcolcs = isptacs(5);
@@ -5030,7 +5029,6 @@ void tacs1b(
   }
   kofsce = ktab;
   kaliu = klntab + nuk;
-  sptacs(11) = kaliu;
   kspvar = kaliu + lstat(64);
   ndx1 = klntab + ktab + 1;
   ndx2 = klntab + nj + 1;
@@ -5618,7 +5616,6 @@ void tacs1(
   int isour = fem::int0;
   int n23 = fem::int0;
   fem::str<8> alnm1 = fem::char0;
-  int n23m = fem::int0;
   double d1 = fem::double0;
   int nuki = fem::int0;
   int nukr = fem::int0;
@@ -5659,7 +5656,7 @@ void tacs1(
   static const char* format_4455 = "('+IGNOR THE ILLEGAL CARD.')";
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   auto& konsce = isptacs(1);
   auto& koncur = isptacs(2);
@@ -5712,44 +5709,28 @@ void tacs1(
   goto statement_2210;
   statement_1001:
   krsblk = 30;
-  sptacs(20) = krsblk;
   kud1 = krsblk + lstat(61) * 4;
-  sptacs(14) = kud1;
   kprsup = kud1 + lstat(64) * 5;
-  sptacs(9) = kprsup;
   kxar = kprsup + lstat(67);
-  sptacs(16) = kxar;
   kxai = kxar + lstat(68);
   kxtcs = kxai + lstat(68);
-  sptacs(17) = kxtcs;
   kawkcs = kxtcs + lstat(68) * 2;
-  sptacs(15) = kawkcs;
   kbwkcs = kawkcs + lstat(68);
   katcs = kbwkcs + lstat(68);
-  sptacs(7) = katcs;
   kbtcs = katcs + lstat(62);
   kisblk = (kbtcs + lstat(62)) * nbyte(3) / nbyte(4) + 1;
-  sptacs(19) = kisblk;
   kksus = kisblk + lstat(61) * 8;
-  sptacs(21) = kksus;
   kalksu = kksus + lstat(63);
-  sptacs(22) = kalksu;
   kiuty = kalksu + lstat(63);
-  sptacs(13) = kiuty;
   kinsup = kiuty + lstat(64);
-  sptacs(23) = kinsup;
   kivarb = kinsup + lstat(65) * 3;
-  sptacs(10) = kivarb;
   klntab = kivarb + lstat(66);
-  sptacs(18) = klntab;
   kjout = klntab + lstat(68);
-  sptacs(12) = kjout;
   kcolcs = kjout + lstat(68);
   n1 = (kcolcs + lstat(62)) * nbyte(4) / nbyte(3) + 1;
   kaliu = klntab;
-  sptacs(11) = kaliu;
   kspvar = kaliu + lstat(64);
-  sptacs(6) = kspvar;
+
   if (iprsup < 2) {
     goto statement_7811;
   }
@@ -5787,7 +5768,7 @@ void tacs1(
     alnm1 = stacs(i);
     namea6(cmn, alnm1, n23);
     statement_3388:
-    ivarb(kaliu + i) = n23m;
+    ivarb(kaliu + i) = n23;
     ivarb(kiuty + i) = 0;
   }
   ivarb(kiuty + 3) = 20;
@@ -6653,9 +6634,10 @@ void csup(
   double bb = fem::double0;
   int nj = fem::int0;
   double aa = fem::double0;
+  int idiv = 0;
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& kspvar = isptacs(6);
@@ -6902,7 +6884,7 @@ void csup(
   statement_128:
   d7 = 1.0f;
   d8 = b;
-  FEM_THROW_UNHANDLED("executable assign: assign7128toidiv");
+  idiv = 7128;
   goto statement_500;
   statement_7128:
   b = div;
@@ -6967,7 +6949,7 @@ void csup(
   statement_204:
   d7 = a;
   d8 = b;
-  FEM_THROW_UNHANDLED("executable assign: assign7204toidiv");
+  idiv = 7204;
   goto statement_500;
   statement_7204:
   a = div;
@@ -7003,7 +6985,7 @@ void csup(
   statement_510:
   div = 0.0f;
   statement_530:
-  switch (int(div)) {
+  switch (idiv) {
     case 1: goto statement_7128;
     case 2: goto statement_7204;
     case 3: goto statement_6120;
@@ -7125,7 +7107,7 @@ void csup(
   statement_6115:
   d7 = amx(jfl);
   d8 = arg(i1);
-  FEM_THROW_UNHANDLED("executable assign: assign6120toidiv");
+  idiv = 6120;
   goto statement_500;
   statement_6120:
   amx(jfl) = div;
@@ -7954,7 +7936,7 @@ void tacs3(
   double ppp = fem::double0;
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   auto& konsce = isptacs(1);
   auto& kcolcs = isptacs(5);
@@ -9856,7 +9838,7 @@ void spyink(
   //C     THIS IS THE 2ND HALF OF PRINCIPLE MODULE "SPYING".                M36.1888
 
     // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& koncur = isptacs(2);
@@ -12019,7 +12001,7 @@ void spyink(
   }
   {
     // handling equivalence in tacsar.inc
-    auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+    auto& isptacs = cmn.isptacs;
     auto& konsce = isptacs(1);
     auto& kofsce = isptacs(4);
     niu = konsce;
@@ -23509,7 +23491,7 @@ void vecrsv(
   //C!w EQUIVALENCE  ( KARRAY(1),  FARRAY(1) )
   //C     BLOCK /VECCOM/ IS SHARED BY "VECRSV" AND "VECISV".                M34.   7
   //C     KOFVEC(KNTVEC) REMEMBERS INDEX FOR KNTVEC-TH DUMPING.             M37. 914
-  ArraySpan farray(reinterpret_cast<double*>(&cmn.karray(1)), cmn.karray.size() / 2);
+  auto& farray = cmn.farray;
   if (iprsup >= 1) {
     write(lunit6,
       "(' BEGIN \"VECRSV\".  N13, N2 =',2i8,'     KNTVEC =',i8)"),
@@ -31729,7 +31711,7 @@ void subr31(
   auto& ibsout = cmn.karray;
   auto& ibrnch = cmn.karray;
   auto& jbrnch = cmn.karray;
-  ArraySpan EV(reinterpret_cast<double*>(&cmn.karray(1)), cmn.karray.size() / 2);
+  auto& EV = cmn.farray;
   auto& BUSLST = EV;
 
   if (cmn.kburro == 1) {
@@ -46548,7 +46530,7 @@ subr44(
   //arr_1d<1, double> stg(fem::fill0);
   //C!w EQUIVALENCE (STG(1), KARRAY(1) )
   //C     LIST-ZERO "KARRAY" IS ALWAYS 1ST, AND MAYBE "OVER29":             M31.6302
-  auto stg = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
+  auto& stg = cmn.farray;
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE SUBR44.\"')");
   }
@@ -51060,7 +51042,7 @@ subr45(
 
   //arr_1d<11, double> stg(fem::fill0);
   //arr_1d<11, double> zift(fem::fill0);
-  auto stg = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
+  auto& stg = cmn.farray;
   auto& zift = stg;
   auto& npoint = indtv(1);
   if (lastov == 1) {
@@ -57899,8 +57881,8 @@ subr47(
   //arr_1d<1, int> itg(fem::fill0);
   //arr_1d<1, double> rtg(fem::fill0);
   //arr_1d<1, std::complex<double> > ctg(fem::fill0);
-  auto itg = ArraySpan(reinterpret_cast<int* const>(cmn.karray.begin()), cmn.karray.size());
-  auto rtg = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
+  auto& itg = cmn.karray;
+  auto& rtg = cmn.farray;
   auto ctg = ArraySpan(reinterpret_cast<std::complex<double>*const>(cmn.karray.begin()), cmn.karray.size() / 4);
 
   if (iprsup >= 1) {
@@ -71724,8 +71706,7 @@ void program_main(
   arr_1d<13, fem::str<8> > sext(fem::fill0);
   sext(2) = "11111111";
   auto spa1 = ArraySpan(sext.begin(), sext.size());
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&cmn.spum(1)), cmn.spum.size() * 2);
-
+  auto& ispum = cmn.ispum;
   
   auto bus1 = cmn.bus1;
   auto a1 = spa1(1);  

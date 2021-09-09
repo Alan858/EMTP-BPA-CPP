@@ -936,9 +936,10 @@ struct common_comld
 struct common_c29b01
 {
   arr<int> karray;
-
+  ArraySpan<double> farray;
   common_c29b01() :
     karray(dimension(1992869), fem::fill0)
+    , farray(reinterpret_cast<double*>(karray.begin()), karray.size() / 2)
   {}
 };
 
@@ -1161,9 +1162,10 @@ struct common_c0b024
 struct common_c0b025
 {
   arr<double> sptacs;
-
+  ArraySpan<int> isptacs;
   common_c0b025() :
     sptacs(dimension(90000), fem::fill0)
+    , isptacs(reinterpret_cast<int*>(sptacs.begin()), sptacs.size() * 2)
   {}
 };
 
@@ -1674,9 +1676,10 @@ struct common_c0b081
 struct common_c0b082
 {
   arr<double> spum;
-
+  ArraySpan<int> ispum;
   common_c0b082() :
     spum(dimension(30000), fem::fill0)
+    , ispum(reinterpret_cast<int*>(spum.begin()), spum.size() * 2)
   {}
 };
 
@@ -2537,15 +2540,6 @@ struct common_spyf77
   {}
 };
 
-//struct common_ztmp4
-//{
-//  arr<int> ivarb;
-//
-//  common_ztmp4() :
-//    ivarb(dimension(90000), fem::fill0)
-//  {}
-//};
-
 struct common_comkwt
 {
   int kwtvax;
@@ -2986,27 +2980,6 @@ struct common_spac11
 
   common_spac11() :
     gnd(dimension(30000), fem::fill0)
-  {}
-};
-
-struct common_ztmp2
-{
-  //vectorEx<int> ich2;
-  //vectorEx<int> loc;
-  //vectorEx<int> kownt;
-  //vectorEx<int> korder;
-  //vectorEx<int> kolum;
-  //vectorEx<double> frandn; // only used in over12
-  //vectorEx<int> irandn;
-
-  common_ztmp2() 
-    //ich2((3002), fem::fill0),
-    //loc((3002), fem::fill0),
-    //kownt((3002), fem::fill0),
-    //korder((sizeBND), fem::fill0),
-    //kolum((30000), fem::fill0)
-    //frandn((30000), fem::fill0),
-    //irandn((30000), fem::fill0)
   {}
 };
 
@@ -4530,7 +4503,6 @@ struct common :
   common_spycom,
   common_spykom,
   common_spyf77,
-  //common_ztmp4,
   common_comkwt,
   common_cblock,
   common_pltans,
@@ -4551,7 +4523,6 @@ struct common :
   common_spac09,
   common_spac10,
   common_spac11,
-  common_ztmp2,
   common_c10b01,
   common_c10b02,
   common_c10b03,

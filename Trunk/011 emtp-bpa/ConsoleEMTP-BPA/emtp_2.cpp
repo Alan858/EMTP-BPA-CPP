@@ -2112,7 +2112,7 @@ namespace emtp {
     int ndx1 = fem::int0;
     //C     CALLED ONLY BY OVER1 FOR START AGAIN USAGE
     // handling equivalence in tacsar.inc
-    auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+    auto& isptacs = cmn.isptacs;
     auto& ivarb = isptacs;
 
     auto& kaliu = isptacs(11);
@@ -13218,7 +13218,7 @@ void umdatb(
   //C  START READING SM TYPE -50 TO 59 DATA INPUT FORMAT **********         M42.3148
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& kaliu =  isptacs(11);
@@ -15223,7 +15223,7 @@ umdata(
   int& numfix = cmn.numfix;
   int& nsmach = cmn.nsmach;
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   //
   auto& kxtcs = isptacs(17);
@@ -17091,7 +17091,7 @@ void smdat(
   const auto& sfreq = cmn.sfreq;
   auto& ismtac = cmn.ismtac;
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   auto& ntotac = cmn.ntotac;
   auto& lbstac = cmn.lbstac;
@@ -18756,7 +18756,7 @@ void over5a(
   auto& bus = cmn.bus;
   auto& ksmspy = cmn.ksmspy;
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   //
   fem::str<8>& text12 = sve.text12;
@@ -18804,7 +18804,7 @@ void over5a(
   int ndx2 = fem::int0;
   static const char* format_6304 = "(i2,a6,i2)";
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * sizeof(spum(1)) / sizeof(int));
+  auto& ispum = cmn.ispum;
 
   auto& klntab = sptacs(18);
   ll2 = 2;
@@ -19831,7 +19831,7 @@ void over5(
   static const char* format_8026 = "(/,' KOUTVP, KOUTIE',/(1x,10i10))";
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
   auto& kxtcs =  isptacs(17);
   auto& klntab = isptacs(18);
@@ -20705,7 +20705,7 @@ void vecisv(
   //C     ALSO NEEDED ARE UNCOUNTED HOLLERITH.  PARALLEL TO "VECISV".       M37. 952
   //C!w EQUIVALENCE  ( KARRAY(1),  FARRAY(1) )
   //C     BLOCK /VECCOM/ IS SHARED WITH "VECRSV" (SEE FOR MORE INFO)        M34.  61
-  auto farray = ArraySpan(reinterpret_cast<double* const>(cmn.karray.begin()), cmn.karray.size() / 2);
+  auto& farray = cmn.farray;
   if (iprsup >= 1) {
     write(lunit6, "(' BEGIN \"VECISV\".  N13, N2 =',2i8)"), n13, n2;
   }
@@ -27397,7 +27397,7 @@ void over8(
   //C
   auto& knt = cmn.moncar(1);
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&cmn.spum(1)), cmn.spum.size() * 2);
+  auto& ispum = cmn.ispum;
   auto ich2 = ArraySpan(reinterpret_cast<int*>(&cmn.diag(1)), cmn.diag.size_1d());
 
   if (iprsup >= 1) {
@@ -36126,7 +36126,7 @@ void csupdc(
   double contss = fem::double0;
   int ji = fem::int0;
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& kspvar = isptacs(6);
@@ -36438,7 +36438,7 @@ csupac(
   int ndx2 = fem::int0;
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& kxar =   isptacs(16);
@@ -37036,7 +37036,7 @@ void tacs2(
     "' RESULT IS NOT CONVERGENT YET, PROGRAM WILL CONTINUE  ----')";
   //C!EQUIVALENCE  (MONCAR(2),  KBASE),   (MONCAR(3), LTDELT)
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& kcolcs = isptacs(5);
@@ -50064,7 +50064,7 @@ void over15(
   static const char* format_8026 = "(/,' KOUTVP OR KOUTIE',/(1x,10i10))";
   static const char* format_8927 = "(a132)";
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * 2);
+  auto& ispum = cmn.ispum;
   auto& nsubkm = kknonl;
 
   auto& knt = moncar(1);
@@ -50075,7 +50075,7 @@ void over15(
   auto& itest = moncar(6);
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& kjout =  isptacs(12);
@@ -52048,7 +52048,7 @@ void subts3(
 
   const auto& bus = cmn.bus;
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
   auto& koncur = isptacs(2);
@@ -57560,7 +57560,7 @@ void subts1(
   static const char* format_806 =
     "(51x,a6,' ''',a6,''' TO ''',a6,'''  ',a6,'G AFTER',e12.5,' SEC.')";
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * 2);
+  auto& ispum = cmn.ispum;
 
   auto& knt = moncar(1);
   auto& kbase = moncar(2);
@@ -57568,7 +57568,7 @@ void subts1(
   auto& iupper = iprsov(36);
 
   // handling equivalence in tacsar.inc
-  auto isptacs = ArraySpan(reinterpret_cast<int*>(&sptacs(1)), sptacs.size() * sizeof(sptacs(1)) / sizeof(int));
+  auto& isptacs = cmn.isptacs;
   auto& kxtcs = isptacs(17);
 
   if (iprsup >= 1) {
@@ -61984,7 +61984,7 @@ void subts4(
   auto& kbase = moncar(2);
   auto& kloaep = moncar(9);
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * 2);
+  auto& ispum = cmn.ispum;
 
   if (iprsup >= 6) {
     write(lunit6,
@@ -62131,7 +62131,7 @@ void over16(
   auto& lunit6 = cmn.lunit6;
   int n1 = fem::int0;
 
-  auto ispum = ArraySpan(reinterpret_cast<int*>(&spum(1)), spum.size() * 2);
+  auto& ispum = cmn.ispum;
 
   if (iprsup >= 1) {
     write(lunit6, "('  BEGIN MODULE \"OVER16\".')");
