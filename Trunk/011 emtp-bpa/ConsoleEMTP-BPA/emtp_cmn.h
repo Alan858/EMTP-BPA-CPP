@@ -4671,6 +4671,8 @@ struct common :
 
   std::ifstream inp_stream;
   std::ofstream out_stream;
+  std::ofstream out2_stream; // steady state result if apply
+
   //std::ofstream log_stream;
 
   common(

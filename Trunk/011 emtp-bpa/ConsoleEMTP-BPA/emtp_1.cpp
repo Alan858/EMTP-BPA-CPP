@@ -809,13 +809,11 @@ catch (...) {
 
 void frenum( // $VINTAGE
   common& cmn,
-  str_cref text1,
+  arr_cref<fem::str<8>> text1,
   int const& n3,
   double& d1) try
 {
-  //text1(dimension(n3));
-  d1 = std::stod(std::string(text1)); // .begin(), text1.len()));
-
+  text1(dimension(n3));
   common_read read(cmn);
   common_write write(cmn);
   fem::str<8> blank = "      ";
@@ -824,7 +822,9 @@ void frenum( // $VINTAGE
   int n9 = fem::int0;
   int n4 = fem::int0;
   int i = fem::int0;
-  arr_1d<30, char> texta(fem::fill0);
+  fem::str<30> texta(fem::char0);
+  for (int i = 0; i < 30; ++i)
+    texta.elems[i] = ' ';
   //C     VAX-11/780  INSTALLATION-DEPENDENT MODULE CALLED ONLY BY          M28. 250
   //C     THE FREE-FORMAT DATA MODULE  "FREFLD" .   PURPOSE IS TO           M28. 251
   //C     CONVERT INPUT CHARACTERS  (TEXT1(1) ... TEXT1(N3))  INTO          M28. 252
@@ -846,16 +846,11 @@ void frenum( // $VINTAGE
     //C INSTALLATION-DEPENDENT PROGRAM STOP CARD
     stoptp(cmn);
     statement_4711:
-    //write(texta(n9), "(80a1)"), text1(n4);
-    texta(n9) = text1[n4 - 1];
+    write(texta(n9, n9), "(a1)"), text1(n4);
     n9 = n9 - 1;
     statement_4718:;
   }
-  FEM_DO_SAFE(i, 1, n9) {
-    texta(i) = textb;
-  }
-  std::string textf(&texta(1), 30);
-  read(textf.c_str(), "(e30.0)"), d1;
+  read(texta, "(e30.0)"), d1;
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -41222,25 +41217,25 @@ modal(
     goto statement_7030;
   }
   write(lunit6, "(/,/,' MODAL PARAMETERS AT FREQ = ',e13.5,' HZ')"), freq;
-  cmn.out_stream << "\nMODAL PARAMETERS AT FREQ = " << SState("e13.5") << freq << " HZ\n";
+  cmn.out2_stream << "\nMODAL PARAMETERS AT FREQ = " << SState("e13.5") << freq << " HZ\n";
   write(lunit6,
     "(/,/,"
     "' MODE   RESISTANCE  REACTANCE  SUSCEPTANCE             SURGE IMPEDANCE(O"
     "HM)          VELOCITY  ATTENUATION')");
-  cmn.out_stream << "\nMODE   RESISTANCE  REACTANCE  SUSCEPTANCE             SURGE IMPEDANCE(OHM)          VELOCITY  ATTENUATION\n";
+  cmn.out2_stream << "\nMODE   RESISTANCE  REACTANCE  SUSCEPTANCE             SURGE IMPEDANCE(OHM)          VELOCITY  ATTENUATION\n";
   if (metrik == 1) {
     goto statement_7029;
   }
   write(lunit6,
     "('          OHM/MILE    OHM/MILE   S/MILE        REAL         IMAG       "
     "LOSSLESS     MILE/SEC  NEPER/MILE')");
-  cmn.out_stream << "         OHM/MILE    OHM/MILE   S/MILE        REAL         IMAG       LOSSLESS     MILE/SEC  NEPER/MILE\n";
+  cmn.out2_stream << "         OHM/MILE    OHM/MILE   S/MILE        REAL         IMAG       LOSSLESS     MILE/SEC  NEPER/MILE\n";
   goto statement_7030;
   statement_7029:
   write(lunit6,
     "('          OHM/KM      OHM/KM     S/KM         REAL          IMAG      L"
     "OSSLESS     KM/SEC     NEPER/KM')");
-  cmn.out_stream << "         OHM/KM      OHM/KM     S/KM         REAL          IMAG      LOSSLESS     KM/SEC     NEPER/KM\n";
+  cmn.out2_stream << "         OHM/KM      OHM/KM     S/KM         REAL          IMAG      LOSSLESS     KM/SEC     NEPER/KM\n";
   statement_7030:
   //C ***** CREATE Y * Z MATRIX FROM ARRAY FROM LCP MAIN                    M29.4278
   k = 0;
@@ -41547,9 +41542,9 @@ modal(
   }
   write(lunit6,
     "(' CURRENT TRANSFORMATION MATRIX BEFORE ZEROING THE IMAGINARY PART:')");
-  cmn.out_stream << "CURRENT TRANSFORMATION MATRIX BEFORE ZEROING THE IMAGINARY PART:\n";
+  cmn.out2_stream << "CURRENT TRANSFORMATION MATRIX BEFORE ZEROING THE IMAGINARY PART:\n";
   write(lunit6, format_39);
-  cmn.out_stream << " REAL COMPONENTS, ROW BY ROW\n";
+  cmn.out2_stream << " REAL COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41557,14 +41552,14 @@ modal(
         wloop, tir(k, j);
       }
     }
-    cmn.out_stream << "  ";
+    cmn.out2_stream << "  ";
     FEM_DO_SAFE(j, 1, m) {
-      cmn.out_stream << SState("e12.4") << tir(k, j);
+      cmn.out2_stream << SState("e12.4") << tir(k, j);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
   write(lunit6, format_60);
-  cmn.out_stream << "\n IMAGINARY COMPONENTS, ROW BY ROW\n";
+  cmn.out2_stream << "\n IMAGINARY COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41572,11 +41567,11 @@ modal(
         wloop, tii(k, j);
       }
     }
-    cmn.out_stream << "  ";
+    cmn.out2_stream << "  ";
     FEM_DO_SAFE(j, 1, m) {
-      cmn.out_stream << SState("e12.4") << tii(k, j);
+      cmn.out2_stream << SState("e12.4") << tii(k, j);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
   statement_88:
   FEM_DO_SAFE(j, 1, m) {
@@ -41810,7 +41805,7 @@ modal(
     statement_137:
     write(lunit6, "(i5,3x,9e12.5)"), i, g, b, dumm1, zcharr, zchari,
       zsurge(i), vmode, cc;
-    cmn.out_stream << std::setw(4) << i << "   " << SState("e12.4") << g << SState("e12.4") << b
+    cmn.out2_stream << std::setw(4) << i << "   " << SState("e12.4") << g << SState("e12.4") << b
       << SState("e12.4") << dumm1 << SState("e12.4") << zcharr << SState("e12.4") << zchari
       << SState("e12.4") << zsurge(i) << SState("e12.4") << vmode << SState("e12.4") << cc << '\n';
     distm = -dist;
@@ -41925,9 +41920,9 @@ modal(
   write(lunit6,
     "(/,/,/,/,"
     "' EIGENVECTOR MATRIX TI FOR CURRENT TRANSFORMATION I(PHASE)=TI*I(MODE)')");
-  cmn.out_stream << "\nEIGENVECTOR MATRIX TI FOR CURRENT TRANSFORMATION I(PHASE)=TI*I(MODE)\n";
+  cmn.out2_stream << "\nEIGENVECTOR MATRIX TI FOR CURRENT TRANSFORMATION I(PHASE)=TI*I(MODE)\n";
   write(lunit6, format_39);
-  cmn.out_stream << " REAL COMPONENTS, ROW BY ROW\n";
+  cmn.out2_stream << " REAL COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41935,14 +41930,14 @@ modal(
         wloop, tir(k, j);
       }
     }
-    cmn.out_stream << "  ";
+    cmn.out2_stream << "  ";
     FEM_DO_SAFE(j, 1, m) {
-      cmn.out_stream << SState("e12.4") << tir(k, j);
+      cmn.out2_stream << SState("e12.4") << tir(k, j);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
   write(lunit6, format_60);
-  cmn.out_stream << "\n IMAGINARY COMPONENTS, ROW BY ROW\n";
+  cmn.out2_stream << "\n IMAGINARY COMPONENTS, ROW BY ROW\n";
   FEM_DO_SAFE(k, 1, m) {
     {
       write_loop wloop(cmn, lunit6, format_9);
@@ -41950,11 +41945,11 @@ modal(
         wloop, tii(k, j);
       }
     }
-    cmn.out_stream << "  ";
+    cmn.out2_stream << "  ";
     FEM_DO_SAFE(j, 1, m) {
-      cmn.out_stream << SState("e12.4") << tii(k, j);
+      cmn.out2_stream << SState("e12.4") << tii(k, j);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
   FEM_DO_SAFE(i, 1, m) {
     if (lastov == 39) {
@@ -42008,7 +42003,7 @@ modal(
     goto statement_9200;
   }
   write(lunit6, "(/,' PHASE DOMAIN ZSURGE (REAL; THE IMAG. OF Ti IGNORED)')");
-  cmn.out_stream << "\n PHASE DOMAIN ZSURGE (REAL; THE IMAG. OF Ti IGNORED)\n";
+  cmn.out2_stream << "\n PHASE DOMAIN ZSURGE (REAL; THE IMAG. OF Ti IGNORED)\n";
   n = 1;
   FEM_DO_SAFE(i, 1, m) {
     k = n + i - 1;
@@ -42017,11 +42012,11 @@ modal(
       FEM_DO_SAFE(j, n, k) {
         wloop, xwc(j);
       }
-      cmn.out_stream << "  ";
+      cmn.out2_stream << "  ";
       FEM_DO_SAFE(j, n, k) {
-        cmn.out_stream << SState("e12.4") << xwc(j);
+        cmn.out2_stream << SState("e12.4") << xwc(j);
       }
-      cmn.out_stream << '\n';
+      cmn.out2_stream << '\n';
     }
     n += i;
   }
@@ -42608,11 +42603,11 @@ wrte(
       wloop, r(i);
     }
 
-    cmn.out_stream << "   ";
+    cmn.out2_stream << "   ";
     FEM_DO_SAFE(i, 1, j) {
-      cmn.out_stream << SState("e14.5") << r(i);
+      cmn.out2_stream << SState("e14.5") << r(i);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
   return;
   statement_2:
@@ -42622,11 +42617,11 @@ wrte(
       wloop, r(i);
     }
 
-    cmn.out_stream << "   ";
+    cmn.out2_stream << "   ";
     FEM_DO_SAFE(i, 1, j) {
-      cmn.out_stream << SState("e14.5") << r(i);
+      cmn.out2_stream << SState("e14.5") << r(i);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
   return;
   statement_3:
@@ -42637,11 +42632,11 @@ wrte(
       wloop, r(i);
     }
 
-    cmn.out_stream << SState("f3") << L;
+    cmn.out2_stream << SState("f3") << L;
     FEM_DO_SAFE(i, 1, j) {
-      cmn.out_stream << SState("e14.5") << r(i);
+      cmn.out2_stream << SState("e14.5") << r(i);
     }
-    cmn.out_stream << '\n';
+    cmn.out2_stream << '\n';
   }
 }
 catch (...) {
@@ -42729,46 +42724,46 @@ void output(
   statement_305:
   write(lunit6,
     "('0',12x,'INVERTED CAPACITANCE MATRIX (DARAF-',a4,')')"), txtunt;
-  cmn.out_stream << "\nINVERTED CAPACITANCE MATRIX (DARAF-" << std::string(txtunt) << ")\n";
+  cmn.out2_stream << "\nINVERTED CAPACITANCE MATRIX (DARAF-" << std::string(txtunt) << ")\n";
   goto statement_5;
   statement_306:
   write(lunit6, "('0',14x,'INVERTED SUSCEPTANCE MATRIX (OHM-',a4,')')"), txtunt;
-  cmn.out_stream << "\nINVERTED SUSCEPTANCE MATRIX (OHM-" << std::string(txtunt) << ")\n";
+  cmn.out2_stream << "\nINVERTED SUSCEPTANCE MATRIX (OHM-" << std::string(txtunt) << ")\n";
   goto statement_5;
   statement_307:
   write(lunit6, "('0',21x,'CAPACITANCE MATRIX (FARAD/',a4,')')"), txtunt;
-  cmn.out_stream << "\nCAPACITANCE MATRIX (FARAD/" << std::string(txtunt) << ")\n";
+  cmn.out2_stream << "\nCAPACITANCE MATRIX (FARAD/" << std::string(txtunt) << ")\n";
   unit = 1.0f / unit;
   goto statement_5;
   statement_308:
   write(lunit6, "('0',23x,'SUSCEPTANCE MATRIX (MHO/',a4,')')"), txtunt;
-  cmn.out_stream << "\nSUSCEPTANCE MATRIX (MHO/" << std::string(txtunt) << ")\n";
+  cmn.out2_stream << "\nSUSCEPTANCE MATRIX (MHO/" << std::string(txtunt) << ")\n";
   unit = 1.0f / unit;
   goto statement_5;
   statement_332:
   write(lunit6, "('0',16x,'INVERTED IMPEDANCE MATRIX (MHO-',a4,')')"), txtunt;
-  cmn.out_stream << "\nINVERTED IMPEDANCE MATRIX (MHO-" << std::string(txtunt) << ")\n";
+  cmn.out2_stream << "\nINVERTED IMPEDANCE MATRIX (MHO-" << std::string(txtunt) << ")\n";
   goto statement_5;
   statement_333:
   write(lunit6, "('0',25x,'IMPEDANCE MATRIX (OHM/',a4,')')"), txtunt;
-  cmn.out_stream << "\nIMPEDANCE MATRIX (OHM/" << std::string(txtunt) << ")\n";
+  cmn.out2_stream << "\nIMPEDANCE MATRIX (OHM/" << std::string(txtunt) << ")\n";
   unit = 1.0f / unit;
   goto statement_5;
   statement_336:
   write(lunit6, "('0',19x,'TRANSFER ADMITTANCE MATRIX (MHOS)')");
-  cmn.out_stream << "\nTRANSFER ADMITTANCE MATRIX (MHOS)\n";
+  cmn.out2_stream << "\nTRANSFER ADMITTANCE MATRIX (MHOS)\n";
   goto statement_5;
   statement_337:
   write(lunit6, "('0',16x,'TWICE SHUNT ADMITTANCE MATRIX (MHOS)')");
-  cmn.out_stream << "\nTWICE SHUNT ADMITTANCE MATRIX (MHOS)\n";
+  cmn.out2_stream << "\nTWICE SHUNT ADMITTANCE MATRIX (MHOS)\n";
   goto statement_5;
   statement_340:
   write(lunit6, "('0',20x,'TRANSFER IMPEDANCE MATRIX (OHMS)')");
-  cmn.out_stream << "\nTRANSFER IMPEDANCE MATRIX (OHMS)\n";
+  cmn.out2_stream << "\nTRANSFER IMPEDANCE MATRIX (OHMS)\n";
   goto statement_5;
   statement_341:
   write(lunit6, "('0',11x,'ONE HALF OF SHUNT IMPEDANCE MATRIX (OHMS)')");
-  cmn.out_stream << "\nONE HALF OF SHUNT IMPEDANCE MATRIX (OHMS)\n";
+  cmn.out2_stream << "\nONE HALF OF SHUNT IMPEDANCE MATRIX (OHMS)\n";
   statement_5:
   switch (k2) {
     case 1: goto statement_320;
@@ -42778,24 +42773,24 @@ void output(
   }
   statement_320:
   write(lunit6, "('+',53x,'FOR THE SYSTEM OF PHYSICAL CONDUCTORS')");
-  cmn.out_stream << "FOR THE SYSTEM OF PHYSICAL CONDUCTORS\n";
+  cmn.out2_stream << "FOR THE SYSTEM OF PHYSICAL CONDUCTORS\n";
   goto statement_6;
   statement_321:
   write(lunit6, "('+',53x,'FOR THE SYSTEM OF EQUIVALENT PHASE CONDUCTORS')");
-  cmn.out_stream << "FOR THE SYSTEM OF EQUIVALENT PHASE CONDUCTORS\n";
+  cmn.out2_stream << "FOR THE SYSTEM OF EQUIVALENT PHASE CONDUCTORS\n";
   goto statement_6;
   statement_322:
   write(lunit6,
     "('+',53x,"
     "'FOR THE SYMMETRICAL COMPONENTS OF THE EQUIVALENT PHASE CONDUCTORS')");
-  cmn.out_stream << "FOR THE SYMMETRICAL COMPONENTS OF THE EQUIVALENT PHASE CONDUCTORS\n";
+  cmn.out2_stream << "FOR THE SYMMETRICAL COMPONENTS OF THE EQUIVALENT PHASE CONDUCTORS\n";
   statement_6:
   if (k2 == 3) {
     goto statement_3;
   }
   write(lunit6,
     "(' ',30x,'ROWS AND COLUMNS PROCEED IN SAME ORDER AS SORTED INPUT')");
-  cmn.out_stream << "ROWS AND COLUMNS PROCEED IN SAME ORDER AS SORTED INPUT\n";
+  cmn.out2_stream << "ROWS AND COLUMNS PROCEED IN SAME ORDER AS SORTED INPUT\n";
   statement_4:
   k = 0;
   if (is == 8) {
@@ -42850,13 +42845,13 @@ void output(
     "(' ',25x,"
     "'ROWS PROCEED IN SEQUENCE 0,1,2, 0,1,2 ETC. AND COLUMNS PROCEED IN SEQUEN"
     "CE 0,2,1, 0,2,1 ETC.')");
-  cmn.out_stream << "ROWS PROCEED IN SEQUENCE 0,1,2, 0,1,2 ETC. AND COLUMNS PROCEED IN SEQUENCE 0,2,1, 0,2,1 ETC.\n";
+  cmn.out2_stream << "ROWS PROCEED IN SEQUENCE 0,1,2, 0,1,2 ETC. AND COLUMNS PROCEED IN SEQUENCE 0,2,1, 0,2,1 ETC.\n";
   goto statement_4;
   statement_400:
   write(lunit6,
     "(' ',38x,"
     "'THIS IS A TWO-PHASE LINE. ROWS AND COLUMNS PROCEED IN SEQUENCE 0,1')");
-  cmn.out_stream << "THIS IS A TWO-PHASE LINE. ROWS AND COLUMNS PROCEED IN SEQUENCE 0,1\n";
+  cmn.out2_stream << "THIS IS A TWO-PHASE LINE. ROWS AND COLUMNS PROCEED IN SEQUENCE 0,1\n";
   if (is <= 4) {
     check = -1.0f;
   }
@@ -42905,7 +42900,7 @@ outspc(
   }
   write(lunit6,
     "(/,' SPECIAL OUTPUT FOR MUTUALS NOT APPLICABLE TO THIS CASE')");
-  cmn.out_stream << " SPECIAL OUTPUT FOR MUTUALS NOT APPLICABLE TO THIS CASE\n";
+  cmn.out2_stream << " SPECIAL OUTPUT FOR MUTUALS NOT APPLICABLE TO THIS CASE\n";
   return;
   statement_999:
   aa = valu7 * (z(8) - z(9));
@@ -42928,7 +42923,7 @@ outspc(
     "(' MUTUAL IMPEDANCE  POSITIVE=',f8.5,' OHM/MILE  NEGATIVE=',f8.5,"
     "' OHM/MILE  ZERO=',f8.4,' OHM/MILE')"),
     c1, c2, c0;
-  cmn.out_stream << " MUTUAL IMPEDANCE  POSITIVE = " << SState("f0.5") << c1
+  cmn.out2_stream << " MUTUAL IMPEDANCE  POSITIVE = " << SState("f0.5") << c1
     << " OHM/MILE  NEGATIVE = " << SState("f0.5") << c2
     << " OHM/MILE  ZERO = " << SState("f0.4") << c0 << '\n';
   return;
@@ -42940,7 +42935,7 @@ outspc(
     "(' MUTUAL IMPEDANCE  POSITIVE=',f8.5,' OHM/KM    NEGATIVE=',f8.5,"
     "' OHM/KM    ZERO=',f8.4,' OHM/KM  ')"),
     c1, c2, c0;
-  cmn.out_stream << " MUTUAL IMPEDANCE  POSITIVE = " << SState("f0.5") << c1
+  cmn.out2_stream << " MUTUAL IMPEDANCE  POSITIVE = " << SState("f0.5") << c1
     << " OHM/KM    NEGATIVE = " << SState("f0.5") << c2
     << " OHM/KM    ZERO = " << SState("f0.4") << c0 << '\n';
 }
@@ -44307,21 +44302,21 @@ void guts44(common& cmn,  // Line Constants
     "'TABLE',3x,'PHASE',3x,'SKIN EFFECT',4x,'RESISTANCE',3x,"
     "'REACTANCE-DATA SPECIFICATION',5x,'DIAMETER',3x,'HORIZONTAL',3x,"
     "'AVG HEIGHT',3x,'CONDUCTOR')");
-  cmn.out_stream << "LINE-CONDUCTOR TABLE AFTER SORTING AND INITIAL PROCESSING.\n"
+  cmn.out2_stream << "LINE-CONDUCTOR TABLE AFTER SORTING AND INITIAL PROCESSING.\n"
     << "TABLE   PHASE   SKIN EFFECT    RESISTANCE   REACTANCE-DATA SPECIFICATION     DIAMETER   HORIZONTAL   AVG HEIGHT   CONDUCTOR\n";
   if (metrik == 0) {
     write(lunit6,
       "(3x,'ROW',2x,'NUMBER',8x,'R-TYPE',4x,'R (OHM/MI)',3x,'X-TYPE',6x,"
       "'X(OHM/MI) OR GMR',5x,'(INCHES)',5x,'X (FEET)',5x,'Y (FEET)',8x,"
       "'NAME')");
-    cmn.out_stream << "  ROW  NUMBER        R-TYPE    R (OHM/MI)   X-TYPE      X(OHM/MI) OR GMR     (INCHES)     X (FEET)     Y (FEET)        NAME\n";
+    cmn.out2_stream << "  ROW  NUMBER        R-TYPE    R (OHM/MI)   X-TYPE      X(OHM/MI) OR GMR     (INCHES)     X (FEET)     Y (FEET)        NAME\n";
   }
   if (metrik == 1) {
     write(lunit6,
       "(3x,'ROW',2x,'NUMBER',8x,'R-TYPE',4x,'R (OHM/KM)',3x,'X-TYPE',6x,"
       "'X(OHM/KM) OR GMR',5x,'(  CM  )',5x,'X (MTRS)',5x,'Y (MTRS)',8x,"
       "'NAME')");
-    cmn.out_stream << "  ROW  NUMBER        R-TYPE    R (OHM/KM)   X-TYPE      X(OHM/KM) OR GMR     (  CM  )     X (MTRS)     Y (MTRS)        NAME\n";
+    cmn.out2_stream << "  ROW  NUMBER        R-TYPE    R (OHM/KM)   X-TYPE      X(OHM/KM) OR GMR     (  CM  )     X (MTRS)     Y (MTRS)        NAME\n";
   }
   statement_3008:
   idist = 1;
@@ -44381,14 +44376,14 @@ void guts44(common& cmn,  // Line Constants
   }
   write(lunit6, format_22), k, ic(j), tb2(j), rj, jb, gmdj, dj, xj, yj, text(j);
   // format_22 = "(1x,i5,i8,2f14.5,i9,f22.6,f13.5,2f13.3,6x,a6)"
-  cmn.out_stream << SState("f5") << k << SState("f8") << ic(j) << SState("f14.5") << tb2(j) << SState("f14.5") << rj
+  cmn.out2_stream << SState("f5") << k << SState("f8") << ic(j) << SState("f14.5") << tb2(j) << SState("f14.5") << rj
     << SState("f9") << jb << SState("f22.6") << gmdj << SState("f13.5") << dj << SState("f13.3") << xj << SState("f13.3") << yj
     << std::string(6, ' ') << std::string(text(j)).c_str() << '\n';
   goto statement_225;
   statement_221:
   write(lunit6, format_22), k, ic(j), tb2(j), r(j), itb3(j), gmd(j),
     dz(j), x(j), y(j), text(j);
-  cmn.out_stream << SState("f5") << k << SState("f8") << ic(j) << SState("f14.5") << tb2(j) << SState("f14.5") << r(j)
+  cmn.out2_stream << SState("f5") << k << SState("f8") << ic(j) << SState("f14.5") << tb2(j) << SState("f14.5") << r(j)
     << SState("f9") << itb3(j) << SState("f22.6") << gmd(j) << SState("f13.5") << dz(j) << SState("f13.3") << x(j) << SState("f13.3") << y(j)
     << std::string(6, ' ') << std::string(text(j)).c_str() << '\n';
   statement_225:
@@ -44454,7 +44449,7 @@ void guts44(common& cmn,  // Line Constants
     "(/,/,'0FOLLOWING MATRICES ARE FOR EARTH RESISTIVITY=',f8.2,"
     "' OHM-M AND FREQUENCY=',f13.2,' HZ. CORRECTION FACTOR=',f10.6)"),
     rearth, freq, corr;
-  cmn.out_stream << "\nFOLLOWING MATRICES ARE FOR EARTH RESISTIVITY= " << SState("f0.2") << rearth
+  cmn.out2_stream << "\nFOLLOWING MATRICES ARE FOR EARTH RESISTIVITY= " << SState("f0.2") << rearth
     << " OHM-M AND FREQUENCY= " << SState("f0.2") << freq
     << " HZ. CORRECTION FACTOR= " << SState("f0.6") << corr << "\n";
   statement_7025:
@@ -44464,7 +44459,7 @@ void guts44(common& cmn,  // Line Constants
   if (isegm > 0) {
     write(lunit6,
       "(' ',30x,'************EARTH WIRES WILL BE SEGMENTED************')");
-    cmn.out_stream << "************EARTH WIRES WILL BE SEGMENTED************\n";
+    cmn.out2_stream << "************EARTH WIRES WILL BE SEGMENTED************\n";
   }
   if (ik > 0) {
     write(lunit6, format_3004);
@@ -45559,7 +45554,7 @@ void guts44(common& cmn,  // Line Constants
     zso, zsodrg, alphao, vol, waveo, rzero, xzero1, yzero1, zs1,
     zs1drg, alpha1, v1l, wave1, rpos, xpos1, ypos1;
   using namespace std;
-  cmn.out_stream
+  cmn.out2_stream
     << "SEQUENCE      SURGE IMPEDANCE       ATTENUATION   VELOCITY    WAVELENGTH   RESISTANCE    REACTANCE   SUSCEPTANCE\n"
     << "         MAGNITUDE(OHM) ANGLE(DEGR.)   DB/MILE      MILES/S       MILES      OHM/MILE     OHM/MILE     MHO/MILE\n"
     << "   ZERO  " << SState("e13.5") << zso << setw(13) << zsodrg << setw(13) << alphao << setw(13) << vol
@@ -45589,7 +45584,7 @@ void guts44(common& cmn,  // Line Constants
     "8e13.5)"),
     zso, zsodrg, alphao, vol, waveo, rzero1, xzero1, yzero1, zs1,
     zs1drg, alpha1, v1l, wave1, rpos1, xpos1, ypos1;
-  cmn.out_stream
+  cmn.out2_stream
     << "SEQUENCE      SURGE IMPEDANCE       ATTENUATION   VELOCITY    WAVELENGTH   RESISTANCE    REACTANCE   SUSCEPTANCE\n"
     << "         MAGNITUDE(OHM) ANGLE(DEGR.)    DB/KM         KM/S          KM        OHM/KM       OHM/KM       MHO/KM\n"
     << "   ZERO  " << SState("e13.5") << zso << setw(13) << zsodrg << setw(13) << alphao << setw(13) << vol
@@ -71832,6 +71827,11 @@ void program_main(
   cmn.out_stream.open(outFile);  // open output streams
   if (!cmn.out_stream.is_open())
     return;
+  cmn.out2_stream.open(outFile + '2');   // steady state result
+  if (!cmn.out2_stream.is_open()) {
+    std::cout << "Cannot open '" << outFile + '2' << "' !\n";
+    return;
+  }
 
   // open log file
   bool lexst{false};

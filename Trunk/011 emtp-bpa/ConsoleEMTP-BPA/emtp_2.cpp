@@ -15111,7 +15111,7 @@ umdata(
   FEM_CMN_SVE(umdata);
   reacl(dimension(1));
   gpar(dimension(1));
-  fpar(dimension(1));
+  fpar(dimension(20));
   hist(dimension(1));
   umcurp(dimension(1));
   nodvo1(dimension(1));
@@ -32592,7 +32592,7 @@ statement_2032:
   //C     BEGIN 132-COLUMN CODE FOR GENERATOR INJECTION PRINTOUT:           M32.3919
 statement_3214:
   write(lunit6, "(15x,a6,3(5x,2e15.7))"), bus5, erk, vk, currk, cmk, pk, ploss;
-  cmn.out_stream << std::string(15, ' ') << std::string(bus5).substr(0, 6)
+  cmn.out2_stream << std::string(15, ' ') << std::string(bus5).substr(0, 6)
     << std::string(5, ' ') << SState("e15.6") << erk << SState("e15.6") << vk
     << std::string(5, ' ') << SState("e15.6") << currk << SState("e15.6") << cmk
     << std::string(5, ' ') << SState("e15.6") << pk << SState("e15.6") << ploss << '\n';
@@ -32610,14 +32610,14 @@ statement_2040:
 statement_2045:
   write(lunit6, "(/,1x,a6,14x,3(5x,2e15.7))"), bus1, erk, vk, currk,
     cmk, pk, ploss;
-  cmn.out_stream << "\n " << std::string(bus1).substr(0, 6) << std::string(14, ' ')
+  cmn.out2_stream << "\n " << std::string(bus1).substr(0, 6) << std::string(14, ' ')
     << std::string(5, ' ') << SState("e15.6") << erk << SState("e15.6") << vk
     << std::string(5, ' ') << SState("e15.6") << currk << SState("e15.6") << cmk
     << std::string(5, ' ') << SState("e15.6") << pk << SState("e15.6") << ploss << '\n';
 statement_2051:
   write(lunit6, format_2052), eik, thk, curik, cak, qk, qloss;
   write(lunit6, format_2052), eik, thk, curik, cak, qk, qloss; // "(21x,2(5x,e15.7,f15.4),5x,2e15.7)"
-  cmn.out_stream << std::string(21, ' ') << std::string(5, ' ') << SState("e15.6") << eik << SState("f15.4") << thk
+  cmn.out2_stream << std::string(21, ' ') << std::string(5, ' ') << SState("e15.6") << eik << SState("f15.4") << thk
     << std::string(5, ' ') << SState("e15.6") << curik << SState("f15.4") << cak
     << std::string(5, ' ') << SState("e15.6") << qk << SState("e15.6") << qloss << '\n';
   if (L < 0) {
@@ -32625,12 +32625,12 @@ statement_2051:
   }
   //C     BEGIN CODE FOR REVERSE BRANCH FLOW, 132-COLUMN DISPLAY:           M32.3933
   write(lunit6, "(/,15x,a6,3(5x,2e15.7))"), bus2, erm, vm, currm, cmm, pm;
-  cmn.out_stream << '\n' << std::string(15, ' ') << std::string(bus2).substr(0, 6)
+  cmn.out2_stream << '\n' << std::string(15, ' ') << std::string(bus2).substr(0, 6)
     << std::string(5, ' ') << SState("e15.6") << erm << SState("e15.6") << vm
     << std::string(5, ' ') << SState("e15.6") << currm << SState("e15.6") << cmm
     << std::string(5, ' ') << SState("e15.6") << pm << '\n';
   write(lunit6, format_2052), eim, thm, curim, cam, qm;
-  cmn.out_stream << std::string(21, ' ')
+  cmn.out2_stream << std::string(21, ' ')
     << std::string(5, ' ') << SState("e15.6") << eim << SState("f15.4") << thm
     << std::string(5, ' ') << SState("e15.6") << curim << SState("f15.4") << cam
     << std::string(5, ' ') << SState("e15.6") << qm << "\n\n";
@@ -34160,11 +34160,12 @@ void pltfil(
     throw std::out_of_range("in \'pltfil\'");
   }
 
-  if (volti(1) < 0) return; // the last item is -9999
 
   cmn.out_stream << SState("e10.3") << volti[0]; // time
-  for (int i = 1; i < k; ++i) {
-    cmn.out_stream << ',' << SState("e10.3") << volti[i];
+  if (-1 < volti(1)) { // the last item is -9999
+    for (int i = 1; i < k; ++i) {
+      cmn.out_stream << ',' << SState("e10.3") << volti[i];
+    }
   }
   cmn.out_stream << '\n';
 
@@ -34653,7 +34654,7 @@ void over11(
       "' IS PRINTED ABOVE THE IMAGINARY PART, THE',"
       "' ANGLE, OR Q.   FIRST SOLUTION FREQUENCY =',e18.9,'   HERTZ.')"),
       volt(lsiz26 + 1);
-    cmn.out_stream << " SINUSOIDAL STEADY STATE SOLUTION, BRANCH BY BRANCH. ALL FLOWS ARE AWAY FROM BUS, AND REAL PART, MAGNITUDE, OR P\n"
+    cmn.out2_stream << " SINUSOIDAL STEADY STATE SOLUTION, BRANCH BY BRANCH. ALL FLOWS ARE AWAY FROM BUS, AND REAL PART, MAGNITUDE, OR P\n"
       << " IS PRINTED ABOVE THE IMAGINARY PART, THE ANGLE, OR Q. FIRST SOLUTION FREQUENCY = " << SState("e18.9") << volt(lsiz26 + 1) << "Hertz\n";
   }
   if (kol132 != 132) {
@@ -34681,7 +34682,7 @@ void over11(
       "(2x,'BUS K',37x,'NODE VOLTAGE',21x,'BRANCH CURRENT',10x,'POWER FLOW',"
       "5x,'POWER LOSS',/,16x,'BUS M',2(9x,'RECTANGULAR',10x,'POLAR'),5x,2(8x,"
       "'P AND Q'))");
-    cmn.out_stream << "  BUS K" << std::string(37, ' ') << "NODE VOLTAGE" << std::string(21, ' ') << "BRANCH CURRENT"
+    cmn.out2_stream << "  BUS K" << std::string(37, ' ') << "NODE VOLTAGE" << std::string(21, ' ') << "BRANCH CURRENT"
       << std::string(10, ' ') << "POWER FLOW" << std::string(5, ' ') << "POWER LOSS\n"
       << std::string(16, ' ') << "BUS M" << std::string(9, ' ') << "RECTANGULAR" << std::string(10, ' ') << "POLAR"
       << std::string(9, ' ') << "RECTANGULAR" << std::string(10, ' ') << "POLAR" << std::string(13, ' ') << "P AND Q"
@@ -35034,7 +35035,7 @@ statement_6200:
     "(/,8x,'TOTAL NETWORK LOSS \"PLOSS\" BY SUMMING NODAL INJECTIONS =',"
     "e20.10)"),
     d26;
-  cmn.out_stream << "\n TOTAL NETWORK LOSS \"PLOSS\" BY SUMMING NODAL INJECTIONS = " << SState("e20.10") << d26 << '\n';
+  cmn.out2_stream << "\n TOTAL NETWORK LOSS \"PLOSS\" BY SUMMING NODAL INJECTIONS = " << SState("e20.10") << d26 << '\n';
 statement_7394:
   if (kswtch <= 0) {
     goto statement_7396;
@@ -35197,7 +35198,7 @@ statement_8681:
       "(' OUTPUT FOR STEADY STATE SWITCH CURRENT',/,7x,'NODE-K',4x,'NODE-M',"
       "10x,'I-REAL',12x,'I-IMAG',12x,'I-MAGN',10x,'DEGREES',8x,'POWER ',10x,"
       "'REACTIVE')");
-    cmn.out_stream << " OUTPUT FOR STEADY STATE SWITCH CURRENT\n"
+    cmn.out2_stream << " OUTPUT FOR STEADY STATE SWITCH CURRENT\n"
       << std::string(7, ' ') << "NODE-K" << std::string(4, ' ') << "NODE-M" << std::string(10, ' ') << "I-REAL"
       << std::string(12, ' ') << "I-IMAG" << std::string(12, ' ') << "I-MAGN" << std::string(10, ' ') << "DEGREES"
       << std::string(8, ' ') << "POWER" << std::string(10, ' ') << "REACTIVE\n";
@@ -35224,7 +35225,7 @@ statement_8681:
     if (kol132 == 132) {
       write(lunit6, "(5x,2a10,3e18.8,f13.4,2e18.8)"), bus(k), bus(m),
         tclose(i), energy(i), d4, d5, power, react;
-      cmn.out_stream << std::string(5, ' ') << std::setw(10) << std::string(bus(k)) << std::setw(10) << std::string(bus(m))
+      cmn.out2_stream << std::string(5, ' ') << std::setw(10) << std::string(bus(k)) << std::setw(10) << std::string(bus(m))
         << SState("e18.8") << tclose(i) << SState("e18.8") << energy(i) << SState("e18.8") << d4 << SState("f13.4") << d5
         << SState("e18.8") << power << SState("e18.8") << react << '\n';
     }
@@ -35242,7 +35243,7 @@ statement_8681:
     }
     if (kol132 == 132) {
       write(lunit6, "(5x,2a10,2(5x,'CLOSE AT T=0+'))"), bus(k), bus(m);
-      cmn.out_stream << std::string(5, ' ') << std::setw(10) << std::string(bus(k)) << std::setw(10) << std::string(bus(m))
+      cmn.out2_stream << std::string(5, ' ') << std::setw(10) << std::string(bus(k)) << std::setw(10) << std::string(bus(m))
         << "     CLOSE AT T=0+" << "     CLOSE AT T=0+\n";
     }
     if (kol132 == 80) {
@@ -35252,7 +35253,7 @@ statement_8681:
   statement_8703:
     if (kol132 == 132) {
       write(lunit6, "(5x,2a10,4(10x,'OPEN',6x),8x,'OPEN')"), bus(k), bus(m);
-      cmn.out_stream << std::string(5, ' ') << std::setw(10) << std::string(bus(k)) << std::setw(10) << std::string(bus(m))
+      cmn.out2_stream << std::string(5, ' ') << std::setw(10) << std::string(bus(k)) << std::setw(10) << std::string(bus(m))
         << "          OPEN      " << "          OPEN      " << "          OPEN      " << "          OPEN      "
         << "        OPEN\n";
     }
@@ -35277,7 +35278,7 @@ statement_7396:
       "'SOURCE NODE VOLTAGE',12x,'INJECTED SOURCE CURRENT',14x,"
       "'INJECTED SOURCE POWER',/,17x,'NAME',2(9x,'RECTANGULAR',10x,'POLAR'),"
       "13x,'P AND Q',3x,'MVA AND P.F.')");
-    cmn.out_stream << "\nSOLUTION AT NODES WITH KNOWN VOLTAGE. NODES SHORTED TOGETHER BY SWITCHES ARE SHOWN AS A GROUP OF NAMES, WITH\n"
+    cmn.out2_stream << "\nSOLUTION AT NODES WITH KNOWN VOLTAGE. NODES SHORTED TOGETHER BY SWITCHES ARE SHOWN AS A GROUP OF NAMES, WITH\n"
       << "THE PRINTED RESULT APPLYING TO THE COMPOSITE GROUP. THE ENTRY 'MVA' IS SQRT(P**2 + Q**2) IN UNITS OF POWER,\n"
       << " WHILE 'P.F.' IS THE ASSOCIATED POWER FACTOR.\n" << std::string(17, ' ') << "NODE" << std::string(16, ' ')
       << "SOURCE NODE VOLTAGE" << std::string(12, ' ') << "INJECTED SOURCE CURRENT" << std::string(14, ' ') << "INJECTED SOURCE POWER\n"
@@ -35344,14 +35345,14 @@ statement_7430:
     goto statement_7440;
   }
   write(lunit6, format_7431);
-  cmn.out_stream << '\n';
+  cmn.out2_stream << '\n';
   n13 = L - 1;
   if (n13 > 0) {
     {
       write_loop wloop(cmn, lunit6, format_7431);
       FEM_DO_SAFE(j, 1, n13) {
         wloop, aupper(j);
-        cmn.out_stream << std::string(15, ' ') << std::setw(6) << std::string(aupper(j)) << '\n';
+        cmn.out2_stream << std::string(15, ' ') << std::setw(6) << std::string(aupper(j)) << '\n';
       }
     }
   }
@@ -35496,7 +35497,7 @@ statement_8102:
       "OUTPUT FOLLOWS.',/,7x,'BUS',14x,'PHASOR',7x,'ANGLE IN',16x,'REAL',11x,"
       "'IMAGINARY',/,6x,'NAME',11x,'MAGNITUDE',8x,'DEGREES',16x,'PART',16x,"
       "'PART')");
-    cmn.out_stream << "\nBEGIN STEADY-STATE PRINTOUT OF EMTP OUTPUT VARIABLES. NODE VOLTAGE OUTPUT FOLLOWS.\n"
+    cmn.out2_stream << "\nBEGIN STEADY-STATE PRINTOUT OF EMTP OUTPUT VARIABLES. NODE VOLTAGE OUTPUT FOLLOWS.\n"
       << std::string(7, ' ') << "BUS" << std::string(14, ' ') << "PHASOR" << std::string(7, ' ') << "ANGLE IN"
       << std::string(16, ' ') << "REAL" << std::string(11, ' ') << "IMAGINARY\n"
       << std::string(6, ' ') << "NAME" << std::string(11, ' ') << "MAGNITUDE" << std::string(8, ' ') << "DEGREES"
@@ -35520,7 +35521,7 @@ statement_8102:
     ck1 = std::atan2(h2, gus1) * 360.f / twopi;
     if (fmaxfs == 0) {
       write(lunit6, "(4x,a6,e20.8,f15.6,2e20.8)"), bus(i), a, ck1, h1, h2;
-      cmn.out_stream << "    " << std::string(bus(i)).substr(0, 6) << SState("e20.7") << a << SState("f15.6") << ck1
+      cmn.out2_stream << "    " << std::string(bus(i)).substr(0, 6) << SState("e20.7") << a << SState("f15.6") << ck1
         << SState("e20.7") << h1 << SState("e20.7") << h1 << '\n';
     }
     solr(k) = a;
@@ -50907,14 +50908,27 @@ statement_3104:
         wloop, jbrnch(i);
       }
       if (numnvo == 0) cmn.out_stream << "Time";
-      for (int i = 1; i <= nc; ++i) { // branch current
-        if (auto n1 = ibrnch(i), n2 = jbrnch(i); n1 <= ntot && n2 <= ntot)
-          cmn.out_stream << ',' << bus(n1)(1,6).std_str() << "->" << bus(n2)(1,6).std_str();
-        else // machine variables: based on case0019
-          cmn.out_stream << ',' << texvec(n1 - ntot)(1, 6).std_str() 
-                        << "->" << texvec(n2 - ntot)(1, 6).std_str();
+      for (int i = 1; i <= ncsave; ++i) { // branch 
+        auto n1 = ibrnch(i);
+        auto n2 = jbrnch(i);
+        cmn.out_stream << ',' << bus(n1)(1, 6).std_str() << "->" << bus(n2)(1, 6).std_str();
       }
-
+      for (int i = 1; i <= nsmout; ++i) { // dynamic sm 
+        auto n1 = ismout(3*i - 1);
+        auto n2 = ismout(3*i);
+        cmn.out_stream << ',' << texvec(n1)(1, 6).std_str() << "->" << texvec(n2)(1, 6).std_str();
+      }
+      for (int i = 1; i <= ioutcs; ++i) { // tacs
+        auto n2 = ivarb(kjout + 1);
+        n2 = ivarb(klntab + n2);
+        cmn.out_stream << ',' << text1(1, 6).std_str() << "->" << texvec(n2)(1, 6).std_str();
+      }
+      for (int i = 1; i <= numout; ++i) { // universal machine
+        auto n1 = ispum(n17 + i);
+        auto n2 = ispum(n19 + i);
+        cmn.out_stream << ',' << busum(n1)(1, 6).std_str() << "->" << busum(n2)(1, 6).std_str();
+      }
+      
       cmn.out_stream << '\n';
     }
   }

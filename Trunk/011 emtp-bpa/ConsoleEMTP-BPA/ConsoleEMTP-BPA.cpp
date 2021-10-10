@@ -9,7 +9,7 @@
 int main(int argc, char const* argv[])
 {
   namespace fs = std::filesystem;
-  std::string input{ R"(..\..\..\_Tests\EMTP-BPA\case0001\test.dat)" };
+  std::string input{ R"(..\..\..\_Tests\EMTP-BPA\case0015\test.dat)" };
 #ifndef _DEBUG
   if (argc < 2) {
     std::cout << "Enter input File name: ";
