@@ -3392,7 +3392,7 @@ struct common_com44
 
 struct common_umlocal
 {
-  arr<fem::str<8> > texta;
+  arr<fem::str<8> > texta{ dimension(101), fem::fill0 };
   double d1;
   double d2;
   double d3;
@@ -3487,127 +3487,29 @@ struct common_umlocal
   int lopss10;
   int lopss4;
   int nshare;
-
-  common_umlocal() :
-    texta(dimension(101), fem::fill0),
-    d1(fem::double0),
-    d2(fem::double0),
-    d3(fem::double0),
-    d17(fem::double0),
-    stat59(fem::double0),
-    fmum(fem::double0),
-    rmvaum(fem::double0),
-    rkvum(fem::double0),
-    s1um(fem::double0),
-    s2um(fem::double0),
-    zlsbum(fem::double0),
-    s1qum(fem::double0),
-    s2qum(fem::double0),
-    aglqum(fem::double0),
-    raum(fem::double0),
-    xdum(fem::double0),
-    squm(fem::double0),
-    xdpum(fem::double0),
-    xqpum(fem::double0),
-    xdppum(fem::double0),
-    xqppum(fem::double0),
-    tdpum(fem::double0),
-    tdppum(fem::double0),
-    x0um(fem::double0),
-    rnum(fem::double0),
-    xnum(fem::double0),
-    xfum(fem::double0),
-    xdfum(fem::double0),
-    xdkdum(fem::double0),
-    xkdum(fem::double0),
-    xkqum(fem::double0),
-    xqkqum(fem::double0),
-    xgkqum(fem::double0),
-    xqum(fem::double0),
-    xqgum(fem::double0),
-    xgum(fem::double0),
-    distrf(fem::double0),
-    hjum(fem::double0),
-    dsynum(fem::double0),
-    dmutum(fem::double0),
-    spring(fem::double0),
-    dabsum(fem::double0),
-    tqppum(fem::double0),
-    agldum(fem::double0),
-    xlum(fem::double0),
-    nz1(fem::int0),
-    nz2(fem::int0),
-    nz3(fem::int0),
-    nz4(fem::int0),
-    n5(fem::int0),
-    n6(fem::int0),
-    n7(fem::int0),
-    n8(fem::int0),
-    n9(fem::int0),
-    n10(fem::int0),
-    n11(fem::int0),
-    n12(fem::int0),
-    n14(fem::int0),
-    n15(fem::int0),
-    n16(fem::int0),
-    n17(fem::int0),
-    n18(fem::int0),
-    n19(fem::int0),
-    n20(fem::int0),
-    jr(fem::int0),
-    jf(fem::int0),
-    nexc(fem::int0),
-    kconex(fem::int0),
-    ibrexc(fem::int0),
-    nstan(fem::int0),
-    numasu(fem::int0),
-    nmgen(fem::int0),
-    nmexc(fem::int0),
-    ntypsm(fem::int0),
-    netrun(fem::int0),
-    netrum(fem::int0),
-    nsmtpr(fem::int0),
-    nsmtac(fem::int0),
-    nrsyn(fem::int0),
-    ntorq(fem::int0),
-    mlum(fem::int0),
-    nparum(fem::int0),
-    ngroup(fem::int0),
-    nall(fem::int0),
-    nangre(fem::int0),
-    nexcsw(fem::int0),
-    limasu(fem::int0),
-    lopss2(fem::int0),
-    lopss1(fem::int0),
-    lopss8(fem::int0),
-    lopss9(fem::int0),
-    lopss10(fem::int0),
-    lopss4(fem::int0),
-    nshare(fem::int0)
-  {}
 };
 
 struct common_umlocl
 {
-  int n1z;
-  int n2z;
-  int n3z;
-  int n4z;
-  int n5z;
-  int n6z;
-  int n7z;
-  int n8z;
-  int n9z;
-  int n10z;
-  int n11z;
-  int n12z;
-  int n17z;
-  int n18z;
-  int n19z;
-  int n20z;
-  double d1z;
-  double d2z;
-  double d3z;
+  int n1;
+  int n2;
+  int n3;
+  int n4;
+  int n5;
+  int n6;
+  int n7;
+  int n8;
+  int n9;
+  int n10;
+  int n11;
+  int n12;
+  int n17;
+  int n18;
+  int n19;
+  int n20;
+  double d1;
+  double d2;
+  double d3;
   double d4;
   double d5;
   double d6;
@@ -3621,7 +3523,7 @@ struct common_umlocl
   double d14;
   double d15;
   double d16;
-  double d17z;
+  double d17;
   double d18;
   int lfim3;
   int lfim4i;
@@ -3638,58 +3540,6 @@ struct common_umlocl
   int lopsz9;
   int lopsz10;
   double slip;
-
-  common_umlocl() :
-    n1z(fem::int0),
-    n2z(fem::int0),
-    n3z(fem::int0),
-    n4z(fem::int0),
-    n5z(fem::int0),
-    n6z(fem::int0),
-    n7z(fem::int0),
-    n8z(fem::int0),
-    n9z(fem::int0),
-    n10z(fem::int0),
-    n11z(fem::int0),
-    n12z(fem::int0),
-    n17z(fem::int0),
-    n18z(fem::int0),
-    n19z(fem::int0),
-    n20z(fem::int0),
-    d1z(fem::double0),
-    d2z(fem::double0),
-    d3z(fem::double0),
-    d4(fem::double0),
-    d5(fem::double0),
-    d6(fem::double0),
-    d7(fem::double0),
-    d8(fem::double0),
-    d9(fem::double0),
-    d10(fem::double0),
-    d11(fem::double0),
-    d12(fem::double0),
-    d13(fem::double0),
-    d14(fem::double0),
-    d15(fem::double0),
-    d16(fem::double0),
-    d17z(fem::double0),
-    d18(fem::double0),
-    lfim3(fem::int0),
-    lfim4i(fem::int0),
-    ncomcl(fem::int0),
-    ncomum(fem::int0),
-    kcld1(fem::int0),
-    kclq1(fem::int0),
-    kclf(fem::int0),
-    nminum(fem::int0),
-    lopsz1(fem::int0),
-    lopsz2(fem::int0),
-    lopsz4(fem::int0),
-    lopsz8(fem::int0),
-    lopsz9(fem::int0),
-    lopsz10(fem::int0),
-    slip(fem::double0)
-  {}
 };
 
 struct common_com29
@@ -4552,8 +4402,6 @@ struct common :
   common_a8sw,
   common_fdqlcl,
   common_com44,
-  common_umlocal,
-  common_umlocl,
   common_com29,
   common_ldec31,
   //common_c31b01,
@@ -4672,14 +4520,16 @@ struct common :
   std::ifstream inp_stream;
   std::ofstream out_stream;
   std::ofstream out2_stream; // steady state result if apply
-
   //std::ofstream log_stream;
+
+  common_umlocal umd1;
+  common_umlocl  umd2;
 
   common(
     int argc,
     char const* argv[])
-  :
-    fem::common(argc, argv)
+  : fem::common(argc, argv)
+    , umd1{}, umd2{}
   {}
 };
 

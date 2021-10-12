@@ -13007,81 +13007,82 @@ void umdatb(
   umoutp(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  const auto& texta = cmn.texta;
-  double& d1 = cmn.d1;
-  double& d2 = cmn.d2;
-  double& d3 = cmn.d3;
-  double& d17 = cmn.d17;
-  double& fmum = cmn.fmum;
-  double& rmvaum = cmn.rmvaum;
-  double& rkvum = cmn.rkvum;
-  double& s1um = cmn.s1um;
-  double& s2um = cmn.s2um;
-  double& zlsbum = cmn.zlsbum;
-  double& s1qum = cmn.s1qum;
-  double& s2qum = cmn.s2qum;
-  double& aglqum = cmn.aglqum;
-  double& raum = cmn.raum;
-  double& xdum = cmn.xdum;
-  double& xdpum = cmn.xdpum;
-  double& xqpum = cmn.xqpum;
-  double& xdppum = cmn.xdppum;
-  double& xqppum = cmn.xqppum;
-  double& tdpum = cmn.tdpum;
-  double& tdppum = cmn.tdppum;
-  double& x0um = cmn.x0um;
-  double& rnum = cmn.rnum;
-  double& xnum = cmn.xnum;
-  double& xfum = cmn.xfum;
-  double& xdfum = cmn.xdfum;
-  double& xkdum = cmn.xkdum;
-  double& xkqum = cmn.xkqum;
-  double& xqkqum = cmn.xqkqum;
-  double& xqum = cmn.xqum;
-  double& xgum = cmn.xgum;
-  double& distrf = cmn.distrf;
-  double& hjum = cmn.hjum;
-  double& dsynum = cmn.dsynum;
-  double& dmutum = cmn.dmutum;
-  double& spring = cmn.spring;
-  double& dabsum = cmn.dabsum;
-  double& tqppum = cmn.tqppum;
-  double& agldum = cmn.agldum;
-  double& xlum = cmn.xlum;
-  int& n5 = cmn.n5;
-  int& n6 = cmn.n6;
-  int& n7 = cmn.n7;
-  int& n8 = cmn.n8;
-  int& n9 = cmn.n9;
-  int& n10 = cmn.n10;
-  int& n11 = cmn.n11;
-  int& n12 = cmn.n12;
-  int& n14 = cmn.n14;
-  int& n15 = cmn.n15;
-  int& n16 = cmn.n16;
-  int& n17 = cmn.n17;
-  int& n19 = cmn.n19;
-  int& n20 = cmn.n20;
-  int& nexc = cmn.nexc;
-  int& kconex = cmn.kconex;
-  int& ibrexc = cmn.ibrexc;
-  int& nstan = cmn.nstan;
-  int& numasu = cmn.numasu;
-  int& nmgen = cmn.nmgen;
-  int& nmexc = cmn.nmexc;
-  int& ntypsm = cmn.ntypsm;
-  int& netrum = cmn.netrum;
-  int& nsmtpr = cmn.nsmtpr;
-  int& nsmtac = cmn.nsmtac;
-  int& nrsyn = cmn.nrsyn;
-  int& ntorq = cmn.ntorq;
-  int& mlum = cmn.mlum;
-  int& nparum = cmn.nparum;
-  int& ngroup = cmn.ngroup;
-  int& nall = cmn.nall;
-  int& nangre = cmn.nangre;
-  int& nexcsw = cmn.nexcsw;
-  int& limasu = cmn.limasu;
+  auto& umd1 = cmn.umd1;
+  const auto& texta = umd1.texta;
+  auto& d1 = umd1.d1;
+  auto& d2 = umd1.d2;
+  auto& d3 = umd1.d3;
+  auto& d17 = umd1.d17;
+  auto& fmum = umd1.fmum;
+  auto& rmvaum = umd1.rmvaum;
+  auto& rkvum = umd1.rkvum;
+  auto& s1um = umd1.s1um;
+  auto& s2um = umd1.s2um;
+  auto& zlsbum = umd1.zlsbum;
+  auto& s1qum = umd1.s1qum;
+  auto& s2qum = umd1.s2qum;
+  auto& aglqum = umd1.aglqum;
+  auto& raum = umd1.raum;
+  auto& xdum = umd1.xdum;
+  auto& xdpum = umd1.xdpum;
+  auto& xqpum = umd1.xqpum;
+  auto& xdppum = umd1.xdppum;
+  auto& xqppum = umd1.xqppum;
+  auto& tdpum = umd1.tdpum;
+  auto& tdppum = umd1.tdppum;
+  auto& x0um = umd1.x0um;
+  auto& rnum = umd1.rnum;
+  auto& xnum = umd1.xnum;
+  auto& xfum = umd1.xfum;
+  auto& xdfum = umd1.xdfum;
+  auto& xkdum = umd1.xkdum;
+  auto& xkqum = umd1.xkqum;
+  auto& xqkqum = umd1.xqkqum;
+  auto& xqum = umd1.xqum;
+  auto& xgum = umd1.xgum;
+  auto& distrf = umd1.distrf;
+  auto& hjum = umd1.hjum;
+  auto& dsynum = umd1.dsynum;
+  auto& dmutum = umd1.dmutum;
+  auto& spring = umd1.spring;
+  auto& dabsum = umd1.dabsum;
+  auto& tqppum = umd1.tqppum;
+  auto& agldum = umd1.agldum;
+  auto& xlum = umd1.xlum;
+  auto& n5 = umd1.n5;
+  auto& n6 = umd1.n6;
+  auto& n7 = umd1.n7;
+  auto& n8 = umd1.n8;
+  auto& n9 = umd1.n9;
+  auto& n10 = umd1.n10;
+  auto& n11 = umd1.n11;
+  auto& n12 = umd1.n12;
+  auto& n14 = umd1.n14;
+  auto& n15 = umd1.n15;
+  auto& n16 = umd1.n16;
+  auto& n17 = umd1.n17;
+  auto& n19 = umd1.n19;
+  auto& n20 = umd1.n20;
+  auto& nexc = umd1.nexc;
+  auto& kconex = umd1.kconex;
+  auto& ibrexc = umd1.ibrexc;
+  auto& nstan = umd1.nstan;
+  auto& numasu = umd1.numasu;
+  auto& nmgen = umd1.nmgen;
+  auto& nmexc = umd1.nmexc;
+  auto& ntypsm = umd1.ntypsm;
+  auto& netrum = umd1.netrum;
+  auto& nsmtpr = umd1.nsmtpr;
+  auto& nsmtac = umd1.nsmtac;
+  auto& nrsyn = umd1.nrsyn;
+  auto& ntorq = umd1.ntorq;
+  auto& mlum = umd1.mlum;
+  auto& nparum = umd1.nparum;
+  auto& ngroup = umd1.ngroup;
+  auto& nall = umd1.nall;
+  auto& nangre = umd1.nangre;
+  auto& nexcsw = umd1.nexcsw;
+  auto& limasu = umd1.limasu;
   fem::str<8>& bus1 = cmn.bus1;
   fem::str<8>& bus2 = cmn.bus2;
   fem::str<8>& trash = cmn.trash;
@@ -13272,7 +13273,7 @@ void umdatb(
       d2 = cmn.statfr;
     }
     rotmom(n1) = twopi * d2;
-    cmn.stat59 = d2;
+    umd1.stat59 = d2;
     //C  CREATION OF 2 EXCITATION NODES :                                     M42.3184
     ntot++;
     kode(ntot) = 0;
@@ -13643,14 +13644,14 @@ statement_17340:
   //C  READING OF INDUCTANCE/RESISTANCE DATA INPUT :                        M42.3453
 statement_17400:
   n2 = 0;
-  read(abuff, "(6e10.6)"), xfum, xdfum, xfkdum, xdum, cmn.xdkdum, xkdum;
+  read(abuff, "(6e10.6)"), xfum, xdfum, xfkdum, xdum, umd1.xdkdum, xkdum;
   n2++;
   if (noutpr == 0) {
     write(kunit6, format_17412), numum, n2;
   }
   cimage(cmn);
-  read(abuff, "(6e10.6,10x,i10)"), xkqum, xqkqum, cmn.xgkqum,
-    xqum, cmn.xqgum, xgum, netrum;
+  read(abuff, "(6e10.6,10x,i10)"), xkqum, xqkqum, umd1.xgkqum,
+    xqum, umd1.xqgum, xgum, netrum;
   n2++;
   if (noutpr == 0) {
     write(kunit6, format_17412), numum, n2;
@@ -14708,7 +14709,7 @@ statement_17830:
   lstat(17) = -1;
   lstat(13) = 0;
   cmn.bus6 = bus1;
-  cmn.jr = 1;
+  umd1.jr = 1;
   return;
 statement_15482:
   ntotac++;
@@ -15021,7 +15022,7 @@ statement_17958:
     "' IN ALL SM TYPE-59 DATA MACHINES.')");
   goto statement_9600;
 statement_17970:
-  cmn.jf = 1;
+  umd1.jf = 1;
   return;
   //C  END READING SM TYPE-59 DATA INPUT $$$$$$$$$$$$$$$$$$$$$$$$$$         M42.4426
 statement_9600:
@@ -15155,24 +15156,26 @@ umdata(
   umoutp(dimension(1));
   common_read read(cmn);
   common_write write(cmn);
-  auto& texta = cmn.texta;
-  double& d1 = cmn.d1;
-  double& d2 = cmn.d2;
-  double& d3 = cmn.d3;
-  double& distrf = cmn.distrf;
-  int& n5 = cmn.n5;
-  int& n6 = cmn.n6;
-  int& n7 = cmn.n7;
-  int& n8 = cmn.n8;
-  int& n10 = cmn.n10;
-  int& n11 = cmn.n11;
-  int& n12 = cmn.n12;
-  int& n20 = cmn.n20;
-  int& jr = cmn.jr;
-  int& jf = cmn.jf;
-  int& nsmtac = cmn.nsmtac;
-  int& limasu = cmn.limasu;
-  int& nshare = cmn.nshare;
+  auto& umd1 = cmn.umd1;
+  auto& texta = umd1.texta;
+  auto& d1 = umd1.d1;
+  auto& d2 = umd1.d2;
+  auto& d3 = umd1.d3;
+  auto& distrf = umd1.distrf;
+  auto& n5 = umd1.n5;
+  auto& n6 = umd1.n6;
+  auto& n7 = umd1.n7;
+  auto& n8 = umd1.n8;
+  auto& n10 = umd1.n10;
+  auto& n11 = umd1.n11;
+  auto& n12 = umd1.n12;
+  auto& n20 = umd1.n20;
+  auto& jr = umd1.jr;
+  auto& jf = umd1.jf;
+  auto& nsmtac = umd1.nsmtac;
+  auto& limasu = umd1.limasu;
+  auto& nshare = umd1.nshare;
+  
   fem::str<8>& bus1 = cmn.bus1;
   fem::str<8>& bus2 = cmn.bus2;
   fem::str<8>& bus3 = cmn.bus3;
@@ -16737,7 +16740,7 @@ statement_1060:
   n5 = numout + nsmtac + 3;
   umoutp(numout + 3) = n5;
   //C  UMOUTP(NUMOUT+3) IS LAST ENTRY OF UMOUTP THAT IS USED                M32.2798
-  umoutp(numout + 2) = cmn.nangre;
+  umoutp(numout + 2) = umd1.nangre;
   //C  UMOUTP(NUMOUT+2) .NE. 0.0 INDICATES REQUEST FOR ANGLE TRANSF.        M32.2800
   umoutp(numout + 1) = -9999.0f;
   //C  UMOUTP(NUMOUT+1) .EQ. -9999. IS A FLAG FOR REQUEST OF TACS           M32.2802
@@ -23171,22 +23174,50 @@ void umrnu2(
   nodmum(dimension(1));
   umoutp(dimension(1));
   common_write write(cmn);
-  double& d4 = cmn.d4;
-  double& d10 = cmn.d10;
-  double& d11 = cmn.d11;
-  double& d12 = cmn.d12;
-  double& d13 = cmn.d13;
-  double& d14 = cmn.d14;
-  double& d15 = cmn.d15;
-  double& d16 = cmn.d16;
-  int& lfim3 = cmn.lfim3;
-  int& lfim4i = cmn.lfim4i;
-  int& ncomcl = cmn.ncomcl;
-  int& ncomum = cmn.ncomum;
-  int& kcld1 = cmn.kcld1;
-  int& kclq1 = cmn.kclq1;
-  int& nminum = cmn.nminum;
-  double& slip = cmn.slip;
+  auto& umd2 = cmn.umd2;
+  auto& d1 = umd2.d1;
+  auto& d2 = umd2.d2;
+  auto& d3 = umd2.d3;
+  auto& d4 = umd2.d4;
+  auto& d10 = umd2.d10;
+  auto& d11 = umd2.d11;
+  auto& d12 = umd2.d12;
+  auto& d13 = umd2.d13;
+  auto& d14 = umd2.d14;
+  auto& d15 = umd2.d15;
+  auto& d16 = umd2.d16;
+  auto& d17 = umd2.d17;
+
+  auto& slip = umd2.slip;
+
+  auto& lfim3 = umd2.lfim3;
+  auto& lfim4i = umd2.lfim4i;
+  auto& ncomcl = umd2.ncomcl;
+  auto& ncomum = umd2.ncomum;
+  auto& kcld1 = umd2.kcld1;
+  auto& kclq1 = umd2.kclq1;
+  auto& nminum = umd2.nminum;
+
+  auto& n1 = umd2.n1;
+  auto& n2 = umd2.n2;
+  auto& n3 = umd2.n3;
+  auto& n4 = umd2.n4;
+  auto& n5 = umd2.n5;
+  auto& n6 = umd2.n6;
+  auto& n7 = umd2.n7;
+  auto& n8 = umd2.n8;
+  auto& n9 = umd2.n9;
+  auto& n10 = umd2.n10;
+  auto& n11 = umd2.n11;
+  auto& n12 = umd2.n12;
+  int n13 = 0;
+  int n14 = 0;
+  int n15 = 0;
+  auto& n17 = umd2.n17;
+  auto& n18 = umd2.n18;
+  auto& n19 = umd2.n19;
+  auto& n20 = umd2.n20;
+
   double& epsiln = cmn.epsiln;
   auto& twopi = cmn.twopi;
   double& xopt = cmn.xopt;
@@ -23228,36 +23259,13 @@ void umrnu2(
   int& ksubum = cmn.ksubum;
   //
   int i = fem::int0;
-  int n9 = fem::int0;
-  int n10 = fem::int0;
-  int n11 = fem::int0;
-  int n1 = fem::int0;
   auto& lunit6 = cmn.lunit6;
   int nummec = fem::int0;
   int j = fem::int0;
   int kclj = fem::int0;
-  int n4 = fem::int0;
-  int n2 = fem::int0;
-  int n5 = fem::int0;
-  int n3 = fem::int0;
-  int n8 = fem::int0;
-  int n6 = fem::int0;
-  int n15 = fem::int0;
   int k = fem::int0;
   int ncl = fem::int0;
   int kcle = fem::int0;
-  double d3 = fem::double0;
-  int n19 = fem::int0;
-  int n18 = fem::int0;
-  int n20 = fem::int0;
-  int n13 = fem::int0;
-  int n14 = fem::int0;
-  int n7 = fem::int0;
-  double d1 = fem::double0;
-  double d2 = fem::double0;
-  double d17 = fem::double0;
-  int n12 = fem::int0;
-  int n17 = fem::int0;
   static const char* format_1904 =
     "(' UM NUMBER',i4,' :',28x,'NODE TO NODE   IBR',4x,'IT',8x,'TR(IT)',8x,"
     "'TX(IT)',2x,'KCONST',9x,'SFREQ',9x,'CREST')";
@@ -24712,23 +24720,49 @@ void umrenu(
   nodmum(dimension(1));
   umoutp(dimension(1));
   common_write write(cmn);
-  double& d4 = cmn.d4;
-  double& d5 = cmn.d5;
-  double& d6 = cmn.d6;
-  double& d7 = cmn.d7;
-  double& d8 = cmn.d8;
-  double& d10 = cmn.d10;
-  double& d11 = cmn.d11;
-  double& d12 = cmn.d12;
-  double& d13 = cmn.d13;
-  double& d14 = cmn.d14;
-  double& d15 = cmn.d15;
-  double& d16 = cmn.d16;
-  double& d18 = cmn.d18;
-  int& lfim3 = cmn.lfim3;
-  int& kcld1 = cmn.kcld1;
-  int& kclq1 = cmn.kclq1;
-  double& slip = cmn.slip;
+  auto& umd2 = cmn.umd2;
+  auto& d1 = umd2.d1;
+  auto& d2 = umd2.d2;
+  auto& d3 = umd2.d3;
+  auto& d4 = umd2.d4;
+  auto& d5 = umd2.d5;
+  auto& d6 = umd2.d6;
+  auto& d7 = umd2.d7;
+  auto& d8 = umd2.d8;
+  auto& d10 = umd2.d10;
+  auto& d11 = umd2.d11;
+  auto& d12 = umd2.d12;
+  auto& d13 = umd2.d13;
+  auto& d14 = umd2.d14;
+  auto& d15 = umd2.d15;
+  auto& d16 = umd2.d16;
+  auto& d17 = umd2.d17;
+  auto& d18 = umd2.d18;
+  double d19 = 0;
+  double d20 = 0;
+  auto& slip = umd2.slip;
+  auto& lfim3 = umd2.lfim3;
+  auto& kcld1 = umd2.kcld1;
+  auto& kclq1 = umd2.kclq1;
+  auto& n1 = umd2.n1;
+  auto& n2 = umd2.n2;
+  auto& n3 = umd2.n3;
+  auto& n4 = umd2.n4;
+  auto& n5 = umd2.n5;
+  auto& n6 = umd2.n6;
+  auto& n7 = umd2.n7;
+  auto& n8 = umd2.n8;
+  auto& n9 = umd2.n9;
+  auto& n10 = umd2.n10;
+  auto& n11 = umd2.n11;
+  auto& n12 = umd2.n12;
+  int n13 = 0;
+  int n14 = 0;
+  int n15 = 0;
+  auto& n17 = umd2.n17;
+  auto& n19 = umd2.n19;
+  auto& n20 = umd2.n20;
+
   double& epsiln = cmn.epsiln;
   auto& twopi = cmn.twopi;
   double& copt = cmn.copt;
@@ -24790,8 +24824,6 @@ void umrenu(
   int inpust = fem::int0;
   double zthrr = fem::double0;
   double zthri = fem::double0;
-  int n1 = fem::int0;
-  int n2 = fem::int0;
   arr_2d<3, 3, double> zths3(fem::fill0);
   arr_2d<3, 3, double> zths3i(fem::fill0);
   double seltat = fem::double0;
@@ -24799,18 +24831,7 @@ void umrenu(
   int kclqe = fem::int0;
   int kcle = fem::int0;
   int ncl = fem::int0;
-  double d1 = fem::double0;
-  int n10 = fem::int0;
-  int n11 = fem::int0;
-  double d2 = fem::double0;
-  double d19 = fem::double0;
-  double d20 = fem::double0;
-  double d17 = fem::double0;
-  double d3 = fem::double0;
-  int n13 = fem::int0;
-  int n12 = fem::int0;
-  int n3 = fem::int0;
-  int n4 = fem::int0;
+
   double cdsat = fem::double0;
   double cqsat = fem::double0;
   double flxda = fem::double0;
@@ -24821,14 +24842,6 @@ void umrenu(
   double sflxq = fem::double0;
   double curmt = fem::double0;
   int norton = fem::int0;
-  int n20 = fem::int0;
-  int n17 = fem::int0;
-  int n5 = fem::int0;
-  int n6 = fem::int0;
-  int n7 = fem::int0;
-  int n8 = fem::int0;
-  int n9 = fem::int0;
-  int n19 = fem::int0;
   int jacob = fem::int0;
   double stored = fem::double0;
   double storeq = fem::double0;
@@ -24836,13 +24849,11 @@ void umrenu(
   arr_2d<4, 4, double> fjm(fem::fill0);
   arr_2d<6, 7, double> gmat(fem::fill0);
   int jgauss = fem::int0;
-  int n15 = fem::int0;
   arr_2d<3, 3, double> dumma1(fem::fill0);
   arr_2d<3, 3, double> dumma2(fem::fill0);
   int nclind = fem::int0;
   double tqgen = fem::double0;
   int nshare = fem::int0;
-  int n14 = fem::int0;
   int itcap = fem::int0;
   int i = fem::int0;
   static const char* format_13114 =
@@ -27619,7 +27630,7 @@ statement_2236:
       ispum(cmn.iujcqs), spum(cmn.iuflxd), spum(cmn.iuflxq), ispum(cmn.iunppa), 
       spum(cmn.iurotm), ispum(cmn.iuncld), ispum(cmn.iunclq), ispum(cmn.iujtqo), 
       ispum(cmn.iujomo), ispum(cmn.iujtho), spum(cmn.iureqs), spum(cmn.iuepso), 
-      spum(cmn.iudcoe), spum(cmn.iukcoi), spum(cmn.iuvolt), spum(cmn.iuangl), 
+      spum(cmn.iudcoe), ispum(cmn.iukcoi), spum(cmn.iuvolt), spum(cmn.iuangl), 
       ispum(cmn.iunodf), ispum(cmn.iunodm), ispum(cmn.iukumo), ispum(cmn.iujumo), 
       spum(cmn.iuumou));
   }
@@ -34161,10 +34172,10 @@ void pltfil(
   }
 
 
-  cmn.out_stream << SState("e10.3") << volti[0]; // time
+  cmn.out_stream << SState("e12.5") << volti[0]; // time
   if (-1 < volti(1)) { // the last item is -9999
     for (int i = 1; i < k; ++i) {
-      cmn.out_stream << ',' << SState("e10.3") << volti[i];
+      cmn.out_stream << ',' << SState("e12.5") << volti[i];
     }
   }
   cmn.out_stream << '\n';
@@ -50866,6 +50877,7 @@ statement_300:
     FEM_DO_SAFE(i, 1, n16) {
       wloop, busum(i);
     }
+
   }
   if (iprsup >= 1) {
     write(6, format_3207), nc, lsiz12, nsmout, ioutcs, ntot, numnvo,

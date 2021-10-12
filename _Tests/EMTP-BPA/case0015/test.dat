@@ -1,0 +1,103 @@
+BEGIN NEW DATA CASE
+C     BENCHMARK DCNEW-1
+C     Test of automatic U.M. initialization using Type-4  (the induction)  mode.
+C     Continuation of steady-state only (no real transient).   No external rotor
+C     circuit.   Machine rating is as follows:
+C                    2.541 MVA,  4.2 KV,  4 POLE ( 85.67% efficiency at 0.846 PF
+C                    and 14.0E+3 NM.;  KIPP TORQUE = 79.157E+3 NM, SLP = 24.3% )
+POWER FREQUENCY, 60,   { Corrects possible 50-Hz declaration of European STARTUP
+ABSOLUTE U.M. DIMENSIONS, 20, 2, 50, 60,
+C PRINTED NUMBER WIDTH, 13, 2,  { Request maximum precision (for 8 output columns)
+ .000200    .100
+       1       1       1       1       1      -1
+       5       5      20      20     100     100
+C  --------- ROTOR EXTERNAL RESISTANCES
+  BUSA2 BUSAS2            1.0E-4 10.0                                          1
+  BUSB2 BUSBS2BUSA2 BUSAS2
+  BUSC2 BUSCS2BUSA2 BUSAS2
+C  --------- CONNECTIVITY OF EMTP FOR ELECTRIC NETWORK
+  BUSAS2                  1.0E+6
+  BUSBS2      BUSAS2
+  BUSCS2      BUSAS2
+C  --------- MECHANICAL NETWORK COMPONENTS
+  BUSMG BUSMGR            .4548                                                1
+  BUSMGR      BUSMG BUSMGR
+  BUSMG                               9.8E+7                                   1
+C  -------- FOR MEASUREMENT OF ELECTROMECHANICAL TORQUE
+  BUSMS BUSMG             1.0E-6                                               1
+BLANK card ending branch cards
+BLANK card ending nonexistent switch cards
+C  --------- SOURCES FOR INFINITE BUS
+14BUSAS2  3000.0     60.0     0.0                           -1.0
+14BUSBS2  3000.0     60.0     -120.0                        -1.0
+14BUSCS2  3000.0     60.0     +120.0                        -1.0
+C  --------- 3-PHASE SOURCES AT ROTOR SIDE (ACTUAL FREQ SET BY SS):
+C  --------- MECHANICAL INPUT TORQUE (ACTUAL VALUE SET BY SS):
+14BUSMS -1 0.000001  0.00001                                -1.0
+19 UM
+ 1
+BLANK CARD ENDING CLASS 1 UM DATA CARDS
+C  UM-1 MACHINE TABLE :
+ 4    111BUSMG        2                            0.1885
+              0.02358
+              0.02358
+2.0           0.0                 BUSMS
+C  UM-1 COIL TABLE
+                            BUSA2             1
+0.412         0.0012        BUSB2             1
+0.412         0.0012        BUSC2             1
+0.110         0.0012                          1
+0.110         0.0012                          1
+                                              1
+BLANK card terminating all U.M. data
+C --------------+------------------------------
+C From bus name |  Names of all adjacent busses.
+C --------------+------------------------------
+C        BUSA2  |BUSAS2*UM1TLA*
+C        BUSAS2 |TERRA *BUSA2 *
+C        BUSB2  |BUSBS2*UM1TLB*
+C        BUSBS2 |TERRA *BUSB2 *
+C        BUSC2  |BUSCS2*UM1TLC*
+C        BUSCS2 |TERRA *BUSC2 *
+C        BUSMG  |TERRA *BUSMGR*BUSMS *UM1MCC*
+C        BUSMGR |TERRA *BUSMG *
+C        BUSMS  |BUSMG *
+C        UM1TLA |BUSA2 *
+C        UM1TLB |BUSB2 *
+C        UM1TLC |BUSC2 *
+C        UM1MCC |BUSMG *
+C        TERRA  |BUSAS2*BUSBS2*BUSCS2*BUSMG *BUSMGR*
+C --------------+------------------------------
+BLANK card ending all electric-network sources
+C       Total network loss  P-loss  by summing injections =   1.399999999990E+01
+C       Total network loss  P-loss  by summing injections =   1.879270126241E+04
+C       Total network loss  P-loss  by summing injections =   1.879220126241E+04
+C       Total network loss  P-loss  by summing injections =   1.880006219404E+04
+C Last inject:  BUSCS2     -1500.      3000.     182.2227379651  376.33814334153
+C Last inject:    2598.0762113533   120.0000    329.27992939481       61.0399614
+  BUSAS2BUSA2 BUSMG                           
+C  Step    Time        BUSAS2       BUSA2        BUSMG        BUSA2        BUSMG
+C                                                            BUSAS2       BUSMGR
+C
+C                       UM-1         UM-1         UM-1         UM-1         UM-1
+C                       OMEGM        THETAM       IPA          IPB           IPC
+C    0     0.0         3000.  1784.374675   184.725648  -194.050415  203.0844855
+C                 184.725648  .7853981634  -194.050415  376.2746528  -182.224238
+C    1   .2E-3   2991.476701  1834.302202  184.7256479  -217.778001  203.0844854
+C                 184.725648   .822343293  -217.778001  374.6919354  -156.913934
+BLANK card terminating output variable requests
+C  500     0.1         3000.  1783.984613  184.7241591  -193.987564  203.0828486
+C                 184.725648  19.25796297  -193.987564  376.1921117  -182.204548
+C Variable maxima :    3000.   1928.26504   184.725648  376.2415171  203.0844855
+C                   184.725648 19.25796297  376.2415171 376.2781467  376.2139786
+C Times of maxima :        0.0        .001          0.0       .0944          0.0
+C                          0.0         0.1        .0944       .0166        .0722
+C Variable minima :   -3000.  -1928.26734  184.7241591  -376.246896  203.0828486
+C                 184.725648  .7853981634  -376.246896  -376.228394  -376.231626
+C Times of minima :     .075         .026          0.1        .0194          0.1
+C                        0.0          0.0        .0194        .0916        .0972
+C  PRINTER PLOT
+C 194 10 0.0 100         UM-1  OMEGM UM-1  THETAM 
+C 194 20 0.0 100         BUSMG BUSMGRUM-1  TQGEN  
+BLANK card terminating plot cards
+BEGIN NEW DATA CASE
