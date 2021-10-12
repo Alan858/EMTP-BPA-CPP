@@ -50880,7 +50880,7 @@ statement_300:
 
   }
   if (iprsup >= 1) {
-    write(6, format_3207), nc, lsiz12, nsmout, ioutcs, ntot, numnvo,
+    write(lunit6, format_3207), nc, lsiz12, nsmout, ioutcs, ntot, numnvo,
       nv, n8, maxbus, n9, n18;
   }
   if (ivolt != 1) {
@@ -50964,7 +50964,7 @@ statement_3106:
     }
   }
   if (iprsup >= 1) {
-    write(6, format_3207), nc, lsiz12, nsmout, ioutcs, ntot, numnvo,
+    write(lunit6, format_3207), nc, lsiz12, nsmout, ioutcs, ntot, numnvo,
       nv, n8, maxbus, n9, n18;
   }
   if (ivolt != 1) {

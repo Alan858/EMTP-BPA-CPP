@@ -9,7 +9,7 @@ POWER FREQUENCY, 60,   { Corrects possible 50-Hz declaration of European STARTUP
 ABSOLUTE U.M. DIMENSIONS, 20, 2, 50, 60,
 C PRINTED NUMBER WIDTH, 13, 2,  { Request maximum precision (for 8 output columns)
  .000200    .100
-       1       1       1       1       1      -1
+       1       1       1       1       1      -1                               1
        5       5      20      20     100     100
 C  --------- ROTOR EXTERNAL RESISTANCES
   BUSA2 BUSAS2            1.0E-4 10.0                                          1
