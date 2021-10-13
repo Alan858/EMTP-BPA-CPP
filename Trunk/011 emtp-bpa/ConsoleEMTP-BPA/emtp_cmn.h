@@ -43,6 +43,7 @@ SOFTWARE.
 #include <random>
 #include <cassert>
 #include <unordered_map>
+//#include <span>
 #pragma warning (disable: 4267 4297)
 #include <fem.hpp> // Fortran EMulation library of fable module
 
@@ -107,6 +108,9 @@ namespace emtp {
     T& operator()(int idx) {
       if (!d_ || idx < 1 || s_ < idx) throw std::range_error("in ArraySpan");
       return d_[idx - 1];
+    }
+    auto data() const {
+      return d_;
     }
     auto size() const {
       return s_;
@@ -3958,15 +3962,6 @@ struct common_volpri
     vim(dimension(50), fem::fill0)
   {}
 };
-
-//struct common_c44b01
-//{
-//  arr<int> karray;
-//
-//  common_c44b01() :
-//    karray(dimension(300), fem::fill0)
-//  {}
-//};
 
 struct common_com45
 {

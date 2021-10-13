@@ -57878,7 +57878,7 @@ subr47(
   //arr_1d<1, std::complex<double> > ctg(fem::fill0);
   auto& itg = cmn.karray;
   auto& rtg = cmn.farray;
-  auto ctg = ArraySpan(reinterpret_cast<std::complex<double>*const>(cmn.karray.begin()), cmn.karray.size() / 4);
+  auto ctg = ArraySpan(reinterpret_cast<std::complex<double>*const>(cmn.farray.data()), cmn.farray.size() / 2);
 
   if (iprsup >= 1) {
     write(lunit6, "('  BEGIN MODULE \"SUBR47\".')");
@@ -71688,13 +71688,20 @@ public:
   }
 };
 
+inline common& Comm()
+{
+  static char const* argv[] = { "test" };
+  static common comm(1, argv);
+  return comm;
+};
 
 void program_main(
   const std::string& inpFile, 
   const std::string& logFile, 
   const std::string& outFile) try
 {
-  common cmn(0, 0);
+  // stacksize exceeds: common cmn(0, 0);
+  auto& cmn = Comm();
 
 #ifdef _DEBUG // test
   {
