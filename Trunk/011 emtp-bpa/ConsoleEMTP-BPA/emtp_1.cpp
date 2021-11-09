@@ -248,7 +248,7 @@ void dimens(
   lsize(13) = 5;
   lsize(14) = 460;
   lsize(15) = 90;
-  lsize(16) = 84;
+  lsize(16) = 42;
   lsize(17) = 4;
   lsize(18) = 254;
   lsize(19) = 90000;
@@ -909,14 +909,11 @@ void frefld(
   auto& lunit6 = cmn.lunit6;
   int jj = fem::int0;
   int n3 = fem::int0;
-  fem::str<8> text1 = blank;
-  arr_1d<30, fem::str<8> > texbuf(fem::fill0);
   int ll = fem::int0;
-  arr_1d<1, fem::str<8> > texvec(fem::fill0);
   int n9 = fem::int0;
   int i = fem::int0;
-  //C!REAL*8         TEXT1, CHTACS, TEXBUF, TEXVEC
-  //C!w EQUIVALENCE  ( TEXVEC(1),  TEXT1 )
+  fem::str<8> text1 = blank;
+  arr_1d<30, fem::str<8> > texbuf(fem::fill0);
   if (iprsup >= 5) {
     write(lunit6,
       "(' TOP \"FREFLD\".  NFRFLD, NRIGHT, KOLBEG =',3i6)"), nfrfld,
@@ -2362,18 +2359,18 @@ void tacs1a(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-  auto& kspvar = isptacs(6);
-  auto& kprsup = isptacs(9);
-  auto& kivarb = isptacs(10);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& kspvar = cmn.tacsar.kspvar;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kivarb = cmn.tacsar.kivarb;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
 
-  auto& nsu = lstat(53);
-  auto& nsup = lstat(55);
-  auto& karg = lstat(56);
-  auto& kpar = lstat(57);
-  auto& nsudv = lstat(60);
+  auto& nsu = cmn.tacsar.nsu;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& karg = cmn.tacsar.karg;
+  auto& kpar = cmn.tacsar.kpar;
+  auto& nsudv = cmn.tacsar.nsudv;
 
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE TACS1A.\"')");
@@ -3522,7 +3519,6 @@ void tacs1a(
   //C     : OPERATOR                                                        M28.2628
   statement_50675:
   karg += 3;
-  lstat(56) = karg;
   ivarb(karg + 2) = j;
   ivarb(karg + 1) = 0;
   ivarb(karg + 3) = 0;
@@ -3568,11 +3564,9 @@ void tacs1a(
     goto statement_126;
   }
   karg += 3;
-  lstat(56) = karg;
   ivarb(karg + 1) = -1;
   ivarb(karg + 2) = 0;
   kpar++;
-  lstat(57) = kpar;
   ivarb(karg + 3) = kpar;
   ndx1 = kprsup + kpar;
   sptacs(ndx1) = prx;
@@ -4205,7 +4199,6 @@ void tacs1b(
   auto& sptacs = cmn.sptacs;
   const auto& texvec = cmn.texvec;
 
-
   fem::str<8>& delay = sve.delay;
   if (is_called_first_time) {
     delay = "DELAY ";
@@ -4318,36 +4311,37 @@ void tacs1b(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-  auto& kofsce = isptacs(4);
-  auto& kcolcs = isptacs(5);
-  auto& kspvar = isptacs(6);
-  auto& katcs =  isptacs(7);
-  auto& konsup = isptacs(8);
-  auto& kprsup = isptacs(9);
-  auto& kivarb = isptacs(10);
-  auto& kaliu =  isptacs(11);
-  auto& kjout =  isptacs(12);
-  auto& kiuty =  isptacs(13);
-  auto& kawkcs = isptacs(15);
-  auto& kxar =   isptacs(16);
-  auto& kxtcs =  isptacs(17);
-  auto& klntab = isptacs(18);
-  auto& kisblk = isptacs(19);
-  auto& krsblk = isptacs(20);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& kofsce = cmn.tacsar.kofsce;
+  auto& kcolcs = cmn.tacsar.kcolcs;
+  auto& kspvar = cmn.tacsar.kspvar;
+  auto& katcs = cmn.tacsar.katcs;
+  auto& konsup = cmn.tacsar.konsup;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kivarb = cmn.tacsar.kivarb;
+  auto& kaliu = cmn.tacsar.kaliu;
+  auto& kjout = cmn.tacsar.kjout;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kawkcs = cmn.tacsar.kawkcs;
+  auto& kxar = cmn.tacsar.kxar;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& klntab = cmn.tacsar.klntab;
+  auto& kisblk = cmn.tacsar.kisblk;
+  auto& krsblk = cmn.tacsar.krsblk;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
 
-  auto& nuk = lstat(51);
-  auto& ia = lstat(52);
-  auto& nsu = lstat(53);
-  auto& niu = lstat(54);
-  auto& nsup = lstat(55);
-  auto& karg = lstat(56);
-  auto& kpar = lstat(57);
-  auto& kxic = lstat(58);
-  auto& ioutcs = lstat(59);
-  auto& nsudv = lstat(60);
+  auto& nuk = cmn.tacsar.nuk;
+  auto& ia = cmn.tacsar.ia;
+  auto& nsu = cmn.tacsar.nsu;
+  auto& niu = cmn.tacsar.niu;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& karg = cmn.tacsar.karg;
+  auto& kpar = cmn.tacsar.kpar;
+  auto& kxic = cmn.tacsar.kxic;
+  auto& ioutcs = cmn.tacsar.ioutcs;
+  auto& nsudv = cmn.tacsar.nsudv;
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE TACS1B.\"')");
   }
@@ -5505,6 +5499,20 @@ void tacs1b(
     FEM_DO_SAFE(i, 1, maxbus) {
       wloop, texvec(i);
     }
+
+    cmn.out_stream << getCurrentDateTime() << '\n';
+    cmn.out_stream << "Time";
+    //for (int i = 1; i <= maxbus; ++i)
+    //  cmn.out_stream << ',' << texvec(i)(1,6).std_str();
+    n2 = kcolcs + 1;
+    n3 = kcolcs + ioutcs;
+    for (auto i = n2; i <= n3; ++i) {
+      n1 = n1 + 1;
+      j = cmn.tacsar.jout(kjout + n1);
+      auto idx = cmn.tacsar.ilntab(klntab + j);
+      cmn.out_stream << ',' << texvec(idx)(1, 6).std_str();
+    }
+    cmn.out_stream << '\n';
   }
   n2 = kcolcs + 1;
   n3 = kcolcs + ioutcs;
@@ -5653,37 +5661,38 @@ void tacs1(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-  auto& konsce = isptacs(1);
-  auto& koncur = isptacs(2);
-  auto& kcolcs = isptacs(5);
-  auto& kspvar = isptacs(6);
-  auto& katcs =  isptacs(7);
-  auto& konsup = isptacs(8);
-  auto& kprsup = isptacs(9);
-  auto& kivarb = isptacs(10);
-  auto& kaliu =  isptacs(11);
-  auto& kiuty =  isptacs(13);
-  auto& kawkcs = isptacs(15);
-  auto& kxtcs =  isptacs(17);
-  auto& kjout =  isptacs(12);
-  auto& kud1 =   isptacs(14);
-  auto& kxar =   isptacs(16);
-  auto& klntab = isptacs(18);
-  auto& kisblk = isptacs(19);
-  auto& krsblk = isptacs(20);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& konsce = cmn.tacsar.konsce;
+  auto& koncur = cmn.tacsar.koncur;
+  auto& kcolcs = cmn.tacsar.kcolcs;
+  auto& kspvar = cmn.tacsar.kspvar;
+  auto& katcs = cmn.tacsar.katcs;
+  auto& konsup = cmn.tacsar.konsup;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kivarb = cmn.tacsar.kivarb;
+  auto& kaliu = cmn.tacsar.kaliu;
+  auto& kjout = cmn.tacsar.kjout;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kud1 = cmn.tacsar.kud1;
+  auto& kawkcs = cmn.tacsar.kawkcs;
+  auto& kxar = cmn.tacsar.kxar;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& klntab = cmn.tacsar.klntab;
+  auto& kisblk = cmn.tacsar.kisblk;
+  auto& krsblk = cmn.tacsar.krsblk;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
 
-  auto& nuk =  lstat(51);
-  auto& nsu =  lstat(53);
-  auto& niu =  lstat(54);
-  auto& nsup = lstat(55);
-  auto& karg = lstat(56);
-  auto& kpar = lstat(57);
-  auto& kxic = lstat(58);
-  auto& ioutcs = lstat(59);
-  auto& nsudv = lstat(60);
+  auto& nuk = cmn.tacsar.nuk;
+  auto& nsu = cmn.tacsar.nsu;
+  auto& niu = cmn.tacsar.niu;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& karg = cmn.tacsar.karg;
+  auto& kpar = cmn.tacsar.kpar;
+  auto& kxic = cmn.tacsar.kxic;
+  auto& ioutcs = cmn.tacsar.ioutcs;
+  auto& nsudv = cmn.tacsar.nsudv;
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE TACS1.\"')");
   }
@@ -5784,28 +5793,19 @@ void tacs1(
   cmn.lbstac = etac.size(); // locf(ismtac(1)) - locf(etac(1));
   cmn.ntotac = 0;
   nsu = 0;
-  lstat(53) = nsu;
   nsudv = lstat(63);
-  lstat(60) = nsudv;
   nuk = 0;
-  lstat(51) = nuk;
   nuki = kisblk - 8;
   nukr = krsblk - 4;
   niu = 11;
-  lstat(54) = niu;
   ndy5 = kud1 - 5;
   niunrs = 12;
   ivarb(kiuty + 1) = niunrs;
   nsup = 0;
-  lstat(55) = nsup;
   karg = kivarb - 3;
-  lstat(56) = karg;
   kpar = 0;
-  lstat(57) = kpar;
   ioutcs = 0;
-  lstat(59) = ioutcs;
   kxic = 0;
-  lstat(58) = kxic;
   ll0 = 0;
   ll1 = 1;
   ll2 = 2;
@@ -5981,7 +5981,6 @@ void tacs1(
   goto statement_9000;
   statement_118:
   nuk++;
-  lstat(51) = nuk;
   nuki += 8;
   nukr += 4;
   if (nuk <= lstat(61)) {
@@ -6006,7 +6005,6 @@ void tacs1(
     }
     n1++;
     nsu++;
-    lstat(53) = nsu;
     if (nsu <= nsudv) {
       goto statement_8102;
     }
@@ -6045,7 +6043,6 @@ void tacs1(
       goto statement_7413;
     }
     nsu = nsu - 1;
-    lstat(53) = nsu;
     n1 = n1 - 1;
     statement_7413:;
   }
@@ -6174,9 +6171,7 @@ void tacs1(
     goto statement_231;
   }
   nuk = 1;
-  lstat(51) = nuk;
   nsu = 1;
-  lstat(53) = nsu;
   sptacs(katcs + 1) = 1;
   ivarb(kisblk + 4) = 0;
   ivarb(kisblk + 1) = 1;
@@ -6309,7 +6304,6 @@ void tacs1(
   pru = voltbc(5);
   statement_6537:
   niu++;
-  lstat(54) = niu;
   ndy5 += 5;
   if (niu > lstat(64)) {
     goto statement_8107;
@@ -6385,7 +6379,6 @@ void tacs1(
     alnode;
   statement_8579:
   niu = niu - 1;
-  lstat(54) = niu;
   ndy5 = ndy5 - 5;
   goto statement_9000;
   statement_1092:
@@ -6431,7 +6424,6 @@ void tacs1(
       goto statement_1199;
     }
     ioutcs++;
-    lstat(59) = ioutcs;
     if (ioutcs > lstat(68)) {
       goto statement_4466;
     }
@@ -6484,7 +6476,6 @@ void tacs1(
   goto statement_100;
   statement_3838:
   kxic++;
-  lstat(58) = kxic;
   if (kxic < lstat(68)) {
     goto statement_3377;
   }
@@ -6521,7 +6512,6 @@ void tacs1(
   if (iprsup >= 1) {
     write(lunit6, "('  \"EXIT  MODULE TACS1.\"')");
   }
-  sptacs(5) = kcolcs;
 }
 catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
@@ -6634,19 +6624,19 @@ void csup(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
+  auto& kspvar = cmn.tacsar.kspvar;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
 
-  auto& kspvar = isptacs(6);
-  auto& kprsup = isptacs(9);
-  auto& kiuty =  isptacs(13);
-  auto& kxtcs =  isptacs(17);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& nuk = cmn.tacsar.nuk;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& karg = cmn.tacsar.karg;
+  auto& kpar = cmn.tacsar.kpar;
 
-  auto& nuk = lstat(51);
-  auto& nsup = lstat(55);
-  auto& karg = lstat(56);
-  auto& kpar = lstat(57);
   //C     000  B = THE ARGUMENT AND LATER THE VALUE OF THE FUNCTION,        M14. 232
   //C     000      BEFORE IT IS AFFECTED BY THE ALGEBRAIC OPERATION         M14. 233
   //C     000      WHICH WILL UPDATE 'A' .                                  M14. 234
@@ -7933,28 +7923,30 @@ void tacs3(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-  auto& konsce = isptacs(1);
-  auto& kcolcs = isptacs(5);
-  auto& katcs =  isptacs(7);
-  auto& konsup = isptacs(8);
-  auto& kprsup = isptacs(9);
-  auto& kaliu =  isptacs(11);
-  auto& kiuty =  isptacs(13);
-  auto& kud1 =   isptacs(14);
-  auto& kxtcs =  isptacs(17);
-  auto& klntab = isptacs(18);
-  auto& kisblk = isptacs(19);
-  auto& krsblk = isptacs(20);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& konsce = cmn.tacsar.konsce;
+  auto& kcolcs = cmn.tacsar.kcolcs;
 
-  auto& nuk = lstat(51);
-  auto& ia = lstat(52);
-  auto& nsu = lstat(53);
-  auto& niu = lstat(54);
-  auto& nsup = lstat(55);
-  auto& ioutcs = lstat(59);
+  auto& katcs = cmn.tacsar.katcs;
+  auto& konsup = cmn.tacsar.konsup;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kaliu = cmn.tacsar.kaliu;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kud1 = cmn.tacsar.kud1;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& klntab = cmn.tacsar.klntab;
+  auto& kisblk = cmn.tacsar.kisblk;
+  auto& krsblk = cmn.tacsar.krsblk;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
+
+  auto& nuk = cmn.tacsar.nuk;
+  auto& ia = cmn.tacsar.ia;
+  auto& nsu = cmn.tacsar.nsu;
+  auto& niu = cmn.tacsar.niu;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& ioutcs = cmn.tacsar.ioutcs;
+
   //C     INTRINSIC  ABSZ, COSZ                                             M32.5939
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE TACS3.\"')");
@@ -24427,7 +24419,7 @@ void last14(
   n3 = nr(k);
   n2 = fem::iabs(n3);
   if (iprsup >= 3) {
-    write(6, star), " Series R-L-C. N3, N2, X(N2), F(L), F(N4) =",
+    write(lunit6, star), " Series R-L-C. N3, N2, X(N2), F(L), F(N4) =",
       n3, n2, x(n2), f(L), f(n4);
   }
   yx = x(n2);
@@ -24440,7 +24432,7 @@ void last14(
     f(L) += c(n2) / 2.0f;
   }
   if (iprsup >= 3) {
-    write(6, star), " After R-L-C.   F(L), F(N4) =", f(L), f(n4);
+    write(lunit6, star), " After R-L-C.   F(L), F(N4) =", f(L), f(n4);
   }
   goto statement_640;
   statement_690:

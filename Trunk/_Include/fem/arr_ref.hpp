@@ -207,6 +207,10 @@ namespace fem {
     operator()(
       ssize_t i1) const
     {
+//#ifdef _DEBUG
+//      if (ssize_t sz = this->size_1d(); sz < i1)
+//        throw std::out_of_range("arr idx: " + std::to_string(i1) + ", size: " + std::to_string(sz));
+//#endif // _DEBUG
       return this->begin()[this->dims_.index_1d(i1)];
     }
 

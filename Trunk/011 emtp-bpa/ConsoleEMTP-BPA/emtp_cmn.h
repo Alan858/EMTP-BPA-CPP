@@ -763,8 +763,8 @@ struct common_cmn
     lunit2(2),
     lunit3(3),
     lunit4(4),
-    lunit5(55), // 0, 5, 6 are console screen
-    lunit6(56),
+    lunit5(105), // 0, 5, 6 are console screen
+    lunit6(106),
     lunit7(7),
     lunit8(8),
     lunit9(9),
@@ -2125,6 +2125,7 @@ struct common_smach
   double om2;
   double bin2;
   double bdam;
+  double bin_sm;
   int mfirst;
   int nst;
   int itold;
@@ -4209,6 +4210,118 @@ struct common_zprint
   {}
 };
 
+struct common_tacsar { // for tacsar.fd
+  int& nuk;
+  int& ia;
+  int& nsu;
+  int& niu;
+  int& nsup;
+  int& karg;
+  int& kpar;
+  int& kxic;
+  int& ioutcs;
+  int& nsudv;
+
+  int& konsce;
+  int& koncur;
+  int& kontot;
+  int& kofsce;
+  int& kcolcs;
+  int& kspvar;
+  int& katcs;
+  int& konsup;
+  int& kprsup;
+  int& kivarb;
+  int& kaliu;
+  int& kjout;
+  int& kiuty;
+  int& kud1;
+  int& kawkcs;
+  int& kxar;
+  int& kxtcs;
+  int& klntab;
+  int& kisblk;
+  int& krsblk;
+  int& kksus;
+  int& kalksu;
+  int& kinsup;
+
+  ArraySpan<int>& isblk;
+  ArraySpan<int>& ksus;
+  ArraySpan<int>& iuty;
+  ArraySpan<int>& ilntab;
+  ArraySpan<int>& icolcs;
+  ArraySpan<int>& jout;
+  ArraySpan<int>& insup;
+  ArraySpan<int>& ivarb;
+
+  fem::arr<double>& parsup;
+  fem::arr<double>& rsblk;
+  fem::arr<double>& ud1;
+  fem::arr<double>& xtcs;
+  fem::arr<double>& atcs;
+  fem::arr<double>& xar;
+  fem::arr<double>& awkcs;
+
+  common_tacsar(common_cmn& cmn0, common_c0b025& cmn)
+    : nuk(cmn0.lstat(51))
+    , ia(cmn0.lstat(52))
+    , nsu(cmn0.lstat(53))
+    , niu(cmn0.lstat(54))
+    , nsup(cmn0.lstat(55))
+    , karg(cmn0.lstat(56))
+    , kpar(cmn0.lstat(57))
+    , kxic(cmn0.lstat(58))
+    , ioutcs(cmn0.lstat(59))
+    , nsudv(cmn0.lstat(60))
+
+    , konsce(cmn.isptacs(get_isptacs_idx(1)))
+    , koncur(cmn.isptacs(get_isptacs_idx(2)))
+    , kontot(cmn.isptacs(get_isptacs_idx(3)))
+    , kofsce(cmn.isptacs(get_isptacs_idx(4)))
+    , kcolcs(cmn.isptacs(get_isptacs_idx(5)))
+    , kspvar(cmn.isptacs(get_isptacs_idx(6)))
+    , katcs(cmn.isptacs(get_isptacs_idx(7)))
+    , konsup(cmn.isptacs(get_isptacs_idx(8)))
+    , kprsup(cmn.isptacs(get_isptacs_idx(9)))
+    , kivarb(cmn.isptacs(get_isptacs_idx(10)))
+    , kaliu(cmn.isptacs(get_isptacs_idx(11)))
+    , kjout(cmn.isptacs(get_isptacs_idx(12)))
+    , kiuty(cmn.isptacs(get_isptacs_idx(13)))
+    , kud1(cmn.isptacs(get_isptacs_idx(14)))
+    , kawkcs(cmn.isptacs(get_isptacs_idx(15)))
+    , kxar(cmn.isptacs(get_isptacs_idx(16)))
+    , kxtcs(cmn.isptacs(get_isptacs_idx(17)))
+    , klntab(cmn.isptacs(get_isptacs_idx(18)))
+    , kisblk(cmn.isptacs(get_isptacs_idx(19)))
+    , krsblk(cmn.isptacs(get_isptacs_idx(20)))
+    , kksus(cmn.isptacs(get_isptacs_idx(21)))
+    , kalksu(cmn.isptacs(get_isptacs_idx(22)))
+    , kinsup(cmn.isptacs(get_isptacs_idx(23)))
+
+    , isblk(cmn.isptacs)
+    , ksus(cmn.isptacs)
+    , iuty(cmn.isptacs)
+    , ilntab(cmn.isptacs)
+    , icolcs(cmn.isptacs)
+    , jout(cmn.isptacs)
+    , insup(cmn.isptacs)
+    , ivarb(cmn.isptacs)
+
+    , parsup(cmn.sptacs)
+    , rsblk(cmn.sptacs)
+    , ud1(cmn.sptacs)
+    , xtcs(cmn.sptacs)
+    , atcs(cmn.sptacs)
+    , xar(cmn.sptacs)
+    , awkcs(cmn.sptacs)
+  {}
+private:
+  int get_isptacs_idx(const int i) {
+    return (i - 1) * 2 + 1;
+  }
+};
+
 struct common :
   fem::common,
   common_cmn,
@@ -4519,12 +4632,14 @@ struct common :
 
   common_umlocal umd1;
   common_umlocl  umd2;
+  common_tacsar tacsar;
 
   common(
     int argc,
     char const* argv[])
   : fem::common(argc, argv)
     , umd1{}, umd2{}
+    , tacsar(*this, *this)
   {}
 };
 

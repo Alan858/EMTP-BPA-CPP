@@ -2115,11 +2115,12 @@ namespace emtp {
     auto& isptacs = cmn.isptacs;
     auto& ivarb = isptacs;
 
-    auto& kaliu = isptacs(11);
-    auto& kiuty = isptacs(13);
-    auto& kud1 =  isptacs(14);
+    auto& kaliu = cmn.tacsar.kaliu;
+    auto& kiuty = cmn.tacsar.kiuty;
+    auto& kud1 = cmn.tacsar.kud1;
 
-    auto& niu = lstat(54);
+    auto& niu = cmn.tacsar.niu;
+
     if (cmn.iprsup >= 1) {
       write(lunit6, "('  \"BEGIN MODULE TACS1C.\"')");
     }
@@ -3918,9 +3919,9 @@ statement_2691:
   cmn.newtac = 1;
   ntcsex = 1;
   niunrs = 1;
-  write(6, star), " Prepare to call  NTACS1  from over1.";
-  //C!w      call ntacs1
-  write(6, star), " Back from ntacs1, back in over1.";
+  write(lunit6, star), " Prepare to call  NTACS1  from over1.";
+  // ntacs1(cmn);
+  write(lunit6, star), " Back from ntacs1, back in over1.";
   goto statement_4284;
 statement_7722:
   goto statement_4281;
@@ -13222,12 +13223,13 @@ void umdatb(
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
-  auto& kaliu =  isptacs(11);
-  auto& kiuty =  isptacs(13);
-  auto& kud1 =   isptacs(14);
-  auto& klntab = isptacs(18);
+  auto& kaliu = cmn.tacsar.kaliu;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kud1 = cmn.tacsar.kud1;
+  auto& klntab = cmn.tacsar.klntab;
 
   auto& niu = lstat(54);
+
   cmn.initum = 1;
   cmn.nsmach = numum;
   n1 = numum;
@@ -15228,9 +15230,8 @@ umdata(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-  //
-  auto& kxtcs = isptacs(17);
-  auto& klntab = isptacs(18);
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& klntab = cmn.tacsar.klntab;
 
   fem::str<8>& tesm1 = sve.tesm1;
   fem::str<8>& tesm9 = sve.tesm9;
@@ -17106,6 +17107,8 @@ void smdat(
   auto& mfirst = cmn.mfirst;
   auto& nst = cmn.nst;
   auto& nsmout = cmn.nsmout;
+  auto& bin = cmn.bin_sm;
+
   //
   fem::str<8>& text1 = sve.text1;
   fem::str<8>& text10 = sve.text10;
@@ -17145,16 +17148,10 @@ void smdat(
   int nn10 = fem::int0;
   int nn4 = fem::int0;
   int nn14 = fem::int0;
-  int kaliu = fem::int0;
-  int kiuty = fem::int0;
-  int kud1 = fem::int0;
-  int klntab = fem::int0;
-  int niu = fem::int0;
   int n50 = fem::int0;
   double d10 = fem::double0;
   int n19 = fem::int0;
   double d8 = fem::double0;
-  double bin = fem::double0;
   int jk = fem::int0;
   int ism = fem::int0;
   double fm = fem::double0;
@@ -17318,11 +17315,12 @@ void smdat(
   nn4 = ismdat(26);
   nn14 = ismdat(27);
   //C
-  kaliu = sptacs(11);
-  kiuty = sptacs(13);
-  kud1 = sptacs(14);
-  klntab = sptacs(18);
-  niu = lstat(54);
+  auto& kaliu = cmn.tacsar.kaliu;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kud1 = cmn.tacsar.kud1;
+  auto& klntab = cmn.tacsar.klntab;
+  auto& niu = cmn.tacsar.niu;
+
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE SMDAT.\"')");
   }
@@ -19836,8 +19834,8 @@ void over5(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-  auto& kxtcs =  isptacs(17);
-  auto& klntab = isptacs(18);
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& klntab = cmn.tacsar.klntab;
 
   auto& knt = cmn.moncar(1);
   auto& isw = cmn.moncar(4);
@@ -36141,18 +36139,21 @@ void csupdc(
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
-  auto& kspvar = isptacs(6);
-  auto& kprsup = isptacs(9);
-  auto& kxtcs =  isptacs(17);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
-  auto& nuk =  lstat(51);
-  auto& nsup = lstat(55);
-  auto& karg = lstat(56);
-  auto& kpar = lstat(57);
+  auto& kspvar = cmn.tacsar.kspvar;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
+
+  auto& nuk = cmn.tacsar.nuk;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& karg = cmn.tacsar.karg;
+  auto& kpar = cmn.tacsar.kpar;
+
   kjsup = kinsup + lstat(65);
   kksup = kjsup + lstat(65);
+
   if (cmn.iprsup < 6) {
     goto statement_1000;
   }
@@ -36453,12 +36454,12 @@ csupac(
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
-  auto& kxar =   isptacs(16);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& kxar = cmn.tacsar.kxar;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
 
-  auto& nuk = lstat(51);
+  auto& nuk = cmn.tacsar.nuk;
 
   int kjsup = kinsup + lstat(65);
   int kksup = kjsup + lstat(65);
@@ -36987,7 +36988,6 @@ void tacs2(
   int jlk = fem::int0;
   int ndx4 = fem::int0;
   double d2 = fem::double0;
-  int jm = fem::int0;
   int n33 = fem::int0;
   int i30 = fem::int0;
   int jmset = fem::int0;
@@ -37050,32 +37050,32 @@ void tacs2(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
+  auto& kcolcs = cmn.tacsar.kcolcs;
+  auto& katcs = cmn.tacsar.katcs;
+  auto& kprsup = cmn.tacsar.kprsup;
+  auto& kivarb = cmn.tacsar.kivarb;
+  auto& kaliu = cmn.tacsar.kaliu;
+  auto& kjout = cmn.tacsar.kjout;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kud1 = cmn.tacsar.kud1;
+  auto& kawkcs = cmn.tacsar.kawkcs;
+  auto& kxar = cmn.tacsar.kxar;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+  auto& klntab = cmn.tacsar.klntab;
+  auto& kisblk = cmn.tacsar.kisblk;
+  auto& krsblk = cmn.tacsar.krsblk;
+  auto& kksus = cmn.tacsar.kksus;
+  auto& kalksu = cmn.tacsar.kalksu;
+  auto& kinsup = cmn.tacsar.kinsup;
 
-  auto& kcolcs = isptacs(5);
-  auto& katcs =  isptacs(7);
-  auto& kprsup = isptacs(9);
-  auto& kivarb = isptacs(10);
-  auto& kaliu =  isptacs(11);
-  auto& kjout =  isptacs(12);
-  auto& kiuty =  isptacs(13);
-  auto& kud1 =   isptacs(14);
-  auto& kawkcs = isptacs(15);
-  auto& kxar =   isptacs(16);
-  auto& kxtcs =  isptacs(17);
-  auto& klntab = isptacs(18);
-  auto& kisblk = isptacs(19);
-  auto& krsblk = isptacs(20);
-  auto& kksus =  isptacs(21);
-  auto& kalksu = isptacs(22);
-  auto& kinsup = isptacs(23);
+  auto& nuk = cmn.tacsar.nuk;
+  auto& ia = cmn.tacsar.ia;
+  auto& nsu = cmn.tacsar.nsu;
+  auto& niu = cmn.tacsar.niu;
+  auto& nsup = cmn.tacsar.nsup;
+  auto& kxic = cmn.tacsar.kxic;
+  auto& ioutcs = cmn.tacsar.ioutcs;
 
-  auto& nuk = lstat(51);
-  auto& ia = lstat(52);
-  auto& nsu = lstat(53);
-  auto& niu = lstat(54);
-  auto& nsup = lstat(55);
-  auto& kxic = lstat(58);
-  auto& ioutcs = lstat(59);
   auto& kbase = moncar(2);
   auto& ltdelt = moncar(3);
   if (iprsup >= 1) {
@@ -37716,7 +37716,7 @@ statement_256:
       goto statement_9000;
     statement_8122:
       ndx1 = kcolcs + ia;
-      ivarb(ndx1) = jm;
+      ivarb(ndx1) = j;
       ndx1 = katcs + ia;
       ndx2 = kawkcs + j;
       sptacs(ndx1) = sptacs(ndx2);
@@ -37829,6 +37829,9 @@ statement_25050:
       goto statement_909;
     }
     jmset = -ivarb(kinsup + lstat(65) + jmset - lstat(64) - nuk);
+    if (jmset <= 0) { //a bug jmset may be negative
+      goto statement_909;
+    }
     jmset = ivarb(jmset);
     sptacs(jmset) = cu(n33 + 11);
   statement_909:
@@ -38869,7 +38872,7 @@ statement_3000:
         goto statement_9000;
       statement_8127:
         ndx1 = kcolcs + ia;
-        ivarb(ndx1) = jm;
+        ivarb(ndx1) = j;
         ndx1 = katcs + ia;
         ndx2 = kawkcs + j;
         sptacs(ndx1) = sptacs(ndx2);
@@ -40232,7 +40235,9 @@ catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
-
+void ntacs2(common& cmn) // not applied
+{
+}
 
 // BRANCH-TABLE AND SWITCH-TABLE PROCESSING, AS PREPARATION
 // FOR THE INTEGRATION IN TIME-STEP LOOP.                       
@@ -40685,13 +40690,12 @@ statement_13010:
     goto statement_156;
   }
   indstp = 1;
-  write(6, star), " Over12 ready for TACS.  newtac =", newtac;
+  write(lunit6, star), " Over12 ready for TACS.  newtac =", newtac;
   if (newtac != 1) {
     tacs2(cmn);
   }
-  //C!w      if ( newtac .eq. 1 )
-  //C!w     1 call ntacs2
-  write(6, star), " Done with TACS, back in over12.  ioutin =", ioutin;
+  if (cmn.newtac == 1) ntacs2(cmn);
+  write(lunit6, star), " Done with TACS, back in over12.  ioutin =", ioutin;
   iout = ioutin;
   if (iprsup >= 1) {
     write(lunit6,
@@ -50090,9 +50094,9 @@ void over15(
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
 
-  auto& kjout =  isptacs(12);
-  auto& klntab = isptacs(18);
-  auto& ioutcs = lstat(59);
+  auto& kjout = cmn.tacsar.kjout;
+  auto& klntab = cmn.tacsar.klntab;
+  auto& ioutcs = cmn.tacsar.ioutcs;
 
   //C     TRANSFER TO  "TOP15"  FOR FRONT END OF OVERLAY 15.                M28.4664
   if (iprsup >= 1) {
@@ -50878,6 +50882,9 @@ statement_300:
       wloop, busum(i);
     }
 
+    cmn.out_stream.clear();
+    cmn.out_stream.seekp({});
+    cmn.out_stream << getCurrentDateTime() << '\n';
   }
   if (iprsup >= 1) {
     write(lunit6, format_3207), nc, lsiz12, nsmout, ioutcs, ntot, numnvo,
@@ -52076,11 +52083,10 @@ void subts3(
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
   auto& ivarb = isptacs;
-
-  auto& koncur = isptacs(2);
-  auto& kjout =  isptacs(12); 
-  auto& kiuty =  isptacs(13); 
-  auto& kxtcs =  isptacs(17);
+  auto& koncur = cmn.tacsar.koncur;
+  auto& kjout = cmn.tacsar.kjout;
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kxtcs = cmn.tacsar.kxtcs;
   //
   int ll2 = fem::int0;
   int ll6 = fem::int0;
@@ -57330,6 +57336,71 @@ catch (...) {
   std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
 }
 
+void elec(common& cmn)
+{
+}
+void ntacs3(common& cmn) try
+{
+  auto& flzero = cmn.flzero;
+
+  auto& niu = cmn.tacsar.niu;
+
+  auto& kiuty = cmn.tacsar.kiuty;
+  auto& kud1 = cmn.tacsar.kud1;
+  auto& kxtcs = cmn.tacsar.kxtcs;
+
+  auto& nuk = cmn.tacsar.nuk;
+
+  auto& rsblk = cmn.tacsar.rsblk;
+  auto& ud1 = cmn.tacsar.ud1;
+  auto& xtcs = cmn.tacsar.xtcs;
+  auto& atcs = cmn.tacsar.atcs;
+  auto& xar = cmn.tacsar.xar;
+  auto& awkcs = cmn.tacsar.awkcs;
+  auto& parsup = cmn.tacsar.parsup;
+
+  auto& isblk = cmn.tacsar.isblk;
+  auto& ksus = cmn.tacsar.ksus;
+  auto& iuty = cmn.tacsar.iuty;
+  auto& ilntab = cmn.tacsar.ilntab;
+  auto& icolcs = cmn.tacsar.icolcs;
+  auto& jout = cmn.tacsar.jout;
+  auto& insup = cmn.tacsar.insup;
+  auto& ivarb = cmn.tacsar.ivarb;
+
+  auto& emtpe = cmn.e;
+
+  int i5 = kud1;
+  if (niu <= 0) {
+    auto etime = cmn.t;
+    //auto to = 9000;
+    elec(cmn);
+    // if(!(etime + estep / two > estop)) return;
+    //close(cmn.unit08);
+    //close(bkfile);
+    return;
+  }
+
+  for (int i = 1; i <= niu; ++i) {
+    int i2 = kxtcs + nuk + i;
+    xtcs(i2) = flzero;
+    int i1 = iuty(kiuty + i);
+    int k = ud1(i5 + 2);
+    int i6 = std::abs(cmn.kpos(k));
+    int i3 = i1 - 89;
+    switch (i3) {
+    case 1: xtcs(i2) = emtpe(k); break;
+    case 2: if (i6 <= 3) xtcs(i2) = cmn.tclose(k); break;
+    case 3: xtcs(i2) = cmn.ykm(k); break;
+    case 4: if (i6 <= 3) xtcs(i2) = cmn.unity; break;
+    case 5:
+    case 6: i5 = i5 + 5;
+    }
+  }
+}
+catch (...) {
+  std::throw_with_nested(std::runtime_error(__func__ + std::string("()")));
+}
 
 void subts1(
   common& cmn) try
@@ -57595,7 +57666,7 @@ void subts1(
 
   // handling equivalence in tacsar.inc
   auto& isptacs = cmn.isptacs;
-  auto& kxtcs = isptacs(17);
+  auto& kxtcs = cmn.tacsar.kxtcs;
 
   if (iprsup >= 1) {
     write(lunit6,
@@ -57984,7 +58055,8 @@ statement_1009:
   if (cmn.newtac != 1) {
     tacs3(cmn);
   }
-  //C!w      if ( newtac .eq. 1 ) call ntacs3
+  if (cmn.newtac == 1) ntacs3(cmn);
+
   //C     ---------------------------------------  DIODE, VALVE, GAP  ------M28.5345
   //C     ------------------------------  AND TACS-CONTROLLED SWITCH  ------M28.5346
 statement_3865:
@@ -62048,7 +62120,7 @@ statement_1742:
   }
   FEM_DO_SAFE(k, 2, ntot) {
     n1 = kpsour(k);
-    if (n1 == 0) {
+    if (n1 == 0 || n1 > cmn.numsub) {
       goto statement_1560;
     }
     n15 = isubeg(n1);
@@ -62056,7 +62128,7 @@ statement_1742:
   statement_1111:
     m = n15 / 5 + 1;
     e(k) += cursub(m) * znonl(n4);
-    n15 = kknonl(n15);
+    if (0 < n15) n15 = kknonl(n15);
     if (n15 == isubeg(n1)) {
       goto statement_2323;
     }
