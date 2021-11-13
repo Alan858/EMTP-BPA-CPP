@@ -5867,8 +5867,6 @@ distr2(
   }
   auto& lunit6 = cmn.lunit6;
   auto& kunit6 = lunit6;
-  int n45 = fem::int0;
-  int n46 = fem::int0;
   int isecti = fem::int0;
   int numaki = fem::int0;
   double pdt0 = fem::double0;
@@ -6007,10 +6005,10 @@ distr2(
   if (iprsup >= 1) {
     write(lunit6, "('  \"BEGIN MODULE DISTR2.\"')");
   }
-  n45 = locint(ida);
-  n46 = locint(ifkc);
   isecti = 400;
   if (iprsup >= 4) {
+    int n45 = locint(ida);
+    int n46 = locint(ifkc);
     write(6, star), " Top distr2.  N45, N46, IDA, IFKC =", n45, n46, ida, ifkc;
   }
   numaki = 0;
@@ -32656,8 +32654,8 @@ void reducn(
   int const& m,
   int const& n) try
 {
-  x(dimension(1));
-  y(dimension(1));
+  x(dimension(m * m));
+  y(dimension(m * m));
   int j = fem::int0;
   int ik = fem::int0;
   int nk = fem::int0;
@@ -32736,7 +32734,7 @@ void uncor(
   arr_ref<double> sci,
   int const& i) try
 {
-  sci(dimension(1));
+  sci(dimension(6));
   common_write write(cmn);
   int& iprsup = cmn.iprsup;
   const auto& elp = cmn.elp;
@@ -52459,7 +52457,7 @@ statement_1660:
 statement_1661:
   istep++;
   t += deltat;
-  if (t > begmax(maxout + 1)) {
+  if (maxout < begmax.size() && t > begmax(maxout + 1)) {
     maxout += 2;
   }
   isplot = isplot - 1;
